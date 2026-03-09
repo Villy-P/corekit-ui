@@ -1,6 +1,7 @@
 export interface FBMBackgroundOptions {
     octaves?: number;
     warps?: number;
+    scale?: number;
     seed?: number;
 }
 
@@ -12,7 +13,7 @@ interface ProgramInfo {
     uniformLocations: {
         resolution: WebGLUniformLocation | null;
         seed: WebGLUniformLocation | null;
-        time: WebGLUniformLocation | null;
+        scale: WebGLUniformLocation | null;
         octaves: WebGLUniformLocation | null;
         warp: WebGLUniformLocation | null;
     };
@@ -30,16 +31,15 @@ precision mediump float;
 
 uniform vec2 u_resolution;
 uniform float u_seed;
-uniform float u_time;
+uniform float u_scale;
 uniform int u_octaves;
 uniform int u_warp;
 
 const int maxOctaves = 20;
 const int maxWarps = 5;
-float scale = u_time * 0.022 + 1.0;
 
 float rand(vec2 n) { 
-    return fract(sin(dot(n.xy, vec2(12., 7.23))) * u_seed);
+    return fract(sin(dot(n.xy + u_seed, vec2(12.9898, 78.233))) * 43758.5453);
 }
 
 float noise(vec2 p){
@@ -64,8 +64,7 @@ float fbm( in vec2 x, in float H ) {
     float a = 0.5;
     vec2 shift = vec2(100);
     // Rotate to reduce axial bias
-    mat2 rot = mat2(cos(0.5), sin(0.5),
-                    -sin(0.5), cos(0.50));
+    mat2 rot = mat2(0.877, 0.479, -0.479, 0.877);
     for (int i = 0; i < maxOctaves; ++i) {
         v += a * noise(x);
         x = rot * x * 2.0 + shift;
@@ -79,7 +78,7 @@ void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     uv.x *= u_resolution.x / u_resolution.y;
 
-    float baseNoise = fbm(uv * scale, 1.2);
+    float baseNoise = fbm(uv * u_scale, 1.2);
 
     vec2 warp = uv;
     for (int i = 0; i < maxWarps; ++i) {
@@ -87,7 +86,7 @@ void main() {
         if (i > u_warp) break;
     }
 
-    baseNoise = fbm(warp * scale, 1.2);
+    baseNoise = fbm(warp * u_scale, 1.2);
 
     gl_FragColor = vec4(vec3(baseNoise), 1.0);
 }`;
@@ -161,10 +160,7 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         console.error("WebGL not supported");
         return;
     }
-
-    const OCTAVES = options.octaves || 4;
-    const WARPS = options.warps || 2;
-    const SEED = options.seed || Math.random() * 1000;
+    let seed = Math.random() * 1000;
 
     const shaderProgram = initializeShaders(gl, FBM_VERTEX_SHADER_SOURCE, FBM_FRAGMENT_SHADER_SOURCE);
     if (!shaderProgram) {
@@ -179,7 +175,7 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         uniformLocations: {
             resolution: gl.getUniformLocation(shaderProgram, "u_resolution"),
             seed: gl.getUniformLocation(shaderProgram, "u_seed"),
-            time: gl.getUniformLocation(shaderProgram, "u_time"),
+            scale: gl.getUniformLocation(shaderProgram, "u_scale"),
             octaves: gl.getUniformLocation(shaderProgram, "u_octaves"),
             warp: gl.getUniformLocation(shaderProgram, "u_warp"),
         }
@@ -191,7 +187,6 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         canvas.width = Math.floor(canvas.clientWidth * DPR);
         canvas.height = Math.floor(canvas.clientHeight * DPR);
 
-        console.log(`Canvas resized to ${canvas.width}x${canvas.height}`);
     }
 
     function render() {
@@ -214,9 +209,10 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         gl.useProgram(programInfo.program);
         
         gl.uniform2f(programInfo.uniformLocations.resolution, canvas.width, canvas.height);
-        gl.uniform1f(programInfo.uniformLocations.seed, SEED);
-        gl.uniform1i(programInfo.uniformLocations.octaves, OCTAVES);
-        gl.uniform1i(programInfo.uniformLocations.warp, WARPS);
+        gl.uniform1f(programInfo.uniformLocations.seed, options.seed ?? seed);
+        gl.uniform1i(programInfo.uniformLocations.octaves, options.octaves ?? 4);
+        gl.uniform1i(programInfo.uniformLocations.warp, options.warps ?? 2);
+        gl.uniform1f(programInfo.uniformLocations.scale, options.scale ?? 2);
 
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
@@ -225,4 +221,15 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         render();
     });
     resizeObserver.observe(canvas);
+
+    return {
+        update(newOptions: FBMBackgroundOptions) {
+            options = { ...options, ...newOptions };
+            render();
+        },
+        destroy() {
+            resizeObserver.disconnect();
+            gl.getExtension("WEBGL_lose_context")?.loseContext();
+        }
+    }
 }

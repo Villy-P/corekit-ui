@@ -1,6 +1,15 @@
 <script>
     import { fbmBackground } from "../lib/actions/fbm.ts";
     import Button from "$lib/components/Button.svelte";
+    import { onMount } from "svelte";
+
+    let octaves = $state(1);
+
+    onMount(() => {
+        setInterval(() => {
+            octaves = (octaves % 10) + 1;
+        }, 1000);
+    })
 </script>
 
-<canvas use:fbmBackground={{octaves: 10, warps: 2}} class="w-screen h-screen"></canvas>
+<canvas use:fbmBackground={{octaves: octaves, warps: 2, scale: 3}} class="w-screen h-screen"></canvas>
