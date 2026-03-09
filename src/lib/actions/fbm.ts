@@ -160,7 +160,9 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         console.error("WebGL not supported");
         return;
     }
-    let seed = Math.random() * 1000;
+
+    let currentOptions = { ...options };
+    let internalSeed = options.seed ?? Math.random() * 1000;
 
     const shaderProgram = initializeShaders(gl, FBM_VERTEX_SHADER_SOURCE, FBM_FRAGMENT_SHADER_SOURCE);
     if (!shaderProgram) {
@@ -209,26 +211,34 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
         gl.useProgram(programInfo.program);
         
         gl.uniform2f(programInfo.uniformLocations.resolution, canvas.width, canvas.height);
-        gl.uniform1f(programInfo.uniformLocations.seed, options.seed ?? seed);
-        gl.uniform1i(programInfo.uniformLocations.octaves, options.octaves ?? 4);
-        gl.uniform1i(programInfo.uniformLocations.warp, options.warps ?? 2);
-        gl.uniform1f(programInfo.uniformLocations.scale, options.scale ?? 2);
+        gl.uniform1f(programInfo.uniformLocations.seed, currentOptions.seed ?? internalSeed);
+        gl.uniform1i(programInfo.uniformLocations.octaves, currentOptions.octaves ?? 4);
+        gl.uniform1i(programInfo.uniformLocations.warp, currentOptions.warps ?? 2);
+        gl.uniform1f(programInfo.uniformLocations.scale, currentOptions.scale ?? 2);
 
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
 
     const resizeObserver = new ResizeObserver(() => {
-        render();
+        requestAnimationFrame(render);
     });
     resizeObserver.observe(canvas);
 
+    render();
+
     return {
         update(newOptions: FBMBackgroundOptions) {
-            options = { ...options, ...newOptions };
-            render();
+            const changed = JSON.stringify(currentOptions) !== JSON.stringify(newOptions);
+            if (changed) {
+                currentOptions = { ...newOptions };
+                render();
+            }
         },
         destroy() {
             resizeObserver.disconnect();
+            gl.bindBuffer(gl.ARRAY_BUFFER, null);
+            gl.deleteBuffer(buffers.position);
+            gl.deleteProgram(shaderProgram);
             gl.getExtension("WEBGL_lose_context")?.loseContext();
         }
     }
