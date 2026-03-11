@@ -12,4 +12,6 @@
     })
 </script>
 
-<canvas use:fbmBackground={{octaves: octaves, warps: 2, scale: 3}} class="w-screen h-screen"></canvas>
+<!-- <canvas use:fbmBackground={{octaves: octaves, warps: 2, scale: 3}} class="w-screen h-screen"></canvas> -->
+<br><br>
+<Button class="bg-blue-500">Hello</Button>

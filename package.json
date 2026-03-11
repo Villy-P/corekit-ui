@@ -51,5 +51,8 @@
 	"keywords": [
 		"components",
 		"svelte"
-	]
+	],
+	"dependencies": {
+		"tailwind-merge": "^3.5.0"
+	}
 }
