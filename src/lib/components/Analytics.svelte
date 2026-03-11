@@ -7,7 +7,7 @@
 
     $effect(() => {
         if (typeof gtag !== 'undefined') {
-            gtag('config', 'MEASUREMENT_ID', {
+            gtag('config', measurementId, {
                 page_title: document.title,
                 page_path: $page.url.pathname,
             })
@@ -16,16 +16,12 @@
 </script>
   
 <svelte:head>
-    <script async src={ANALYTICS_URL}></script>
-    <script>
-        window.dataLayer = window.dataLayer || []
-        const MEASUREMENT_ID = "YOUR_MEASUREMENT_ID_HERE";
-    
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-    
-        gtag('js', new Date())
-        gtag('config', MEASUREMENT_ID)
-    </script>
+    {#if measurementId}
+        <script async src={ANALYTICS_URL}></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+        </script>
+    {/if}
 </svelte:head>

@@ -25,4 +25,4 @@
     <Button class="bg-gray-500 hover:bg-gray-600" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
 </div>
 
-<SEO title="Home" description="Welcome to the homepage of your SvelteKit app!" image="/favicon.png" />
+<SEO websiteName="website.com" title="Home" description="Welcome to the homepage of your SvelteKit app!" image="/favicon.png" />
