@@ -1,20 +1,20 @@
 <script lang="ts">
     import { page } from '$app/state';
 
-    const websiteName = "YOUR_WEBSITE_NAME_HERE";
-    const defaultTitle = `Home | ${websiteName}`;
-    const defaultDescription = "Description of your website.";
-    const defaultImage = `${websiteName}/favicon.png`;
-    
-    let fullUrl = $derived(`${websiteName}${page.url.pathname.toString()}`);
-  
+    const DEFAULT_TITLE = "My SvelteKit App";
+    const DEFAULT_DESCRIPTION = "Description of your website.";
+    const DEFAULT_IMAGE = "/favicon.png";
+      
 	interface SEOProps {
+        websiteName: string;
 		title?: string;
 		description?: string;
 		image?: any;
 	}
 
-	let { title = defaultTitle, description = defaultDescription, image = defaultImage }: SEOProps = $props();
+	let { websiteName, title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, image = DEFAULT_IMAGE }: SEOProps = $props();
+
+    let fullUrl = $derived(`${websiteName}${page.url.pathname.toString()}`);
 </script>
   
 <svelte:head>
