@@ -1,27 +1,14 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
 
-    type ButtonType = "button" | "pill" | "icon";
-
     let { 
         children, 
         class: className, 
-        type = "button" 
+        pill = false,
     } = $props();
 
-    let pillClass = "rounded-full px-4 py-2";
-    let iconClass = "p-2 aspect-square";
-    let typeClass = $derived(() => {
-        switch (type) {
-            case "pill":
-                return pillClass;
-            case "icon":
-                return iconClass;
-            default:
-                return "";
-        }
-    });
-    let defaultClass = $derived("text-white cursor-pointer " + typeClass());
+    let pillClass = "rounded-full";
+    let defaultClass = $derived("text-white cursor-pointer px-2 py-1" + (pill ? pillClass : ""));
 
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
