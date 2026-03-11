@@ -1,11 +1,21 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
 
+    interface ButtonProps {
+        children?: any;
+        class?: string;
+        pill?: boolean;
+        href?: string;
+        target?: string;
+    };
+
     let { 
         children, 
         class: className, 
         pill = false,
-    } = $props();
+        href = undefined,
+        target = undefined
+    }: ButtonProps = $props();
 
     let pillClass = "rounded-full";
     let defaultClass = $derived("text-white cursor-pointer px-2 py-1" + (pill ? pillClass : ""));
