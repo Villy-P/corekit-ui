@@ -1,23 +1,14 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
 
-    interface ButtonProps {
-        children?: any;
-        class?: string;
-        pill?: boolean;
-        icon?: boolean;
-        href?: string;
-        target?: string;
-    };
-
     let { 
         children, 
         class: className, 
         pill = false,
         icon = false,
         href = undefined,
-        target = undefined
-    }: ButtonProps = $props();
+        ...restProps
+    } = $props();
 
     let pillClass = "rounded-full";
     let iconClass = "rounded-full p-2";
@@ -26,10 +17,12 @@
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<button class={combinedClass}>
-    {#if href}
-        <a {href} target={target}>{@render children?.()}</a>
-    {:else}
+{#if href}
+    <a class={combinedClass} {href} {...restProps}>
+        {@render children?.()}
+    </a>
+{:else}
+    <button class={combinedClass} {...restProps}>
         {@render children?.()} 
-    {/if}
-</button>
+    </button>
+{/if}
