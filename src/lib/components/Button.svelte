@@ -1,1 +1,5 @@
-<button type="button" class="btn-icon preset-filled w-fit h-fit">Hello</button>
+<script lang="ts">
+    let { children } = $props();
+</script>
+
+<button>{@render children?.()}</button>
