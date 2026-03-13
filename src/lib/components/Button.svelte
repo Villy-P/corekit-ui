@@ -3,7 +3,7 @@
 
     let { 
         children, 
-        class: className, 
+        class: className = "", 
         pill = false,
         icon = false,
         href = undefined,
