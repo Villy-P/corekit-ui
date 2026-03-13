@@ -2,7 +2,7 @@
     import { twMerge } from "tailwind-merge";
 
     let { 
-        children, 
+        children = undefined, 
         class: className = "", 
         pill = false,
         icon = false,

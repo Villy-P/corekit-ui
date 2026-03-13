@@ -3,7 +3,18 @@
     import Button from "$lib/components/Button.svelte";
     import { onMount } from "svelte";
     import SEO from "$lib/components/SEO.svelte";
+    import Navbar from "$lib/components/Navbar.svelte";
+    import NavbarSeperator from "$lib/components/NavbarSeperator.svelte";
 </script>
+
+<Navbar class="bg-black">
+    <Button class="h-14 w-14 ml-3 flex-center" href="/" icon>
+        <p>Valerius Petrini</p>
+    </Button>
+    <NavbarSeperator/>
+    <p class="text-white">Welcome to the homepage!</p>
+    <p class="text-white p-5">This is a simple paragraph.</p>
+</Navbar>
 
 <canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
 <br><br>
