@@ -3,17 +3,9 @@
     import Button from "$lib/components/Button.svelte";
     import { onMount } from "svelte";
     import SEO from "$lib/components/SEO.svelte";
-
-    let octaves = $state(1);
-
-    onMount(() => {
-        setInterval(() => {
-            octaves = (octaves % 10) + 1;
-        }, 1000);
-    })
 </script>
 
-<!-- <canvas use:fbmBackground={{octaves: octaves, warps: 2, scale: 3}} class="w-screen h-screen"></canvas> -->
+<canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
 <br><br>
 <div class="flex w-full items-center justify-center gap-4">
     <Button class="bg-blue-500 hover:bg-blue-600">Normal</Button>
