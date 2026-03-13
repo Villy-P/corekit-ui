@@ -8,7 +8,11 @@
     import Typewriter from "$lib/components/Typewriter.svelte";
 
     let actions = [
-        { type: "write", value: "Hello, World!", color: "red", minspeed: 50, maxspeed: 150 }
+        { type: "write", value: "Hello, World!", color: "red", minspeed: 50, maxspeed: 150 },
+        { type: "write", value: " My name is John Doe", color: "red", minspeed: 50, maxspeed: 150, label: "johndoe" },
+        { type: "pause", duration: 2000 },
+        { type: "delete", label: "johndoe", minspeed: 30, maxspeed: 100 },
+        { type: "write", value: " I am a Svelte developer.", color: "red", minspeed: 50, maxspeed: 150 },
     ];
 
 </script>

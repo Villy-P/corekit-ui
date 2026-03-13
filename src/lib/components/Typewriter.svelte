@@ -20,6 +20,20 @@
                         await new Promise(resolve => setTimeout(resolve, speed));
                     }
                     break;
+                case "delete":
+                    const index = displaySegments.findIndex(s => s.label === action.label);
+                    if (index === -1) break;
+                    const deleteSegment = displaySegments[index];
+                    while (deleteSegment.text.length > 0) {
+                        deleteSegment.text = deleteSegment.text.slice(0, -1);
+                        const speed = Math.random() * ((action.maxspeed || 100) - (action.minspeed || 50)) + (action.minspeed || 50);
+                        await new Promise(resolve => setTimeout(resolve, speed));
+                    }
+                    displaySegments.splice(index, 1);
+                    break;
+                case "pause":
+                    await new Promise(resolve => setTimeout(resolve, action.duration || 1000));
+                    break;
             }
         }
     }
