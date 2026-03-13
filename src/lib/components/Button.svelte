@@ -11,7 +11,7 @@
     } = $props();
 
     let pillClass = "rounded-full";
-    let iconClass = "rounded-full p-2";
+    let iconClass = "rounded-full p-2 flex-center";
     let defaultClass = $derived(twMerge("text-white cursor-pointer px-2 py-1 ", (pill ? pillClass : ""), (icon ? iconClass : "")));
 
     let combinedClass = $derived(twMerge(defaultClass, className));
