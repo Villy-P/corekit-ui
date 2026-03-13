@@ -2,6 +2,8 @@
     import { twMerge } from "tailwind-merge";
     import { onMount } from "svelte";
 
+    import type { DisplaySegment, TypewriterAction } from "$lib/types.js";
+
     let { actions = [] as TypewriterAction[], class: className = "" } = $props();
 
     let displaySegments = $state<DisplaySegment[]>([]);
@@ -14,7 +16,9 @@
                     displaySegments.push(segment);
 
                     const segmentProxy = displaySegments[displaySegments.length - 1];
-                    for (const char of action.value) {
+
+                    const resolvedValue = typeof action.value === "function" ? action.value() : action.value;
+                    for (const char of resolvedValue) {
                         segmentProxy.text += char;
                         const speed = Math.random() * ((action.maxspeed || 100) - (action.minspeed || 50)) + (action.minspeed || 50);
                         await new Promise(resolve => setTimeout(resolve, speed));
