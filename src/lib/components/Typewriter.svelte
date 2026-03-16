@@ -13,7 +13,7 @@
             const action = actions[i];
             switch (action.type) {
                 case "write":
-                    const segment = { text: "", color: action.color, label: action.label };
+                    const segment = { text: "", color: typeof action.color === "function" ? action.color() : action.color, label: action.label };
                     displaySegments.push(segment);
 
                     const segmentProxy = displaySegments[displaySegments.length - 1];
