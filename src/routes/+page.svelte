@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { fbmBackground } from "../lib/actions/fbm.ts";
     import Button from "$lib/components/Button.svelte";
     import { onMount } from "svelte";
@@ -9,14 +9,21 @@
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
+    function getNextWord() {
+        const value = arrayOfValues[0];
+        arrayOfValues.push(arrayOfValues.shift()!);
+        return value;
+    }
+
     let actions = [
         { type: "write", value: "Hello, World!", color: "red", minspeed: 50, maxspeed: 150 },
         { type: "write", value: " My name is John Doe", color: "red", minspeed: 50, maxspeed: 150, label: "johndoe" },
         { type: "pause", duration: 2000 },
         { type: "delete", label: "johndoe", minspeed: 30, maxspeed: 100 },
-        { type: "write", value: " I am a Svelte developer.", color: "red", minspeed: 50, maxspeed: 150 },
-        { type: "pause", duration: 2000 },
-        { type: "write", value: () => ` Random word: ${arrayOfValues[Math.floor(Math.random() * arrayOfValues.length)]}`, color: "blue", minspeed: 50, maxspeed: 150 },
+        { type: "write", value: " I am a Svelte developer. ", color: "red", minspeed: 50, maxspeed: 150 },
+        { type: "pause", duration: 2000, label: "pause1" },
+        { type: "write", value: getNextWord, color: "blue", minspeed: 50, maxspeed: 150 },
+        { type: "jump", position: "pause1" },
     ];
 
 </script>

@@ -9,7 +9,8 @@
     let displaySegments = $state<DisplaySegment[]>([]);
 
     async function execute() {
-        for (const action of actions) {
+        for (let i = 0; i < actions.length; i++) {
+            const action = actions[i];
             switch (action.type) {
                 case "write":
                     const segment = { text: "", color: action.color, label: action.label };
@@ -37,6 +38,11 @@
                     break;
                 case "pause":
                     await new Promise(resolve => setTimeout(resolve, action.duration || 1000));
+                    break;
+                case "jump":
+                    const position = actions.findIndex(a => a.label === action.position);
+                    if (position !== -1)
+                        i = position - 1;
                     break;
             }
         }
