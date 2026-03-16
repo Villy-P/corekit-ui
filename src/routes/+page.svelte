@@ -6,6 +6,7 @@
     import Navbar from "$lib/components/Navbar.svelte";
     import NavbarSeperator from "$lib/components/NavbarSeperator.svelte";
     import Typewriter from "$lib/components/Typewriter.svelte";
+    import type { TypewriterAction } from "$lib/types.js";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -15,11 +16,11 @@
         return value;
     }
 
-    let actions = [
+    let actions: TypewriterAction[] = [
         { type: "write", value: "Hello, World!", color: "red", minspeed: 50, maxspeed: 150 },
         { type: "write", value: " My name is John Doe", color: "red", minspeed: 50, maxspeed: 150, label: "johndoe" },
         { type: "pause", duration: 2000 },
-        { type: "delete", label: "johndoe", minspeed: 30, maxspeed: 100 },
+        { type: "delete", to: "johndoe", minspeed: 30, maxspeed: 100 },
         { type: "write", value: " I am a Svelte developer. ", color: "red", minspeed: 50, maxspeed: 150 },
         { type: "pause", duration: 2000, label: "pause1" },
         { type: "write", value: getNextWord, color: "blue", minspeed: 50, maxspeed: 150 },

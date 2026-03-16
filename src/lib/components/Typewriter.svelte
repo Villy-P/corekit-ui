@@ -26,7 +26,7 @@
                     }
                     break;
                 case "delete":
-                    const index = displaySegments.findIndex(s => s.label === action.label);
+                    const index = displaySegments.findIndex(s => s.label === action.to);
                     if (index === -1) break;
                     const deleteSegment = displaySegments[index];
                     while (deleteSegment.text.length > 0) {
