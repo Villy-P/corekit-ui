@@ -2,7 +2,7 @@
     import { twMerge } from "tailwind-merge";
     import { onMount } from "svelte";
 
-    import type { DisplaySegment, TypewriterAction } from "$lib/types.js";
+    import type { DisplaySegment, TypewriterAction } from "$lib/types/Typewriter.d.ts";
 
     let { actions = [] as TypewriterAction[], class: className = "" } = $props();
 

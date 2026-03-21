@@ -6,7 +6,7 @@
     import Navbar from "$lib/components/Navbar.svelte";
     import NavbarSeperator from "$lib/components/NavbarSeperator.svelte";
     import Typewriter from "$lib/components/Typewriter.svelte";
-    import type { TypewriterAction } from "$lib/types.js";
+    import type { TypewriterAction } from "$lib/types/Typewriter.d.ts";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -17,14 +17,15 @@
     }
 
     let actions: TypewriterAction[] = [
-        { type: "write", value: "Hello, World!", color: "red", minspeed: 50, maxspeed: 150 },
-        { type: "write", value: " My name is John Doe", color: "red", minspeed: 50, maxspeed: 150, label: "johndoe" },
-        { type: "pause", duration: 2000 },
-        { type: "delete", to: "johndoe", minspeed: 30, maxspeed: 100 },
-        { type: "write", value: " I am a Svelte developer. ", color: "red", minspeed: 50, maxspeed: 150 },
-        { type: "pause", duration: 2000, label: "pause1" },
-        { type: "write", value: getNextWord, color: "blue", minspeed: 50, maxspeed: 150 },
-        { type: "jump", position: "pause1" },
+        { type: "write", value: "I'm a software developer using tools like ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: () => getNextWord(), color: () => "red", minspeed: 50, maxspeed: 100, label: "language1" },
+        { type: "write", value: ", ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: () => getNextWord(), color: () => "blue", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: ", and ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: () => getNextWord(), color: () => "green", minspeed: 50, maxspeed: 100 },
+        { type: "pause", duration: 3000 },
+        { type: "delete", to: "language1", minspeed: 50, maxspeed: 100 },
+        { type: "jump", position: "language1" }
     ];
 
 </script>
