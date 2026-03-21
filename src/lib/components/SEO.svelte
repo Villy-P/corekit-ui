@@ -24,20 +24,20 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="{title}">
     <meta property="og:description" content={description}>
-    <meta property="og:image" content={image}>
+    <meta property="og:image" content={websiteName + image}>
   
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content={websiteName}>
     <meta property="twitter:url" content={fullUrl}>
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content={image}>
+    <meta name="twitter:image" content={websiteName + image}>
     {@html `  <script type="application/ld+json">{
      "@context": "https://schema.org",
      "@type": "Website",
      "name": "${title}",
      "url": "${fullUrl}",
-     "logo": "${image}"  }</script>`}
+     "logo": "${websiteName}${image}"  }</script>`}
 
     <meta name="google-site-verification" content="F6vDzwDyZfebc9kWIZlhzpsAm5zhanaPkOArdCZdDSU" />
 </svelte:head>
