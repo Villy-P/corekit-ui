@@ -2,9 +2,13 @@
     import { twMerge } from "tailwind-merge";
     import { onMount } from "svelte";
 
-    import type { DisplaySegment, TypewriterAction } from "$lib/types/Typewriter.d.ts";
+    import type { DisplaySegment, TypewriterProps } from "$lib/types/Typewriter.d.ts";
 
-    let { actions = [] as TypewriterAction[], class: className = "" } = $props();
+    let { 
+        actions, 
+        class: className = "",
+        ...restProps
+    }: TypewriterProps = $props();
 
     let displaySegments = $state<DisplaySegment[]>([]);
 
@@ -59,7 +63,7 @@
     let combinedClass = $derived(twMerge("typewriter w-fit", className));
 </script>
 
-<div class={combinedClass}>
+<div class={combinedClass} {...restProps}>
     {#each displaySegments as segment}
         {#key segment}
             <span style="color: {segment.color}">{segment.text}</span>

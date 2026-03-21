@@ -9,3 +9,9 @@ export interface DisplaySegment {
     color?: string;
     label?: string;
 };
+
+export interface TypewriterProps {
+    actions: TypewriterAction[];
+    class?: string;
+    [key: string]: any;
+}

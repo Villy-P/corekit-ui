@@ -1,18 +1,17 @@
 <script lang="ts">
     import { page } from '$app/state';
+    import type { SEOProps } from '$lib/types/SEO.js';
 
     const DEFAULT_TITLE = "My SvelteKit App";
     const DEFAULT_DESCRIPTION = "Description of your website.";
     const DEFAULT_IMAGE = "/favicon.png";
-      
-	interface SEOProps {
-        websiteName: string;
-		title?: string;
-		description?: string;
-		image?: any;
-	}
 
-	let { websiteName, title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, image = DEFAULT_IMAGE }: SEOProps = $props();
+	let { 
+        websiteName, 
+        title = DEFAULT_TITLE, 
+        description = DEFAULT_DESCRIPTION, 
+        image = DEFAULT_IMAGE 
+    }: SEOProps = $props();
 
     let fullUrl = $derived(`${websiteName}${page.url.pathname.toString()}`);
 </script>

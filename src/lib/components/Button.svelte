@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { ButtonProps } from "$lib/types/Button.js";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -8,7 +9,7 @@
         icon = false,
         href = undefined,
         ...restProps
-    } = $props();
+    }: ButtonProps = $props();
 
     let pillClass = "rounded-full";
     let iconClass = "rounded-full p-2 flex-center";

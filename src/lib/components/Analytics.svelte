@@ -1,7 +1,8 @@
 <script lang="ts">
     import { page } from '$app/state'
+    import type { AnalyticsProps } from '$lib/types/Analytics.js';
 
-    let { measurementId } = $props();
+    let { measurementId }: AnalyticsProps = $props();
 
     const ANALYTICS_URL = $derived(`https://www.googletagmanager.com/gtag/js?id=${measurementId}`);
 
