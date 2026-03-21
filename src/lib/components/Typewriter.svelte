@@ -13,12 +13,14 @@
             const action = actions[i];
             switch (action.type) {
                 case "write":
-                    const segment = { text: "", color: typeof action.color === "function" ? action.color() : action.color, label: action.label };
+                    const segment = { text: "", color: "", label: action.label };
                     displaySegments.push(segment);
 
                     const segmentProxy = displaySegments[displaySegments.length - 1];
 
                     const resolvedValue = typeof action.value === "function" ? action.value() : action.value;
+                    const resolvedColor = typeof action.color === "function" ? action.color() : action.color;
+                    segmentProxy.color = resolvedColor;
                     for (const char of resolvedValue) {
                         segmentProxy.text += char;
                         const speed = Math.random() * ((action.maxspeed || 100) - (action.minspeed || 50)) + (action.minspeed || 50);
@@ -28,11 +30,13 @@
                 case "delete":
                     const index = displaySegments.findIndex(s => s.label === action.to);
                     if (index === -1) break;
-                    const deleteSegment = displaySegments[index];
-                    while (deleteSegment.text.length > 0) {
-                        deleteSegment.text = deleteSegment.text.slice(0, -1);
-                        const speed = Math.random() * ((action.maxspeed || 100) - (action.minspeed || 50)) + (action.minspeed || 50);
-                        await new Promise(resolve => setTimeout(resolve, speed));
+                    for (let j = displaySegments.length - 1; j >= index; j--) {                        
+                        const deleteSegment = displaySegments[j];
+                        while (deleteSegment.text.length > 0) {
+                            deleteSegment.text = deleteSegment.text.slice(0, -1);
+                            const speed = Math.random() * ((action.maxspeed || 100) - (action.minspeed || 50)) + (action.minspeed || 50);
+                            await new Promise(resolve => setTimeout(resolve, speed));
+                        }
                     }
                     displaySegments.splice(index, 1);
                     break;
