@@ -7,6 +7,7 @@
     import NavbarSeperator from "$lib/components/NavbarSeperator.svelte";
     import Typewriter from "$lib/components/Typewriter.svelte";
     import type { TypewriterAction } from "$lib/types/Typewriter.d.ts";
+    import NavbarElement from "$lib/components/NavbarElement.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -32,11 +33,11 @@
 
 <Navbar class="bg-black" classTop="bg-transparent backdrop-blur-[3px] bg-none">
     <Button class="h-14 w-14 ml-3 flex-center" href="/" icon>
-        <p>Valerius Petrini</p>
+        <p>Valerius</p>
     </Button>
     <NavbarSeperator/>
-    <p class="text-white">Welcome to the homepage!</p>
-    <p class="text-white p-5">This is a simple paragraph.</p>
+    <NavbarElement class="hover:bg-gray-950" classTop="hover:bg-transparent">Welcome to the homepage!</NavbarElement>
+    <NavbarElement class="hover:bg-gray-950" classTop="hover:bg-transparent">This is a simple paragraph.</NavbarElement>
 </Navbar>
 
 <canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>

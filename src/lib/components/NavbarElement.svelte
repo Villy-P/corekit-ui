@@ -1,15 +1,17 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import { twMerge } from "tailwind-merge";
+    import Button from "./Button.svelte";
+    import { onMount } from "svelte";
 
-    let { 
+    let {
         children = undefined, 
         class: className = "", 
         classTop = "",
+        href = undefined,
         ...restProps
     } = $props();
 
-    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-50 flex items-center";
+    let defaultClass = "navbar-element w-fit h-full flex items-center px-5 py-0";
 
     let combinedClass = $derived(twMerge(defaultClass, className));
 
@@ -29,6 +31,6 @@
     });
 </script>
 
-<nav class={combinedClass} {...restProps}>
+<Button {href} class={combinedClass} {...restProps}>
     {@render children?.()}
-</nav>
+</Button>
