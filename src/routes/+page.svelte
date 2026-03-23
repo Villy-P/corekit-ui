@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import SEO from "$lib/components/SEO.svelte";
     import Navbar from "$lib/components/Navbar.svelte";
-    import NavbarSeperator from "$lib/components/NavbarSeperator.svelte";
+    import NavbarSeperator from "$lib/components/NavbarSeparator.svelte";
     import Typewriter from "$lib/components/Typewriter.svelte";
     import type { TypewriterAction } from "$lib/types/Typewriter.d.ts";
     import NavbarElement from "$lib/components/NavbarElement.svelte";

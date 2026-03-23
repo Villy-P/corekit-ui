@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { NavbarProps } from "$lib/types/Navbar.js";
     import { onMount } from "svelte";
     import { twMerge } from "tailwind-merge";
 
@@ -7,16 +8,18 @@
         class: className = "", 
         classTop = "",
         ...restProps
-    } = $props();
+    }: NavbarProps = $props();
 
     let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-50 flex items-center";
 
-    let combinedClass = $derived(twMerge(defaultClass, className));
+    let scrollY = $state(0);
+
+    let combinedClass = $derived(scrollY === 0 
+        ? twMerge(defaultClass, className, classTop)
+        : twMerge(defaultClass, className));
 
     function onScroll() {
-        combinedClass = window.scrollY === 0 
-            ? twMerge(defaultClass, className, classTop)
-            : twMerge(defaultClass, className);
+        scrollY = window.scrollY;
     }
 
     onMount(() => {

@@ -2,6 +2,7 @@
     import { twMerge } from "tailwind-merge";
     import Button from "./Button.svelte";
     import { onMount } from "svelte";
+    import type { NavbarElementProps } from "$lib/types/Navbar.js";
 
     let {
         children = undefined, 
@@ -9,16 +10,18 @@
         classTop = "",
         href = undefined,
         ...restProps
-    } = $props();
+    }: NavbarElementProps = $props();
 
     let defaultClass = "navbar-element w-fit h-full flex items-center px-5 py-0";
 
-    let combinedClass = $derived(twMerge(defaultClass, className));
+    let scrollY = $state(0);
+
+    let combinedClass = $derived(scrollY === 0 
+        ? twMerge(defaultClass, className, classTop)
+        : twMerge(defaultClass, className));
 
     function onScroll() {
-        combinedClass = window.scrollY === 0 
-            ? twMerge(defaultClass, className, classTop)
-            : twMerge(defaultClass, className);
+        scrollY = window.scrollY;
     }
 
     onMount(() => {
