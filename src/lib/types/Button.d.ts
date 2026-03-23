@@ -7,5 +7,6 @@ export interface ButtonProps {
     icon?: boolean;
     href?: string;
     color?: ColorStyle;
+    size?: number | string;
     [key: string]: any;
 }
