@@ -19,7 +19,7 @@
     let touched = $state(false);
 
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
-    let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value));
+    let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
     let defaultClass = "z-20 w-full border rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition-all";
     let defaultLabelClass = "block text-sm font-medium text-gray-700 mb-1 absolute transition-all duration-100 pointer-events-none";
@@ -44,11 +44,11 @@
         touched = true;
         onblur?.(e);
 
-        isValid = !(validInputRegex && !validInputRegex.test(value))
+        isValid = !(validInputRegex && !validInputRegex.test(value || ""))
     }
 </script>
 
-<div class="relative">
+<div class={combinedDivClass}>
     <label for={id} class={combinedLabelClass}>
         {@render children?.()}
     </label>
