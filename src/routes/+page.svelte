@@ -44,7 +44,7 @@
 <canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
 <br><br>
 <div class="flex w-full items-center justify-center gap-4">
-    <FloatingInput>First Name</FloatingInput>
+    <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <Button color="blue">Normal</Button>
     <Button color="lightgreen" pill>Pill</Button>
     <Button color="red" href="https://www.google.com" target="_blank">Link</Button>
