@@ -30,7 +30,7 @@
 
 </script>
 
-<!-- <Navbar class="bg-black">
+<Navbar class="bg-black" classTop="bg-transparent backdrop-blur-[3px] bg-none">
     <Button class="h-14 w-14 ml-3 flex-center" href="/" icon>
         <p>Valerius Petrini</p>
     </Button>
@@ -49,7 +49,7 @@
     <Button class="bg-yellow-500 hover:bg-yellow-600" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
     <Button class="bg-pink-500 hover:bg-pink-600" icon href="https://www.google.com" target="_blank"><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
     <Button class="bg-gray-500 hover:bg-gray-600" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
-</div> -->
+</div>
 
 <br><br><br>
 <Typewriter {actions} />
