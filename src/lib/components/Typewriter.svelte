@@ -60,7 +60,7 @@
         execute();
     });
 
-    let combinedClass = $derived(twMerge("typewriter w-fit", className));
+    let combinedClass = $derived(twMerge("typewriter w-fit text-main-text", className));
 </script>
 
 <div class={combinedClass} {...restProps}>

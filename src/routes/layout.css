@@ -16,17 +16,17 @@
 }
 
 :root {
-    --vpcui-color-main-background: #fff;
+    --vpcui-color-main-background: var(--color-stone-50);
     --vpcui-color-main-text: #000;
     --vpcui-color-sub-text: #555;
-    --vpcui-color-form-input-background: #f1f1f1;
+    --vpcui-color-form-input-background: var(--color-stone-100);
 }
 
 html.dark {
-    --vpcui-color-main-background: #090806;
+    --vpcui-color-main-background: var(--color-stone-950);
     --vpcui-color-main-text: #fff;
     --vpcui-color-sub-text: #aaa;
-    --vpcui-color-form-input-background: #202020;
+    --vpcui-color-form-input-background: var(--color-stone-800);
 }
 
 html {

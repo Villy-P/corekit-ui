@@ -19,11 +19,11 @@
     }
 
     let actions: TypewriterAction[] = [
-        { type: "write", value: "I'm a software developer using tools like ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: "I'm a software developer using tools like ", minspeed: 50, maxspeed: 100 },
         { type: "write", value: () => getNextWord(), color: () => "red", minspeed: 50, maxspeed: 100, label: "language1" },
-        { type: "write", value: ", ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: ", ", minspeed: 50, maxspeed: 100 },
         { type: "write", value: () => getNextWord(), color: () => "blue", minspeed: 50, maxspeed: 100 },
-        { type: "write", value: ", and ", color: "white", minspeed: 50, maxspeed: 100 },
+        { type: "write", value: ", and ", minspeed: 50, maxspeed: 100 },
         { type: "write", value: () => getNextWord(), color: () => "green", minspeed: 50, maxspeed: 100 },
         { type: "pause", duration: 3000 },
         { type: "delete", to: "language1", minspeed: 50, maxspeed: 100 },
