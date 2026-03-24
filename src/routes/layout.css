@@ -2,8 +2,6 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@utility .flex-center {
+    @apply flex items-center justify-center;
 }
