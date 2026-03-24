@@ -2,6 +2,33 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-@utility .flex-center {
+@utility flex-center {
     @apply flex items-center justify-center;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-main-background: var(--vpcui-color-main-background);
+    --color-main-text: var(--vpcui-color-main-text);
+    --color-sub-text: var(--vpcui-color-sub-text);
+    --color-form-input-background: var(--vpcui-color-form-input-background);
+}
+
+:root {
+    --vpcui-color-main-background: #fff;
+    --vpcui-color-main-text: #000;
+    --vpcui-color-sub-text: #555;
+    --vpcui-color-form-input-background: #f1f1f1;
+}
+
+html.dark {
+    --vpcui-color-main-background: #090806;
+    --vpcui-color-main-text: #fff;
+    --vpcui-color-sub-text: #aaa;
+    --vpcui-color-form-input-background: #3f3f3f;
+}
+
+html {
+    background-color: var(--color-main-background);
 }

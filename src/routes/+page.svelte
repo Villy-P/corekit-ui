@@ -33,7 +33,7 @@
 </script>
 
 <Navbar class="bg-black" classTop="bg-transparent backdrop-blur-[3px] bg-none">
-    <Button class="h-14 w-14 ml-3 flex-center" href="/" icon>
+    <Button size={14} class="ml-3" href="/" icon>
         <p>Valerius</p>
     </Button>
     <NavbarSeperator/>
@@ -43,7 +43,7 @@
 
 <canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
 <br><br>
-<div class="flex w-full items-center justify-center gap-4">
+<div class="w-full gap-4 flex-center">
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <Button color="blue">Normal</Button>
     <Button color="lightgreen" pill>Pill</Button>

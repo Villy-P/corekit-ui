@@ -21,12 +21,12 @@
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
-    let defaultClass = "z-20 w-full border rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition-all";
-    let defaultLabelClass = "block text-sm font-medium text-gray-700 mb-1 absolute transition-all duration-100 pointer-events-none";
+    let defaultClass = "z-20 bg-form-input-background text-main-text w-full border rounded px-2 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
+    let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative";
 
-    let originalLabelClass = "left-3 top-1/2 transform -translate-y-1/2 z-0";
-    let selectedLabelClass = "left-2 z-30 bg-white px-1 top-0 transform -translate-y-1/2 text-xs";
+    let originalLabelClass = "left-2 top-1/2 transform -translate-y-1/2 z-0";
+    let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]";
 
     let invalidClass = "border-red-500 focus:ring-red-500";
 
