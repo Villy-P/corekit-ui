@@ -43,8 +43,6 @@
         isFocused = false;
         touched = true;
         onblur?.(e);
-
-        isValid = !(validInputRegex && !validInputRegex.test(value || ""))
     }
 </script>
 
