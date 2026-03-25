@@ -10,23 +10,29 @@
 
 @theme {
     --color-main-background: var(--vpcui-color-main-background);
+    --color-sub-background: var(--vpcui-color-sub-background);
     --color-main-text: var(--vpcui-color-main-text);
     --color-sub-text: var(--vpcui-color-sub-text);
     --color-form-input-background: var(--vpcui-color-form-input-background);
+    --color-navbar-element-hover-background: var(--vpcui-color-navbar-element-hover-background);
 }
 
 :root {
     --vpcui-color-main-background: var(--color-stone-50);
+    --vpcui-color-sub-background: var(--color-stone-300);
     --vpcui-color-main-text: #000;
     --vpcui-color-sub-text: #555;
     --vpcui-color-form-input-background: var(--color-stone-100);
+    --vpcui-color-navbar-element-hover-background: var(--color-zinc-100);
 }
 
 html.dark {
     --vpcui-color-main-background: var(--color-stone-950);
+    --vpcui-color-sub-background: var(--color-stone-700);
     --vpcui-color-main-text: #fff;
     --vpcui-color-sub-text: #aaa;
     --vpcui-color-form-input-background: var(--color-stone-800);
+    --vpcui-color-navbar-element-hover-background: var(--color-zinc-900);
 }
 
 html {

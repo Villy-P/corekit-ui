@@ -12,7 +12,7 @@
         ...restProps
     }: NavbarElementProps = $props();
 
-    let defaultClass = "navbar-element w-fit h-full flex items-center px-5 py-0";
+    let defaultClass = "navbar-element w-fit h-full flex items-center px-5 py-0 text-main-text hover:bg-navbar-element-hover-background rounded-none";
 
     let scrollY = $state(0);
 

@@ -32,13 +32,13 @@
 
 </script>
 
-<Navbar class="bg-black" classTop="bg-transparent backdrop-blur-[3px] bg-none">
+<Navbar classTop="bg-transparent backdrop-blur-[3px] bg-none border-none">
     <Button size={14} class="ml-3" href="/" icon>
         <p>Valerius</p>
     </Button>
     <NavbarSeperator/>
-    <NavbarElement class="hover:bg-gray-950" classTop="hover:bg-transparent">Welcome to the homepage!</NavbarElement>
-    <NavbarElement class="hover:bg-gray-950" classTop="hover:bg-transparent">This is a simple paragraph.</NavbarElement>
+    <NavbarElement classTop="hover:bg-transparent">Welcome to the homepage!</NavbarElement>
+    <NavbarElement classTop="hover:bg-transparent">This is a simple paragraph.</NavbarElement>
 </Navbar>
 
 <canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
