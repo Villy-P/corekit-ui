@@ -10,7 +10,7 @@
         ...restProps
     }: NavbarProps = $props();
 
-    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-main-background border-b-sub-background border-b";
+    let defaultClass = "box-border transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-main-background/99 border-b-sub-background border-b";
 
     let scrollY = $state(0);
 

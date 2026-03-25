@@ -32,7 +32,7 @@
 
 </script>
 
-<Navbar classTop="bg-transparent backdrop-blur-[3px] bg-none border-none">
+<Navbar classTop="bg-transparent backdrop-blur-[3px] border-transparent">
     <Button size={14} class="ml-3" href="/" icon>
         <p>Valerius</p>
     </Button>
@@ -41,8 +41,13 @@
     <NavbarElement classTop="hover:bg-transparent">This is a simple paragraph.</NavbarElement>
 </Navbar>
 
-<canvas use:fbmBackground={{octaves: 10, warps: 2, scale: 3}} class="w-full h-screen block"></canvas>
-<br><br>
+<div class="w-full h-screen">
+    <canvas 
+        use:fbmBackground={{octaves: 5, warps: 2, scale: 3}} 
+        class="w-full h-full block">
+    </canvas>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>v
 <div class="w-full gap-4 flex-center">
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <Button color="blue">Normal</Button>
@@ -57,4 +62,4 @@
 <br><br><br>
 <Typewriter {actions} />
 
-<SEO websiteName="website.com" title="Home" description="Welcome to the homepage of your SvelteKit app!" image="/favicon.png" />
+<!-- <SEO websiteName="website.com" title="Home" description="Welcome to the homepage of your SvelteKit app!" image="/favicon.png" /> -->

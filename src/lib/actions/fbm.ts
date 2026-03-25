@@ -155,7 +155,7 @@ function initBuffers(gl: WebGLRenderingContext) {
 }
 
 export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundOptions = {}) {
-    let gl = canvas.getContext("webgl", { antialias: true }) as WebGLRenderingContext | null;
+    let gl = canvas.getContext("webgl", { antialias: true, premultipliedAlpha: false, preserveDrawingBuffer: true }) as WebGLRenderingContext | null;
     if (!gl) {
         console.error("WebGL not supported");
         return;
@@ -186,9 +186,14 @@ export function fbmBackground(canvas: HTMLCanvasElement, options: FBMBackgroundO
     
     function updateCanvasSize() {
         const DPR = window.devicePixelRatio || 1;
-        canvas.width = Math.floor(canvas.clientWidth * DPR);
-        canvas.height = Math.floor(canvas.clientHeight * DPR);
+        const newWidth = Math.floor(canvas.offsetWidth * DPR);
+        const newHeight = Math.floor(canvas.offsetHeight * DPR);
 
+        if (canvas.width !== newWidth || canvas.height !== newHeight) {
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+        }
     }
 
     function render() {
