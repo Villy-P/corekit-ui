@@ -9,6 +9,7 @@
 @theme {
     --color-main-background: var(--vpcui-color-main-background);
     --color-sub-background: var(--vpcui-color-sub-background);
+    --color-sub-background-hover: var(--vpcui-color-sub-background-hover);
     --color-main-text: var(--vpcui-color-main-text);
     --color-sub-text: var(--vpcui-color-sub-text);
     --color-form-input-background: var(--vpcui-color-form-input-background);
@@ -18,6 +19,7 @@
 :root {
     --vpcui-color-main-background: var(--color-mist-50);
     --vpcui-color-sub-background: var(--color-mist-300);
+    --vpcui-color-sub-background-hover: var(--color-mist-400);
     --vpcui-color-main-text: #000;
     --vpcui-color-sub-text: #555;
     --vpcui-color-form-input-background: var(--color-mist-100);
@@ -26,7 +28,8 @@
 
 html.dark {
     --vpcui-color-main-background: #121212;
-    --vpcui-color-sub-background: var(--color-zinc-700);
+    --vpcui-color-sub-background: #161616;
+    --vpcui-color-sub-background-hover: #1c1c1c;
     --vpcui-color-main-text: #fff;
     --vpcui-color-sub-text: #aaa;
     --vpcui-color-form-input-background: var(--color-zinc-800);

@@ -9,6 +9,7 @@
     import type { TypewriterAction } from "$lib/types/Typewriter.d.ts";
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Card from "$lib/components/Card.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -48,7 +49,7 @@
     </canvas>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<div class="w-full gap-4 flex-center">
+<div class="w-full gap-4 flex-center flex-col">
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <Button color="blue">Normal</Button>
     <Button color="lightgreen" pill>Pill</Button>
@@ -57,6 +58,9 @@
     <Button color="yellow" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
     <Button color="pink" icon href="https://www.google.com" target="_blank"><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
     <Button color="gray" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
+    <Card class="w-16 h-16 flex-center">
+       <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
+    </Card>
 </div>
 
 <br><br><br>
