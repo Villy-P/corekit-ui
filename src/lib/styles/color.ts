@@ -6,6 +6,7 @@ export const colorStyles = {
     pink: "bg-pink-500 hover:bg-pink-600",
     purple: "bg-purple-500 hover:bg-purple-600",
     gray: "bg-gray-500 hover:bg-gray-600",
+    sub: "bg-sub-background hover:bg-sub-background-hover"
 };
 
 export type ColorStyle = keyof typeof colorStyles;
