@@ -10,6 +10,7 @@
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import FloatingInput from "$lib/components/FloatingInput.svelte";
     import Card from "$lib/components/Card.svelte";
+    import FloatingDropdown from "$lib/components/FloatingDropdown.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -31,6 +32,12 @@
         { type: "jump", position: "language1" }
     ];
 
+    let options = [
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" }
+    ];
+
 </script>
 
 <Navbar classTop="bg-transparent backdrop-blur-[3px] border-transparent">
@@ -48,8 +55,9 @@
         class="w-full h-full block">
     </canvas>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 <div class="w-full gap-4 flex-center flex-col">
+    <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <Button color="blue">Normal</Button>
     <Button color="lightgreen" pill>Pill</Button>
