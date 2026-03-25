@@ -16,20 +16,20 @@
 }
 
 :root {
-    --vpcui-color-main-background: var(--color-stone-50);
-    --vpcui-color-sub-background: var(--color-stone-300);
+    --vpcui-color-main-background: var(--color-mist-50);
+    --vpcui-color-sub-background: var(--color-mist-300);
     --vpcui-color-main-text: #000;
     --vpcui-color-sub-text: #555;
-    --vpcui-color-form-input-background: var(--color-stone-100);
-    --vpcui-color-navbar-element-hover-background: var(--color-zinc-100);
+    --vpcui-color-form-input-background: var(--color-mist-100);
+    --vpcui-color-navbar-element-hover-background: var(--color-mist-100);
 }
 
 html.dark {
-    --vpcui-color-main-background: var(--color-stone-950);
-    --vpcui-color-sub-background: var(--color-stone-700);
+    --vpcui-color-main-background: #121212;
+    --vpcui-color-sub-background: var(--color-zinc-700);
     --vpcui-color-main-text: #fff;
     --vpcui-color-sub-text: #aaa;
-    --vpcui-color-form-input-background: var(--color-stone-800);
+    --vpcui-color-form-input-background: var(--color-zinc-800);
     --vpcui-color-navbar-element-hover-background: var(--color-zinc-900);
 }
 
