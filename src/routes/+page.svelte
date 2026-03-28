@@ -10,7 +10,7 @@
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import FloatingInput from "$lib/components/FloatingInput.svelte";
     import Card from "$lib/components/Card.svelte";
-    import FloatingDropdown from "$lib/components/FloatingDropdown.svelte";
+    import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 

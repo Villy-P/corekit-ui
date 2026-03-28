@@ -6,6 +6,7 @@ export { default as Navbar } from "./components/Navbar.svelte";
 export { default as NavbarSeparator } from "./components/NavbarSeparator.svelte";
 export { default as NavbarElement } from "./components/NavbarElement.svelte";
 export { default as FloatingInput } from "./components/FloatingInput.svelte";
+export { default as FloatingSelect } from "./components/FloatingSelect.svelte";
 export { default as Text } from "./components/Text.svelte";
 export { default as Card } from "./components/Card.svelte";
 
