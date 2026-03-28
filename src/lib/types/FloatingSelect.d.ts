@@ -3,8 +3,8 @@ export interface FloatingSelectProps {
     class?: string;
     divClass?: string;
     optionClass?: string;
-    value?: string;
-    options: { value: string; label: string }[];
+    value?: any;
+    options: { value: any; label: string }[];
     id?: `${string}-${string}-${string}-${string}-${string}`;
     [key: string]: any; 
 };  
