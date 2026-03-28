@@ -3,7 +3,10 @@
 
     let { 
         children = undefined, 
-        class: className = "", 
+        class: className = "",
+        divName = "",
+        optionClass = "", 
+        value = $bindable(),
         options = [],
         id = crypto.randomUUID(),
         ...restProps
@@ -18,15 +21,18 @@
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, selectedLabelClass, className));
     let combinedSelectClass = $derived(twMerge(defaultSelectClass, className));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divName));
 </script>
 
-<div class={defaultDivClass}>
+<div class={combinedDivClass}>
     <label for={id} class={combinedLabelClass}>
         {@render children?.()}
     </label>
     <select {id} class={combinedSelectClass} {...restProps}>
         {#each options as option}
-            <option value={option.value}>{option.label}</option>
+            <option value={option.value} class={optionClass}>
+                {option.label}
+            </option>
         {/each}
     </select>
 </div>
