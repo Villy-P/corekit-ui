@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { FloatingSelectProps } from "$lib/types/FloatingSelect.js";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -10,7 +11,7 @@
         options = [],
         id = crypto.randomUUID(),
         ...restProps
-    } = $props();
+    }: FloatingSelectProps = $props();
 
     let defaultSelectClass = "cursor-pointer bg-form-input-background text-main-text z-20 w-full rounded px-1 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
     let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
@@ -28,7 +29,7 @@
     <label for={id} class={combinedLabelClass}>
         {@render children?.()}
     </label>
-    <select {id} class={combinedSelectClass} {...restProps}>
+    <select {id} class={combinedSelectClass} {...restProps} bind:value={value}>
         {#each options as option}
             <option value={option.value} class={optionClass}>
                 {option.label}
