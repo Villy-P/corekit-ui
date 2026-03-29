@@ -13,7 +13,7 @@
     let defaultClass = "text-main-text shadow-xl rounded-lg transition-colors bg-sub-background hover:bg-sub-background-hover p-4";    
     let combinedClass = $derived(twMerge(defaultClass, className));
 
-    let Tag: keyof HTMLElementTagNameMap = href ? "a" : "div";
+    let Tag: keyof HTMLElementTagNameMap = $derived(href ? "a" : "div");
 </script>
 
 <svelte:element
