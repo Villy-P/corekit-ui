@@ -31,7 +31,7 @@
     };
 
     let defaultClass = "text-main-text";    
-    let combinedClass = $derived(twMerge(defaultClass, className, tagStyles[tag] || ""));
+    let combinedClass = $derived(twMerge(defaultClass, tagStyles[tag] || "", className));
 </script>
 
 <svelte:element this={tag} class={combinedClass} {...restProps}>
