@@ -11,6 +11,6 @@
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<p class={combinedClass}>
+<p class={combinedClass} {...restProps}>
     {@render children?.()}
 </p>

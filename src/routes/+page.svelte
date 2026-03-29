@@ -70,6 +70,9 @@
     <Card class="w-16 h-16 flex-center">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>
+    <Card class="w-16 h-16 flex-center" href="https://www.google.com" target="_blank">
+       <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
+    </Card>
 </div>
 
 <br><br><br>
