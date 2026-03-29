@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { TextProps } from "$lib/types/Text.js";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -6,7 +7,7 @@
         class: className = "", 
         tag = "p",
         ...restProps
-    } = $props();
+    }: TextProps = $props();
 
     let defaultClass = "text-main-text";    
     let combinedClass = $derived(twMerge(defaultClass, className));

@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
 
     import type { DisplaySegment, TypewriterProps } from "$lib/types/Typewriter.d.ts";
+    import Text from "./Text.svelte";
 
     let { 
         actions, 
@@ -66,7 +67,7 @@
 <div class={combinedClass} {...restProps}>
     {#each displaySegments as segment}
         {#key segment}
-            <span style="color: {segment.color}">{segment.text}</span>
+            <Text tag="span" style="color: {segment.color}">{segment.text}</Text>
         {/key}
     {/each}
 </div>

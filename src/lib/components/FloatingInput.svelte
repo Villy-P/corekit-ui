@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { FloatingInputProps } from "$lib/types/FloatingInput.js";
     import { twMerge } from "tailwind-merge";
+    import Text from "./Text.svelte";
 
     let { 
         children = undefined, 
@@ -52,9 +53,9 @@
 </script>
 
 <div class={combinedDivClass}>
-    <label for={id} class={combinedLabelClass}>
+    <Text tag="label" for={id} class={combinedLabelClass}>
         {@render children?.()}
-    </label>
+    </Text>
     {#if isTextArea}
         <textarea
             {id}

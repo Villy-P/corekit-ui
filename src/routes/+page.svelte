@@ -56,7 +56,7 @@
     </canvas>
 </div>
 <br><br>
-<div class="w-full gap-4 flex-center flex-col">
+<div class="w-full gap-4 flex-center flex-wrap">
     <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</FloatingInput>

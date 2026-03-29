@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { FloatingSelectProps } from "$lib/types/FloatingSelect.js";
     import { twMerge } from "tailwind-merge";
+    import Text from "./Text.svelte";
 
     let { 
         children = undefined, 
@@ -17,7 +18,6 @@
     let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative w-fit";
 
-    let originalLabelClass = "left-2 top-1/2 transform -translate-y-1/2 z-0";
     let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]";
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, selectedLabelClass, className));
@@ -26,9 +26,9 @@
 </script>
 
 <div class={combinedDivClass}>
-    <label for={id} class={combinedLabelClass}>
+    <Text tag="label" for={id} class={combinedLabelClass}>
         {@render children?.()}
-    </label>
+    </Text>
     <select {id} class={combinedSelectClass} {...restProps} bind:value={value}>
         {#each options as option}
             <option value={option.value} class={optionClass}>
