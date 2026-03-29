@@ -10,6 +10,7 @@
         value = $bindable(),
         onfocus = undefined,
         onblur = undefined,
+        isTextArea = false,
         validInputRegex = undefined,
         id = crypto.randomUUID(),
         ...restProps
@@ -25,12 +26,16 @@
     let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative";
 
-    let originalLabelClass = "left-2 top-1/2 transform -translate-y-1/2 z-0";
+    let originalLabelClass = "left-2 z-0";
+    let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
+    let originalLabelClassTextArea = "top-2";
     let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]";
 
     let invalidClass = "border border-red-500 focus:ring-red-500";
 
-    let combinedLabelClass = $derived(twMerge(defaultLabelClass, isFocused || hasContent ? selectedLabelClass : originalLabelClass, labelClass));
+    let labelClassFull = $derived(twMerge(isTextArea ? originalLabelClassTextArea : originalLabelClassInput, originalLabelClass));
+
+    let combinedLabelClass = $derived(twMerge(defaultLabelClass, isFocused || hasContent ? selectedLabelClass : labelClassFull, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, className, isValid ? "" : invalidClass));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
 
@@ -50,12 +55,23 @@
     <label for={id} class={combinedLabelClass}>
         {@render children?.()}
     </label>
-    <input 
-        {id}
-        bind:value={value}
-        onfocus={handleFocus}
-        onblur={handleBlur}
-        class={combinedClass} 
-        {...restProps}
-    />
+    {#if isTextArea}
+        <textarea
+            {id}
+            bind:value={value}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            class={combinedClass}
+            {...restProps}
+        ></textarea>
+    {:else}
+        <input
+            {id}
+            bind:value={value}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            class={combinedClass} 
+            {...restProps}
+        />
+    {/if}
 </div>

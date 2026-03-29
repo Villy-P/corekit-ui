@@ -59,6 +59,7 @@
 <div class="w-full gap-4 flex-center flex-col">
     <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
+    <FloatingInput validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</FloatingInput>
     <Button color="blue">Normal</Button>
     <Button color="lightgreen" pill>Pill</Button>
     <Button color="red" href="https://www.google.com" target="_blank">Link</Button>

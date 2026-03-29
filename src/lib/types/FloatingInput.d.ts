@@ -4,6 +4,7 @@ export interface FloatingInputProps {
     labelClass?: string;
     divClass?: string;
     value?: string;
+    isTextArea?: boolean;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
     validInputRegex?: RegExp;
