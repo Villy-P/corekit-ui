@@ -18,7 +18,7 @@
     let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative w-fit";
 
-    let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]";
+    let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]!";
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, selectedLabelClass, className));
     let combinedSelectClass = $derived(twMerge(defaultSelectClass, className));

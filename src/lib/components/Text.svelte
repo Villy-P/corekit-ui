@@ -13,7 +13,7 @@
         "p": "text-base",
         "div": "text-base",
         "span": "text-base",
-        "label": "text-base",
+        "label": "text-sm",
         "strong": "text-base font-bold",
         "em": "text-base italic",
         "small": "text-sm",

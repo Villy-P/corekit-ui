@@ -30,7 +30,7 @@
     let originalLabelClass = "left-2 z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
     let originalLabelClassTextArea = "top-2";
-    let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]";
+    let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]!";
 
     let invalidClass = "border border-red-500 focus:ring-red-500";
 
