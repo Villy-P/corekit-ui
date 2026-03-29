@@ -8,6 +8,7 @@
     let { 
         actions, 
         class: className = "",
+        textClass = "",
         ...restProps
     }: TypewriterProps = $props();
 
@@ -67,7 +68,7 @@
 <div class={combinedClass} {...restProps}>
     {#each displaySegments as segment}
         {#key segment}
-            <Text tag="span" style="color: {segment.color}">{segment.text}</Text>
+            <Text tag="span" class={textClass} style="color: {segment.color}">{segment.text}</Text>
         {/key}
     {/each}
 </div>

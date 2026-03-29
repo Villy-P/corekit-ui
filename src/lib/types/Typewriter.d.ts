@@ -13,5 +13,6 @@ export interface DisplaySegment {
 export interface TypewriterProps {
     actions: TypewriterAction[];
     class?: string;
+    textClass?: string;
     [key: string]: any;
 }
