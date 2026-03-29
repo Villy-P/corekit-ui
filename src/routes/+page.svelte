@@ -11,6 +11,7 @@
     import FloatingInput from "$lib/components/FloatingInput.svelte";
     import Card from "$lib/components/Card.svelte";
     import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
+    import Text from "$lib/components/Text.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -73,6 +74,24 @@
     <Card class="w-16 h-16 flex-center" href="https://www.google.com" target="_blank">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>
+</div>
+<br><br><br>
+
+<div class="w-full gap-4 flex-center flex-col">
+    <Text tag="strong">Strong Text</Text>
+    <Text tag="em">Emphasized Text</Text>
+    <Text tag="small">Small Text</Text>
+    <Text tag="blockquote">Blockquote Text</Text>
+    <Text tag="pre">Preformatted Text{"\n"}Line 2{"\n"}Line 3</Text>
+    <Text tag="code">Inline Code Text</Text>
+    <Text tag="a" href="https://www.google.com" target="_blank">Link Text</Text>
+    <Text tag="li">List Item 1</Text>
+    <Text tag="h1">Heading 1</Text>
+    <Text tag="h2">Heading 2</Text>
+    <Text tag="h3">Heading 3</Text>
+    <Text tag="h4">Heading 4</Text>
+    <Text tag="h5">Heading 5</Text>
+    <Text tag="h6">Heading 6</Text>
 </div>
 
 <br><br><br>
