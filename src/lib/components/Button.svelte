@@ -29,12 +29,6 @@
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-{#if href}
-    <a class={combinedClass} {href} {...restProps}>
-        {@render children?.()}
-    </a>
-{:else}
-    <button class={combinedClass} {...restProps}>
-        {@render children?.()} 
-    </button>
-{/if}
+<svelte:element this={href ? "a" : "button"} class={combinedClass} {href} {...restProps}>
+    {@render children?.()}
+</svelte:element>

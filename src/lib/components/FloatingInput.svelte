@@ -70,7 +70,7 @@
             bind:value={value}
             onfocus={handleFocus}
             onblur={handleBlur}
-            class={combinedClass} 
+            class={combinedClass}
             {...restProps}
         />
     {/if}

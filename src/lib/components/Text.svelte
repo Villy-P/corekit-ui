@@ -4,6 +4,7 @@
     let { 
         children = undefined, 
         class: className = "", 
+        tag = "p",
         ...restProps
     } = $props();
 
@@ -11,6 +12,6 @@
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<p class={combinedClass} {...restProps}>
+<svelte:element this={tag} class={combinedClass} {...restProps}>
     {@render children?.()}
-</p>
+</svelte:element>
