@@ -42,7 +42,7 @@
 </script>
 
 <Navbar classTop="bg-transparent backdrop-blur-[3px] border-transparent">
-    <Button size={14} class="ml-3" href="/" icon>
+    <Button href="/">
         <p>Valerius</p>
     </Button>
     <NavbarSeperator/>

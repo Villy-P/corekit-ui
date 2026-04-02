@@ -12,7 +12,7 @@
         ...restProps
     }: NavbarElementProps = $props();
 
-    let defaultClass = "navbar-element w-fit h-full flex items-center px-5 py-0 text-main-text hover:bg-navbar-element-hover-background rounded-none";
+    let defaultClass = "navbar-element w-fit h-full px-5 py-0 text-main-text hover:bg-navbar-element-hover-background";
 
     let scrollY = $state(0);
 
@@ -34,6 +34,6 @@
     });
 </script>
 
-<Button {href} class={combinedClass} {...restProps}>
+<Button rounded={0} {href} class={combinedClass} {...restProps}>
     {@render children?.()}
 </Button>
