@@ -33,7 +33,7 @@
     );
 
     const defaultClass = $derived(twMerge(
-        "inline-flex items-center justify-center transition-colors duration-300",
+        "inline-flex items-center justify-center gap-2 transition-colors duration-300",
         "text-white whitespace-nowrap",
         pill || icon ? "rounded-full" : "rounded-md",
         disabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
@@ -42,6 +42,8 @@
     ));
 
     let combinedClass = $derived(twMerge(defaultClass, className));
+
+    const mergedStyle = $derived([customStyle, restProps.style].filter(Boolean).join("; "));
 </script>
 
 <svelte:element 
@@ -50,7 +52,7 @@
     {disabled}
     aria-disabled={disabled}
     type={href ? undefined : (restProps.type || "button")}
-    style={customStyle + (restProps.style || "")}
+    style={mergedStyle}
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
     {...(href ? { href } : {})}
