@@ -1,7 +1,7 @@
 <script lang="ts">
     import { generateColorStyle } from "$lib/styles/color.js";
     import { sizeStyleParts, type SizeStyle } from "$lib/styles/size.js";
-    import type { ButtonProps, ButtonType } from "$lib/types/Button.js";
+    import type { ButtonProps } from "$lib/types/Button.js";
     import { twMerge } from "tailwind-merge";
 
     let { 

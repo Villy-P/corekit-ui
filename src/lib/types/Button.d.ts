@@ -1,6 +1,4 @@
-import type { ColorStyle } from "$lib/styles/color.ts";
-
-export type ButtonType = "full" | "light" | "outline" | "ghost";
+import type { ColorStyle, ColorStyleType } from "$lib/styles/color.ts";
 
 export interface ButtonProps {
     children?: any;
@@ -9,7 +7,7 @@ export interface ButtonProps {
     icon?: boolean;
     href?: string;
     color?: ColorStyle;
-    variant?: ButtonType;
+    variant?: ColorStyleType;
     disabled?: boolean;
     external?: boolean;
     size?: SizeStyle;
