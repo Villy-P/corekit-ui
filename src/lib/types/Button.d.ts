@@ -13,5 +13,6 @@ export interface ButtonProps {
     disabled?: boolean;
     external?: boolean;
     size?: SizeStyle;
+    rounded?: SizeStyle;
     [key: string]: any;
 }

@@ -67,11 +67,11 @@
     <Button color="purple" pill href="https://www.google.com" external>Pill Link</Button>
     <Button color="yellow" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
     <Button color="pink" icon href="https://www.google.com" external><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
-    <Button color="gray" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
+    <Button rounded="lg" color="gray" onclick={() => alert('Button clicked!')}>Onclick event</Button>
     <Card class="w-16 h-16 flex-center">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>
-    <Card class="w-16 h-16 flex-center" href="https://www.google.com" external>
+    <Card class="w-16 h-16 flex-center" href="https://www.google.com" target="_blank">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>
 </div>

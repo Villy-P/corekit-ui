@@ -15,6 +15,7 @@
         disabled = false,
         external = false,
         size = "md",
+        rounded = "md",
         ...restProps
     }: ButtonProps = $props();
 
@@ -32,23 +33,25 @@
             : ""
     );
 
-    const defaultClass = $derived(twMerge(
-        "inline-flex items-center justify-center gap-2 transition-colors duration-300",
-        "text-white whitespace-nowrap",
-        pill || icon ? "rounded-full" : "rounded-md",
-        disabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
-        generateColorStyle(color, variant), 
-        sizeClasses
-    ));
+    const defaultClass = "inline-flex items-center justify-center gap-2 transition-colors duration-300 text-white whitespace-nowrap";
+    const roundedClass = $derived(pill || icon ? "rounded-full" : sizeStyleParts[rounded as SizeStyle].rounded);
+    const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
-    let combinedClass = $derived(twMerge(defaultClass, className));
+    const mergedClass = $derived(twMerge(
+        generateColorStyle(color, variant),
+        defaultClass, 
+        roundedClass,
+        disabledClass,
+        sizeClasses,
+        className
+    ));
 
     const mergedStyle = $derived([customStyle, restProps.style].filter(Boolean).join("; "));
 </script>
 
 <svelte:element 
     this={href ? "a" : "button"} 
-    class={combinedClass} 
+    class={mergedClass} 
     {disabled}
     aria-disabled={disabled}
     type={href ? undefined : (restProps.type || "button")}
