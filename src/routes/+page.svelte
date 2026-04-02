@@ -61,13 +61,13 @@
     <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</FloatingInput>
-    <Button color="blue">Normal</Button>
-    <Button color="lightgreen" pill>Pill</Button>
-    <Button color="red" href="https://www.google.com" target="_blank">Link</Button>
-    <Button color="purple" pill href="https://www.google.com" target="_blank">Pill Link</Button>
-    <Button color="yellow" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
-    <Button color="pink" icon href="https://www.google.com" target="_blank"><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
-    <Button color="gray" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
+    <Button type="outline" color="blue">Normal</Button>
+    <Button type="outline" color="lightgreen" pill>Pill</Button>
+    <Button type="outline" color="red" href="https://www.google.com" target="_blank">Link</Button>
+    <Button type="outline" color="purple" pill href="https://www.google.com" target="_blank">Pill Link</Button>
+    <Button type="outline" color="yellow" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
+    <Button type="outline" color="pink" icon href="https://www.google.com" target="_blank"><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
+    <Button type="outline" color="gray" pill onclick={() => alert('Button clicked!')}>Onclick event</Button>
     <Card class="w-16 h-16 flex-center">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>
