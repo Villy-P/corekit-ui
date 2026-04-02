@@ -9,7 +9,9 @@ export interface ButtonProps {
     icon?: boolean;
     href?: string;
     color?: ColorStyle;
-    type?: ButtonType;
-    size?: number | string;
+    variant?: ButtonType;
+    disabled?: boolean;
+    external?: boolean;
+    size?: SizeStyle;
     [key: string]: any;
 }
