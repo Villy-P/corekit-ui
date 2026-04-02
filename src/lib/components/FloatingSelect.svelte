@@ -6,7 +6,7 @@
     let { 
         children = undefined, 
         class: className = "",
-        divName = "",
+        divClass = "",
         optionClass = "", 
         value = $bindable(),
         options = [],
@@ -22,7 +22,7 @@
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, selectedLabelClass, className));
     let combinedSelectClass = $derived(twMerge(defaultSelectClass, className));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divName));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
 </script>
 
 <div class={combinedDivClass}>

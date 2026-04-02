@@ -41,15 +41,6 @@
 
 </script>
 
-<Navbar classTop="bg-transparent backdrop-blur-[3px] border-transparent">
-    <Button href="/">
-        <p>Valerius</p>
-    </Button>
-    <NavbarSeperator/>
-    <NavbarElement classTop="hover:bg-transparent">Welcome to the homepage!</NavbarElement>
-    <NavbarElement classTop="hover:bg-transparent">This is a simple paragraph.</NavbarElement>
-</Navbar>
-
 <div class="w-full h-screen">
     <canvas 
         use:fbmBackground={{octaves: 5, warps: 2, scale: 3}} 
