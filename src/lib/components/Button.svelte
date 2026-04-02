@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { colorStyles } from "$lib/styles/color.js";
-    import type { ButtonProps } from "$lib/types/Button.js";
+    import { colorStyles, lightColorStyles } from "$lib/styles/color.js";
+    import type { ButtonProps, ButtonType } from "$lib/types/Button.js";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -9,7 +9,8 @@
         pill = false,
         icon = false,
         href = undefined,
-        color = undefined,
+        color = "none",
+        type = "full",
         size = undefined,
         ...restProps
     }: ButtonProps = $props();
@@ -20,11 +21,26 @@
         return "";
     }
 
+    function getTypeColorStyles(type: ButtonType) {
+        switch (type) {
+            case "full":
+                return colorStyles[color];
+            case "light":
+                return lightColorStyles[color];
+            case "outline":
+                return "bg-transparent border border-current text-current hover:bg-current hover:text-white";
+            case "ghost":
+                return "bg-transparent text-current hover:bg-gray-200";
+            default:
+                return colorStyles[color];
+        }
+    }
+
     let pillClass = "rounded-full";
     let iconClass = "rounded-full p-2 flex-center";
     let defaultClass = $derived(twMerge(
         "text-white cursor-pointer px-2 py-1 transition-colors duration-300 rounded-md", 
-        (pill ? pillClass : ""), (icon ? iconClass : ""), color ? colorStyles[color] : "", getSizeStyles(size)));
+        (pill ? pillClass : ""), (icon ? iconClass : ""), getTypeColorStyles(type), getSizeStyles(size)));
 
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
