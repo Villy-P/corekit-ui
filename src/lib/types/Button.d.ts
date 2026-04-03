@@ -1,4 +1,5 @@
 import type { ColorStyle, ColorStyleType } from "$lib/styles/color.ts";
+import type { SizeStyle } from "$lib/styles/size.ts";
 
 export interface ButtonProps {
     children?: any;

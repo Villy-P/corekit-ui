@@ -38,8 +38,8 @@
     const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
     const mergedClass = $derived(twMerge(
-        generateColorStyle(color, variant),
         defaultClass, 
+        generateColorStyle(color, variant),
         roundedClass,
         disabledClass,
         sizeClasses,

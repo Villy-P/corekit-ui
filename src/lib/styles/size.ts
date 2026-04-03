@@ -25,6 +25,6 @@ export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = 
     0: {
         button: "",
         buttonIcon: "",
-        rounded: ""
+        rounded: "rounded-none"
     }
 }
