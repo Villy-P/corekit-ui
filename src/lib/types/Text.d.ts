@@ -4,5 +4,6 @@ export interface TextProps {
     children?: any;
     class?: string;
     tag?: TextTagOptions;
+    shrink?: boolean;
     [key: string]: any; 
 };  

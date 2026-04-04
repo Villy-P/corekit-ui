@@ -72,7 +72,7 @@
     <Text tag="code">Inline Code Text</Text>
     <Text tag="a" href="https://www.google.com" target="_blank">Link Text</Text>
     <Text tag="li">List Item 1</Text>
-    <Text tag="h1">Heading 1</Text>
+    <Text tag="h1" shrink>Heading 1</Text>
     <Text tag="h2">Heading 2</Text>
     <Text tag="h3">Heading 3</Text>
     <Text tag="h4">Heading 4</Text>
