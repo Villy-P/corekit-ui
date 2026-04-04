@@ -54,6 +54,7 @@
 		"svelte"
 	],
 	"dependencies": {
+		"@valerius_petrini/corekit-ui": "^0.1.49",
 		"tailwind-merge": "^3.5.0"
 	}
 }
