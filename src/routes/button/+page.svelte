@@ -18,6 +18,10 @@
         { value: "sm", label: "Small" },
         { value: "md", label: "Medium" },
         { value: "lg", label: "Large" },
+        { value: "xl", label: "Extra Large" },
+        { value: "2xl", label: "2X Large" },
+        { value: "3xl", label: "3X Large" },
+        { value: "4xl", label: "4X Large" },
         { value: "full", label: "Full" },
         { value: "none", label: "None" }
     ];
@@ -53,7 +57,7 @@
             {/each}
         </div>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size}>Size</FloatingSelect>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius}>radius</FloatingSelect>
+        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius}>Radius</FloatingSelect>
         <FloatingInput divClass="w-full" bind:value={href}>href</FloatingInput>
         <Checkbox bind:checked={external}>External</Checkbox>
         <Checkbox bind:checked={disabled}>Disabled</Checkbox>
