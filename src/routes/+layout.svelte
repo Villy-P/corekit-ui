@@ -10,6 +10,6 @@
         <p>Valerius</p>
     </Button>
     <NavbarSeparator/>
-    <NavbarElement href="/button">Button</NavbarElement>
+    <NavbarElement activeClass="font-semibold" href="/button">Button</NavbarElement>
 </Navbar>
 {@render children()}

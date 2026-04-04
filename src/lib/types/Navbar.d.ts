@@ -10,6 +10,7 @@ export interface NavbarElementProps {
     children?: any;
     class?: string;
     classTop?: string;
+    activeClass?: string;
     href?: string;
     threshold?: number;
     [key: string]: any;
