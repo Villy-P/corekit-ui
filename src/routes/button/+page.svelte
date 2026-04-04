@@ -22,6 +22,8 @@
         { value: "2xl", label: "2X Large" },
         { value: "3xl", label: "3X Large" },
         { value: "4xl", label: "4X Large" },
+        { value: "5xl", label: "5X Large" },
+        { value: "6xl", label: "6X Large" },
         { value: "full", label: "Full" },
         { value: "none", label: "None" }
     ];
