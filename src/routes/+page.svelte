@@ -78,6 +78,7 @@
     <Text tag="h4">Heading 4</Text>
     <Text tag="h5">Heading 5</Text>
     <Text tag="h6">Heading 6</Text>
+    <Text tag="p">Paragraph Text</Text>
 </div>
 
 <br><br><br>

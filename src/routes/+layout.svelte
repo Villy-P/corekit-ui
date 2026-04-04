@@ -5,11 +5,11 @@
 	const { children } = $props();
 </script>
 
-<Navbar classTop="bg-transparent backdrop-blur-[3px] border-transparent">
+<Navbar>
     <Button href="/">
         <p>Valerius</p>
     </Button>
     <NavbarSeparator/>
-    <NavbarElement href="/button" classTop="hover:bg-transparent">Button</NavbarElement>
+    <NavbarElement href="/button">Button</NavbarElement>
 </Navbar>
 {@render children()}

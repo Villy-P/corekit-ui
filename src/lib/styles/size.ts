@@ -48,8 +48,8 @@ export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = 
         radius: "rounded-full"
     },
     none: {
-        button: "",
-        buttonIcon: "",
+        button: "p-0 h-auto text-base",
+        buttonIcon: "p-0 h-auto w-auto text-base",
         radius: "rounded-none"
     },
     0: {

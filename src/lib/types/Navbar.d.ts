@@ -11,5 +11,6 @@ export interface NavbarElementProps {
     class?: string;
     classTop?: string;
     href?: string;
+    threshold?: number;
     [key: string]: any;
 }

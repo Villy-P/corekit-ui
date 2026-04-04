@@ -20,7 +20,7 @@
         "blockquote": "border-l-4 border-gray-500 pl-2 opacity-70",
         "pre": "font-mono bg-sub-background px-3 py-2 radius overflow-x-auto whitespace-pre",
         "code": "font-mono bg-sub-background px-3 py-2 radius inline-block",
-        "a": "text-blue-400 hover:text-blue-500 hover:underline",
+        "a": "text-blue-400 hover:text-blue-500 hover:underline transition-colors cursor-pointer",
         "li": "text-base list-disc list-inside",
         "h1": "text-6xl font-extrabold",
         "h2": "text-5xl font-bold",
