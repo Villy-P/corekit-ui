@@ -1,4 +1,4 @@
-export type SizeStyle = "sm" | "md" | "lg" | "full" | number;
+export type SizeStyle = "sm" | "md" | "lg" | "full" | "none" | number;
 export type SizeStyleType = "button" | "buttonIcon" | "rounded";
 
 export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = {
@@ -21,6 +21,11 @@ export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = 
         button: "w-full text-base h-8 px-3 py-1",
         buttonIcon: "w-full text-base h-8 w-8 p-1",
         rounded: "rounded-full"
+    },
+    none: {
+        button: "",
+        buttonIcon: "",
+        rounded: "rounded-none"
     },
     0: {
         button: "",
