@@ -34,6 +34,6 @@
     });
 </script>
 
-<Button rounded={0} {href} class={combinedClass} {...restProps}>
+<Button radius={0} {href} class={combinedClass} {...restProps}>
     {@render children?.()}
 </Button>

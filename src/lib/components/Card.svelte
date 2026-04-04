@@ -10,7 +10,7 @@
         ...restProps
     }: CardProps = $props();
 
-    let defaultClass = "text-main-text shadow-xl rounded-lg transition-colors bg-sub-background hover:bg-sub-background-hover p-4";    
+    let defaultClass = "text-main-text shadow-xl radius-lg transition-colors bg-sub-background hover:bg-sub-background-hover p-4";    
     let combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 

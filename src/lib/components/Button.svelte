@@ -15,7 +15,7 @@
         disabled = false,
         external = false,
         size = "md",
-        rounded = "md",
+        radius = "md",
         ...restProps
     }: ButtonProps = $props();
 
@@ -34,13 +34,13 @@
     );
 
     const defaultClass = "inline-flex items-center justify-center gap-2 transition-colors duration-300 text-white whitespace-nowrap";
-    const roundedClass = $derived(pill || icon ? "rounded-full" : sizeStyleParts[rounded as SizeStyle].rounded);
+    const radiusClass = $derived(pill || icon ? "radius-full" : sizeStyleParts[radius as SizeStyle].radius);
     const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
     const mergedClass = $derived(twMerge(
         defaultClass, 
         generateColorStyle(color, variant),
-        roundedClass,
+        radiusClass,
         disabledClass,
         sizeClasses,
         className
