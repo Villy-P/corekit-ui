@@ -24,7 +24,7 @@ export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = 
     },
     full: {
         button: "w-full text-base h-8 px-3 py-1",
-        buttonIcon: "w-full text-base h-8 w-8 p-1",
+        buttonIcon: "w-full aspect-square text-base p-1",
         radius: "rounded-full"
     },
     none: {

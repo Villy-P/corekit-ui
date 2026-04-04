@@ -1,5 +1,6 @@
 <script lang="ts">
     import Button from "$lib/components/Button.svelte";
+    import Checkbox from "$lib/components/Checkbox.svelte";
     import FloatingInput from "$lib/components/FloatingInput.svelte";
     import FloatingSelect from "$lib/components/FloatingSelect.svelte";
     import Text from "$lib/components/Text.svelte";
@@ -26,11 +27,21 @@
     let size: SizeStyle = $state("md");
     let radius: SizeStyle = $state("md");
     let href: string = $state("");
+    let external: boolean = $state(false);
+    let disabled: boolean = $state(false);
+    let pill: boolean = $state(false);
+    let icon: boolean = $state(false);
 </script>
 
-<div class="w-full h-screen flex mt-20">
+<div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Button color={color} {variant} {size} {radius} {href}>Button</Button>
+        <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon}>
+            {#if icon}
+                <img src="/favicon.svg" alt="Icon"/>
+            {:else}
+                Customizable Button
+            {/if}
+        </Button>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
@@ -44,5 +55,9 @@
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size}>Size</FloatingSelect>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius}>radius</FloatingSelect>
         <FloatingInput divClass="w-full" bind:value={href}>href</FloatingInput>
+        <Checkbox bind:checked={external}>External</Checkbox>
+        <Checkbox bind:checked={disabled}>Disabled</Checkbox>
+        <Checkbox bind:checked={pill}>Pill</Checkbox>
+        <Checkbox bind:checked={icon}>Icon</Checkbox>
     </div>
 </div>

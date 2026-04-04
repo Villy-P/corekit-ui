@@ -1,16 +1,17 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
+    import type { CheckboxProps } from "$lib/types/Checkbox.js";
 
     let { 
         children = undefined, 
         class: className = "",
         labelClass = "",
         divClass = "", 
-        value = $bindable(),
+        checked = $bindable(),
         id = crypto.randomUUID(),
         ...restProps
-    } = $props();
+    }: CheckboxProps = $props();
 
     let defaultClass = "z-20 bg-form-input-background text-main-text rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all";
     let defaultLabelClass = "block text-sub-text font-medium";
@@ -25,7 +26,7 @@
     <input
         type="checkbox"
         id={id}
-        bind:checked={value}
+        bind:checked={checked}
         class={combinedClass}
         {...restProps}/>
     <Text tag="label" for={id} class={combinedLabelClass}>
