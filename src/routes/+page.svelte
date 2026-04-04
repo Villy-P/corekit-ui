@@ -12,6 +12,7 @@
     import Card from "$lib/components/Card.svelte";
     import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
     import Text from "$lib/components/Text.svelte";
+    import Checkbox from "$lib/components/Checkbox.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
@@ -52,14 +53,7 @@
     <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
     <FloatingInput validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</FloatingInput>
-    <Button color="blue">Normal</Button>
-    <Button color="lightgreen" pill>Pill</Button>
-    <Button color="red" href="https://www.google.com" external>Link</Button>
-    <Button color="purple" pill href="https://www.google.com" external>Pill Link</Button>
-    <Button color="yellow" icon><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
-    <Button color="pink" icon href="https://www.google.com" external><img class="w-6 h-6" src="/favicon.svg" alt="Favicon"/></Button>
-    <Button radius="lg" color="gray" onclick={() => alert('Button clicked!')}>Onclick event</Button>
-    <Button variant="ghost" color="sub">Sub</Button>
+    <Checkbox>Accept Terms and Conditions</Checkbox>
     <Card class="w-16 h-16 flex-center">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>
     </Card>

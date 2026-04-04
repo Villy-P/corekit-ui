@@ -23,8 +23,8 @@
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
-    let defaultClass = "z-20 bg-form-input-background text-main-text w-full radius px-2 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
-    let defaultLabelClass = "block text-sub-text radius-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
+    let defaultClass = "z-20 bg-form-input-background text-main-text w-full rounded px-2 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
+    let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative";
 
     let originalLabelClass = "left-2 z-0";
