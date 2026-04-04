@@ -1,7 +1,12 @@
-export type SizeStyle = "sm" | "md" | "lg" | "full" | "none" | number;
+export type SizeStyle = "xs" | "sm" | "md" | "lg" | "full" | "none" | number;
 export type SizeStyleType = "button" | "buttonIcon" | "radius";
 
 export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = {
+    xs: {
+        button: "text-xs h-4 px-1 py-0.5",
+        buttonIcon: "text-xs h-4 w-4 p-0.5",
+        radius: "rounded-xs"
+    },
     sm: {
         button: "text-sm h-6 px-2 py-0.5",
         buttonIcon: "text-sm h-6 w-6 p-0.5",
