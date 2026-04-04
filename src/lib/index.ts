@@ -9,6 +9,7 @@ export { default as FloatingInput } from "./components/FloatingInput.svelte";
 export { default as FloatingSelect } from "./components/FloatingSelect.svelte";
 export { default as Text } from "./components/Text.svelte";
 export { default as Card } from "./components/Card.svelte";
+export { default as Checkbox } from "./components/Checkbox.svelte";
 
 export { fbmBackground } from "./actions/fbm.ts";
 
