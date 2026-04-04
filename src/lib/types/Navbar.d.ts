@@ -2,6 +2,7 @@ export interface NavbarProps {
     children?: any;
     class?: string;
     classTop?: string;
+    threshold?: number;
     [key: string]: any;
 };
 
