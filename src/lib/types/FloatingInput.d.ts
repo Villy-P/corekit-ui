@@ -1,6 +1,7 @@
 export interface FloatingInputProps {
     children?: any;
     class?: string;
+    label?: string;
     labelClass?: string;
     divClass?: string;
     value?: string;

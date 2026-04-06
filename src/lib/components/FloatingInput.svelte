@@ -6,6 +6,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        label = "",
         labelClass = "",
         divClass = "", 
         value = $bindable(),
@@ -53,9 +54,7 @@
 </script>
 
 <div class={combinedDivClass}>
-    <Text tag="label" for={id} class={combinedLabelClass}>
-        {@render children?.()}
-    </Text>
+    <Text tag="label" for={id} class={combinedLabelClass}>{label}</Text>
     {#if isTextArea}
         <textarea
             {id}
