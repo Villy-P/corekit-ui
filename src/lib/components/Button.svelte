@@ -1,6 +1,6 @@
 <script lang="ts">
     import { generateColorStyle } from "$lib/styles/color.js";
-    import { sizeStyleParts, type SizeStyle } from "$lib/styles/size.js";
+    import { sizeStyleParts, type SizeStyleTheme, type SizeStyle } from "$lib/styles/size.js";
     import type { ButtonProps } from "$lib/types/Button.js";
     import { twMerge } from "tailwind-merge";
 
@@ -21,7 +21,7 @@
 
     const sizeClasses = $derived.by(() => {
         if (typeof size === "string") {
-            const parts = sizeStyleParts[size as SizeStyle];
+            const parts = sizeStyleParts[size as SizeStyleTheme];
             return icon ? parts.buttonIcon : parts.button;
         }
         return icon ? "p-0 flex-none" : "h-fit";
@@ -34,7 +34,7 @@
     );
 
     const defaultClass = "inline-flex items-center justify-center gap-2 transition-colors duration-300 text-white whitespace-nowrap";
-    const radiusClass = $derived(pill || icon ? "rounded-full" : sizeStyleParts[radius as SizeStyle].radius);
+    const radiusClass = $derived(pill || icon ? "rounded-full" : sizeStyleParts[radius as SizeStyleTheme].radius);
     const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
     const mergedClass = $derived(twMerge(

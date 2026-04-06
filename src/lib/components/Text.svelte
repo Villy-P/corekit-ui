@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { sizeStyleParts, textStyle, type SizeStyle } from "$lib/styles/size.js";
+    import { sizeStyleParts, textStyle, type SizeStyle, type SizeStyleTheme } from "$lib/styles/size.js";
     import type { TextProps } from "$lib/types/Text.js";
     import { twMerge } from "tailwind-merge";
 
@@ -38,7 +38,7 @@
 
     function getTextSizeInRem(): string {
         if (size !== "none") {
-            const sizeKey = (sizeStyleParts[size as SizeStyle]?.text ?? "text-base") as keyof typeof textStyle;
+            const sizeKey = (sizeStyleParts[size as SizeStyleTheme]?.text ?? "text-base") as keyof typeof textStyle;
             return textStyle[sizeKey] ?? textStyle["text-base"];
         }
 
@@ -55,7 +55,7 @@
         defaultClass, 
         tagStyles[tag]?.class || "", 
         tagStyles[tag]?.size || "",
-        sizeStyleParts[size]?.text || "",
+        sizeStyleParts[size as SizeStyleTheme]?.text || "",
         className
     ));
 </script>

@@ -30,6 +30,6 @@
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<Button radius={0} {href} color="none" class={combinedClass} {...restProps} aria-current={isActive ? 'page' : undefined}>
+<Button radius="none" {href} color="none" class={combinedClass} {...restProps} aria-current={isActive ? 'page' : undefined}>
     {@render children?.()}
 </Button>

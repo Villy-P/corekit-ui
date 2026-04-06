@@ -1,7 +1,8 @@
-export type SizeStyle = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none" | number;
+export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none";
 export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text";
+export type SizeStyle = SizeStyleTheme | number | string;
 
-export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = {
+export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string>> = {
     xs: {
         button: "text-xs h-4 px-1 py-0.5",
         buttonIcon: "text-xs h-4 w-4 p-0.5",
@@ -71,12 +72,6 @@ export const sizeStyleParts: Record<SizeStyle, Record<SizeStyleType, string>> = 
     none: {
         button: "p-0 h-auto text-base",
         buttonIcon: "p-0 h-auto w-auto text-base",
-        radius: "rounded-none",
-        text: ""
-    },
-    0: {
-        button: "",
-        buttonIcon: "",
         radius: "rounded-none",
         text: ""
     }
