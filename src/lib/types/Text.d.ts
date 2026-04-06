@@ -4,7 +4,7 @@ export interface TextProps {
     children?: any;
     class?: string;
     tag?: TextTagOptions;
-    shrink?: boolean;
+    shrink?: number;
     size?: SizeStyle;
     [key: string]: any; 
 };  

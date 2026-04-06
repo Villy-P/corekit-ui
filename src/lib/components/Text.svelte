@@ -7,7 +7,7 @@
         children = undefined, 
         class: className = "", 
         tag = "p",
-        shrink = false,
+        shrink = undefined,
         size = "none",
         ...restProps
     }: TextProps = $props();
@@ -46,7 +46,7 @@
     }
 
     let shrinkStyle = $derived(shrink 
-        ? `font-size: clamp(8px, 12cqi, ${getTextSizeInRem()}); white-space: nowrap; display: block; width: fit-content;` 
+        ? `font-size: clamp(8px, ${shrink}cqi, ${getTextSizeInRem()}); white-space: nowrap; display: block; width: fit-content;` 
         : ""
     );
 
