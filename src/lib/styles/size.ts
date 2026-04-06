@@ -1,6 +1,6 @@
 export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none";
 export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text";
-export type SizeStyle = SizeStyleTheme | number | string;
+export type SizeStyle = SizeStyleTheme | number;
 
 export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string>> = {
     xs: {

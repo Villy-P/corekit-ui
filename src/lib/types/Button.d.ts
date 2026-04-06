@@ -6,6 +6,7 @@ export interface ButtonProps {
     class?: string;
     pill?: boolean;
     icon?: boolean;
+    square?: boolean;
     href?: string;
     color?: ColorStyle;
     variant?: ColorStyleType;

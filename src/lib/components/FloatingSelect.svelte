@@ -6,6 +6,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        label = "",
         divClass = "",
         optionClass = "", 
         value = $bindable(),
@@ -27,7 +28,7 @@
 
 <div class={combinedDivClass}>
     <Text tag="label" for={id} class={combinedLabelClass}>
-        {@render children?.()}
+        {label}
     </Text>
     <select {id} class={combinedSelectClass} {...restProps} bind:value={value}>
         {#each options as option}

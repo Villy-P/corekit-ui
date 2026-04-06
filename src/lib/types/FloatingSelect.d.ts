@@ -1,6 +1,7 @@
 export interface FloatingSelectProps {
     children?: any;
     class?: string;
+    label?: string;
     divClass?: string;
     optionClass?: string;
     value?: any;

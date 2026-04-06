@@ -6,6 +6,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        label = "",
         labelClass = "",
         divClass = "", 
         checked = $bindable(),
@@ -30,6 +31,6 @@
         class={combinedClass}
         {...restProps}/>
     <Text tag="label" for={id} class={combinedLabelClass}>
-        {@render children?.()}
+        {label}
     </Text>
 </div>

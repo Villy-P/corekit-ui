@@ -37,11 +37,12 @@
     let disabled: boolean = $state(false);
     let pill: boolean = $state(false);
     let icon: boolean = $state(false);
+    let square: boolean = $state(false);
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon}>
+        <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>
             {#if icon}
                 <img src="/favicon.svg" alt="Icon"/>
             {:else}
@@ -51,19 +52,20 @@
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
-        <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant}>Variant</FloatingSelect>
+        <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <Text tag="label">Color</Text>
         <div class="w-full flex flex-wrap">
             {#each Object.keys(colorStyleParts) as colorKey}
-                <Button size={40} radius="none" color={colorKey as ColorStyle} onclick={() => color = colorKey as ColorStyle}></Button>
+                <Button square color={colorKey as ColorStyle} onclick={() => color = colorKey as ColorStyle}></Button>
             {/each}
         </div>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size}>Size</FloatingSelect>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius}>Radius</FloatingSelect>
-        <FloatingInput divClass="w-full" bind:value={href}>href</FloatingInput>
-        <Checkbox bind:checked={external}>External</Checkbox>
-        <Checkbox bind:checked={disabled}>Disabled</Checkbox>
-        <Checkbox bind:checked={pill}>Pill</Checkbox>
-        <Checkbox bind:checked={icon}>Icon</Checkbox>
+        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
+        <FloatingInput divClass="w-full" bind:value={href} label="href"/>
+        <Checkbox bind:checked={external} label="External"/>
+        <Checkbox bind:checked={disabled} label="Disabled"/>
+        <Checkbox bind:checked={pill} label="Pill"/>
+        <Checkbox bind:checked={icon} label="Icon"/>
+        <Checkbox bind:checked={square} label="Square"/>
     </div>
 </div>
