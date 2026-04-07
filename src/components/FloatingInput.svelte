@@ -16,6 +16,7 @@
         labelClass = "",
         divClass = "", 
         icon = undefined,
+        variant = "floating",
         value = $bindable(),
         onfocus = undefined,
         onblur = undefined,
@@ -82,19 +83,20 @@
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
     let defaultClass = "text-main-text w-full rounded outline-none px-2 w-full";
-    let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 absolute duration-100 pointer-events-none truncate w-full";
+    let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
     let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
+    let floatingLabelClass = "absolute w-full";
     let iconClass = "h-full aspect-square text-sub-text cursor-default";
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
     let originalLabelClassTextArea = "top-2";
-    let originalSelectedLabelClass = "z-30 top-0.5";
+    let originalSelectedLabelClass = "z-30";
 
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
 
-    let labelClassFull = $derived(twMerge(isTextArea ? originalLabelClassTextArea : originalLabelClassInput, originalLabelClass));
+    let floatingLabelClassFull = $derived(twMerge(originalLabelClassInput, originalLabelClass, floatingLabelClass));
     let divFullClass = $derived(size === "full" ? "w-full" : "");
     let disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
@@ -127,38 +129,35 @@
     let labelClassIcon = $derived(Icon ? "pl-8 pr-2" : "px-2");
     let inputClassIcon = $derived(Icon ? "pl-0 pr-1" : "");
 
-    let selectedLabelClass = $derived(twMerge(isFocused || hasContent ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : labelClassFull));
-    let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelSizeClass, selectedLabelClass, labelClassIcon, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, sizeClasses, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
+    let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
+    let floatingLabelClassCheck = $derived(variant === "floating" ? floatingLabelClassFull : "");
+    let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-1" : "");
+    let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
+    let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
+    let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass));
+    let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, divClass, disabledClass));
 </script>
 
-<div class={combinedDivClass}>
-    {#if Icon}
-        <div class={iconContainerClass}>
-            <Icon class={iconClass}></Icon>
-        </div>
-    {/if}
+{#snippet labelElement()}
     <Text tag="label" for={id} class={combinedLabelClass} style={customLabelStyle}>
         {label}
         {#if required}
             <span class="text-[#E05555]">*</span>
         {/if}
     </Text>
-    {#if isTextArea}
-        <textarea
-            {id}
-            bind:value={value}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            class={combinedClass}
-            {required}
-            {disabled}
-            aria-disabled={disabled}
-            style={customStyle}
-            {...restProps}
-        ></textarea>
-    {:else}
+{/snippet}
+
+{#snippet innerDivElement()}
+    <div class={combinedDivClass}>
+        {#if Icon}
+            <div class={iconContainerClass}>
+                <Icon class={iconClass}></Icon>
+            </div>
+        {/if}
+        {#if variant === "floating"}
+            {@render labelElement()}
+        {/if}
         <input
             {id}
             bind:value={value}
@@ -171,5 +170,14 @@
             style={customStyle}
             {...restProps}
         />
-    {/if}
-</div>
+    </div>
+{/snippet}
+
+{#if variant !== "floating"}
+    <div class={combinedOuterDivClass}>
+        {@render labelElement()}
+        {@render innerDivElement()}
+    </div>
+{:else}
+    {@render innerDivElement()}
+{/if}
