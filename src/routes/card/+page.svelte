@@ -6,6 +6,7 @@
     import FloatingSelect from "../../components/FloatingSelect.svelte";
     import Text from "../../components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "../../styles/color.ts";
+  import type { SizeStyle } from "../../styles/size.ts";
     import type { CardVariant } from "../../types/Card.ts";
 
     const variantOptions = [
@@ -28,13 +29,15 @@
     ];
 
     let variant: CardVariant = $state("bordered");
-    let size: string = $state("md");
-    let radius: string = $state("md");
+    let size: SizeStyle = $state("md");
+    let radius: SizeStyle = $state("md");
+    let href: string = $state("");
+    let external: boolean = $state(false);
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Card {variant} {size} {radius}>
+        <Card {variant} {size} {radius} {href} {external}>
             <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Card</Text>
             <Text class="mb-4">This is a customizable card component. You can add any content here and style it as needed.</Text>
             <Button color="blue" href="https://example.com" target="_blank">Learn More</Button>
@@ -45,5 +48,7 @@
         <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
+        <FloatingInput divClass="w-full" bind:value={href} label="href"/>
+        <Checkbox bind:checked={external} label="External"/>
     </div>
 </div>
