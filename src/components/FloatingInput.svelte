@@ -83,7 +83,7 @@
 
     let defaultClass = "text-main-text w-full rounded outline-none px-2 w-full";
     let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 absolute duration-100 pointer-events-none truncate w-full";
-    let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-2 focus-within:ring-blue-500";
+    let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let iconClass = "h-full aspect-square text-sub-text cursor-default";
 
