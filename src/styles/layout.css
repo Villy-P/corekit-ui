@@ -7,43 +7,44 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-main-background: var(--vpcui-color-main-background);
-    --color-sub-background: var(--vpcui-color-sub-background);
-    --color-sub-background-hover: var(--vpcui-color-sub-background-hover);
-    --color-main-text: var(--vpcui-color-main-text);
-    --color-sub-text: var(--vpcui-color-sub-text);
-    --color-contrast-text: var(--vpcui-color-contrast-text);
-    --color-form-background: var(--vpcui-color-form-background);
-    --color-form-border: var(--vpcui-color-form-border);
-    --color-navbar-element-hover-background: var(--vpcui-color-navbar-element-hover-background);
-    --color-primary: var(--vpcui-color-primary);
-    --color-secondary: var(--vpcui-color-secondary);
-    --color-accent: var(--vpcui-color-accent);
+    --color-main-background: var(--vpcui-main-background);
+    --color-sub-background: var(--vpcui-sub-background);
+    --color-sub-background-hover: var(--vpcui-sub-background-hover);
+    --color-main-text: var(--vpcui-main-text);
+    --color-sub-text: var(--vpcui-sub-text);
+    --color-contrast-text: var(--vpcui-contrast-text);
+    --color-form-background: var(--vpcui-form-background);
+    --color-form-hover: var(--vpcui-form-hover);
+    --color-form-border: var(--vpcui-form-border);
+    --color-navbar-element-hover-background: var(--vpcui-navbar-element-hover-background);
+    --color-primary: var(--vpcui-primary);
+    --color-secondary: var(--vpcui-secondary);
+    --color-accent: var(--vpcui-accent);
 }
 
 :root {
-    --vpcui-color-main-background: #FFFFFF;
-    --vpcui-color-sub-background: #F5F5F5;
-    --vpcui-color-sub-background-hover: #EEE;
-    --vpcui-color-main-text: #111;
-    --vpcui-color-sub-text: #6B6B6B ;
-    --vpcui-color-contrast-text: #F5F5F5;
-    --vpcui-color-form-background: #FFFFFF;
-    --vpcui-color-form-hover: #D4D4D4;
-    --vpcui-color-form-border: #C4C4C4;
+    --vpcui-main-background: #FFFFFF;
+    --vpcui-sub-background: #F5F5F5;
+    --vpcui-sub-background-hover: #EEE;
+    --vpcui-main-text: #111;
+    --vpcui-sub-text: #6B6B6B ;
+    --vpcui-contrast-text: #F5F5F5;
+    --vpcui-form-background: #FFFFFF;
+    --vpcui-form-hover: #D4D4D4;
+    --vpcui-form-border: #C4C4C4;
     --vpcui-color-navbar-element-hover-background: var(--color-mist-100);
 }
 
 html.dark {
-    --vpcui-color-main-background: #121212;
-    --vpcui-color-sub-background: #1E1E1E;
-    --vpcui-color-sub-background-hover: #2A2A2A;
-    --vpcui-color-main-text: #F5F5F5;
-    --vpcui-color-sub-text: #A0A0A0;
-    --vpcui-color-contrast-text: #111;
-    --vpcui-color-form-background: #2A2A2A;
-    --vpcui-color-form-border: #3A3A3A;
-    --vpcui-color-navbar-element-hover-background: var(--color-zinc-900);
+    --vpcui-main-background: #121212;
+    --vpcui-sub-background: #1E1E1E;
+    --vpcui-sub-background-hover: #2A2A2A;
+    --vpcui-main-text: #F5F5F5;
+    --vpcui-sub-text: #A0A0A0;
+    --vpcui-contrast-text: #111;
+    --vpcui-form-background: #2A2A2A;
+    --vpcui-form-border: #3A3A3A;
+    --vpcui-navbar-element-hover-background: var(--color-zinc-900);
 }
 
 html {
