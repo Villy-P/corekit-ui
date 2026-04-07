@@ -34,7 +34,7 @@
     let originalLabelClassTextArea = "top-2";
     let selectedLabelClass = "left-2 z-30 top-0.5 text-[10px]!";
 
-    let invalidClass = "border border-red-500 focus:ring-red-500";
+    let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
 
     let labelClassFull = $derived(twMerge(isTextArea ? originalLabelClassTextArea : originalLabelClassInput, originalLabelClass));
 
