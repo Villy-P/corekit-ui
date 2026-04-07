@@ -30,11 +30,11 @@
 
 html.dark {
     --vpcui-color-main-background: #121212;
-    --vpcui-color-sub-background: #1c1c1c;
-    --vpcui-color-sub-background-hover: #242424;
-    --vpcui-color-main-text: #fff;
-    --vpcui-color-sub-text: #aaa;
-    --vpcui-color-form-input-background: #1c1c1c;
+    --vpcui-color-sub-background: #1E1E1E;
+    --vpcui-color-sub-background-hover: #2A2A2A;
+    --vpcui-color-main-text: #F5F5F5;
+    --vpcui-color-sub-text: #A0A0A0;
+    --vpcui-color-form-input-background: #2A2A2A;
     --vpcui-color-form-input-hover: #2c2c2c;
     --vpcui-color-navbar-element-hover-background: var(--color-zinc-900);
 }

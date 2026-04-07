@@ -11,5 +11,6 @@
     </Button>
     <NavbarSeparator/>
     <NavbarElement activeClass="font-semibold" href="/button">Button</NavbarElement>
+    <NavbarElement activeClass="font-semibold" href="/card">Card</NavbarElement>
 </Navbar>
 {@render children()}
