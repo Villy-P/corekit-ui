@@ -1,5 +1,5 @@
 export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none";
-export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text";
+export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text" | "card";
 export type SizeStyle = SizeStyleTheme | number;
 
 export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string>> = {
@@ -7,73 +7,85 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         button: "text-xs h-4 px-1 py-0.5",
         buttonIcon: "text-xs h-4 w-4 p-0.5",
         radius: "rounded-xs",
-        text: "text-xs"
+        text: "text-xs",
+        card: "w-xs"
     },
     sm: {
         button: "text-sm h-6 px-2 py-1",
         buttonIcon: "text-sm h-6 w-6 p-1",
         radius: "rounded-sm",
-        text: "text-sm"
+        text: "text-sm",
+        card: "w-sm"
     },
     md: {
         button: "text-base h-8 px-3 py-1.5",
         buttonIcon: "text-base h-8 w-8 p-1.5",
         radius: "rounded-md",
-        text: "text-base"
+        text: "text-base",
+        card: "w-md"
     },
     lg: {
         button: "text-lg h-10 px-4 py-2",
         buttonIcon: "text-lg h-10 w-10 p-2",
         radius: "rounded-lg",
-        text: "text-lg"
+        text: "text-lg",
+        card: "w-lg"
     },
     xl: {
         button: "text-xl h-12 px-5 py-2.5",
         buttonIcon: "text-xl h-12 w-12 p-2.5",
         radius: "rounded-xl",
-        text: "text-xl"
+        text: "text-xl",
+        card: "w-xl"
     },
     "2xl": {
         button: "text-2xl h-14 px-6 py-3",
         buttonIcon: "text-2xl h-14 w-14 p-3",
         radius: "rounded-2xl",
-        text: "text-2xl"
+        text: "text-2xl",
+        card: "w-2xl"
     },
     "3xl": {
         button: "text-3xl h-16 px-7 py-3.5",
         buttonIcon: "text-3xl h-16 w-16 p-3.5",
         radius: "rounded-3xl",
-        text: "text-3xl"
+        text: "text-3xl",
+        card: "w-3xl"
     },
     "4xl": {
         button: "text-4xl h-18 px-8 py-4",
         buttonIcon: "text-4xl h-18 w-18 p-4",
         radius: "rounded-4xl",
-        text: "text-4xl"
+        text: "text-4xl",
+        card: "w-4xl"
     },
     "5xl": {
         button: "text-5xl h-20 px-9 py-4.5",
         buttonIcon: "text-5xl h-20 w-20 p-4.5",
         radius: "rounded-[2.5rem]",
-        text: "text-5xl"
+        text: "text-5xl",
+        card: "w-5xl"
     },
     "6xl": {
         button: "text-6xl h-24 px-10 py-5",
         buttonIcon: "text-6xl h-24 w-24 p-5",
         radius: "rounded-[3rem]",
-        text: "text-6xl"
+        text: "text-6xl",
+        card: "w-6xl"
     },
     full: {
         button: "w-full text-base h-8 px-3 py-1",
         buttonIcon: "w-full aspect-square text-base p-1",
         radius: "rounded-full",
-        text: "w-full text-base"
+        text: "w-full text-base",
+        card: "w-full"
     },
     none: {
         button: "p-0 h-auto text-base",
         buttonIcon: "p-0 h-auto w-auto text-base",
         radius: "rounded-none",
-        text: ""
+        text: "",
+        card: ""
     }
 };
 

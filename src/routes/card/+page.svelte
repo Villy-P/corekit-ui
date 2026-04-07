@@ -1,12 +1,17 @@
 <script lang="ts">
     import Button from "../../components/Button.svelte";
-  import Card from "../../components/Card.svelte";
+    import Card from "../../components/Card.svelte";
     import Checkbox from "../../components/Checkbox.svelte";
     import FloatingInput from "../../components/FloatingInput.svelte";
     import FloatingSelect from "../../components/FloatingSelect.svelte";
     import Text from "../../components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "../../styles/color.ts";
+    import type { CardVariant } from "../../types/Card.ts";
 
+    const variantOptions = [
+        { value: "bordered", label: "Bordered" },
+        { value: "elevated", label: "Elevated" },
+    ];
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },
         { value: "sm", label: "Small" },
@@ -21,11 +26,15 @@
         { value: "full", label: "Full" },
         { value: "none", label: "None" }
     ];
+
+    let variant: CardVariant = $state("bordered");
+    let size: string = $state("md");
+    let radius: string = $state("md");
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Card>
+        <Card {variant} {size} {radius}>
             <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Card</Text>
             <Text class="mb-4">This is a customizable card component. You can add any content here and style it as needed.</Text>
             <Button color="blue" href="https://example.com" target="_blank">Learn More</Button>
@@ -33,6 +42,8 @@
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
-        
+        <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
+        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
     </div>
 </div>
