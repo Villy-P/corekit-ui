@@ -4,10 +4,13 @@
     import Text from "./Text.svelte";
     import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
     import { type Component } from "svelte";
+    import Button from "./Button.svelte";
 
     import Mail from "@lucide/svelte/icons/mail";
     import Lock from "@lucide/svelte/icons/lock";
     import Phone from "@lucide/svelte/icons/phone";
+    import Eye from "@lucide/svelte/icons/eye";
+    import EyeOff from "@lucide/svelte/icons/eye-off";
 
     let { 
         children = undefined, 
@@ -82,6 +85,8 @@
     let isFocused = $state(false);
     let touched = $state(false);
 
+    let canSeePassword = $state(false);
+
     const isFloating = $derived(variant === "floating");
     const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     const isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
@@ -96,7 +101,7 @@
     let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let floatingLabelClass = "absolute w-full";
-    let iconClass = "h-full aspect-square text-sub-text cursor-default";
+    let iconClass = "h-full aspect-square text-sub-text";
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
@@ -130,6 +135,8 @@
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, divClass, disabledClass));
+
+    let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
 </script>
 
 {#snippet labelElement()}
@@ -163,7 +170,13 @@
             aria-disabled={disabled}
             style={customStyle}
             {...restProps}
+            type={canSeePassword ? "text" : restProps.type}
         />
+        {#if restProps.type === "password"}
+            <Button class={iconContainerClass} onclick={() => { canSeePassword = !canSeePassword; }}>
+                <EyeComponent class={iconClass}></EyeComponent>
+            </Button>
+        {/if}
     </div>
 {/snippet}
 
