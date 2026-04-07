@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { FloatingSelectProps } from "$lib/types/FloatingSelect.js";
+    import type { FloatingSelectProps } from "../types/FloatingSelect.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
 

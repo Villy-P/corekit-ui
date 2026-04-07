@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { FloatingInputProps } from "$lib/types/FloatingInput.js";
+    import type { FloatingInputProps } from "../types/FloatingInput.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
 

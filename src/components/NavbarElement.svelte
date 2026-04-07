@@ -1,7 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import Button from "./Button.svelte";
-    import type { NavbarElementProps } from "$lib/types/Navbar.js";
+    import type { NavbarElementProps } from "../types/Navbar.ts";
     import { page } from "$app/state";
 
     let {

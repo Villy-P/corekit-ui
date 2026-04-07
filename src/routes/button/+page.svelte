@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Button from "$lib/components/Button.svelte";
-    import Checkbox from "$lib/components/Checkbox.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
-    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
-    import Text from "$lib/components/Text.svelte";
-    import { colorStyleParts, type ColorStyle, type ColorStyleType } from "$lib/styles/color.js";
-    import type { SizeStyle } from "$lib/styles/size.js";
+    import Button from "../../components/Button.svelte";
+    import Checkbox from "../../components/Checkbox.svelte";
+    import FloatingInput from "../../components/FloatingInput.svelte";
+    import FloatingSelect from "../../components/FloatingSelect.svelte";
+    import Text from "../../components/Text.svelte";
+    import { colorStyleParts, type ColorStyle, type ColorStyleType } from "../../styles/color.ts";
+    import type { SizeStyle } from "../../styles/size.ts";
 
     const variantOptions = [
         { value: "full", label: "Full" },

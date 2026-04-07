@@ -1,16 +1,16 @@
-export { default as Button } from "./components/Button.svelte";
-export { default as Typewriter } from "./components/Typewriter.svelte";
-export { default as Analytics } from "./components/Analytics.svelte";
-export { default as SEO } from "./components/SEO.svelte";
-export { default as Navbar } from "./components/Navbar.svelte";
-export { default as NavbarSeparator } from "./components/NavbarSeparator.svelte";
-export { default as NavbarElement } from "./components/NavbarElement.svelte";
-export { default as FloatingInput } from "./components/FloatingInput.svelte";
-export { default as FloatingSelect } from "./components/FloatingSelect.svelte";
-export { default as Text } from "./components/Text.svelte";
-export { default as Card } from "./components/Card.svelte";
-export { default as Checkbox } from "./components/Checkbox.svelte";
+export { default as Button } from "../components/Button.svelte";
+export { default as Typewriter } from "../components/Typewriter.svelte";
+export { default as Analytics } from "../components/Analytics.svelte";
+export { default as SEO } from "../components/SEO.svelte";
+export { default as Navbar } from "../components/Navbar.svelte";
+export { default as NavbarSeparator } from "../components/NavbarSeparator.svelte";
+export { default as NavbarElement } from "../components/NavbarElement.svelte";
+export { default as FloatingInput } from "../components/FloatingInput.svelte";
+export { default as FloatingSelect } from "../components/FloatingSelect.svelte";
+export { default as Text } from "../components/Text.svelte";
+export { default as Card } from "../components/Card.svelte";
+export { default as Checkbox } from "../components/Checkbox.svelte";
 
-export { fbmBackground } from "./actions/fbm.ts";
+export { fbmBackground } from "../actions/fbm.ts";
 
-export type { TypewriterAction, DisplaySegment } from "./types/Typewriter.d.ts";
+export type { TypewriterAction, DisplaySegment } from "../types/Typewriter.d.ts";

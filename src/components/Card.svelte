@@ -1,6 +1,5 @@
 <script lang="ts">
-    import type { CardProps } from "$lib/types/Card.js";
-    import type { SvelteComponent } from "svelte";
+    import { cardVariantStyles, type CardProps } from "../types/Card.ts";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -8,14 +7,16 @@
         class: className = "", 
         href = undefined,
         external = false,
+        variant = "bordered",
         ...restProps
     }: CardProps = $props();
 
-    let defaultClass = "text-main-text rounded-lg transition-colors bg-sub-background border-[1px] border-sub-background-hover p-4";
+    let defaultClass = "text-main-text rounded-lg transition-colors bg-sub-background p-4";
     let linkClass = "hover:bg-sub-background-hover cursor-pointer";
     let combinedClass = $derived(twMerge(
         defaultClass, 
         href ? linkClass : "",
+        cardVariantStyles[variant],
         className
     ));
 

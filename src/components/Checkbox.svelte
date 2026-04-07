@@ -1,7 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
-    import type { CheckboxProps } from "$lib/types/Checkbox.js";
+    import type { CheckboxProps } from "../types/Checkbox.ts";
 
     let { 
         children = undefined, 

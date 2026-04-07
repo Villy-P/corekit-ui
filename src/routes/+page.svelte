@@ -1,18 +1,18 @@
 <script lang="ts">
-    import { fbmBackground } from "../lib/actions/fbm.ts";
-    import Button from "$lib/components/Button.svelte";
+    import { fbmBackground } from "../actions/fbm.ts";
+    import Button from "../components/Button.svelte";
     import { onMount } from "svelte";
-    import SEO from "$lib/components/SEO.svelte";
-    import Navbar from "$lib/components/Navbar.svelte";
-    import NavbarSeperator from "$lib/components/NavbarSeparator.svelte";
-    import Typewriter from "$lib/components/Typewriter.svelte";
-    import type { TypewriterAction } from "$lib/types/Typewriter.d.ts";
-    import NavbarElement from "$lib/components/NavbarElement.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
-    import Card from "$lib/components/Card.svelte";
-    import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
-    import Text from "$lib/components/Text.svelte";
-    import Checkbox from "$lib/components/Checkbox.svelte";
+    import SEO from "../components/SEO.svelte";
+    import Navbar from "../components/Navbar.svelte";
+    import NavbarSeperator from "../components/NavbarSeparator.svelte";
+    import Typewriter from "../components/Typewriter.svelte";
+    import type { TypewriterAction } from "../types/Typewriter.ts";
+    import NavbarElement from "../components/NavbarElement.svelte";
+    import FloatingInput from "../components/FloatingInput.svelte";
+    import Card from "../components/Card.svelte";
+    import FloatingDropdown from "../components/FloatingSelect.svelte";
+    import Text from "../components/Text.svelte";
+    import Checkbox from "../components/Checkbox.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];
 
