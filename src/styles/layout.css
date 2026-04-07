@@ -18,13 +18,13 @@
 }
 
 :root {
-    --vpcui-color-main-background: var(--color-mist-50);
-    --vpcui-color-sub-background: var(--color-mist-300);
-    --vpcui-color-sub-background-hover: var(--color-mist-400);
-    --vpcui-color-main-text: #000;
-    --vpcui-color-sub-text: #555;
-    --vpcui-color-form-background: var(--color-mist-100);
-    --vpcui-color-form-hover: var(--color-mist-200);
+    --vpcui-color-main-background: #F5F5F5;
+    --vpcui-color-sub-background: #FFF;
+    --vpcui-color-sub-background-hover: #F0F0F0;
+    --vpcui-color-main-text: #111;
+    --vpcui-color-sub-text: #6B6B6B ;
+    --vpcui-color-form-background: #FFFFFF;
+    --vpcui-color-form-hover: #D4D4D4;
     --vpcui-color-navbar-element-hover-background: var(--color-mist-100);
 }
 
