@@ -31,6 +31,9 @@
         ...restProps
     }: FloatingInputProps = $props();
 
+    const sizeParts = $derived(typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null);
+    const radiusParts = $derived(typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null);
+
     const sizeClasses = $derived.by(() => {
         const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
 
@@ -80,8 +83,14 @@
     let isFocused = $state(false);
     let touched = $state(false);
 
-    let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
-    let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
+    const isFloating = $derived(variant === "floating");
+    const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
+    const isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
+    const lifted = $derived(isFloating && (isFocused || hasContent));
+
+    const Icon = $derived(icon ?? ({
+        mail: Mail, password: Lock, tel: Phone
+    }[restProps.type as string] as Component ?? null));
 
     let defaultClass = "text-main-text w-full rounded outline-none px-1.5 w-full";
     let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
@@ -112,23 +121,8 @@
         onblur?.(e);
     }
 
-    let Icon = $derived.by(() => {
-        if (icon) return icon;
-
-        switch (restProps.type) {
-            case "mail":
-                return Mail as Component;
-            case "password":
-                return Lock as Component;
-            case "tel":
-                return Phone as Component;
-            default:
-                return null;
-        }
-    });
-
-    let labelClassIcon = $derived(Icon ? "pl-[32px] pr-2" : "px-1.5");
-    let inputClassIcon = $derived(Icon ? "pl-0 pr-1" : "");
+    let labelClassIcon = $derived(Icon !== null ? "pl-[32px] pr-2" : "px-1.5");
+    let inputClassIcon = $derived(Icon !== null ? "pl-0 pr-1" : "");
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let floatingLabelClassCheck = $derived(variant === "floating" ? floatingLabelClassFull : "");
