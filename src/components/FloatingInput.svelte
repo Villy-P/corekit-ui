@@ -17,6 +17,7 @@
         divClass = "", 
         icon = undefined,
         variant = "floating",
+        placeholder = "",
         value = $bindable(),
         onfocus = undefined,
         onblur = undefined,
@@ -166,6 +167,7 @@
             class={combinedClass}
             {required}
             {disabled}
+            placeholder={variant === "floating" ? "" : placeholder}
             aria-disabled={disabled}
             style={customStyle}
             {...restProps}
