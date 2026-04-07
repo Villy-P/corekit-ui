@@ -1,3 +1,5 @@
+import type { SizeStyle } from "../styles/size.ts";
+
 export interface FloatingInputProps {
     children?: any;
     class?: string;
@@ -10,6 +12,8 @@ export interface FloatingInputProps {
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
     validInputRegex?: RegExp;
+    size?: SizeStyle;
+    radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;
     [key: string]: any; 
 };  
