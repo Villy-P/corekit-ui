@@ -69,7 +69,7 @@
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
-    let defaultClass = "bg-form-background border-[1px] border-form-border text-main-text w-full rounded outline-none focus:ring-2 focus:ring-blue-500 transition-all px-2";
+    let defaultClass = "bg-form-background border-[1px] border-form-border text-main-text w-full rounded outline-none focus:ring-2 focus:ring-blue-500 transition-all px-[7px]";
     let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 absolute transition-all duration-100 pointer-events-none px-2";
     let defaultDivClass = "relative";
 
@@ -81,11 +81,12 @@
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
 
     let labelClassFull = $derived(twMerge(isTextArea ? originalLabelClassTextArea : originalLabelClassInput, originalLabelClass));
+    let divFullClass = $derived(size === "full" ? "w-full" : "");
 
     let selectedLabelClass = $derived(twMerge(isFocused || hasContent ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : labelClassFull));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelSizeClass, selectedLabelClass, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, labelSizeClass, className, isValid ? "" : invalidClass));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divFullClass, divClass));
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;

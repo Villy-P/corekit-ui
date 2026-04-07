@@ -109,9 +109,9 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         radius: "rounded-full",
         text: "w-full text-base",
         card: "w-full",
-        form: "w-full h-8 px-3 py-1",
-        formLabel: "text-sm",
-        formLabelSelected: "text-xs"
+        form: "h-9 pt-4 pb-1",
+        formLabel: "text-xs",
+        formLabelSelected: "text-[10px]"
     },
     none: {
         button: "p-0 h-auto text-base",
