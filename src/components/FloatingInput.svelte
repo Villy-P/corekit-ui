@@ -16,7 +16,7 @@
         labelClass = "",
         divClass = "", 
         icon = undefined,
-        variant = "floating",
+        variant = "default",
         placeholder = "",
         value = $bindable(),
         onfocus = undefined,
