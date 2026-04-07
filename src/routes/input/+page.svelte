@@ -27,16 +27,22 @@
     let size: SizeStyle = $state("md");
     let radius: SizeStyle = $state("md");
     let label: string = $state("Label");
+    let disabled: boolean = $state(false);
+    let isTextArea: boolean = $state(false);
+    let required: boolean = $state(false);
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <FloatingInput {size} {radius} {label}/>
+        <FloatingInput {size} {radius} {label} {disabled} {isTextArea} {required}/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <FloatingInput divClass="w-full" bind:value={label} label="Label"/>
+        <Checkbox label="Disabled" bind:checked={disabled}/>
+        <Checkbox label="Text Area" bind:checked={isTextArea}/>
+        <Checkbox label="Required" bind:checked={required}/>
     </div>
 </div>

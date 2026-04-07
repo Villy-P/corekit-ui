@@ -15,6 +15,7 @@
         onblur = undefined,
         isTextArea = false,
         required = false,
+        disabled = false,
         validInputRegex = undefined,
         size = "md",
         radius = "md",
@@ -82,9 +83,10 @@
 
     let labelClassFull = $derived(twMerge(isTextArea ? originalLabelClassTextArea : originalLabelClassInput, originalLabelClass));
     let divFullClass = $derived(size === "full" ? "w-full" : "");
+    let disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
     let selectedLabelClass = $derived(twMerge(isFocused || hasContent ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : labelClassFull));
-    let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelSizeClass, selectedLabelClass, labelClass));
+    let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelSizeClass, disabledClass, selectedLabelClass, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, labelSizeClass, className, isValid ? "" : invalidClass));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divFullClass, divClass));
 
@@ -115,6 +117,8 @@
             onblur={handleBlur}
             class={combinedClass}
             {required}
+            {disabled}
+            aria-disabled={disabled}
             style={customStyle}
             {...restProps}
         ></textarea>
@@ -126,6 +130,8 @@
             onblur={handleBlur}
             class={combinedClass}
             {required}
+            {disabled}
+            aria-disabled={disabled}
             style={customStyle}
             {...restProps}
         />
