@@ -11,7 +11,7 @@
         ...restProps
     }: NavbarProps = $props();
 
-    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-main-background/99 border-b-sub-background border-box border-b";
+    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-sub-background/99 border-b border-box border-b-sub-background-hover";
 
     let scrollY = $state(0);
     let isAtTop = $derived(scrollY <= threshold);
