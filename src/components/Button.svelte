@@ -3,6 +3,7 @@
     import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
     import type { ButtonProps } from "../types/Button.ts";
     import { twMerge } from "tailwind-merge";
+    import { getLinkProps } from "../utils/link.ts";
 
     let { 
         children = undefined, 
@@ -64,11 +65,7 @@
 
     const mergedStyle = $derived([customStyle, restProps.style].filter(Boolean).join("; "));
 
-    const anchorProps = $derived(href ? {
-        href,
-        target: external ? "_blank" : undefined,
-        rel: external ? "noopener noreferrer" : undefined,
-    } : {});
+    const anchorProps = $derived(getLinkProps(href, external));
 </script>
 
 <svelte:element 
