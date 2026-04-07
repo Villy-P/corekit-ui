@@ -18,9 +18,9 @@
 }
 
 :root {
-    --vpcui-color-main-background: #F5F5F5;
-    --vpcui-color-sub-background: #FFF;
-    --vpcui-color-sub-background-hover: #F0F0F0;
+    --vpcui-color-main-background: #FFFFFF;
+    --vpcui-color-sub-background: #F5F5F5;
+    --vpcui-color-sub-background-hover: #EEE;
     --vpcui-color-main-text: #111;
     --vpcui-color-sub-text: #6B6B6B ;
     --vpcui-color-form-background: #FFFFFF;
