@@ -54,7 +54,7 @@
         return styles.join("; ");
     });
 
-    const customLabelStyle = $derived(() => {
+    const customLabelStyle = $derived.by(() => {
         const styles: string[] = [];
 
         if (typeof size === "number")
