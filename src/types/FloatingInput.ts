@@ -10,7 +10,7 @@ export interface FloatingInputProps {
     labelClass?: string;
     divClass?: string;
     icon?: Component;
-    value?: string;
+    value?: any;
     required?: boolean;
     disabled?: boolean;
     variant?: InputVariant;

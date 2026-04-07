@@ -13,5 +13,6 @@
     <NavbarElement activeClass="font-semibold" href="/button">Button</NavbarElement>
     <NavbarElement activeClass="font-semibold" href="/card">Card</NavbarElement>
     <NavbarElement activeClass="font-semibold" href="/input">Input</NavbarElement>
+    <NavbarElement activeClass="font-semibold" href="/progress">Progress</NavbarElement>
 </Navbar>
 {@render children()}
