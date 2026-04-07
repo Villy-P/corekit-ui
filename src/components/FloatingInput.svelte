@@ -70,9 +70,9 @@
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
-    let defaultClass = "bg-form-background border-[1px] border-form-border text-main-text w-full rounded outline-none focus:ring-2 focus:ring-blue-500 transition-all px-[7px]";
-    let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 absolute transition-all duration-100 pointer-events-none px-2";
-    let defaultDivClass = "relative";
+    let defaultClass = "bg-form-background border-[1px] border-form-border text-main-text w-full rounded outline-none focus:ring-2 focus:ring-blue-500 px-[7px]";
+    let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 absolute duration-100 pointer-events-none px-2 truncate";
+    let defaultDivClass = "relative *:w-full *:transition-all";
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
