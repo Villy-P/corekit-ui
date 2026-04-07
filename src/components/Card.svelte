@@ -36,7 +36,7 @@
         return styles.join("; ");
     });
 
-    let defaultClass = "text-main-text rounded-lg transition-colors bg-sub-background p-4";
+    let defaultClass = "text-main-text rounded-lg transition-colors ease-in-out bg-sub-background p-4";
     let linkClass = "hover:bg-sub-background-hover cursor-pointer";
     let combinedClass = $derived(twMerge(
         defaultClass, 

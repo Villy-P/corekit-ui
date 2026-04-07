@@ -52,7 +52,7 @@
         return styles.join("; ");
     });
 
-    const defaultClass = "inline-flex items-center justify-center gap-2 transition-colors duration-300 text-white whitespace-nowrap";
+    const defaultClass = "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap";
     const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "cursor-pointer");
 
     const mergedClass = $derived(twMerge(
