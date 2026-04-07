@@ -61,7 +61,7 @@
         </div>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
-        <FloatingInput divClass="w-full" bind:value={href} label="href"/>
+        <FloatingInput divClass="w-full" bind:value={href} label="href" required/>
         <Checkbox bind:checked={external} label="External"/>
         <Checkbox bind:checked={disabled} label="Disabled"/>
         <Checkbox bind:checked={pill} label="Pill"/>

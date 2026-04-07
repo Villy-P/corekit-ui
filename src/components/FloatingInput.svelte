@@ -13,6 +13,7 @@
         onfocus = undefined,
         onblur = undefined,
         isTextArea = false,
+        required = false,
         validInputRegex = undefined,
         id = crypto.randomUUID(),
         ...restProps
@@ -24,7 +25,7 @@
     let hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
     let isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
 
-    let defaultClass = "z-20 bg-form-input-background text-main-text w-full rounded px-2 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
+    let defaultClass = "z-20 bg-form-background border-[1px] border-form-border text-main-text w-full rounded px-2 pt-4 pb-1 text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all";
     let defaultLabelClass = "block text-sub-text rounded-md text-sm font-medium mb-1 absolute transition-all duration-100 pointer-events-none";
     let defaultDivClass = "relative";
 
@@ -54,7 +55,12 @@
 </script>
 
 <div class={combinedDivClass}>
-    <Text tag="label" for={id} class={combinedLabelClass}>{label}</Text>
+    <Text tag="label" for={id} class={combinedLabelClass}>
+        {label}
+        {#if required}
+            <span class="text-[#E05555]">*</span>
+        {/if}
+    </Text>
     {#if isTextArea}
         <textarea
             {id}
@@ -62,6 +68,7 @@
             onfocus={handleFocus}
             onblur={handleBlur}
             class={combinedClass}
+            {required}
             {...restProps}
         ></textarea>
     {:else}
@@ -71,6 +78,7 @@
             onfocus={handleFocus}
             onblur={handleBlur}
             class={combinedClass}
+            {required}
             {...restProps}
         />
     {/if}

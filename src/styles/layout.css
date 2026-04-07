@@ -12,8 +12,8 @@
     --color-sub-background-hover: var(--vpcui-color-sub-background-hover);
     --color-main-text: var(--vpcui-color-main-text);
     --color-sub-text: var(--vpcui-color-sub-text);
-    --color-form-input-background: var(--vpcui-color-form-input-background);
-    --color-form-input-hover: var(--vpcui-color-form-input-hover);
+    --color-form-background: var(--vpcui-color-form-background);
+    --color-form-border: var(--vpcui-color-form-border);
     --color-navbar-element-hover-background: var(--vpcui-color-navbar-element-hover-background);
 }
 
@@ -23,8 +23,8 @@
     --vpcui-color-sub-background-hover: var(--color-mist-400);
     --vpcui-color-main-text: #000;
     --vpcui-color-sub-text: #555;
-    --vpcui-color-form-input-background: var(--color-mist-100);
-    --vpcui-color-form-input-hover: var(--color-mist-200);
+    --vpcui-color-form-background: var(--color-mist-100);
+    --vpcui-color-form-hover: var(--color-mist-200);
     --vpcui-color-navbar-element-hover-background: var(--color-mist-100);
 }
 
@@ -34,8 +34,8 @@ html.dark {
     --vpcui-color-sub-background-hover: #2A2A2A;
     --vpcui-color-main-text: #F5F5F5;
     --vpcui-color-sub-text: #A0A0A0;
-    --vpcui-color-form-input-background: #2A2A2A;
-    --vpcui-color-form-input-hover: #2c2c2c;
+    --vpcui-color-form-background: #2A2A2A;
+    --vpcui-color-form-border: #3A3A3A;
     --vpcui-color-navbar-element-hover-background: var(--color-zinc-900);
 }
 
