@@ -15,7 +15,7 @@
     <div class="w-3/4 flex-center">
         {#key animate}
             <Progress 
-                {value} 
+                progress={value} 
                 animate={animate 
                     ? { 
                         from: animateFrom, 

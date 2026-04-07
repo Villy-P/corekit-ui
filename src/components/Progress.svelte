@@ -27,5 +27,5 @@
 </script>
 
 <div class={combinedDivClass} {...restProps}>
-    <div class="h-full bg-blue-500 rounded-full" style="width: {animate ? currentProgress : progress}%; transition: width {animate?.duration ?? progress}ms ease;"></div>
+    <div class="h-full bg-blue-500 rounded-full" style="width: {animate ? currentProgress : progress}%; transition: width {animate?.duration ?? 500}ms ease;"></div>
 </div>
