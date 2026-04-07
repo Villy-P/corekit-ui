@@ -42,7 +42,6 @@
     let radius: SizeStyle = $state("md");
     let label: string = $state("Label");
     let disabled: boolean = $state(false);
-    let isTextArea: boolean = $state(false);
     let required: boolean = $state(false);
     let type: string = $state("text");
     let placeholder: string = $state("Placeholder");
@@ -50,7 +49,7 @@
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <FloatingInput {size} {radius} {label} {disabled} {isTextArea} {required} {type} {variant} {placeholder}/>
+        <FloatingInput {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder}/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
@@ -61,7 +60,6 @@
         <FloatingInput size="full" bind:value={label} label="Label"/>
         <FloatingInput size="full" bind:value={placeholder} label="Placeholder"/>
         <Checkbox label="Disabled" bind:checked={disabled}/>
-        <Checkbox label="Text Area" bind:checked={isTextArea}/>
         <Checkbox label="Required" bind:checked={required}/>
     </div>
 </div>

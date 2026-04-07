@@ -11,7 +11,6 @@ export interface FloatingInputProps {
     divClass?: string;
     icon?: Component;
     value?: string;
-    isTextArea?: boolean;
     required?: boolean;
     disabled?: boolean;
     variant?: InputVariant;

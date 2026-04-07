@@ -21,7 +21,6 @@
         value = $bindable(),
         onfocus = undefined,
         onblur = undefined,
-        isTextArea = false,
         required = false,
         disabled = false,
         validInputRegex = undefined,
@@ -101,7 +100,6 @@
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
-    let originalLabelClassTextArea = "top-2";
     let originalSelectedLabelClass = "z-30";
 
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
