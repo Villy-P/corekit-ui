@@ -1,3 +1,4 @@
+import type { Component } from "svelte";
 import type { SizeStyle } from "../styles/size.ts";
 
 export interface FloatingInputProps {
@@ -6,6 +7,7 @@ export interface FloatingInputProps {
     label?: string;
     labelClass?: string;
     divClass?: string;
+    icon?: Component;
     value?: string;
     isTextArea?: boolean;
     required?: boolean;
