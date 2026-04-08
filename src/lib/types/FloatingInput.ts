@@ -1,9 +1,10 @@
 import type { Component } from "svelte";
 import type { SizeStyle } from "../styles/size.ts";
+import type { HTMLInputAttributes } from "svelte/elements";
 
 export type InputVariant = "default" | "floating";
 
-export interface FloatingInputProps {
+export interface FloatingInputProps extends Omit<HTMLInputAttributes, 'size'> {
     children?: any;
     class?: string;
     label?: string;

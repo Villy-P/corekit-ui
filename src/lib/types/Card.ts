@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from "svelte/elements";
 import type { SizeStyle } from "../styles/size.ts";
 
 export type CardVariant = "bordered" | "elevated";
@@ -7,7 +8,7 @@ export const cardVariantStyles: Record<CardVariant, string> = {
     elevated: "shadow-md",
 };
 
-export interface CardProps {
+export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'size'> {
     children?: any;
     class?: string;
     href?: string;

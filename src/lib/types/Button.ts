@@ -1,7 +1,8 @@
+import type { HTMLButtonAttributes } from "svelte/elements";
 import type { ColorStyle, ColorStyleType } from "../styles/color.ts";
 import type { SizeStyle } from "../styles/size.ts";
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<HTMLButtonAttributes, 'size'> {
     children?: any;
     class?: string;
     pill?: boolean;
