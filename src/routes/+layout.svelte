@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Navbar, Button, NavbarElement, NavbarSeparator } from '$lib/index.js';
-	import './../styles/layout.css';
+	import './../lib/styles/layout.css';
 
 	const { children } = $props();
 </script>

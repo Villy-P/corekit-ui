@@ -1,13 +1,13 @@
 <script lang="ts">
-    import Checkbox from "../../components/Checkbox.svelte";
-    import FloatingInput from "../../components/FloatingInput.svelte";
-    import Progress from "../../components/Progress.svelte";
-    import Text from "../../components/Text.svelte";
-    import Button from "../../components/Button.svelte";
-    import FloatingSelect from "../../components/FloatingSelect.svelte";
+    import Checkbox from "$lib/components/Checkbox.svelte";
+    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Progress from "$lib/components/Progress.svelte";
+    import Text from "$lib/components/Text.svelte";
+    import Button from "$lib/components/Button.svelte";
+    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
 
-    import { colorStyleParts, type ColorStyle } from "../../styles/color.ts";
-    import type { SizeStyleTheme } from "../../styles/size.ts";
+    import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
+    import type { SizeStyleTheme } from "$lib/styles/size.js";
 
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },

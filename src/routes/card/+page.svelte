@@ -1,13 +1,13 @@
 <script lang="ts">
-    import Button from "../../components/Button.svelte";
-    import Card from "../../components/Card.svelte";
-    import Checkbox from "../../components/Checkbox.svelte";
-    import FloatingInput from "../../components/FloatingInput.svelte";
-    import FloatingSelect from "../../components/FloatingSelect.svelte";
-    import Text from "../../components/Text.svelte";
-    import { colorStyleParts, type ColorStyle } from "../../styles/color.ts";
-  import type { SizeStyle } from "../../styles/size.ts";
-    import type { CardVariant } from "../../types/Card.ts";
+    import Button from "$lib/components/Button.svelte";
+    import Card from "$lib/components/Card.svelte";
+    import Checkbox from "$lib/components/Checkbox.svelte";
+    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
+    import Text from "$lib/components/Text.svelte";
+    import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
+  import type { SizeStyle } from "$lib/styles/size.js";
+    import type { CardVariant } from "$lib/types/Card.js";
 
     const variantOptions = [
         { value: "bordered", label: "Bordered" },
