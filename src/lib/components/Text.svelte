@@ -16,7 +16,7 @@
         "p": { class: "", size: "text-base" },
         "div": { class: "", size: "text-base" },
         "span": { class: "", size: "text-base" },
-        "label": { class: "text-sub-text font-semibold", size: "text-xs" },
+        "label": { class: "text-sub-text font-semibold cursor-default", size: "text-xs" },
         "strong": { class: "font-bold", size: "text-base" },
         "b": { class: "font-bold", size: "text-base" },
         "em": { class: "italic", size: "text-base" },

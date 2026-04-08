@@ -96,7 +96,7 @@
         mail: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
-    let defaultClass = "text-main-text w-full rounded outline-none px-1.5 w-full";
+    let defaultClass = "text-main-text w-full rounded outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
     let defaultLabelClass = "block text-sub-text rounded-md font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
     let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
