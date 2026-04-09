@@ -145,7 +145,7 @@
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
 
-    let numberIconClass = $derived(twMerge(iconClass, sizeClasses, "text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col"));
+    let numberIconClass = $derived(twMerge(iconClass, sizeClasses, "text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col transition-all duration-150"));
     let numberButtonClass = $derived(twMerge(iconContainerClass, "h-1/2 gap-0 px-0.5 hover:bg-form-border aspect-square rounded-none"));
 
     function increment() {
@@ -226,7 +226,7 @@
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
         {:else if restProps.type === "number"}
-            <div class={twMerge(numberIconClass, !isHovered ? "invisible" : "")}>
+            <div class={twMerge(numberIconClass, isHovered ? "opacity-100 scale-100" : "opacity-0 scale-75")}>
                 <Button 
                     size="none" radius="none" 
                     class={numberButtonClass} 
