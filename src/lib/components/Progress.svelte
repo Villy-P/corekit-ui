@@ -52,6 +52,7 @@
 
     let combinedInnerClass = $derived(twMerge(
         "h-full",
+        sizeClasses,
         colorStyleParts[color]?.base,
         className
     ))
