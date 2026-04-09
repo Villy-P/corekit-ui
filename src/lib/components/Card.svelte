@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { getLinkProps } from "$lib/utils/link.js";
     import { getSizeStyle, getSizeStyleClass } from "../styles/size.ts";
     import { cardVariantStyles, type CardProps } from "../types/Card.ts";
     import { twMerge } from "tailwind-merge";
@@ -31,11 +32,7 @@
         restProps.style
     ].filter(Boolean).join("; "));
 
-    const anchorProps = $derived(href ? {
-        href,
-        target: external ? "_blank" : undefined,
-        rel: external ? "noopener noreferrer" : undefined,
-    } : {});
+    const anchorProps = $derived(getLinkProps(href, external));
 </script>
 
 <svelte:element
