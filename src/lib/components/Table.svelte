@@ -37,8 +37,8 @@
         <tbody>
             {#each tableData as row}
                 <tr class={defaultTableBodyClass}>
-                    {#each row as cell}
-                        <td class={defaultTableCellClass}>{cell}</td>
+                    {#each tableHeaders as header}
+                        <td class={defaultTableCellClass}>{row[header.key]}</td>
                     {/each}
                 </tr>
             {/each}

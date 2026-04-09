@@ -33,11 +33,11 @@
     ];
 
     let tableData = [
-        ["Alice", "Smith", "alice@example.com", "2023"],
-        ["Bob", "Johnson", "bob@example.com", "2024"],
-        ["Charlie", "Williams", "charlie@example.com", "2025"],
-        ["David", "Brown", "david@example.com", "2023"],
-        ["Eve", "Jones", "eve@example.com", "2024"]
+        { firstname: "Alice", lastname: "Smith", email: "alice@example.com", graduatingClass: "2023" },
+        { firstname: "Bob", lastname: "Johnson", email: "bob@example.com", graduatingClass: "2024" },
+        { firstname: "Charlie", lastname: "Williams", email: "charlie@example.com", graduatingClass: "2025" },
+        { firstname: "David", lastname: "Brown", email: "david@example.com", graduatingClass: "2023" },
+        { firstname: "Eve", lastname: "Jones", email: "eve@example.com", graduatingClass: "2024" }
     ];
 </script>
 
