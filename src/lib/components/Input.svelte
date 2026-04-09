@@ -38,6 +38,8 @@
         ...restProps
     }: InputProps = $props();
 
+    let isHovered = $state(false);
+
     const sizeParts = $derived(typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null);
     const radiusParts = $derived(typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null);
 
@@ -192,7 +194,8 @@
 {/snippet}
 
 {#snippet innerDivElement()}
-    <div class={combinedDivClass}>
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
         {#if Icon}
             <div class={iconContainerClass}>
                 <Icon class={iconClass}></Icon>
@@ -223,7 +226,7 @@
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
         {:else if restProps.type === "number"}
-            <div class={numberIconClass}>
+            <div class={twMerge(numberIconClass, !isHovered ? "invisible" : "")}>
                 <Button 
                     size="none" radius="none" 
                     class={numberButtonClass} 
