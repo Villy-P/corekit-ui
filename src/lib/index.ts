@@ -12,6 +12,7 @@ export { default as Card } from "./components/Card.svelte";
 export { default as Checkbox } from "./components/Checkbox.svelte";
 export { default as Progress } from "./components/Progress.svelte";
 export { default as Modal } from "./components/Modal.svelte";
+export { default as Table } from "./components/Table.svelte";
 
 export { fbmBackground } from "./actions/fbm.ts";
 
