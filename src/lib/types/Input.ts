@@ -10,6 +10,7 @@ export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
     label?: string;
     labelClass?: string;
     divClass?: string;
+    outerDivClass?: string;
     icon?: Component;
     value?: any;
     required?: boolean;
