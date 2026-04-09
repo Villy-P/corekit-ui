@@ -50,3 +50,26 @@ html.dark {
 html {
     background-color: var(--color-main-background);
 }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sub-background-hover) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-sub-background-hover);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-main-text);
+}
