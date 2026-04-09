@@ -100,7 +100,7 @@
     const lifted = $derived(isFloating && (isFocused || hasContent));
 
     const Icon = $derived(icon ?? ({
-        mail: Mail, password: Lock, tel: Phone
+        email: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
     let defaultClass = "text-main-text w-full rounded outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";

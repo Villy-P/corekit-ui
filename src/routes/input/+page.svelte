@@ -12,7 +12,7 @@
 
     const typeOptions = [
         { value: "text", label: "Text" },
-        { value: "mail", label: "Mail" },
+        { value: "email", label: "Mail" },
         { value: "password", label: "Password" },
         { value: "tel", label: "Phone Number" },
         { value: "number", label: "Number" },
