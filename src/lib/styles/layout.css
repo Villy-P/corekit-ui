@@ -16,35 +16,52 @@
     --color-form-background: var(--vpcui-form-background);
     --color-form-hover: var(--vpcui-form-hover);
     --color-form-border: var(--vpcui-form-border);
-    --color-navbar-element-hover-background: var(--vpcui-navbar-element-hover-background);
+
     --color-primary: var(--vpcui-primary);
     --color-secondary: var(--vpcui-secondary);
     --color-accent: var(--vpcui-accent);
 }
 
 :root {
-    --vpcui-main-background: #FFFFFF;
-    --vpcui-sub-background: #F5F5F5;
-    --vpcui-sub-background-hover: #EEE;
-    --vpcui-main-text: #111;
-    --vpcui-sub-text: #6B6B6B ;
-    --vpcui-contrast-text: #F5F5F5;
-    --vpcui-form-background: #FFFFFF;
-    --vpcui-form-hover: #D4D4D4;
-    --vpcui-form-border: #C4C4C4;
-    --vpcui-color-navbar-element-hover-background: var(--color-mist-100);
+    --vpcui-light-50: #FFFFFF;
+    --vpcui-light-100: #F5F5F5;
+    --vpcui-light-150: #EEEEEE;
+    --vpcui-light-200: #D4D4D4;
+    --vpcui-light-250: #C4C4C4;
+    --vpcui-light-300: #6B6B6B;
+
+    --vpcui-light-950: #111;
+
+    --vpcui-main-background: var(--vpcui-light-50);
+    --vpcui-sub-background: var(--vpcui-light-100);
+    --vpcui-sub-background-hover: var(--vpcui-light-150);
+    --vpcui-main-text: var(--vpcui-light-950);
+    --vpcui-sub-text: var(--vpcui-light-300);
+    --vpcui-contrast-text: var(--vpcui-light-50);
+    --vpcui-form-background: var(--vpcui-light-50);
+    --vpcui-form-hover: var(--vpcui-light-200);
+    --vpcui-form-border: var(--vpcui-light-250);
 }
 
 html.dark {
-    --vpcui-main-background: #121212;
-    --vpcui-sub-background: #1E1E1E;
-    --vpcui-sub-background-hover: #2A2A2A;
-    --vpcui-main-text: #F5F5F5;
-    --vpcui-sub-text: #A0A0A0;
-    --vpcui-contrast-text: #111;
-    --vpcui-form-background: #2A2A2A;
-    --vpcui-form-border: #4A4A4A;
-    --vpcui-navbar-element-hover-background: var(--color-zinc-900);
+    --vpcui-dark-50: #121212;
+    --vpcui-dark-100: #1E1E1E;
+    --vpcui-dark-150: #2A2A2A;
+    --vpcui-dark-200: #2A2A2A;
+    --vpcui-dark-250: #4A4A4A;
+    --vpcui-dark-300: #A0A0A0;
+
+    --vpcui-dark-950: #F5F5F5;
+
+    --vpcui-main-background: var(--vpcui-dark-50);
+    --vpcui-sub-background: var(--vpcui-dark-100);
+    --vpcui-sub-background-hover: var(--vpcui-dark-150);
+    --vpcui-main-text: var(--vpcui-dark-950);
+    --vpcui-sub-text: var(--vpcui-dark-300);
+    --vpcui-contrast-text: var(--vpcui-dark-950);
+    --vpcui-form-background: var(--vpcui-dark-150);
+    --vpcui-form-border: var(--vpcui-dark-250);
+    --vpcui-form-hover: var(--vpcui-dark-150);
 }
 
 html {

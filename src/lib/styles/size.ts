@@ -137,6 +137,25 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
     }
 };
 
+export function getSizeStyleClass(size: SizeStyle, type: SizeStyleType): string {
+    if (typeof size === "string")
+        return sizeStyleParts[size][type];
+    return "";
+}
+
+export function getSizeStyle(size: SizeStyle, type: SizeStyleType): string {
+    if (typeof size === "number") {
+        switch (type) {
+            case "button":
+                return `height: ${size}px; padding: ${size / 4}px ${size / 8}px`;
+            case "radius":
+                return `border-radius: ${size}px`;
+        }
+    }
+    return "";
+}
+
+
 export const textStyle = {
     "text-xs": "0.75rem",
     "text-sm": "0.875rem",
