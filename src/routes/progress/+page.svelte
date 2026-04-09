@@ -1,6 +1,6 @@
 <script lang="ts">
     import Checkbox from "$lib/components/Checkbox.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Input from "$lib/components/Input.svelte";
     import Progress from "$lib/components/Progress.svelte";
     import Text from "$lib/components/Text.svelte";
     import Button from "$lib/components/Button.svelte";
@@ -64,13 +64,13 @@
         </div>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
-        <FloatingInput size="full" label="Value" type="number" min="0" max="100" bind:value={progress}/>
+        <Input size="full" label="Value" type="number" min="0" max="100" bind:value={progress}/>
         <Checkbox bind:checked={animate} label="Animate"/>
         {#if animate}
-            <FloatingInput size="full" label="From" type="number" min="0" max="100" bind:value={animateFrom}/>
-            <FloatingInput size="full" label="To" type="number" min="0" max="100" bind:value={animateTo}/>
-            <FloatingInput size="full" label="Duration" type="number" min="0" bind:value={animationDuration}/>
-            <FloatingInput size="full" label="On End Alert" type="text" placeholder="Alert message on animation end" bind:value={animateOnEndAlert}/>
+            <Input size="full" label="From" type="number" min="0" max="100" bind:value={animateFrom}/>
+            <Input size="full" label="To" type="number" min="0" max="100" bind:value={animateTo}/>
+            <Input size="full" label="Duration" type="number" min="0" bind:value={animationDuration}/>
+            <Input size="full" label="On End Alert" type="text" placeholder="Alert message on animation end" bind:value={animateOnEndAlert}/>
         {/if}
     </div>
 </div>

@@ -8,7 +8,7 @@
     import Typewriter from "$lib/components/Typewriter.svelte";
     import type { TypewriterAction } from "$lib/types/Typewriter.js";
     import NavbarElement from "$lib/components/NavbarElement.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Input from "$lib/components/Input.svelte";
     import Card from "$lib/components/Card.svelte";
     import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
     import Text from "$lib/components/Text.svelte";
@@ -51,8 +51,8 @@
 <br><br>
 <div class="w-full gap-4 flex-center flex-wrap">
     <FloatingDropdown class="w-96" {options}>Select an option</FloatingDropdown>
-    <FloatingInput validInputRegex={/^[A-Za-z\s]+$/}>First Name</FloatingInput>
-    <FloatingInput validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</FloatingInput>
+    <Input validInputRegex={/^[A-Za-z\s]+$/}>First Name</Input>
+    <Input validInputRegex={/^[A-Za-z\s]+$/} isTextArea>Bio</Input>
     <Checkbox>Accept Terms and Conditions</Checkbox>
     <Card class="w-16 h-16 flex-center">
        <img class="w-10 h-10" src="/favicon.svg" alt="Favicon"/>

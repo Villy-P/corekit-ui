@@ -2,7 +2,7 @@
     import Button from "$lib/components/Button.svelte";
     import Card from "$lib/components/Card.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Input from "$lib/components/Input.svelte";
     import FloatingSelect from "$lib/components/FloatingSelect.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
@@ -48,7 +48,7 @@
         <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
-        <FloatingInput divClass="w-full" bind:value={href} label="href"/>
+        <Input divClass="w-full" bind:value={href} label="href"/>
         <Checkbox bind:checked={external} label="External"/>
     </div>
 </div>

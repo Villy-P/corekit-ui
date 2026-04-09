@@ -2,13 +2,13 @@
     import Button from "$lib/components/Button.svelte";
     import Card from "$lib/components/Card.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
-    import FloatingInput from "$lib/components/FloatingInput.svelte";
+    import Input from "$lib/components/Input.svelte";
     import FloatingSelect from "$lib/components/FloatingSelect.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyle } from "$lib/styles/size.js";
     import type { CardVariant } from "$lib/types/Card.js";
-    import type { InputVariant } from "$lib/types/FloatingInput.js";
+    import type { InputVariant } from "$lib/types/Input.js";
 
     const typeOptions = [
         { value: "text", label: "Text" },
@@ -49,7 +49,7 @@
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <FloatingInput {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder}/>
+        <Input {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder}/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
@@ -57,8 +57,8 @@
         <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <FloatingSelect divClass="w-full" options={typeOptions} bind:value={type} label="Type"/>
         <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
-        <FloatingInput size="full" bind:value={label} label="Label"/>
-        <FloatingInput size="full" bind:value={placeholder} label="Placeholder"/>
+        <Input size="full" bind:value={label} label="Label"/>
+        <Input size="full" bind:value={placeholder} label="Placeholder"/>
         <Checkbox label="Disabled" bind:checked={disabled}/>
         <Checkbox label="Required" bind:checked={required}/>
     </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { FloatingInputProps } from "../types/FloatingInput.ts";
+    import type { InputProps } from "../types/Input.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
     import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
@@ -31,7 +31,7 @@
         radius = "md",
         id = crypto.randomUUID(),
         ...restProps
-    }: FloatingInputProps = $props();
+    }: InputProps = $props();
 
     const sizeParts = $derived(typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null);
     const radiusParts = $derived(typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null);
