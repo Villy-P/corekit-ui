@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
+    import { getSizeStyle, getSizeStyleClass } from "../styles/size.ts";
     import { cardVariantStyles, type CardProps } from "../types/Card.ts";
     import { twMerge } from "tailwind-merge";
 
@@ -14,37 +14,22 @@
         ...restProps
     }: CardProps = $props();
 
-    const sizeClasses = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-        const radiusParts = typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null;
-
-        return twMerge(
-            parts?.card,
-            radiusParts?.radius,
-        );
-    });
-
-    const customStyle = $derived.by(() => {
-        const styles: string[] = [];
-
-        if (typeof size === "number")
-            styles.push(`width: ${size}px`);
-
-        if (typeof radius === "number")
-            styles.push(`border-radius: ${radius}px`);
-
-        return styles.join("; ");
-    });
-
     let defaultClass = "text-main-text rounded-lg transition-colors ease-in-out bg-sub-background p-4";
     let linkClass = "block hover:bg-sub-background-hover cursor-pointer";
     let combinedClass = $derived(twMerge(
         defaultClass, 
-        href ? linkClass : "",
+        href && linkClass,
         cardVariantStyles[variant],
-        sizeClasses,
+        getSizeStyleClass(size, "card"),
+        getSizeStyleClass(radius, "radius"),
         className
     ));
+
+    const mergedStyle = $derived([
+        getSizeStyle(size, "card"), 
+        getSizeStyle(radius, "radius"), 
+        restProps.style
+    ].filter(Boolean).join("; "));
 
     const anchorProps = $derived(href ? {
         href,
@@ -56,7 +41,7 @@
 <svelte:element
     this={href ? "a" : "div"}
     class={combinedClass}
-    style={customStyle}
+    style={mergedStyle}
     {...anchorProps}
     {...restProps}
 >

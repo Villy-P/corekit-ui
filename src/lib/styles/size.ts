@@ -148,6 +148,10 @@ export function getSizeStyle(size: SizeStyle, type: SizeStyleType): string {
         switch (type) {
             case "button":
                 return `height: ${size}px; padding: ${size / 4}px ${size / 8}px`;
+            case "buttonIcon":
+                return `height: ${size}px; width: ${size}px; padding: ${size / 4}px`;
+            case "card":
+                return `width: ${size}px`;
             case "radius":
                 return `border-radius: ${size}px`;
         }
