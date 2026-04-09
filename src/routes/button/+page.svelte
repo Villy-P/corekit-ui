@@ -2,7 +2,7 @@
     import Button from "$lib/components/Button.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$lib/components/Input.svelte";
-    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
+    import Select from "$lib/components/Select.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle, type ColorStyleType } from "$lib/styles/color.js";
     import type { SizeStyle } from "$lib/styles/size.js";
@@ -52,15 +52,15 @@
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
-        <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
+        <Select divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <Text tag="label">Color</Text>
         <div class="w-full flex flex-wrap">
             {#each Object.keys(colorStyleParts) as colorKey}
                 <Button square color={colorKey as ColorStyle} onclick={() => color = colorKey as ColorStyle}></Button>
             {/each}
         </div>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <Input divClass="w-full" bind:value={href} label="href" required/>
         <Checkbox bind:checked={external} label="External"/>
         <Checkbox bind:checked={disabled} label="Disabled"/>

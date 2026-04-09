@@ -1,4 +1,4 @@
-export interface FloatingSelectProps {
+export interface SelectProps {
     children?: any;
     class?: string;
     label?: string;

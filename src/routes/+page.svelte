@@ -10,7 +10,7 @@
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import Input from "$lib/components/Input.svelte";
     import Card from "$lib/components/Card.svelte";
-    import FloatingDropdown from "$lib/components/FloatingSelect.svelte";
+    import FloatingDropdown from "$lib/components/Select.svelte";
     import Text from "$lib/components/Text.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
 

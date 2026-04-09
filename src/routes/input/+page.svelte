@@ -3,7 +3,7 @@
     import Card from "$lib/components/Card.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$lib/components/Input.svelte";
-    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
+    import Select from "$lib/components/Select.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyle } from "$lib/styles/size.js";
@@ -53,10 +53,10 @@
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
-        <FloatingSelect divClass="w-full" options={typeOptions} bind:value={type} label="Type"/>
-        <FloatingSelect divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
+        <Select divClass="w-full" options={typeOptions} bind:value={type} label="Type"/>
+        <Select divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <Input size="full" bind:value={label} label="Label"/>
         <Input size="full" bind:value={placeholder} label="Placeholder"/>
         <Checkbox label="Disabled" bind:checked={disabled}/>

@@ -4,7 +4,7 @@
     import Progress from "$lib/components/Progress.svelte";
     import Text from "$lib/components/Text.svelte";
     import Button from "$lib/components/Button.svelte";
-    import FloatingSelect from "$lib/components/FloatingSelect.svelte";
+    import Select from "$lib/components/Select.svelte";
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyleTheme } from "$lib/styles/size.js";
@@ -62,8 +62,8 @@
                 <Button square color={colorKey as ColorStyle} onclick={() => color = colorKey as ColorStyle}></Button>
             {/each}
         </div>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
-        <FloatingSelect divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <Input size="full" label="Value" type="number" min="0" max="100" bind:value={progress}/>
         <Checkbox bind:checked={animate} label="Animate"/>
         {#if animate}
