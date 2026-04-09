@@ -16,6 +16,9 @@ export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
     disabled?: boolean;
     variant?: InputVariant;
     placeholder?: string;
+    min?: number;
+    max?: number;
+    step?: number;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
     validInputRegex?: RegExp;

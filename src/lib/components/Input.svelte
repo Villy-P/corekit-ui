@@ -11,6 +11,8 @@
     import Phone from "@lucide/svelte/icons/phone";
     import Eye from "@lucide/svelte/icons/eye";
     import EyeOff from "@lucide/svelte/icons/eye-off";
+    import ChevronUp from "@lucide/svelte/icons/chevron-up";
+    import ChevronDown from "@lucide/svelte/icons/chevron-down";
 
     let { 
         children = undefined, 
@@ -30,6 +32,9 @@
         size = "md",
         radius = "md",
         id = crypto.randomUUID(),
+        min = undefined,
+        max = undefined,
+        step = undefined,
         ...restProps
     }: InputProps = $props();
 
@@ -137,6 +142,44 @@
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, divClass, disabledClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
+
+    let numberIconClass = $derived(twMerge(iconClass, sizeClasses, "text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col"));
+    let numberButtonClass = $derived(twMerge(iconContainerClass, "h-1/2 gap-0 px-0.5 hover:bg-form-border aspect-square rounded-none"));
+
+    function increment() {
+        if (max === undefined || value < max) value = (value || 0) + (step || 1);
+    }
+
+    function decrement() {
+        if (min === undefined || value > min) value = (value || 0) - (step || 1);
+    }
+
+    let incrementInterval: ReturnType<typeof setInterval> | null = null;
+    let decrementInterval: ReturnType<typeof setInterval> | null = null;
+
+    function startIncrement() {
+        increment();
+        incrementInterval = setInterval(increment, 100);
+    }
+
+    function stopIncrement() {
+        if (incrementInterval) {
+            clearInterval(incrementInterval);
+            incrementInterval = null;
+        }
+    }
+
+    function startDecrement() {
+        decrement();
+        decrementInterval = setInterval(decrement, 100);
+    }
+
+    function stopDecrement() {
+        if (decrementInterval) {
+            clearInterval(decrementInterval);
+            decrementInterval = null;
+        }
+    }
 </script>
 
 {#snippet labelElement()}
@@ -166,6 +209,9 @@
             class={combinedClass}
             {required}
             {disabled}
+            {min}
+            {max}
+            {step}
             placeholder={variant === "floating" ? "" : placeholder}
             aria-disabled={disabled}
             style={customStyle}
@@ -176,6 +222,27 @@
             <Button class={iconContainerClass} onclick={() => { canSeePassword = !canSeePassword; }}>
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
+        {:else if restProps.type === "number"}
+            <div class={numberIconClass}>
+                <Button 
+                    size="none" radius="none" 
+                    class={numberButtonClass} 
+                    onmousedown={startIncrement}
+                    onmouseup={stopIncrement}
+                    onmouseleave={stopIncrement}
+                    disabled={max !== undefined && value >= max}>
+                    <ChevronUp class="w-full h-full"/>
+                </Button>
+                <Button 
+                    size="none" radius="none" 
+                    class={numberButtonClass} 
+                    onmousedown={startDecrement}
+                    onmouseup={stopDecrement}
+                    onmouseleave={stopDecrement}
+                    disabled={min !== undefined && value <= min}>
+                    <ChevronDown class="w-full h-full"/>
+                </Button>
+            </div>
         {/if}
     </div>
 {/snippet}

@@ -64,12 +64,12 @@
         </div>
         <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
-        <Input size="full" label="Value" type="number" min="0" max="100" bind:value={progress}/>
+        <Input size="full" label="Value" type="number" min={0} max={100} bind:value={progress}/>
         <Checkbox bind:checked={animate} label="Animate"/>
         {#if animate}
-            <Input size="full" label="From" type="number" min="0" max="100" bind:value={animateFrom}/>
-            <Input size="full" label="To" type="number" min="0" max="100" bind:value={animateTo}/>
-            <Input size="full" label="Duration" type="number" min="0" bind:value={animationDuration}/>
+            <Input size="full" label="From" type="number" min={0} max={100} bind:value={animateFrom}/>
+            <Input size="full" label="To" type="number" min={0} max={100} bind:value={animateTo}/>
+            <Input size="full" label="Duration" type="number" min={0} bind:value={animationDuration}/>
             <Input size="full" label="On End Alert" type="text" placeholder="Alert message on animation end" bind:value={animateOnEndAlert}/>
         {/if}
     </div>
