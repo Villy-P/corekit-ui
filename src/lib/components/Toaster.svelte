@@ -9,15 +9,17 @@
     });
 </script>
 
-{#each Object.keys(positionParts) as pos (pos)}
-    <div class="fixed z-9999 flex flex-col gap-2 pointer-events-none {positionParts[pos as PositionStyle]}">
-        {#each getItems(pos as PositionStyle) as item (item.id)}
-            <div class="pointer-events-auto" animate:flip={{ duration: 300 }}>
-                <Toast 
-                    {...item} 
-                    onclose={() => toast.dismiss(item.id)} 
-                />
-            </div>
-        {/each}
-    </div>
-{/each}
+<div>
+    {#each Object.keys(positionParts) as pos (pos)}
+        <div class="fixed z-9999 flex flex-col gap-2 pointer-events-none {positionParts[pos as PositionStyle]}">
+            {#each getItems(pos as PositionStyle) as item (item.id)}
+                <div class="pointer-events-auto" animate:flip={{ duration: 300 }}>
+                    <Toast 
+                        {...item} 
+                        onclose={() => toast.dismiss(item.id)} 
+                    />
+                </div>
+            {/each}
+        </div>
+    {/each}
+</div>
