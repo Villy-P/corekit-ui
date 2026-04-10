@@ -34,14 +34,18 @@
     ]
 
     let toastType: ToastType = $state("success");
+    let size: SizeStyleTheme = $state("md");
+    let radius: SizeStyleTheme = $state("md");
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Toast message="This is a toast notification!" type={toastType} duration={5000} position="top-right"/>
+        <Toast message="This is a toast notification!" {size} {radius} type={toastType} duration={5000} position="top-right"/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
+        <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <Select divClass="w-full" label="Toast Type" options={toastTypeValues} bind:value={toastType}/>
     </div>
 </div>

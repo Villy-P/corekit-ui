@@ -12,6 +12,7 @@
     import TriangleAlert from "@lucide/svelte/icons/triangle-alert";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import Button from "./Button.svelte";
+    import { getSizeStyleClass } from "$lib/styles/size.js";
 
 
     let { 
@@ -20,6 +21,8 @@
         type = "info", 
         position = "top-right",
         class: className = "",
+        size = "md",
+        radius = "md",
         ...restProps
     }: ToastProps = $props();
 
@@ -37,13 +40,15 @@
     const combinedToastClass = $derived(twMerge(
         defaultToastClass,
         colorStyleParts[type as ColorStyle]?.text,
+        getSizeStyleClass(size, "card"),
+        getSizeStyleClass(radius, "radius"),
         className,
     ));
 </script>
 
-<div class={combinedToastClass}>
+<div class={combinedToastClass} {...restProps}>
     <Icon class={defualtIconClass}/>
-    <Text>{message}</Text>
+    <Text class="grow">{message}</Text>
     <Button variant="ghost" class="hover:bg-form-background" icon><X size={16}/></Button>
     <Progress size="xs" divClass={defaultProgressClass} color={type} animate={{ duration: duration, from: 100, to: 0 }}/>
 </div>
