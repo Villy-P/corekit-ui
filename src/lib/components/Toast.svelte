@@ -28,7 +28,7 @@
 
     const defaultToastClass = "px-4 py-3 rounded shadow text-white flex flex-center gap-2 relative bg-sub-background border-[1px]";
     const defaultProgressClass = "absolute bottom-0 left-0 bg-transparent";
-    const defualtIconClass = $derived(colorStyleParts[type as ColorStyle]?.text);
+    const defualtIconClass = $derived(`${colorStyleParts[type as ColorStyle]?.text} w-5 h-5`);
 
     const Icon = $derived({
         success: CircleCheck,
@@ -47,8 +47,10 @@
 </script>
 
 <div class={combinedToastClass} {...restProps}>
-    <Icon class={defualtIconClass}/>
-    <Text class="grow">{message}</Text>
+    <div class="w-8 h-8 flex-center">
+        <Icon class={defualtIconClass}/>
+    </div>
+    <Text class="grow px-1">{message}</Text>
     <Button variant="ghost" class="hover:bg-form-background" icon><X size={16}/></Button>
     <Progress size="xs" divClass={defaultProgressClass} color={type} animate={{ duration: duration, from: 100, to: 0 }}/>
 </div>

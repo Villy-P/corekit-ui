@@ -40,7 +40,7 @@
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Toast message="This is a toast notification!" {size} {radius} type={toastType} duration={5000} position="top-right"/>
+        <Toast message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." {size} {radius} type={toastType} duration={5000} position="top-right"/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
