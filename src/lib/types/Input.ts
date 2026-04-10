@@ -26,3 +26,18 @@ export interface InputProps extends BaseComponentProps {
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;
 };  
+
+export interface FileInputProps extends BaseComponentProps {
+    label?: string;
+    labelClass?: string;
+    divClass?: string;
+    outerDivClass?: string;
+    files?: FileList;
+    required?: boolean;
+    disabled?: boolean;
+    // variant?: InputVariant;
+    placeholder?: string;
+    size?: SizeStyle;
+    radius?: SizeStyle;
+    id?: `${string}-${string}-${string}-${string}-${string}`;
+};  
