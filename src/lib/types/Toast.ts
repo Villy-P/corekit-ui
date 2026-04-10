@@ -11,4 +11,5 @@ export interface ToastProps extends BaseComponentProps {
     type?: ToastType;
     size?: SizeStyle;
     radius?: SizeStyle;
+    onclose?: () => void;
 }
