@@ -17,7 +17,7 @@
         ...restProps
     }: ProgressProps = $props();
 
-    let currentProgress = $state(0);
+    let mounted = $state(false);
 
     let defaultDivClass = "w-full bg-sub-background overflow-hidden";
 
@@ -59,12 +59,11 @@
 
     onMount(() => {
         if (!animate) return;
-        currentProgress = animate.from;
-        requestAnimationFrame(() => currentProgress = animate.to);
+        requestAnimationFrame(() => mounted = true);
         if (animate.onend) setTimeout(animate.onend, animate.duration);
     });
 </script>
 
-<div class={combinedDivClass} {...restProps} style={customStyle}>
-    <div class={combinedInnerClass} style="width: {animate ? currentProgress : progress}%; transition: width {animate?.duration ?? 500}ms ease;"></div>
+<div class={combinedDivClass} {...restProps} style="--duration: {animate?.duration}ms; {customStyle}">
+    <div class={combinedInnerClass} style="width: {animate ? (mounted ? animate?.to : animate?.from) : progress}%; transition: width var(--duration) linear;"></div>
 </div>
