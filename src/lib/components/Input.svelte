@@ -137,7 +137,7 @@
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let floatingLabelClassCheck = $derived(variant === "floating" ? floatingLabelClassFull : "");
-    let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-1.5" : "");
+    let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-0" : "");
     let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));

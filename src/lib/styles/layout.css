@@ -47,7 +47,7 @@ html.dark {
     --vpcui-dark-50: #121212;
     --vpcui-dark-100: #1E1E1E;
     --vpcui-dark-150: #2A2A2A;
-    --vpcui-dark-200: #2A2A2A;
+    --vpcui-dark-200: #3A3A3A;
     --vpcui-dark-250: #4A4A4A;
     --vpcui-dark-300: #A0A0A0;
 
@@ -61,7 +61,7 @@ html.dark {
     --vpcui-contrast-text: var(--vpcui-dark-950);
     --vpcui-form-background: var(--vpcui-dark-150);
     --vpcui-form-border: var(--vpcui-dark-250);
-    --vpcui-form-hover: var(--vpcui-dark-150);
+    --vpcui-form-hover: var(--vpcui-dark-200);
 }
 
 html {

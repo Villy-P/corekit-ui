@@ -27,7 +27,7 @@
     ];
 
     let size: SizeStyleTheme = $state("md");
-    let radius: SizeStyleTheme = $state("full");
+    let radius: SizeStyleTheme = $state("md");
     let label: string = $state("Label");
     let placeholder: string = $state("Placeholder");
     let disabled: boolean = $state(false);

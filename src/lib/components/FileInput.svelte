@@ -3,6 +3,11 @@
     import type { FileInputProps } from "$lib/types/Input.js";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
+    import bytes from "bytes";
+
+    import Upload from "@lucide/svelte/icons/upload";
+    import File from "@lucide/svelte/icons/file";
+    import Button from "./Button.svelte";
 
     let { 
         children = undefined, 
@@ -14,22 +19,28 @@
         files = $bindable(undefined),
         required = false,
         disabled = false,
-        placeholder = "",
         size = "md",
         radius = "md",
         id = crypto.randomUUID(),
         ...restProps
     }: FileInputProps = $props();
 
-    const defaultLabelClass = "block text-sub-text font-medium mb-1 pointer-events-none truncate w-fit";
+    let inputElement: HTMLInputElement;
 
-    const divSizeClass = $derived(getSizeStyleClass(size, "form"));
+    const defaultClass = "text-main-text w-full flex items-center gap-1 rounded-full outline-none px-1.5 w-full bg-inherit border-0 py-0";
+    const defaultLabelClass = "block text-sub-text font-medium mb-1 pointer-events-none truncate w-fit";
+    const defaultDivClass = "relative flex-center gap-0 bg-form-background border-[1px] border-form-border p-0";
+
     const divFullClass = $derived(size === "full" ? "w-full" : "");
     const disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "");
 
+    const iconContainerClass = "h-5 aspect-square px-1 py-0!";
+    const iconClass = "h-full aspect-square text-sub-text";
+
+    const selectedDivClass = $derived(files ? "border-blue-500 cursor-default" : "hover:bg-form-hover cursor-pointer");
+
     const combinedOuterDivClass = $derived(twMerge(
         "flex flex-col bg-transparent border-0 p-0",
-        divSizeClass,
         divFullClass,
         outerDivClass,
         disabledClass
@@ -39,6 +50,29 @@
         getSizeStyleClass(size, "formLabel"),
         labelClass
     ));
+    const combinedDivClass = $derived(twMerge(
+        defaultDivClass, 
+        selectedDivClass,
+        getSizeStyleClass(radius, "radius"), 
+        divFullClass, 
+        divClass, 
+    ));
+    let combinedClass = $derived(twMerge(
+        getSizeStyleClass(size, "form"),
+        defaultClass, 
+        className, 
+    ));
+
+    const Icon = $derived(files ? File : Upload);
+
+    function handleClick() {
+        if (!files) inputElement.click();
+    }
+
+    function handleClear(e: MouseEvent) {
+        e.stopPropagation();
+        files = undefined;
+    }
 </script>
 
 <div class={combinedOuterDivClass}>
@@ -48,4 +82,32 @@
             <span class="text-[#E05555]">*</span>
         {/if}
     </Text>
+    <Button color="none" class={combinedDivClass} onclick={handleClick} {disabled}>
+        <div class={iconContainerClass}>
+            <Icon class={iconClass}></Icon>
+        </div>
+        <input
+            {id}
+            bind:files={files}
+            bind:this={inputElement}
+            class="hidden"
+            {required}
+            {disabled}
+            aria-disabled={disabled}
+            {...restProps}
+            type="file"
+        />
+        <Text class={combinedClass}>
+            {files ? files[0]?.name : "Upload File"}
+            <Text tag="span" class="text-sub-text text-xs pt-0.75">
+                {files ? bytes(files[0]?.size || 0) : ""}
+            </Text>
+        </Text>
+
+        {#if files}
+            <Button color="blue" variant="outline" size="xs" class="ml-auto mr-2" onclick={handleClear} {disabled}>
+                Clear
+            </Button>
+        {/if}
+    </Button>
 </div>

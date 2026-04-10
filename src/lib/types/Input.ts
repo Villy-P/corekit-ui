@@ -36,7 +36,6 @@ export interface FileInputProps extends BaseComponentProps {
     required?: boolean;
     disabled?: boolean;
     // variant?: InputVariant;
-    placeholder?: string;
     size?: SizeStyle;
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;
