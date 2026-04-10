@@ -11,6 +11,8 @@
     import type { SizeStyleTheme } from "$lib/styles/size.js";
     import Toast from "$lib/components/Toast.svelte";
     import type { ToastType } from "$lib/types/Toast.js";
+    import { toast } from "$lib/actions/toast.svelte.js";
+    import type { PositionStyle } from "$lib/styles/posititon.js";
 
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },
@@ -32,20 +34,35 @@
         { value: "info", label: "Info" },
         { value: "warning", label: "Warning" }
     ]
+    const positionOptions = [
+        { value: "center", label: "Center" },
+        { value: "top", label: "Top" },
+        { value: "bottom", label: "Bottom" },
+        { value: "left", label: "Left" },
+        { value: "right", label: "Right" },
+        { value: "top-left", label: "Top Left" },
+        { value: "top-right", label: "Top Right" },
+        { value: "bottom-left", label: "Bottom Left" },
+        { value: "bottom-right", label: "Bottom Right" }
+    ];
 
     let toastType: ToastType = $state("success");
     let size: SizeStyleTheme = $state("md");
     let radius: SizeStyleTheme = $state("md");
+    let position: PositionStyle = $state("top-right");
 </script>
 
 <div class="w-full h-screen flex pt-20">
     <div class="w-3/4 flex-center">
-        <Toast message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." {size} {radius} type={toastType} duration={5000} position="top-right"/>
+        <Button color="blue" onclick={() => toast.add({ message: "This is a toast notification!", type: toastType, duration: 3000, position, size, radius })}>
+            Show Toast
+        </Button>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
         <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
         <Select divClass="w-full" options={sizeOptions} bind:value={radius} label="Radius"/>
         <Select divClass="w-full" label="Toast Type" options={toastTypeValues} bind:value={toastType}/>
+        <Select divClass="w-full" options={positionOptions} bind:value={position} label="Position"/>
     </div>
 </div>

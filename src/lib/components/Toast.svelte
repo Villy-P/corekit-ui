@@ -13,6 +13,8 @@
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import Button from "./Button.svelte";
     import { getSizeStyleClass } from "$lib/styles/size.js";
+    import { fly } from "svelte/transition";
+    import { backOut } from "svelte/easing";
 
 
     let { 
@@ -45,13 +47,22 @@
         getSizeStyleClass(radius, "radius"),
         className,
     ));
+
+    const flyParams = $derived.by(() => {
+        if (position == "top" || position == "center")
+            return { y: -20, duration: 400, easing: backOut };
+        else if (position == "bottom")
+            return { y: 20, duration: 400, easing: backOut };
+        const x = position.includes("right") ? 20 : -20;
+        return { x, duration: 400, easing: backOut };
+    });
 </script>
 
-<div class={combinedToastClass} {...restProps}>
+<div transition:fly={flyParams} class={combinedToastClass} {...restProps}>
     <div class="w-8 h-8 flex-center">
         <Icon class={defualtIconClass}/>
     </div>
-    <Text class="px-1">{message}</Text>
+    <Text class="px-1 grow flex self-center">{message}</Text>
     <Button onclick={onclose} variant="ghost" class="hover:bg-form-background" icon><X size={16}/></Button>
     <Progress 
         size="sm" 
