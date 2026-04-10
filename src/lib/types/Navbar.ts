@@ -1,17 +1,13 @@
-export interface NavbarProps {
-    children?: any;
-    class?: string;
+import type { BaseComponentProps } from "./BaseComponent.ts";
+
+export interface NavbarProps extends BaseComponentProps {
     classTop?: string;
     threshold?: number;
-    [key: string]: any;
 };
 
-export interface NavbarElementProps {
-    children?: any;
-    class?: string;
+export interface NavbarElementProps extends BaseComponentProps {
     classTop?: string;
     activeClass?: string;
     href?: string;
     threshold?: number;
-    [key: string]: any;
 }

@@ -1,3 +1,5 @@
+import type { BaseComponentProps } from "./BaseComponent.ts";
+
 export type TypewriterAction =
     | { type: "write", value: string | (() => string), color?: string | (() => string), minspeed?: number, maxspeed?: number, label?: string }
     | { type: "delete", to: string, minspeed?: number, maxspeed?: number, label?: string }    
@@ -10,9 +12,7 @@ export interface DisplaySegment {
     label?: string;
 };
 
-export interface TypewriterProps {
+export interface TypewriterProps extends BaseComponentProps {
     actions: TypewriterAction[];
-    class?: string;
     textClass?: string;
-    [key: string]: any;
 }

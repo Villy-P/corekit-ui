@@ -1,12 +1,11 @@
 import type { Component } from "svelte";
 import type { SizeStyle } from "../styles/size.ts";
 import type { HTMLInputAttributes } from "svelte/elements";
+import type { BaseComponentProps } from "./BaseComponent.ts";
 
 export type InputVariant = "default" | "floating";
 
-export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
-    children?: any;
-    class?: string;
+export interface InputProps extends BaseComponentProps {
     label?: string;
     labelClass?: string;
     divClass?: string;
@@ -26,5 +25,4 @@ export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
     size?: SizeStyle;
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;
-    [key: string]: any; 
 };  
