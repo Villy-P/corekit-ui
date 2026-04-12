@@ -35,7 +35,7 @@
     let radius: SizeStyleTheme = $state("full");
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center">
         {#key animate}
             <Progress 

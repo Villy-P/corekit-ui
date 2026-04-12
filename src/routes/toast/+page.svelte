@@ -52,7 +52,7 @@
     let position: PositionStyle = $state("top-right");
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center">
         <Button color="blue" onclick={() => toast.add({ message: "This is a toast notification!", type: toastType, duration: 3000, position, size, radius })}>
             Show Toast

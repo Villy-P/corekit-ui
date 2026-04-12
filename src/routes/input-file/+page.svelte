@@ -34,7 +34,7 @@
     let required: boolean = $state(false);
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center">
         <FileInput {size} {radius} {label} {placeholder} {disabled} {required}/>
     </div>

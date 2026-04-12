@@ -40,7 +40,7 @@
     let square: boolean = $state(false);
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center">
         <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>
             {#if icon}

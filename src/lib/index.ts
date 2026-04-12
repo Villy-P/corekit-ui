@@ -16,6 +16,7 @@ export { default as Modal } from "./components/Modal.svelte";
 export { default as Table } from "./components/Table.svelte";
 export { default as Toast } from "./components/Toast.svelte";
 export { default as Toaster } from "./components/Toaster.svelte";
+export { default as SideNavbar } from "./components/SideNavbar.svelte";
 
 export { fbmBackground } from "./actions/fbm.ts";
 export { toast } from "./actions/toast.svelte.ts";

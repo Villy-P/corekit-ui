@@ -1,3 +1,4 @@
+import type { Component } from "svelte";
 import type { BaseComponentProps } from "./BaseComponent.ts";
 
 export interface NavbarProps extends BaseComponentProps {
@@ -10,4 +11,14 @@ export interface NavbarElementProps extends BaseComponentProps {
     activeClass?: string;
     href?: string;
     threshold?: number;
+}
+
+export interface SideNavbarProps extends BaseComponentProps {
+    items?: SideNavbarItem[];
+};
+
+export interface SideNavbarItem {
+    href: string;
+    label: string;
+    icon: Component;
 }
