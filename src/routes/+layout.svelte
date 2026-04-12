@@ -30,15 +30,6 @@
     <Button href="/">
         <p>Valerius</p>
     </Button>
-    <NavbarSeparator/>
-    <NavbarElement activeClass="font-semibold" href="/button">Button</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/card">Card</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/input">Input</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/input-file">File Input</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/progress">Progress</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/modal">Modal</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/table">Table</NavbarElement>
-    <NavbarElement activeClass="font-semibold" href="/toast">Toast</NavbarElement>
 </Navbar>
 
 <SideNavbar items={sidebarElements}/>
