@@ -2,7 +2,7 @@
     import type { InputProps } from "../types/Input.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
-    import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
+    import { getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
     import { type Component } from "svelte";
     import Button from "./Button.svelte";
 
@@ -41,33 +41,10 @@
 
     let isHovered = $state(false);
 
-    const sizeParts = $derived(typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null);
-    const radiusParts = $derived(typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null);
-
-    const sizeClasses = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-
-        return twMerge(
-            parts?.form
-        );
-    });
-
-    const labelSizeClass = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-        return parts?.formLabel || "";
-    });
-
-    const divSizeClass = $derived.by(() => {
-        const radiusParts = typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null;
-        return twMerge(
-            radiusParts?.radius
-        );
-    });
-
-    const selectedLabelSizeClass = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-        return parts?.formLabelSelected || "";
-    });
+    const sizeClasses = $derived(getSizeStyleClass(size, "form"));
+    const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
+    const divSizeClass = $derived(getSizeStyleClass(radius, "radius"));
+    const selectedLabelSizeClass = $derived(getSizeStyleClass(size, "formLabelSelected"));
 
     const customStyle = $derived.by(() => {
         const styles: string[] = [];
@@ -104,12 +81,18 @@
         email: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
-    let defaultClass = "text-main-text w-full rounded-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
+    let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
     let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
     let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let floatingLabelClass = "absolute w-full";
     let iconClass = "h-full aspect-square text-sub-text";
+
+    let inputRadius = $derived.by(() => {
+        if (restProps.type === "password") return "rounded-none";
+        if (Icon !== null) return "rounded-r-full"
+        else return "rounded-full";
+    });
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
@@ -140,7 +123,7 @@
     let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-0" : "");
     let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
+    let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
 
