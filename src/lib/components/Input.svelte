@@ -87,7 +87,7 @@
 
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
     let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
-    let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
+    let defaultDivClass = "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let floatingLabelClass = "absolute w-full";
     let iconClass = "h-full aspect-square text-sub-text";
@@ -127,8 +127,8 @@
     let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-0" : "");
     let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass));
+    let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, isValidInput() ? "" : invalidClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
@@ -176,6 +176,14 @@
             return requirement(value || "");
         else if (requirement instanceof RegExp)
             return requirement.test(value || "");
+        return true;
+    }
+
+    function isValidInput() {
+        if (!touched) return true;
+        for (const requirement of requirements || [])
+            if (!testRequirement(requirement.requirements))
+                return false;
         return true;
     }
 </script>
