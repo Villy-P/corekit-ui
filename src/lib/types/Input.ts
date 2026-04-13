@@ -26,8 +26,8 @@ export interface InputProps extends BaseComponentProps {
     step?: number;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
-    validInputRegex?: RegExp;
     requirements?: InputRequirements[];
+    valid?: boolean;
     size?: SizeStyle;
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;

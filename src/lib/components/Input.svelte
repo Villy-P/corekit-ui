@@ -32,8 +32,8 @@
         onblur = undefined,
         required = false,
         disabled = false,
-        validInputRegex = undefined,
         requirements = undefined,
+        valid = $bindable(true),
         size = "md",
         radius = "md",
         id = crypto.randomUUID(),
@@ -78,7 +78,6 @@
 
     const isFloating = $derived(variant === "floating");
     const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
-    const isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
     const lifted = $derived(isFloating && (isFocused || hasContent));
 
     const Icon = $derived(icon ?? ({
@@ -128,7 +127,7 @@
     let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, isValidInput() ? "" : invalidClass));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, !isValidInput() && touched && invalidClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
@@ -180,12 +179,15 @@
     }
 
     function isValidInput() {
-        if (!touched) return true;
         for (const requirement of requirements || [])
             if (!testRequirement(requirement.requirements))
                 return false;
         return true;
     }
+
+    $effect(() => {
+        valid = isValidInput();
+    });
 </script>
 
 {#snippet labelElement()}
