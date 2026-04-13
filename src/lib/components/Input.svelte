@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { InputProps } from "../types/Input.ts";
+    import type { InputProps, InputRequirements } from "../types/Input.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
     import { getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
@@ -13,6 +13,9 @@
     import EyeOff from "@lucide/svelte/icons/eye-off";
     import ChevronUp from "@lucide/svelte/icons/chevron-up";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
+    import X from "@lucide/svelte/icons/x";
+    import Check from "@lucide/svelte/icons/check";
+  import { slide } from "svelte/transition";
 
     let { 
         children = undefined, 
@@ -30,6 +33,7 @@
         required = false,
         disabled = false,
         validInputRegex = undefined,
+        requirements = undefined,
         size = "md",
         radius = "md",
         id = crypto.randomUUID(),
@@ -106,12 +110,12 @@
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
+        touched = true;
         onfocus?.(e);
     }
 
     function handleBlur(e: FocusEvent) {
         isFocused = false;
-        touched = true;
         onblur?.(e);
     }
 
@@ -165,6 +169,14 @@
             clearInterval(decrementInterval);
             decrementInterval = null;
         }
+    }
+
+    function testRequirement(requirement: RegExp | ((value: any) => boolean)) {
+        if (typeof requirement === "function")
+            return requirement(value || "");
+        else if (requirement instanceof RegExp)
+            return requirement.test(value || "");
+        return true;
     }
 </script>
 
@@ -234,11 +246,27 @@
     </div>
 {/snippet}
 
-{#if variant !== "floating"}
-    <div class={combinedOuterDivClass}>
+<div class={combinedOuterDivClass}>
+    {#if variant !== "floating"}
         {@render labelElement()}
         {@render innerDivElement()}
-    </div>
-{:else}
-    {@render innerDivElement()}
-{/if}
+    {:else}
+        {@render innerDivElement()}
+    {/if}
+
+    {#if touched && requirements}
+        <div class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
+            {#each requirements as req}
+                {@const isReqMet = testRequirement(req.requirements)}
+                {@const reqClass = isReqMet ? "text-green-500" : "text-red-500"}
+                <div class="flex w-full items-center gap-1 transition-colors {reqClass}">
+                    <div class="relative w-4 h-4">
+                        <Check class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"/>
+                        <X     class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}"/>
+                    </div>
+                    <Text tag="span" class="text-xs text-inherit">{req.label}</Text>
+                </div>
+            {/each}
+        </div>
+    {/if}
+</div>
