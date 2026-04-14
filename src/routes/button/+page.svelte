@@ -4,6 +4,7 @@
     import Input from "$lib/components/Input.svelte";
     import Select from "$lib/components/Select.svelte";
     import Text from "$lib/components/Text.svelte";
+    import Tooltip from "$lib/components/Tooltip.svelte";
     import { colorStyleParts, type ColorStyle, type ColorStyleType } from "$lib/styles/color.js";
     import type { SizeStyle } from "$lib/styles/size.js";
 
@@ -41,14 +42,16 @@
 </script>
 
 <div class="w-full h-screen flex pt-20">
-    <div class="w-3/4 flex-center">
-        <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>
-            {#if icon}
-                <img src="/favicon.svg" alt="Icon"/>
-            {:else}
-                Customizable Button
-            {/if}
-        </Button>
+    <div class="w-3/4 flex">
+        <Tooltip text="This is a tooltip wow thats super cool i love it when that happens to people" position="top">
+            <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>
+                {#if icon}
+                    <img src="/favicon.svg" alt="Icon"/>
+                {:else}
+                    Customizable Button
+                {/if}
+            </Button>
+        </Tooltip>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
