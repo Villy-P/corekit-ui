@@ -5,6 +5,11 @@ import type { BaseComponentProps } from "./BaseComponent.ts";
 
 export type InputVariant = "default" | "floating";
 
+export interface InputRequirements {
+    label: string;
+    requirements: RegExp | ((value: any) => boolean);
+};
+
 export interface InputProps extends BaseComponentProps {
     label?: string;
     labelClass?: string;
@@ -21,7 +26,8 @@ export interface InputProps extends BaseComponentProps {
     step?: number;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
-    validInputRegex?: RegExp;
+    requirements?: InputRequirements[];
+    valid?: boolean;
     size?: SizeStyle;
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;

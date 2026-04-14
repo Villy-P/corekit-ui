@@ -41,7 +41,7 @@
     let square: boolean = $state(false);
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex">
         <Tooltip text="This is a tooltip wow thats super cool i love it when that happens to people" position="top">
             <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>

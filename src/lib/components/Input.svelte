@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { InputProps } from "../types/Input.ts";
+    import type { InputProps, InputRequirements } from "../types/Input.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
-    import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
+    import { getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
     import { type Component } from "svelte";
     import Button from "./Button.svelte";
 
@@ -13,6 +13,9 @@
     import EyeOff from "@lucide/svelte/icons/eye-off";
     import ChevronUp from "@lucide/svelte/icons/chevron-up";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
+    import X from "@lucide/svelte/icons/x";
+    import Check from "@lucide/svelte/icons/check";
+  import { slide } from "svelte/transition";
 
     let { 
         children = undefined, 
@@ -29,7 +32,8 @@
         onblur = undefined,
         required = false,
         disabled = false,
-        validInputRegex = undefined,
+        requirements = undefined,
+        valid = $bindable(true),
         size = "md",
         radius = "md",
         id = crypto.randomUUID(),
@@ -41,33 +45,10 @@
 
     let isHovered = $state(false);
 
-    const sizeParts = $derived(typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null);
-    const radiusParts = $derived(typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null);
-
-    const sizeClasses = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-
-        return twMerge(
-            parts?.form
-        );
-    });
-
-    const labelSizeClass = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-        return parts?.formLabel || "";
-    });
-
-    const divSizeClass = $derived.by(() => {
-        const radiusParts = typeof radius === "string" ? sizeStyleParts[radius as SizeStyleTheme] : null;
-        return twMerge(
-            radiusParts?.radius
-        );
-    });
-
-    const selectedLabelSizeClass = $derived.by(() => {
-        const parts = typeof size === "string" ? sizeStyleParts[size as SizeStyleTheme] : null;
-        return parts?.formLabelSelected || "";
-    });
+    const sizeClasses = $derived(getSizeStyleClass(size, "form"));
+    const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
+    const divSizeClass = $derived(getSizeStyleClass(radius, "radius"));
+    const selectedLabelSizeClass = $derived(getSizeStyleClass(size, "formLabelSelected"));
 
     const customStyle = $derived.by(() => {
         const styles: string[] = [];
@@ -97,19 +78,24 @@
 
     const isFloating = $derived(variant === "floating");
     const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
-    const isValid = $derived(!touched || !validInputRegex || validInputRegex.test(value || ""));
     const lifted = $derived(isFloating && (isFocused || hasContent));
 
     const Icon = $derived(icon ?? ({
         email: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
-    let defaultClass = "text-main-text w-full rounded-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
+    let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
     let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
-    let defaultDivClass = "relative *:transition-all flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
+    let defaultDivClass = "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let floatingLabelClass = "absolute w-full";
     let iconClass = "h-full aspect-square text-sub-text";
+
+    let inputRadius = $derived.by(() => {
+        if (restProps.type === "password") return "rounded-none";
+        if (Icon !== null) return "rounded-r-full"
+        else return "rounded-full";
+    });
 
     let originalLabelClass = "z-0";
     let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
@@ -123,12 +109,12 @@
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
+        touched = true;
         onfocus?.(e);
     }
 
     function handleBlur(e: FocusEvent) {
         isFocused = false;
-        touched = true;
         onblur?.(e);
     }
 
@@ -140,8 +126,8 @@
     let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-0" : "");
     let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className, isValid ? "" : invalidClass));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass));
+    let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
+    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, !isValidInput() && touched && invalidClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
@@ -183,6 +169,25 @@
             decrementInterval = null;
         }
     }
+
+    function testRequirement(requirement: RegExp | ((value: any) => boolean)) {
+        if (typeof requirement === "function")
+            return requirement(value || "");
+        else if (requirement instanceof RegExp)
+            return requirement.test(value || "");
+        return true;
+    }
+
+    function isValidInput() {
+        for (const requirement of requirements || [])
+            if (!testRequirement(requirement.requirements))
+                return false;
+        return true;
+    }
+
+    $effect(() => {
+        valid = isValidInput();
+    });
 </script>
 
 {#snippet labelElement()}
@@ -251,11 +256,27 @@
     </div>
 {/snippet}
 
-{#if variant !== "floating"}
-    <div class={combinedOuterDivClass}>
+<div class={combinedOuterDivClass}>
+    {#if variant !== "floating"}
         {@render labelElement()}
         {@render innerDivElement()}
-    </div>
-{:else}
-    {@render innerDivElement()}
-{/if}
+    {:else}
+        {@render innerDivElement()}
+    {/if}
+
+    {#if touched && requirements}
+        <div class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
+            {#each requirements as req}
+                {@const isReqMet = testRequirement(req.requirements)}
+                {@const reqClass = isReqMet ? "text-green-500" : "text-red-500"}
+                <div class="flex w-full items-center gap-1 transition-colors {reqClass}">
+                    <div class="relative w-4 h-4">
+                        <Check class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"/>
+                        <X     class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}"/>
+                    </div>
+                    <Text tag="span" class="text-xs text-inherit">{req.label}</Text>
+                </div>
+            {/each}
+        </div>
+    {/if}
+</div>

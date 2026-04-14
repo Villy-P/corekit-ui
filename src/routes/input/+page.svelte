@@ -45,11 +45,17 @@
     let required: boolean = $state(false);
     let type: string = $state("text");
     let placeholder: string = $state("Placeholder");
+
+    let requirements = [
+        { label: "Must be at least 8 characters", requirements: (value: string) => value.length >= 8 },
+        { label: "Must contain a number", requirements: /\d/ },
+        { label: "Must contain an uppercase letter", requirements: /[A-Z]/ }
+    ];
 </script>
 
-<div class="w-full h-screen flex pt-20">
+<div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center">
-        <Input {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder}/>
+        <Input {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder} {requirements}/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
