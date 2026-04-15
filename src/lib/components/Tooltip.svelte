@@ -105,22 +105,19 @@
     class="relative inline-flex w-fit h-fit"
     onmouseenter={show}
     onmouseleave={hide}
-    role="tooltip"
->
+    role="tooltip">
     {@render children()}
 
     {#if visible}
         <div
             bind:this={tooltip}
             style="transform: translateX(calc(-50% + {offsetX}px));"
-            class="absolute z-999999 {positionClasses[resolvedPosition || position]} translate-x-0! pointer-events-none"
-        >
+            class="absolute z-999999 {positionClasses[resolvedPosition || position]} translate-x-0! pointer-events-none">
             <div 
                 transition:fly={flyParams}
-                class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap"
-            >
+                class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap">
                 {text}
-                
+
                 <div 
                     class="absolute {arrowClasses[resolvedPosition || position]} border-4 border-transparent w-0 h-0"
                     style="transform: translateX(calc(-50% + {arrowX}px));"
