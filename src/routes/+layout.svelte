@@ -13,6 +13,9 @@
     import CircleAlert from "@lucide/svelte/icons/circle-alert";
     import NavbarDropdown from '$lib/components/NavbarDropdown.svelte';
 
+    import Settings from "@lucide/svelte/icons/settings";
+    import User from "@lucide/svelte/icons/user";
+
 	const { children } = $props();
 
     const sidebarElements = [
@@ -40,8 +43,8 @@
             <div class="rounded-full bg-green-400 flex-center p-2 aspect-square h-10 w-10">VP</div>
         {/snippet}
 
-        <NavbarElement href="/profile">Profile</NavbarElement>
-        <NavbarElement href="/settings">Settings</NavbarElement>
+        <NavbarElement href="/profile"><User size={16}/>Profile</NavbarElement>
+        <NavbarElement href="/settings"><Settings size={16}/>Settings</NavbarElement>
     </NavbarDropdown>
 </Navbar>
 

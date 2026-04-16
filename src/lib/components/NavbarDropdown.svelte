@@ -55,12 +55,12 @@
 
     {#if open}
         <div 
-            class="absolute {flipUp ? 'bottom-full' : 'top-full'} left-0 z-100 mt-1"
+            class="absolute {flipUp ? 'bottom-full' : 'top-full'} left-0 z-100 mt-1 overflow-hidden shadow-lg"
             style="transform: translateX({offsetX}px); visibility: {open ? 'visible' : 'hidden'};">
             <button 
                 bind:this={dropdownRef}
                 transition:fly={{ y: flipUp ? 5 : -5, duration: 200 }} 
-                class="bg-sub-background rounded shadow-lg p-2 min-w-max flex flex-col"
+                class="bg-sub-background p-2 min-w-max flex flex-col *:px-0 rounded border-sub-background-hover border"
                 onclick={() => open = false}>
                 {@render children?.()}
             </button>
