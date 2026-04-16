@@ -5,6 +5,7 @@ export { default as SEO } from "./components/SEO.svelte";
 export { default as Navbar } from "./components/Navbar.svelte";
 export { default as NavbarSeparator } from "./components/NavbarSeparator.svelte";
 export { default as NavbarElement } from "./components/NavbarElement.svelte";
+export { default as NavbarDropdown } from "./components/NavbarDropdown.svelte";
 export { default as Input } from "./components/Input.svelte";
 export { default as FileInput } from "./components/FileInput.svelte";
 export { default as Select } from "./components/Select.svelte";

@@ -22,3 +22,11 @@ export interface SideNavbarItem {
     label: string;
     icon: Component;
 }
+
+export interface NavbarDropdownProps extends BaseComponentProps {
+    label: string;
+    element?: Component;
+    classTop?: string;
+    activeClass?: string;
+    threshold?: number;
+}

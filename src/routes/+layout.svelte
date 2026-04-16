@@ -11,6 +11,7 @@
     import Ellipsis from "@lucide/svelte/icons/ellipsis";
     import Table from "@lucide/svelte/icons/table";
     import CircleAlert from "@lucide/svelte/icons/circle-alert";
+    import NavbarDropdown from '$lib/components/NavbarDropdown.svelte';
 
 	const { children } = $props();
 
@@ -30,6 +31,18 @@
     <Button href="/">
         <p>Valerius</p>
     </Button>
+
+    <NavbarSeparator/>
+
+    <NavbarElement href="https://github.com/Villy-P/corekit-ui" activeClass="bg-main-text/10">Github</NavbarElement>
+    <NavbarDropdown>
+        {#snippet element()}
+            <div class="rounded-full bg-green-400 flex-center p-2 aspect-square h-10 w-10">VP</div>
+        {/snippet}
+
+        <NavbarElement href="/profile">Profile</NavbarElement>
+        <NavbarElement href="/settings">Settings</NavbarElement>
+    </NavbarDropdown>
 </Navbar>
 
 <SideNavbar items={sidebarElements}/>
