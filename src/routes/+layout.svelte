@@ -38,12 +38,14 @@
     <NavbarSeparator/>
 
     <NavbarElement href="https://github.com/Villy-P/corekit-ui" activeClass="bg-main-text/10">Github</NavbarElement>
+    <NavbarSeparator variant="vertical"/>
     <NavbarDropdown>
         {#snippet element()}
             <div class="rounded-full bg-green-400 flex-center p-2 aspect-square h-10 w-10">VP</div>
         {/snippet}
 
         <NavbarElement href="/profile"><User size={16}/>Profile</NavbarElement>
+        <NavbarSeparator variant="horizontal"/>
         <NavbarElement href="/settings"><Settings size={16}/>Settings</NavbarElement>
     </NavbarDropdown>
 </Navbar>
