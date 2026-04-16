@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { TooltipComponent } from "$lib/types/Tooltip.js";
     import { type Snippet } from "svelte";
     import { fly } from "svelte/transition";
 
@@ -7,12 +8,7 @@
         position = "top",
         delay = 0,
         children
-    }: {
-        text: string;
-        position?: "top" | "bottom" | "left" | "right";
-        delay?: number;
-        children: Snippet;
-    } = $props();
+    }: TooltipComponent = $props();
 
     let visible = $state(false);
     let resolvedPosition: string | null = $state(null);

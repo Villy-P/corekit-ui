@@ -1,4 +1,5 @@
 export type PositionStyle = "top" | "right" | "bottom" | "left" | "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
+export type TooltipPosition = "top" | "right" | "bottom" | "left";
 
 export const positionParts: Record<PositionStyle, string> = {
     "top": "top-4 left-1/2 -translate-x-1/2",
