@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { InputProps, InputRequirements } from "../types/Input.ts";
+    import type { InputProps } from "../types/Input.ts";
     import { twMerge } from "tailwind-merge";
     import Text from "./Text.svelte";
-    import { getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
+    import { getSizeStyleClass } from "../styles/size.ts";
     import { type Component } from "svelte";
     import Button from "./Button.svelte";
 
@@ -11,8 +11,6 @@
     import Phone from "@lucide/svelte/icons/phone";
     import Eye from "@lucide/svelte/icons/eye";
     import EyeOff from "@lucide/svelte/icons/eye-off";
-    import ChevronUp from "@lucide/svelte/icons/chevron-up";
-    import ChevronDown from "@lucide/svelte/icons/chevron-down";
     import X from "@lucide/svelte/icons/x";
     import Check from "@lucide/svelte/icons/check";
     import { slide } from "svelte/transition";
