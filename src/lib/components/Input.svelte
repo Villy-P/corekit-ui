@@ -15,7 +15,7 @@
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
     import X from "@lucide/svelte/icons/x";
     import Check from "@lucide/svelte/icons/check";
-  import { slide } from "svelte/transition";
+    import { slide } from "svelte/transition";
 
     let { 
         children = undefined, 

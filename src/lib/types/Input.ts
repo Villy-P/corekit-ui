@@ -10,16 +10,22 @@ export interface InputRequirements {
     requirements: RegExp | ((value: any) => boolean);
 };
 
-export interface InputProps extends BaseComponentProps {
+export interface BaseInputProps extends BaseComponentProps {
     label?: string;
     labelClass?: string;
     divClass?: string;
     outerDivClass?: string;
-    icon?: Component;
     value?: any;
     required?: boolean;
     disabled?: boolean;
     variant?: InputVariant;
+    size?: SizeStyle;
+    radius?: SizeStyle;
+    id?: `${string}-${string}-${string}-${string}-${string}`;
+}
+
+export interface InputProps extends BaseInputProps {
+    icon?: Component;
     placeholder?: string;
     min?: number;
     max?: number;
@@ -28,9 +34,10 @@ export interface InputProps extends BaseComponentProps {
     onblur?: (e?: FocusEvent) => void;
     requirements?: InputRequirements[];
     valid?: boolean;
-    size?: SizeStyle;
-    radius?: SizeStyle;
-    id?: `${string}-${string}-${string}-${string}-${string}`;
+};  
+
+export interface SelectProps extends BaseInputProps {
+    options: { value: any; label: string }[];
 };  
 
 export interface FileInputProps extends BaseComponentProps {

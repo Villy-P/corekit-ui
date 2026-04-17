@@ -3,7 +3,7 @@
     import Text from "./Text.svelte";
     import { getSizeStyleClass } from "../styles/size.ts";
 
-    import type { SelectProps } from "$lib/types/Select.js";
+    import type { SelectProps } from "$lib/types/Input.js";
 
     let { 
         children = undefined, 
