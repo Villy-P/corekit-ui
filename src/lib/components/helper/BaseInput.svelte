@@ -19,6 +19,12 @@
         radius = "md",
         isFocused = false,
         id = crypto.randomUUID(),
+
+        isHovered = $bindable(false),
+
+        innerDivElement = undefined,
+        outerDivElementAfter = undefined,
+
         ...restProps
     }: BaseInputProps = $props();
 
@@ -33,15 +39,31 @@
         return styles.join("; ");
     });
 
-    let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
-    let floatingLabelClass = "absolute w-full z-30 top-1/2 transform -translate-y-1/2 px-1.5";
+    const defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
+    const floatingLabelClass = "absolute w-full z-30 top-1/2 transform -translate-y-1/2 px-1.5";
 
-    let combinedLabelClass = $derived(twMerge(
+    const combinedLabelClass = $derived(twMerge(
         defaultLabelClass, 
         (variant === "floating") ? floatingLabelClass : "px-0", 
         getSizeStyleClass(size, "formLabel"), 
         ((isFocused || hasContent) && variant === "floating") && getSizeStyleClass(size, "formLabelSelected"),
         labelClass
+    ));
+
+    const combinedOuterDivClass = $derived(twMerge(
+        "flex flex-col bg-transparent border-0 p-0",
+        getSizeStyleClass(radius, "radius"),
+        size === "full" ? "w-full" : "",
+        outerDivClass,
+        disabled ? "opacity-50 pointer-events-none" : ""
+    ));
+
+    const combinedDivClass = $derived(twMerge(
+        "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500",
+        getSizeStyleClass(radius, "radius"),
+        size === "full" ? "w-full" : "",
+        divClass,
+        disabled ? "opacity-50 pointer-events-none" : ""
     ));
 </script>
 
@@ -54,4 +76,22 @@
     </Text>
 {/snippet}
 
-{@render labelElement()}
+{#snippet innerDivElementWrapper()}
+    <div role="button" tabindex="0" class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
+        {#if variant === "floating"}
+            {@render labelElement()}
+        {/if}
+        {@render innerDivElement?.()}
+    </div>
+{/snippet}
+
+<div class={combinedOuterDivClass}>
+    {#if variant !== "floating"}
+        {@render labelElement()}
+        {@render innerDivElementWrapper()}
+    {:else}
+        {@render innerDivElementWrapper()}
+    {/if}
+
+    {@render outerDivElementAfter?.()}
+</div>

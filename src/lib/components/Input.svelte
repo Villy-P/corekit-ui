@@ -47,7 +47,6 @@
 
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
-    const divSizeClass = $derived(getSizeStyleClass(radius, "radius"));
 
     const customStyle = $derived.by(() => {
         const styles: string[] = [];
@@ -71,7 +70,6 @@
     }[restProps.type as string] as Component ?? null));
 
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
-    let defaultDivClass = "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let iconClass = "h-full aspect-square text-sub-text";
 
@@ -82,9 +80,6 @@
     });
 
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
-
-    let divFullClass = $derived(size === "full" ? "w-full" : "");
-    let disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "");
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
@@ -103,8 +98,7 @@
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let combinedLabelClass = $derived(twMerge(labelClassIcon, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
-    let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, !isValidInput() && touched && invalidClass));
-    let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
+    let combinedDivClass = $derived(twMerge(divClass, (!isValidInput() && touched) && invalidClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
 
@@ -128,13 +122,12 @@
     });
 </script>
 
-{#snippet labelElement()}
 <BaseInput
     {children}
     {className}
     {label}
     labelClass={combinedLabelClass}
-    {divClass}
+    divClass={combinedDivClass}
     {outerDivClass}
     {value}
     {required}
@@ -145,16 +138,25 @@
     {isFocused}
     {id}
     {...restProps}>
-    
-</BaseInput>
-{/snippet}
-
-{#snippet innerDivElement()}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
-        {#if variant === "floating"}
-            {@render labelElement()}
+    {#snippet outerDivElementAfter()}
+        {#if touched && requirements}
+            <div class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
+                {#each requirements as req}
+                    {@const isReqMet = testRequirement(req.requirements)}
+                    {@const reqClass = isReqMet ? "text-green-500" : "text-red-500"}
+                    <div class="flex w-full items-center gap-1 transition-colors {reqClass}">
+                        <div class="relative w-4 h-4">
+                            <Check class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"/>
+                            <X     class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}"/>
+                        </div>
+                        <Text tag="span" class="text-xs text-inherit">{req.label}</Text>
+                    </div>
+                {/each}
+            </div>
         {/if}
+    {/snippet}
+
+    {#snippet innerDivElement()}
         {#if Icon}
             <div class={iconContainerClass}>
                 <Icon class={iconClass}></Icon>
@@ -184,30 +186,6 @@
         {:else if restProps.type === "number"}
             <NumberInput {max} {min} {step} bind:value {isHovered} {size}/>
         {/if}
-    </div>
-{/snippet}
+    {/snippet}
+</BaseInput>
 
-<div class={combinedOuterDivClass}>
-    {#if variant !== "floating"}
-        {@render labelElement()}
-        {@render innerDivElement()}
-    {:else}
-        {@render innerDivElement()}
-    {/if}
-
-    {#if touched && requirements}
-        <div class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
-            {#each requirements as req}
-                {@const isReqMet = testRequirement(req.requirements)}
-                {@const reqClass = isReqMet ? "text-green-500" : "text-red-500"}
-                <div class="flex w-full items-center gap-1 transition-colors {reqClass}">
-                    <div class="relative w-4 h-4">
-                        <Check class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"/>
-                        <X     class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}"/>
-                    </div>
-                    <Text tag="span" class="text-xs text-inherit">{req.label}</Text>
-                </div>
-            {/each}
-        </div>
-    {/if}
-</div>
