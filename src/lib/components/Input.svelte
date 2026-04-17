@@ -152,13 +152,13 @@
 {#snippet innerDivElement()}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
+        {#if variant === "floating"}
+            {@render labelElement()}
+        {/if}
         {#if Icon}
             <div class={iconContainerClass}>
                 <Icon class={iconClass}></Icon>
             </div>
-        {/if}
-        {#if variant === "floating"}
-            {@render labelElement()}
         {/if}
         <input
             {id}
