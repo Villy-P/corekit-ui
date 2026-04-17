@@ -16,6 +16,7 @@
     import X from "@lucide/svelte/icons/x";
     import Check from "@lucide/svelte/icons/check";
     import { slide } from "svelte/transition";
+    import BaseInput from "./helper/BaseInput.svelte";
 
     let { 
         children = undefined, 
@@ -48,7 +49,6 @@
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
     const divSizeClass = $derived(getSizeStyleClass(radius, "radius"));
-    const selectedLabelSizeClass = $derived(getSizeStyleClass(size, "formLabelSelected"));
 
     const customStyle = $derived.by(() => {
         const styles: string[] = [];
@@ -62,33 +62,18 @@
         return styles.join("; ");
     });
 
-    const customLabelStyle = $derived.by(() => {
-        const styles: string[] = [];
-
-        if (typeof size === "number")
-            styles.push(`font-size: ${size / 4}px`);
-
-        return styles.join("; ");
-    });
-
     let isFocused = $state(false);
     let touched = $state(false);
 
     let canSeePassword = $state(false);
-
-    const isFloating = $derived(variant === "floating");
-    const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
-    const lifted = $derived(isFloating && (isFocused || hasContent));
 
     const Icon = $derived(icon ?? ({
         email: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
-    let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
-    let defaultDivClass = "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500";
+    let defaultDivClass = "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
-    let floatingLabelClass = "absolute w-full";
     let iconClass = "h-full aspect-square text-sub-text";
 
     let inputRadius = $derived.by(() => {
@@ -97,13 +82,8 @@
         else return "rounded-full";
     });
 
-    let originalLabelClass = "z-0";
-    let originalLabelClassInput = "top-1/2 transform -translate-y-1/2";
-    let originalSelectedLabelClass = "z-30";
-
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
 
-    let floatingLabelClassFull = $derived(twMerge(originalLabelClassInput, originalLabelClass, floatingLabelClass));
     let divFullClass = $derived(size === "full" ? "w-full" : "");
     let disabledClass = $derived(disabled ? "opacity-50 pointer-events-none" : "");
 
@@ -118,14 +98,11 @@
         onblur?.(e);
     }
 
-    let labelClassIcon = $derived(Icon !== null ? "pl-[32px] pr-2" : "px-1.5");
+    let labelClassIcon = $derived(Icon !== null && variant === "floating" ? "pl-[32px] pr-2" : "");
     let inputClassIcon = $derived(Icon !== null ? "pl-0 pr-1" : "");
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
-    let floatingLabelClassCheck = $derived(variant === "floating" ? floatingLabelClassFull : "");
-    let defaultLabelClassCheck = $derived(variant !== "floating" ? "px-0" : "");
-    let selectedLabelClass = $derived(twMerge((isFocused || hasContent) && variant === "floating" ? `${originalSelectedLabelClass} ${selectedLabelSizeClass}` : ""));
-    let combinedLabelClass = $derived(twMerge(defaultLabelClass, floatingLabelClassCheck, labelSizeClass, selectedLabelClass, labelClassIcon, defaultLabelClassCheck, labelClass));
+    let combinedLabelClass = $derived(twMerge(labelClassIcon, labelClass));
     let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divSizeClass, divFullClass, divClass, disabledClass, !isValidInput() && touched && invalidClass));
     let combinedOuterDivClass = $derived(twMerge("flex flex-col bg-transparent border-0 p-0", divSizeClass, divFullClass, outerDivClass, disabledClass));
@@ -191,12 +168,24 @@
 </script>
 
 {#snippet labelElement()}
-    <Text tag="label" for={id} class={combinedLabelClass} style={customLabelStyle}>
-        {label}
-        {#if required}
-            <span class="text-[#E05555]">*</span>
-        {/if}
-    </Text>
+<BaseInput
+    {children}
+    {className}
+    {label}
+    labelClass={combinedLabelClass}
+    {divClass}
+    {outerDivClass}
+    {value}
+    {required}
+    {disabled}
+    {variant}
+    {size}
+    {radius}
+    {isFocused}
+    {id}
+    {...restProps}>
+    
+</BaseInput>
 {/snippet}
 
 {#snippet innerDivElement()}

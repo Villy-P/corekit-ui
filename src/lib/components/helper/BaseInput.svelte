@@ -17,13 +17,12 @@
         variant = "default",
         size = "md",
         radius = "md",
+        isFocused = false,
         id = crypto.randomUUID(),
         ...restProps
     }: BaseInputProps = $props();
 
-    let isFocused = $state(false);
-    let touched = $state(false);
-    let isHovered = $state(false);
+    const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
 
     const customLabelStyle = $derived.by(() => {
         const styles: string[] = [];
@@ -35,13 +34,13 @@
     });
 
     let defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
-    let floatingLabelClass = "absolute w-full z-30 top-1/2 transform -translate-y-1/2";
+    let floatingLabelClass = "absolute w-full z-30 top-1/2 transform -translate-y-1/2 px-1.5";
 
     let combinedLabelClass = $derived(twMerge(
         defaultLabelClass, 
         (variant === "floating") ? floatingLabelClass : "px-0", 
         getSizeStyleClass(size, "formLabel"), 
-        value != null && getSizeStyleClass(size, "formLabelSelected"), 
+        ((isFocused || hasContent) && variant === "floating") && getSizeStyleClass(size, "formLabelSelected"),
         labelClass
     ));
 </script>
@@ -55,4 +54,4 @@
     </Text>
 {/snippet}
 
-{@render labelElement?.()}
+{@render labelElement()}
