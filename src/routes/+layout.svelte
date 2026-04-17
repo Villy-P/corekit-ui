@@ -12,6 +12,7 @@
     import Table from "@lucide/svelte/icons/table";
     import CircleAlert from "@lucide/svelte/icons/circle-alert";
     import NavbarDropdown from '$lib/components/NavbarDropdown.svelte';
+    import SquareDashed from "@lucide/svelte/icons/square-dashed";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -23,8 +24,9 @@
         { href: "/card", label: "Card", icon: Square },
         { href: "/input", label: "Input", icon: Signature },
         { href: "/input-file", label: "File Input", icon: File },
-        { href: "/progress", label: "Progress", icon: SquareChevronDown },
-        { href: "/modal", label: "Modal", icon: Ellipsis },
+        { href: "/select", label: "Select", icon: SquareChevronDown },
+        { href: "/progress", label: "Progress", icon: Ellipsis },
+        { href: "/modal", label: "Modal", icon: SquareDashed },
         { href: "/table", label: "Table", icon: Table },
         { href: "/toast", label: "Toast", icon: CircleAlert }
     ];
@@ -41,7 +43,7 @@
     <NavbarSeparator variant="vertical"/>
     <NavbarDropdown>
         {#snippet element()}
-            <div class="rounded-full bg-green-400 flex-center p-2 aspect-square h-10 w-10">VP</div>
+            <div class="rounded-full bg-linear-to-r from-emerald-500 to-emerald-900 flex-center p-2 aspect-square h-10 w-10">VP</div>
         {/snippet}
 
         <NavbarElement href="/profile"><User size={16}/>Profile</NavbarElement>
