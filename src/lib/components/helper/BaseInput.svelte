@@ -88,10 +88,8 @@
 <div class={combinedOuterDivClass}>
     {#if variant !== "floating"}
         {@render labelElement()}
-        {@render innerDivElementWrapper()}
-    {:else}
-        {@render innerDivElementWrapper()}
     {/if}
+    {@render innerDivElementWrapper()}
 
     {@render outerDivElementAfter?.()}
 </div>
