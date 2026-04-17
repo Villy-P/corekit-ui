@@ -17,6 +17,7 @@
     import Check from "@lucide/svelte/icons/check";
     import { slide } from "svelte/transition";
     import BaseInput from "./helper/BaseInput.svelte";
+    import NumberInput from "./helper/NumberInput.svelte";
 
     let { 
         children = undefined, 
@@ -109,44 +110,6 @@
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
 
-    let numberIconClass = $derived(twMerge(iconClass, sizeClasses, "text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col transition-all duration-150"));
-    let numberButtonClass = $derived(twMerge(iconContainerClass, "h-1/2 gap-0 px-0.5 hover:bg-form-border aspect-square rounded-none"));
-
-    function increment() {
-        if (max === undefined || value < max) value = (value || 0) + (step || 1);
-    }
-
-    function decrement() {
-        if (min === undefined || value > min) value = (value || 0) - (step || 1);
-    }
-
-    let incrementInterval: ReturnType<typeof setInterval> | null = null;
-    let decrementInterval: ReturnType<typeof setInterval> | null = null;
-
-    function startIncrement() {
-        increment();
-        incrementInterval = setInterval(increment, 100);
-    }
-
-    function stopIncrement() {
-        if (incrementInterval) {
-            clearInterval(incrementInterval);
-            incrementInterval = null;
-        }
-    }
-
-    function startDecrement() {
-        decrement();
-        decrementInterval = setInterval(decrement, 100);
-    }
-
-    function stopDecrement() {
-        if (decrementInterval) {
-            clearInterval(decrementInterval);
-            decrementInterval = null;
-        }
-    }
-
     function testRequirement(requirement: RegExp | ((value: any) => boolean)) {
         if (typeof requirement === "function")
             return requirement(value || "");
@@ -221,26 +184,7 @@
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
         {:else if restProps.type === "number"}
-            <div class={twMerge(numberIconClass, isHovered ? "opacity-100 scale-100" : "opacity-0 scale-75")}>
-                <Button 
-                    size="none" radius="none" 
-                    class={numberButtonClass} 
-                    onmousedown={startIncrement}
-                    onmouseup={stopIncrement}
-                    onmouseleave={stopIncrement}
-                    disabled={max !== undefined && value >= max}>
-                    <ChevronUp class="w-full h-full"/>
-                </Button>
-                <Button 
-                    size="none" radius="none" 
-                    class={numberButtonClass} 
-                    onmousedown={startDecrement}
-                    onmouseup={stopDecrement}
-                    onmouseleave={stopDecrement}
-                    disabled={min !== undefined && value <= min}>
-                    <ChevronDown class="w-full h-full"/>
-                </Button>
-            </div>
+            <NumberInput {max} {min} {step} bind:value {isHovered} {size}/>
         {/if}
     </div>
 {/snippet}
