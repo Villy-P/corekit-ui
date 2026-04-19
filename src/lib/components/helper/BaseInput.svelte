@@ -55,7 +55,7 @@
     ));
 
     const combinedOuterDivClass = $derived(twMerge(
-        "flex flex-col bg-transparent border-0 p-0",
+        "relative flex flex-col bg-transparent border-0 p-0",
         getSizeStyleClass(radius, "radius"),
         size === "full" ? "w-full" : "",
         outerDivClass,

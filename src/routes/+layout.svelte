@@ -13,6 +13,7 @@
     import CircleAlert from "@lucide/svelte/icons/circle-alert";
     import NavbarDropdown from '$lib/components/NavbarDropdown.svelte';
     import SquareDashed from "@lucide/svelte/icons/square-dashed";
+    import List from "@lucide/svelte/icons/list";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -25,6 +26,7 @@
         { href: "/input", label: "Input", icon: Signature },
         { href: "/input-file", label: "File Input", icon: File },
         { href: "/select", label: "Select", icon: SquareChevronDown },
+        { href: "/combobox", label: "Combobox", icon: List },
         { href: "/progress", label: "Progress", icon: Ellipsis },
         { href: "/modal", label: "Modal", icon: SquareDashed },
         { href: "/table", label: "Table", icon: Table },

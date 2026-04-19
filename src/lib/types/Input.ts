@@ -40,6 +40,13 @@ export interface SelectProps extends BaseInputProps {
     options: { value: any; label: string }[];
 };  
 
+export interface ComboboxProps extends BaseInputProps {
+    options?: { value: any; label: string }[];
+    placeholder?: string;
+    onfocus?: (e?: FocusEvent) => void;
+    onblur?: (e?: FocusEvent) => void;
+}
+
 export interface FileInputProps extends BaseComponentProps {
     label?: string;
     labelClass?: string;
