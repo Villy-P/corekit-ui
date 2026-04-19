@@ -40,12 +40,15 @@
         return styles.join("; ");
     });
 
+    let labelClassIcon = $derived(icon !== null && variant === "floating" ? "pl-[32px] pr-2" : "");
+
     const defaultLabelClass = "block text-sub-text font-medium mb-1 duration-100 pointer-events-none truncate w-fit";
     const floatingLabelClass = "absolute w-full z-30 top-1/2 transform -translate-y-1/2 px-1.5";
 
     const combinedLabelClass = $derived(twMerge(
         defaultLabelClass, 
         (variant === "floating") ? floatingLabelClass : "px-0", 
+        labelClassIcon,
         getSizeStyleClass(size, "formLabel"), 
         ((isFocused || hasContent) && variant === "floating") && getSizeStyleClass(size, "formLabelSelected"),
         labelClass
@@ -60,7 +63,7 @@
     ));
 
     const combinedDivClass = $derived(twMerge(
-        "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500",
+        "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden",
         getSizeStyleClass(radius, "radius"),
         size === "full" ? "w-full" : "",
         divClass,

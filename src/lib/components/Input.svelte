@@ -69,15 +69,9 @@
         email: Mail, password: Lock, tel: Phone
     }[restProps.type as string] as Component ?? null));
 
-    let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0";
+    let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0 rounded-none";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
     let iconClass = "h-full aspect-square text-sub-text";
-
-    let inputRadius = $derived.by(() => {
-        if (restProps.type === "password") return "rounded-none";
-        if (Icon !== null) return "rounded-r-full"
-        else return "rounded-full";
-    });
 
     let invalidClass = "border border-red-500 focus:ring-red-500 bg-[#2E1F1F]";
 
@@ -92,12 +86,10 @@
         onblur?.(e);
     }
 
-    let labelClassIcon = $derived(Icon !== null && variant === "floating" ? "pl-[32px] pr-2" : "");
     let inputClassIcon = $derived(Icon !== null ? "pl-0 pr-1" : "");
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
-    let combinedLabelClass = $derived(twMerge(labelClassIcon, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, inputRadius, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
+    let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
     let combinedDivClass = $derived(twMerge(divClass, (!isValidInput() && touched) && invalidClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
@@ -126,7 +118,7 @@
     {children}
     {className}
     {label}
-    labelClass={combinedLabelClass}
+    {labelClass}
     divClass={combinedDivClass}
     {outerDivClass}
     {value}
