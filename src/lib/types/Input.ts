@@ -41,7 +41,7 @@ export interface SelectProps extends BaseInputProps {
 };  
 
 export interface ComboboxProps extends BaseInputProps {
-    options?: { value: any; label: string }[];
+    options?: string[];
     placeholder?: string;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;

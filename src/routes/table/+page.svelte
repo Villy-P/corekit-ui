@@ -42,7 +42,7 @@
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
-    <div class="w-3/4 flex-center">
+    <div class="w-3/4 flex-center px-10">
         <Table {tableHeaders} {tableData}/>
     </div>
 

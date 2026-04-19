@@ -53,7 +53,7 @@
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
-    <div class="w-3/4 flex-center">
+    <div class="w-3/4 flex-center px-10">
         <Button color="blue" onclick={() => toast.add({ message: "This is a toast notification!", type: toastType, duration: 3000, position, size, radius })}>
             Show Toast
         </Button>

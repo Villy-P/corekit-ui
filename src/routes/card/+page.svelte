@@ -36,7 +36,7 @@
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
-    <div class="w-3/4 flex-center">
+    <div class="w-3/4 flex-center px-10">
         <Card {variant} {size} {radius} {href} {external}>
             <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Card</Text>
             <Text class="mb-4">This is a customizable card component. You can add any content here and style it as needed.</Text>

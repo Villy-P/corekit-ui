@@ -10,6 +10,7 @@
     import type { SizeStyle } from "$lib/styles/size.js";
     import type { CardVariant } from "$lib/types/Card.js";
     import type { InputVariant } from "$lib/types/Input.js";
+    import university_data from "../../test/world_universities_and_domains.json" with { type: "json" };
 
     const variantOptions = [
         { value: "bordered", label: "Bordered" },
@@ -38,24 +39,14 @@
     let required: boolean = $state(false);
     let limit: number = $state(10);
     let placeholder: string = $state("Placeholder");
+
+    const options = university_data.map((u: { name: string }) => u.name);
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
-    <div class="w-3/4 flex-center">
+    <div class="w-3/4 flex-center px-10">
         <Combobox
-            options={[
-                { value: "option1", label: "Option 1" },
-                { value: "option2", label: "Option 2" },
-                { value: "option3", label: "Option 3" },
-                { value: "option4", label: "Option 4" },
-                { value: "option5", label: "Option 5" },
-                { value: "option6", label: "Option 6" },
-                { value: "option7", label: "Option 7" },
-                { value: "option8", label: "Option 8" },
-                { value: "option9", label: "Option 9" },
-                { value: "option10", label: "Option 10" }
-            ]}
-            {size} {radius} {label} {disabled} {required} {variant} {placeholder} {limit}
+            {size} {radius} {label} {disabled} {required} {variant} {placeholder} {limit} {options}
         />
     </div>
 

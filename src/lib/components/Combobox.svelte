@@ -68,7 +68,7 @@
     }
 
     function handleBlur(e: FocusEvent) {
-        const match = options.find(o => o.label.toLowerCase() === (value ?? "").toString().toLowerCase());
+        const match = options.find(o => o.toLowerCase() === (value ?? "").toString().toLowerCase());
         if (!match) value = "";
         isFocused = false;
         onblur?.(e);
@@ -80,9 +80,9 @@
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, className));
     let combinedDivClass = $derived(twMerge(divClass));
 
-    function onClickItem(event: MouseEvent, option: { value: any; label: string }) {
+    function onClickItem(event: MouseEvent, option: string) {
         event.preventDefault();
-        value = option.label;
+        value = option;
         isFocused = false;
         inputElement?.blur();
     }
@@ -104,7 +104,7 @@
 
     let filteredOptions = $derived(
         options.filter(option =>
-            option.label.toLowerCase().includes(debouncedSearch.toLowerCase()))
+            option.toLowerCase().includes(debouncedSearch.toLowerCase()))
     );
 
     let validOptions = $derived(filteredOptions.slice(0, limit));
@@ -159,7 +159,7 @@
                 {/if}
                 {#each validOptions as option}
                     <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
-                        {@html highlight(option.label, value ?? "")}
+                        {@html highlight(option, value ?? "")}
                     </Text>
                 {/each}
             </div>
