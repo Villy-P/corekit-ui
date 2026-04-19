@@ -45,6 +45,7 @@ export interface ComboboxProps extends BaseInputProps {
     placeholder?: string;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
+    limit?: number;
 }
 
 export interface FileInputProps extends BaseComponentProps {

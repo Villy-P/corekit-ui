@@ -130,6 +130,7 @@
     {isFocused}
     {id}
     icon={Icon}
+    bind:isHovered
     {...restProps}>
     {#snippet outerDivElementAfter()}
         {#if touched && requirements}

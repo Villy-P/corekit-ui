@@ -36,7 +36,7 @@
     let label: string = $state("Label");
     let disabled: boolean = $state(false);
     let required: boolean = $state(false);
-    let type: string = $state("text");
+    let limit: number = $state(10);
     let placeholder: string = $state("Placeholder");
 </script>
 
@@ -55,7 +55,7 @@
                 { value: "option9", label: "Option 9" },
                 { value: "option10", label: "Option 10" }
             ]}
-            {size} {radius} {label} {disabled} {required} {type} {variant} {placeholder}
+            {size} {radius} {label} {disabled} {required} {variant} {placeholder} {limit}
         />
     </div>
 
@@ -65,6 +65,7 @@
         <Select divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
         <Input size="full" bind:value={label} label="Label"/>
         <Input size="full" bind:value={placeholder} label="Placeholder"/>
+        <Input size="full" bind:value={limit} label="Limit" type="number"/>
         <Checkbox label="Disabled" bind:checked={disabled}/>
         <Checkbox label="Required" bind:checked={required}/>
     </div>

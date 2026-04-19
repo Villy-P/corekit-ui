@@ -25,6 +25,7 @@
         size = "md",
         radius = "md",
         options = [],
+        limit = 10,
         id = crypto.randomUUID(),
         ...restProps
     }: ComboboxProps = $props();
@@ -90,7 +91,14 @@
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    let validOptions = $derived(options.filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())));
+    let validOptions = $derived(
+        options
+            .filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase()))
+            .slice(0, limit)
+    );
+    let totalMatches = $derived(
+        options.filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())).length
+    );
 </script>
 
 <BaseInput
@@ -129,6 +137,16 @@
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
             <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full left-0 right-0 max-h-40 mt-2 border-2 border-blue-500 bg-sub-background overflow-auto {getSizeStyleClass(radius, "radius")}">
+                {#if totalMatches > limit}
+                    <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
+                        Showing {limit} of {totalMatches} results for "{value}"
+                    </Text>
+                {/if}
+                {#if totalMatches === 0}
+                    <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
+                        No results found for "{value}"
+                    </Text>
+                {/if}
                 {#each validOptions as option}
                     <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
                         {@html highlight(option.label, value ?? "")}
