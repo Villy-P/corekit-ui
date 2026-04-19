@@ -91,14 +91,14 @@
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    let validOptions = $derived(
-        options
-            .filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase()))
-            .slice(0, limit)
+    let filteredOptions = $derived(
+        options.filter(option => 
+            option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())
+        )
     );
-    let totalMatches = $derived(
-        options.filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())).length
-    );
+
+    let validOptions = $derived(filteredOptions.slice(0, limit));
+    let totalMatches = $derived(filteredOptions.length);
 </script>
 
 <BaseInput
