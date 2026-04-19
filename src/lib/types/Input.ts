@@ -21,11 +21,11 @@ export interface BaseInputProps extends BaseComponentProps {
     variant?: InputVariant;
     size?: SizeStyle;
     radius?: SizeStyle;
+    icon?: Component;
     id?: `${string}-${string}-${string}-${string}-${string}`;
 }
 
 export interface InputProps extends BaseInputProps {
-    icon?: Component;
     placeholder?: string;
     min?: number;
     max?: number;

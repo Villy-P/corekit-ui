@@ -137,6 +137,7 @@
     {radius}
     {isFocused}
     {id}
+    icon={Icon}
     {...restProps}>
     {#snippet outerDivElementAfter()}
         {#if touched && requirements}
@@ -157,11 +158,6 @@
     {/snippet}
 
     {#snippet innerDivElement()}
-        {#if Icon}
-            <div class={iconContainerClass}>
-                <Icon class={iconClass}></Icon>
-            </div>
-        {/if}
         <input
             {id}
             bind:value={value}

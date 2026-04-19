@@ -18,6 +18,7 @@
         size = "md",
         radius = "md",
         isFocused = false,
+        icon = undefined,
         id = crypto.randomUUID(),
 
         isHovered = $bindable(false),
@@ -80,6 +81,12 @@
     <div role="button" tabindex="0" class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
         {#if variant === "floating"}
             {@render labelElement()}
+        {/if}
+        {#if icon}
+            {@const Icon = icon}
+            <div class="h-5 aspect-square px-1 py-0!">
+                <Icon class="h-full aspect-square text-sub-text"></Icon>
+            </div>
         {/if}
         {@render innerDivElement?.()}
     </div>
