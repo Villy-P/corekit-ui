@@ -32,6 +32,8 @@
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
 
+    let inputElement = $state<HTMLInputElement>();
+
     const customStyle = $derived.by(() => {
         const styles: string[] = [];
 
@@ -54,6 +56,8 @@
     }
 
     function handleBlur(e: FocusEvent) {
+        const match = options.find(o => o.label.toLowerCase() === (value ?? "").toString().toLowerCase());
+        if (!match) value = "";
         isFocused = false;
         onblur?.(e);
     }
@@ -63,6 +67,30 @@
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, className));
     let combinedDivClass = $derived(twMerge(divClass));
+
+    function onClickItem(event: MouseEvent, option: { value: any; label: string }) {
+        event.preventDefault();
+        value = option.label;
+        isFocused = false;
+        inputElement?.blur();
+    }
+
+    function highlight(label: string, search: string) {
+        const index = label.toLowerCase().indexOf(search.toLowerCase());
+        if (index === -1) return escapeHtml(label);
+
+        return [
+            label.slice(0, index),
+            `<span class="font-bold">${escapeHtml(label.slice(index, index + search.length))}</span>`,
+            label.slice(index + search.length)
+        ].join("");
+    }
+
+    function escapeHtml(str: string) {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    let validOptions = $derived(options.filter(option => option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())));
 </script>
 
 <BaseInput
@@ -79,13 +107,13 @@
     {size}
     {radius}
     {id}
-    {icon}
-    {...restProps}>
+    {icon}>
 
     {#snippet innerDivElement()}
         <input
             {id}
             bind:value={value}
+            bind:this={inputElement}
             class={combinedClass}
             {required}
             {disabled}
@@ -100,9 +128,11 @@
 
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
-            <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full h-fit mt-2 inset-0 border-2 border-blue-500 bg-sub-background overflow-hidden {getSizeStyleClass(radius, "radius")}">
-                {#each options as option}
-                    <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors">{option.label}</Text>
+            <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full left-0 right-0 max-h-40 mt-2 border-2 border-blue-500 bg-sub-background overflow-auto {getSizeStyleClass(radius, "radius")}">
+                {#each validOptions as option}
+                    <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
+                        {@html highlight(option.label, value ?? "")}
+                    </Text>
                 {/each}
             </div>
         {/if}
