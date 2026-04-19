@@ -4,8 +4,9 @@
     import { getSizeStyleClass } from "../styles/size.ts";
 
     import BaseInput from "./helper/BaseInput.svelte";
-  import Text from "./Text.svelte";
-  import { fly } from "svelte/transition";
+    import Text from "./Text.svelte";
+    import { fly } from "svelte/transition";
+    import { debounce } from "$lib/utils/debounce.js";
 
     let { 
         children = undefined, 
@@ -29,6 +30,16 @@
         id = crypto.randomUUID(),
         ...restProps
     }: ComboboxProps = $props();
+
+    let debouncedSearch = $state("");
+
+    const updateSearch = debounce((v: string) => {
+        debouncedSearch = v;
+    }, 150);
+
+    $effect(() => {
+        updateSearch(value ?? "");
+    });
 
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
@@ -92,9 +103,8 @@
     }
 
     let filteredOptions = $derived(
-        options.filter(option => 
-            option.label.toLowerCase().includes((value ?? "").toString().toLowerCase())
-        )
+        options.filter(option =>
+            option.label.toLowerCase().includes(debouncedSearch.toLowerCase()))
     );
 
     let validOptions = $derived(filteredOptions.slice(0, limit));
