@@ -1,3 +1,7 @@
+<script module>
+    declare function gtag(...args: unknown[]): void;
+</script>
+
 <script lang="ts">
     import { page } from '$app/state'
     import type { AnalyticsProps } from '../types/Analytics.ts';
