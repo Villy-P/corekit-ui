@@ -39,12 +39,13 @@
     let pill: boolean = $state(false);
     let icon: boolean = $state(false);
     let square: boolean = $state(false);
+    let loading: boolean = $state(false);
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
-    <div class="w-3/4 flex px-10">
+    <div class="w-3/4 flex-center px-10">
         <Tooltip text="This is a tooltip wow thats super cool i love it when that happens to people" position="top">
-            <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square}>
+            <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square} {loading}>
                 {#if icon}
                     <img src="/favicon.svg" alt="Icon"/>
                 {:else}
@@ -70,5 +71,6 @@
         <Checkbox bind:checked={pill} label="Pill"/>
         <Checkbox bind:checked={icon} label="Icon"/>
         <Checkbox bind:checked={square} label="Square"/>
+        <Checkbox bind:checked={loading} label="Loading"/>
     </div>
 </div>

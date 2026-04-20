@@ -20,6 +20,8 @@
     --color-primary: var(--vpcui-primary);
     --color-secondary: var(--vpcui-secondary);
     --color-accent: var(--vpcui-accent);
+
+    --color-loader-btn-color: var(--vpcui-loader-btn-color);
 }
 
 :root {
@@ -41,6 +43,8 @@
     --vpcui-form-background: var(--vpcui-light-50);
     --vpcui-form-hover: var(--vpcui-light-200);
     --vpcui-form-border: var(--vpcui-light-250);
+
+    --vpcui-loader-btn-color: rgba(255, 255, 255, 0.25);
 }
 
 html.dark {
@@ -62,6 +66,8 @@ html.dark {
     --vpcui-form-background: var(--vpcui-dark-150);
     --vpcui-form-border: var(--vpcui-dark-250);
     --vpcui-form-hover: var(--vpcui-dark-200);
+
+    --vpcui-loader-btn-color: rgba(0, 0, 0, 0.25);
 }
 
 html {

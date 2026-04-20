@@ -32,7 +32,7 @@
         restProps.style
     ].filter(Boolean).join("; "));
 
-    const anchorProps = $derived(getLinkProps(href, external));
+    const anchorProps = $derived(getLinkProps(href, external, false));
 </script>
 
 <svelte:element

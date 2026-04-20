@@ -14,4 +14,5 @@ export interface ButtonProps extends BaseComponentProps {
     external?: boolean;
     size?: SizeStyle;
     radius?: SizeStyle;
+    loading?: boolean;
 }

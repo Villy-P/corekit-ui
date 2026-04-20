@@ -19,6 +19,7 @@ export { default as Toast } from "./components/Toast.svelte";
 export { default as Toaster } from "./components/Toaster.svelte";
 export { default as SideNavbar } from "./components/SideNavbar.svelte";
 export { default as Tooltip } from "./components/Tooltip.svelte";
+export { default as Loader } from "./components/Loader.svelte";
 
 export { fbmBackground } from "./actions/fbm.ts";
 export { toast } from "./actions/toast.svelte.ts";

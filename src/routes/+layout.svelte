@@ -14,6 +14,7 @@
     import NavbarDropdown from '$lib/components/NavbarDropdown.svelte';
     import SquareDashed from "@lucide/svelte/icons/square-dashed";
     import List from "@lucide/svelte/icons/list";
+    import LoaderCircle from "@lucide/svelte/icons/loader-circle";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -29,6 +30,7 @@
         { href: "/combobox", label: "Combobox", icon: List },
         { href: "/progress", label: "Progress", icon: Ellipsis },
         { href: "/modal", label: "Modal", icon: SquareDashed },
+        { href: "/loader", label: "Loader", icon: LoaderCircle },
         { href: "/table", label: "Table", icon: Table },
         { href: "/toast", label: "Toast", icon: CircleAlert }
     ];
