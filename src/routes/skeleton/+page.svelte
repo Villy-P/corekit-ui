@@ -1,5 +1,8 @@
 <script lang="ts">
+    import Input from "$lib/components/Input.svelte";
+    import Select from "$lib/components/Select.svelte";
     import Skeleton from "$lib/components/Skeleton.svelte";
+    import type { SkeletonVariant } from "$lib/types/Skeleton.js";
 
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },
@@ -15,14 +18,27 @@
         { value: "full", label: "Full" },
         { value: "none", label: "None" }
     ];
+    const variantOptions = [
+        { value: "default", label: "Default" },
+        { value: "text", label: "Text" },
+        { value: "image", label: "Image" },
+        { value: "video", label: "Video" },
+        { value: "card", label: "Card" }
+    ];
+
+    let variant: SkeletonVariant = $state("text");
+    let count: number = $state(19);
+    let size: string = $state("md");
 </script>
 
 <div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center px-10">
-        <Skeleton variant="text"/>
+        <Skeleton {variant} {count} {size}/>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
-
+        <Select divClass="w-full" options={variantOptions} bind:value={variant} label="Variant"/>
+        <Select divClass="w-full" options={sizeOptions} bind:value={size} label="Size"/>
+        <Input size="full" label="Count" type="number" min={1} bind:value={count}/>
     </div>
 </div>

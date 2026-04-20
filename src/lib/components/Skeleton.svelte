@@ -1,8 +1,26 @@
 <script lang="ts">
+    import { getSizeStyleClass } from "$lib/styles/size.js";
+    import type { SkeletonProps } from "$lib/types/Skeleton.js";
     import Image from "@lucide/svelte/icons/image";
     import Play from "@lucide/svelte/icons/play";
+    import { twMerge } from "tailwind-merge";
 
-    let { variant = "default" } = $props();
+    let { 
+        variant = "text", 
+        class: className = "",
+        count = 19, 
+        size = "md" 
+    }: SkeletonProps = $props();
+
+    const defaultWidths = [21, 19, 24, 15, 10, 30, 22, 17, 26, 20, 28, 10, 22, 45, 16, 23, 37, 25, 25];
+    const widths = $derived(Array.from({ length: count }, (_, i) => defaultWidths[i % defaultWidths.length]));
+
+    const defaultContainerClass = "animate-pulse duration-100 w-lg flex flex-col gap-2";
+    const combinedContainerClass = $derived(twMerge(
+        defaultContainerClass,
+        getSizeStyleClass(size, "card"),
+        className
+    ));
 </script>
 
 {#snippet image()}
@@ -13,14 +31,14 @@
 
 {#snippet text()}
     <div class="pt-4 flex flex-wrap gap-2">            
-        {#each [21, 19, 24, 15, 10, 30, 22, 17, 26, 20, 28, 10, 22, 45, 16, 23, 37, 25, 25] as width}
+        {#each widths as width}
             <div class="h-4 rounded even:bg-sub-background odd:bg-sub-background-hover" 
                     style="width: {width}%;"></div>
         {/each}
     </div>
 {/snippet}
 
-<div class="animate-pulse duration-100 w-lg flex flex-col gap-2">
+<div class={combinedContainerClass}>
     {#if variant === "default"}
         <div class="h-4 bg-sub-background rounded w-3/4"></div>
         <div class="h-4 bg-sub-background rounded w-full"></div>
