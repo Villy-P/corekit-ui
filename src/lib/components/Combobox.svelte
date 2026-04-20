@@ -61,11 +61,9 @@
     });
 
     let isFocused = $state(false);
-    let touched = $state(false);
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
-        touched = true;
         onfocus?.(e);
     }
 
@@ -142,10 +140,6 @@
     }
 
     function scrollToActiveElement() {
-        if (activeIndex === 0) {
-            optionsContainerElement?.scrollTo({ top: 0 });
-            return;
-        }
         const optionElement = optionsContainerElement?.children[activeIndex] as HTMLElement;
         optionElement?.scrollIntoView({ block: "nearest" });
     }
