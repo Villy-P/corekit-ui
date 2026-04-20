@@ -131,5 +131,7 @@
             <KBD class="col-span-2">0{#snippet subtext()}ins{/snippet}</KBD>
             <KBD class="col-span-1">.{#snippet subtext()}del{/snippet}</KBD>
         </div>
+
+        <Text>Press <KBD>Ctrl</KBD> + <KBD>C</KBD> to copy</Text>
     </div>
 </div>
