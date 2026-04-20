@@ -7,37 +7,47 @@
     const DEFAULT_IMAGE = "/favicon.png";
 
 	let { 
-        websiteName, 
         title = DEFAULT_TITLE, 
         description = DEFAULT_DESCRIPTION, 
-        image = DEFAULT_IMAGE 
+        image = DEFAULT_IMAGE,
+        noindex = false,
     }: SEOProps = $props();
 
-    let fullUrl = $derived(`${websiteName}${page.url.pathname.toString()}`);
+    let origin = $derived(page.url.origin);
+    let fullUrl = $derived(page.url.href);
+    let fullImage = $derived(image.startsWith("http") ? image : `${origin}${image}`);
+
+    let jsonLd = $derived(JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": title,
+        "url": fullUrl,
+        "logo": fullImage
+    }));
 </script>
   
 <svelte:head>
     <title>{title}</title>
+    <link rel="canonical" href={fullUrl}>
     <meta name="description" content={description}>
-    <meta property="og_site_name" content={websiteName}>
+    {#if noindex}
+        <meta name="robots" content="noindex,nofollow">
+    {/if}
+
+    <meta property="og:site_name" content={title}>
     <meta property="og:url" content={fullUrl}>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{title}">
+    <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
-    <meta property="og:image" content={websiteName + image}>
-  
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content={websiteName}>
-    <meta property="twitter:url" content={fullUrl}>
-    <meta name="twitter:title" content="{title}">
-    <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content={websiteName + image}>
-    {@html `  <script type="application/ld+json">{
-     "@context": "https://schema.org",
-     "@type": "Website",
-     "name": "${title}",
-     "url": "${fullUrl}",
-     "logo": "${websiteName}${image}"  }</script>`}
+    <meta property="og:image" content={fullImage}>
+    <meta property="og:locale" content="en_US">
 
-    <meta name="google-site-verification" content="F6vDzwDyZfebc9kWIZlhzpsAm5zhanaPkOArdCZdDSU" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content={page.url.hostname}>
+    <meta property="twitter:url" content={fullUrl}>
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={fullImage}>
+
+    {@html `<script type="application/ld+json">${jsonLd}</script>`}
 </svelte:head>
