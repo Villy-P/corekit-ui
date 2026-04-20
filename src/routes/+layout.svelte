@@ -15,6 +15,7 @@
     import SquareDashed from "@lucide/svelte/icons/square-dashed";
     import List from "@lucide/svelte/icons/list";
     import LoaderCircle from "@lucide/svelte/icons/loader-circle";
+    import SquareCheck from "@lucide/svelte/icons/square-check";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -25,6 +26,7 @@
         { href: "/button", label: "Button", icon: MousePointerClick },
         { href: "/card", label: "Card", icon: Square },
         { href: "/input", label: "Input", icon: Signature },
+        { href: "/checkbox", label: "Checkbox", icon: SquareCheck },
         { href: "/input-file", label: "File Input", icon: File },
         { href: "/select", label: "Select", icon: SquareChevronDown },
         { href: "/combobox", label: "Combobox", icon: List },
