@@ -31,6 +31,8 @@
         ...restProps
     }: ComboboxProps = $props();
 
+    let activeIndex = $state(0);
+
     let debouncedSearch = $state("");
 
     const updateSearch = debounce((v: string) => {
@@ -109,6 +111,46 @@
 
     let validOptions = $derived(filteredOptions.slice(0, limit));
     let totalMatches = $derived(filteredOptions.length);
+
+    function onKeyDown(event: KeyboardEvent) {
+        if (!isFocused) return;
+
+        if (event.key === "ArrowDown") {
+            event.preventDefault();
+            activeIndex = (activeIndex + 1) % validOptions.length;
+            scrollToActiveElement();
+        } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            activeIndex = (activeIndex - 1 + validOptions.length) % validOptions.length;
+            scrollToActiveElement();
+        } else if (event.key === "Enter" || event.key === "Tab") {
+            event.preventDefault();
+            const option = validOptions[activeIndex];
+            if (option) {
+                value = option;
+                isFocused = false;
+                inputElement?.blur();
+            }
+            activeIndex = 0;
+        } else if (event.key === "Escape") {
+            event.preventDefault();
+            isFocused = false;
+            inputElement?.blur();
+        } else {
+            activeIndex = 0;
+        }
+    }
+
+    function scrollToActiveElement() {
+        if (activeIndex === 0) {
+            optionsContainerElement?.scrollTo({ top: 0 });
+            return;
+        }
+        const optionElement = optionsContainerElement?.children[activeIndex] as HTMLElement;
+        optionElement?.scrollIntoView({ block: "nearest" });
+    }
+
+    let optionsContainerElement = $state<HTMLDivElement>();
 </script>
 
 <BaseInput
@@ -137,6 +179,7 @@
             {disabled}
             onfocus={handleFocus}
             onblur={handleBlur}
+            onkeydown={onKeyDown}
             placeholder={variant === "floating" ? "" : placeholder}
             aria-disabled={disabled}
             style={customStyle}
@@ -146,7 +189,7 @@
 
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
-            <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full left-0 right-0 max-h-40 mt-2 border-2 border-blue-500 bg-sub-background overflow-auto {getSizeStyleClass(radius, "radius")}">
+            <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full left-0 right-0 mt-2 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, "radius")}">
                 {#if totalMatches > limit}
                     <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
                         Showing {limit} of {totalMatches} results for "{value}"
@@ -157,11 +200,13 @@
                         No results found for "{value}"
                     </Text>
                 {/if}
-                {#each validOptions as option}
-                    <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
-                        {@html highlight(option, value ?? "")}
-                    </Text>
-                {/each}
+                <div bind:this={optionsContainerElement} class="overflow-auto max-h-40">
+                    {#each validOptions as option, index}
+                        <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors {activeIndex === index ? 'bg-sub-background-hover' : ''}" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
+                            {@html highlight(option, value ?? "")}
+                        </Text>
+                    {/each}
+                </div>
             </div>
         {/if}
     {/snippet}
