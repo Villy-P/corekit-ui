@@ -116,7 +116,7 @@
             <KBD class="col-span-1 row-span-2">Enter</KBD>
 
             <KBD class="col-span-1">Ctrl</KBD>
-            <KBD class="col-span-1">Win</KBD>
+            <KBD class="col-span-1">⊞</KBD>
             <KBD class="col-span-1">Alt</KBD>
             <KBD class="col-span-8">Space</KBD>
             <KBD class="col-span-1">Alt</KBD>

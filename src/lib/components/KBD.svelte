@@ -15,7 +15,9 @@
 
 <div class={combinedClass} {...restProps}>
     {@render children?.()}
-    <span class="text-sub-text text-[10px] mt-0.5">
-        {@render subtext?.()}
-    </span>
+    {#if subtext}        
+        <span class="text-sub-text text-[10px] mt-0.5">
+            {@render subtext?.()}
+        </span>
+    {/if}
 </div>
