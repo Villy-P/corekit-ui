@@ -17,6 +17,7 @@
     import LoaderCircle from "@lucide/svelte/icons/loader-circle";
     import SquareCheck from "@lucide/svelte/icons/square-check";
     import Keyboard from "@lucide/svelte/icons/keyboard";
+    import Bone from "@lucide/svelte/icons/bone";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -36,7 +37,8 @@
         { href: "/loader", label: "Loader", icon: LoaderCircle },
         { href: "/table", label: "Table", icon: Table },
         { href: "/toast", label: "Toast", icon: CircleAlert },
-        { href: "/kbd", label: "KBD", icon: Keyboard }
+        { href: "/kbd", label: "KBD", icon: Keyboard },
+        { href: "/skeleton", label: "Skeleton", icon: Bone }
     ];
 </script>
 
