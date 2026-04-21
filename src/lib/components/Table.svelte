@@ -15,7 +15,7 @@
     const defaultTableClass = "w-full border-collapse text-main-text border border-form-border border-l-0";
     const defaultTableHeaderClass = "text-left border-b border-b-1 border-b-form-border bg-sub-background font-medium";
     const defaultTableCellClass = "p-2 text-sm border-l border-l-[1px] border-l-form-border";
-    const defaultTableBodyClass = "even:bg-sub-background odd:bg-form-background";
+    const defaultTableBodyClass = "even:bg-sub-background odd:bg-sub-background-hover";
 
     const combinedTableClass = $derived(twMerge(
         defaultTableClass,
