@@ -183,7 +183,7 @@
 
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
-            <div transition:fly={{ y: -10, duration: 200 }} class="absolute top-full left-0 right-0 mt-2 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, "radius")}">
+            <div transition:fly={{ y: -10, duration: 200 }} class="absolute z-100 top-full left-0 right-0 mt-2 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, "radius")}">
                 {#if totalMatches > limit}
                     <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
                         Showing {limit} of {totalMatches} results for "{value}"
