@@ -18,6 +18,7 @@
     import SquareCheck from "@lucide/svelte/icons/square-check";
     import Keyboard from "@lucide/svelte/icons/keyboard";
     import Bone from "@lucide/svelte/icons/bone";
+    import MessageSquareMore from "@lucide/svelte/icons/message-square-more";
 
     import Settings from "@lucide/svelte/icons/settings";
     import User from "@lucide/svelte/icons/user";
@@ -38,7 +39,8 @@
         { href: "/table", label: "Table", icon: Table },
         { href: "/toast", label: "Toast", icon: CircleAlert },
         { href: "/kbd", label: "KBD", icon: Keyboard },
-        { href: "/skeleton", label: "Skeleton", icon: Bone }
+        { href: "/skeleton", label: "Skeleton", icon: Bone },
+        { href: "/tooltip", label: "Tooltip", icon: MessageSquareMore }
     ];
 </script>
 

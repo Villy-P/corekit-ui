@@ -6,17 +6,19 @@
     let {
         text,
         position = "top",
-        delay = 0,
+        delay = 150,
         children
     }: TooltipComponent = $props();
 
+    const DEFAULT_OFFSET = 0;
+
     let visible = $state(false);
     let resolvedPosition: string | null = $state(null);
-    let offsetX = $state(0);
+    let offsetX = $state(DEFAULT_OFFSET);
     let trigger: HTMLDivElement;
     let tooltip: HTMLDivElement | null = $state(null);
     let timeout: ReturnType<typeof setTimeout>;
-    let arrowX = $derived(-offsetX);
+    let overflowing = $state(false);
 
     function calculatePosition() {
         resolvedPosition = position;
@@ -41,18 +43,19 @@
         const vw = window.innerWidth;
 
         const triggerCenter = triggerRect.left + triggerRect.width / 2;
-
         const tooltipLeft = triggerCenter - tooltipRect.width / 2;
         const tooltipRight = triggerCenter + tooltipRect.width / 2;
-
         const padding = 8;
 
-        if (tooltipRight > vw - padding)
-            offsetX = -(tooltipRight - (vw - padding));
-        else if (tooltipLeft < padding)
-            offsetX = padding - tooltipLeft;
-        else
-            offsetX = 0;
+        if (tooltipRight > vw - padding || tooltipLeft < padding) {
+            overflowing = true;
+            offsetX = tooltipRight > vw - padding
+                ? -(tooltipRight - (vw - padding))
+                : padding - tooltipLeft;
+        } else {
+            overflowing = false;
+            offsetX = DEFAULT_OFFSET;
+        }
     }
 
     function show() {
@@ -96,6 +99,21 @@
     });
 </script>
 
+{#snippet arrow(pos: string)}
+    {@const points = {
+        top: "0,0 8,0 4,4",
+        bottom: "0,4 4,0 8,4",
+        left: "4,0 4,8 0,4",
+        right: "0,0 0,8 4,4"
+    }[pos]}
+    <svg
+        width={pos === "left" || pos === "right" ? 4 : 8}
+        height={pos === "left" || pos === "right" ? 8 : 4}
+        viewBox={pos === "left" || pos === "right" ? "0 0 4 8" : "0 0 8 4"}>
+        <polygon {points} fill="currentColor" class="text-form-background" />
+    </svg>
+{/snippet}
+
 <div
     bind:this={trigger}
     class="relative inline-flex w-fit h-fit"
@@ -107,15 +125,16 @@
     {#if visible}
         <div
             bind:this={tooltip}
-            style="transform: translateX(calc(-50% + {offsetX}px));"
+            style={position === "top" || position === "bottom" ? `transform: translateX(calc(-50% + ${offsetX}px));` : ""}
             class="absolute z-999999 {positionClasses[resolvedPosition || position]} translate-x-0! pointer-events-none">
 
-            <div class="absolute {arrowClasses[resolvedPosition || position]} border-4 border-transparent w-0 h-0"
-                 style="transform: translateX(calc(-50% + {arrowX}px));"></div>
+            <div class="absolute {arrowClasses[resolvedPosition || position]}">
+                {@render arrow(resolvedPosition || position)}
+            </div>
 
             <div 
                 transition:fly={flyParams}
-                class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap">
+                class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap border border-white/10">
                 {text}
             </div>
         </div>

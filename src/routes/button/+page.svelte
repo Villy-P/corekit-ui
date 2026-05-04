@@ -44,15 +44,13 @@
 
 <div class="w-full h-screen flex pt-20 pl-12">
     <div class="w-3/4 flex-center px-10">
-        <Tooltip text="This is a tooltip wow thats super cool i love it when that happens to people" position="top">
-            <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square} {loading}>
-                {#if icon}
-                    <img src="/favicon.svg" alt="Icon"/>
-                {:else}
-                    Customizable Button
-                {/if}
-            </Button>
-        </Tooltip>
+        <Button color={color} {variant} {size} {radius} {href} {external} {disabled} {pill} {icon} {square} {loading}>
+            {#if icon}
+                <img src="/favicon.svg" alt="Icon"/>
+            {:else}
+                Customizable Button
+            {/if}
+        </Button>
     </div>
 
     <div class="w-1/4 p-4 flex flex-col gap-2">
