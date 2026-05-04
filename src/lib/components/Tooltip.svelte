@@ -103,8 +103,8 @@
     {@const points = {
         top: "0,0 8,0 4,4",
         bottom: "0,4 4,0 8,4",
-        left: "4,0 4,8 0,4",
-        right: "0,0 0,8 4,4"
+        right: "4,0 4,8 0,4",
+        left: "0,0 0,8 4,4"
     }[pos]}
     <svg
         width={pos === "left" || pos === "right" ? 4 : 8}
