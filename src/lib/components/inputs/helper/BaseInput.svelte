@@ -19,6 +19,7 @@
         radius = "md",
         isFocused = false,
         icon = undefined,
+        wrapper = $bindable(),
         id = crypto.randomUUID(),
 
         innerDivElement = undefined,
@@ -79,7 +80,7 @@
 {/snippet}
 
 {#snippet innerDivElementWrapper()}
-    <div class={combinedDivClass}>
+    <div class={combinedDivClass} bind:this={wrapper}>
         {#if variant === "floating"}
             {@render labelElement()}
         {/if}

@@ -2,11 +2,13 @@
     import type { ComboboxProps } from "./types";
     import { twMerge } from "tailwind-merge";
     import { getSizeStyleClass } from "$styles/size";
+    import { computePosition, flip, shift, offset } from "@floating-ui/dom";
 
     import BaseInput from "../helper/BaseInput.svelte";
     import Text from "../../typography/Text/index.svelte";
     import { fly } from "svelte/transition";
     import { debounce } from "$lib/utils/debounce.js";
+    import { tick } from "svelte";
 
     let { 
         children = undefined, 
@@ -33,6 +35,11 @@
 
     let isFocused = $state(false);
     let activeIndex = $state(0);
+
+    let dropdownX = $state(0);
+    let dropdownY = $state(0);
+    let referenceEl = $state<HTMLElement>();
+    let floatingEl = $state<HTMLDivElement>();
 
     let debouncedSearch = $state("");
 
@@ -71,6 +78,22 @@
         if (!match) value = "";
         isFocused = false;
         onblur?.(e);
+    }
+
+    async function updateDropdownPosition() {
+        if (!referenceEl || !floatingEl) return;
+
+        const { x, y } = await computePosition(referenceEl, floatingEl, {
+            placement: "bottom-start",
+            middleware: [
+                offset(8),
+                flip(),
+                shift({ padding: 8 })
+            ]
+        });
+
+        dropdownX = x;
+        dropdownY = y;
     }
 
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0 rounded-none";
@@ -144,6 +167,11 @@
     }
 
     let optionsContainerElement = $state<HTMLDivElement>();
+
+    $effect(() => {
+        if (isFocused)
+            tick().then(updateDropdownPosition);
+    });
 </script>
 
 <BaseInput
@@ -161,7 +189,8 @@
     {radius}
     {id}
     {isFocused}
-    {icon}>
+    {icon}
+    bind:wrapper={referenceEl}>
 
     {#snippet innerDivElement()}
         <input
@@ -183,8 +212,13 @@
 
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
-            <div transition:fly={{ y: -10, duration: 200 }} class="absolute z-100 top-full left-0 right-0 mt-2 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, "radius")}">
-                {#if totalMatches > limit}
+            <div
+                bind:this={floatingEl}
+                transition:fly={{ y: -10, duration: 200 }}
+                style="position: fixed; top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
+                class="z-999999 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, 'radius')}"
+            >
+                {#if totalMatches > 0 && options.length > limit}
                     <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
                         Showing {limit} of {totalMatches} results for "{value}"
                     </Text>

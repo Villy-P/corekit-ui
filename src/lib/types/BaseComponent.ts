@@ -21,5 +21,6 @@ export interface BaseInputProps extends BaseComponentProps {
     size?: SizeStyle;
     radius?: SizeStyle;
     icon?: Component;
+    wrapper?: HTMLElement;
     id?: `${string}-${string}-${string}-${string}-${string}`;
 }
