@@ -4,7 +4,7 @@
     import { getSizeStyleClass } from "$styles/size";
 
     import BaseInput from "../helper/BaseInput.svelte";
-    import Text from "../../Text.svelte";
+    import Text from "../../display/Text/index.svelte";
     import { fly } from "svelte/transition";
     import { debounce } from "$lib/utils/debounce.js";
 

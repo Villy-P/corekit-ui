@@ -1,7 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { ToastProps } from "../types/Toast.ts";
-    import Text from "./Text.svelte";
+    import Text from "./display/Text/index.svelte";
     import Progress from "./Progress.svelte";
     import type { Component } from "svelte";
 

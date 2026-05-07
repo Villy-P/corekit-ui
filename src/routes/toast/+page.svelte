@@ -2,10 +2,10 @@
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
     import Progress from "$lib/components/Progress.svelte";
-    import Text from "$lib/components/Text.svelte";
+    import Text from "$components/display/Text/index.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
-    import Table from "$lib/components/Table.svelte";
+    import Table from "$components/display/Table/index.svelte";
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyleTheme } from "$lib/styles/size.js";

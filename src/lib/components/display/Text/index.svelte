@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { sizeStyleParts, textStyle, type SizeStyle, type SizeStyleTheme } from "../styles/size.ts";
-    import type { TextProps } from "../types/Text.ts";
+    import { sizeStyleParts, textStyle, type SizeStyleTheme } from "$styles/size";
+    import type { TextProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
 
     let { 

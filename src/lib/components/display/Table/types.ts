@@ -1,5 +1,5 @@
 import type { SizeStyle } from "$lib/styles/size.js";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export interface TableHeaders {
     key: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { TableProps } from "../types/Table.ts";
+    import type { TableProps } from "./types";
     import { twMerge } from "tailwind-merge";
 
     let { 

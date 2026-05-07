@@ -11,7 +11,7 @@
     import Input from "$components/inputs/Input/index.svelte";
     import Card from "$components/display/Card/index.svelte";
     import FloatingDropdown from "$components/inputs/Select/index.svelte";
-    import Text from "$lib/components/Text.svelte";
+    import Text from "$components/display/Text/index.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];

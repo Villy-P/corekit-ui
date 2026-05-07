@@ -5,7 +5,7 @@
     import Input from "$components/inputs/Input/index.svelte";
     import Modal from "$lib/components/Modal.svelte";
     import Select from "$components/inputs/Select/index.svelte";
-    import Text from "$lib/components/Text.svelte";
+    import Text from "$components/display/Text/index.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { PositionStyle } from "$lib/styles/posititon.js";
     import type { SizeStyle } from "$lib/styles/size.js";

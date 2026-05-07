@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
 
     import type { DisplaySegment, TypewriterProps } from "../types/Typewriter.ts";
-    import Text from "./Text.svelte";
+    import Text from "./display/Text/index.svelte";
 
     let { 
         actions, 
