@@ -4,7 +4,7 @@
     import type { ButtonProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
     import { getLinkProps } from "../../../utils/link.ts";
-    import Loader from "../../Loader.svelte";
+    import Loader from "../../feedback/Loader/index.svelte";
 
     let { 
         children = undefined, 

@@ -5,16 +5,12 @@ export { default as Navbar } from "./components/Navbar.svelte";
 export { default as NavbarSeparator } from "./components/NavbarSeparator.svelte";
 export { default as NavbarElement } from "./components/NavbarElement.svelte";
 export { default as NavbarDropdown } from "./components/NavbarDropdown.svelte";
-export { default as Progress } from "./components/Progress.svelte";
-export { default as Modal } from "./components/Modal.svelte";
-export { default as Toast } from "./components/Toast.svelte";
-export { default as Toaster } from "./components/Toaster.svelte";
 export { default as SideNavbar } from "./components/SideNavbar.svelte";
 export { default as Tooltip } from "./components/Tooltip.svelte";
-export { default as Loader } from "./components/Loader.svelte";
 
 export * from "./components/display/index.ts";
 export * from "./components/inputs/index.ts";
+export * from "./components/feedback/index.ts";
 
 export { fbmBackground } from "./actions/fbm.ts";
 export { toast } from "./actions/toast.svelte.ts";

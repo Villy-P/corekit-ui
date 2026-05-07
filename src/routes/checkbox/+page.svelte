@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Loader from "$lib/components/Loader.svelte";
+    import Loader from "$components/feedback/Loader/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
     import Text from "$components/display/Text/index.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";

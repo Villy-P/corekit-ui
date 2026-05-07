@@ -3,7 +3,7 @@
     import Card from "$components/display/Card/index.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
-    import Modal from "$lib/components/Modal.svelte";
+    import Modal from "$components/feedback/Modal/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
     import Text from "$components/display/Text/index.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";

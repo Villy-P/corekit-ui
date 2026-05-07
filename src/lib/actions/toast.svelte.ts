@@ -1,6 +1,6 @@
 import { mount } from "svelte";
-import Toaster from "../components/Toaster.svelte";
-import type { ToastProps } from "../types/Toast.ts";
+import Toaster from "../components/feedback/Toaster/index.svelte";
+import type { ToastProps } from "../components/feedback/Toast/types.ts";
 
 let count = 0;
 let toasterMounted = false;

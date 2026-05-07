@@ -1,7 +1,7 @@
 <script lang="ts">
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
-    import Progress from "$lib/components/Progress.svelte";
+    import Progress from "$components/feedback/Progress/index.svelte";
     import Text from "$components/display/Text/index.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
@@ -9,8 +9,8 @@
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyleTheme } from "$lib/styles/size.js";
-    import Toast from "$lib/components/Toast.svelte";
-    import type { ToastType } from "$lib/types/Toast.js";
+    import Toast from "$components/feedback/Toast/index.svelte";
+    import type { ToastType } from "$components/feedback/Toast/types.js";
     import { toast } from "$lib/actions/toast.svelte.js";
     import type { PositionStyle } from "$lib/styles/posititon.js";
 

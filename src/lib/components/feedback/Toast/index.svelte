@@ -1,8 +1,8 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
-    import type { ToastProps } from "../types/Toast.ts";
-    import Text from "./display/Text/index.svelte";
-    import Progress from "./Progress.svelte";
+    import type { ToastProps } from "./types.ts";
+    import Text from "../../display/Text/index.svelte";
+    import Progress from "../Progress/index.svelte";
     import type { Component } from "svelte";
 
     import CircleCheck from "@lucide/svelte/icons/circle-check";
@@ -11,7 +11,7 @@
     import Info from "@lucide/svelte/icons/info";
     import TriangleAlert from "@lucide/svelte/icons/triangle-alert";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
-    import Button from "./inputs/Button/index.svelte";
+    import Button from "../../inputs/Button/index.svelte";
     import { getSizeStyleClass } from "$lib/styles/size.js";
     import { fly } from "svelte/transition";
     import { backOut } from "svelte/easing";

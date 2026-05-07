@@ -1,8 +1,8 @@
 <script lang="ts">
     import { positionParts, type PositionStyle } from "$lib/styles/posititon.js";
     import { flip } from "svelte/animate";
-    import { toastState, toast } from "../actions/toast.svelte.js";
-    import Toast from "./Toast.svelte";
+    import { toastState, toast } from "../../../actions/toast.svelte.js";
+    import Toast from "../Toast/index.svelte";
 
     const getItems = $derived((pos: PositionStyle) => {
         return toastState.items.filter(i => (i.position ?? 'top-right') === pos);

@@ -1,6 +1,6 @@
-import type { ColorStyle } from "../styles/color.ts";
-import type { SizeStyle } from "../styles/size.ts";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { ColorStyle } from "../../../styles/color.ts";
+import type { SizeStyle } from "../../../styles/size.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 interface AnimateProps {
     from: number;

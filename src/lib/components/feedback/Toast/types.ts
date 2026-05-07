@@ -1,6 +1,6 @@
 import type { PositionStyle } from "$lib/styles/posititon.js";
 import type { SizeStyle } from "$lib/styles/size.js";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export type ToastType = "success" | "error" | "info" | "warning";
 

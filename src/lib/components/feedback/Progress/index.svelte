@@ -1,9 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import type { ProgressProps } from "../types/Progress.ts";
+    import type { ProgressProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
-    import { colorStyleParts } from "../styles/color.ts";
-    import { sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
+    import { colorStyleParts } from "../../../styles/color.ts";
+    import { sizeStyleParts, type SizeStyleTheme } from "../../../styles/size.ts";
 
     let { 
         children = undefined, 

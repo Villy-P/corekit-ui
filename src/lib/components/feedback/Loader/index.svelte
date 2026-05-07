@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getSizeStyleClass } from "$styles/size.js";
     import { twMerge } from "tailwind-merge";
-    import type { LoaderProps } from "../types/Loader.ts";
+    import type { LoaderProps } from "./types.ts";
     import { generateColorStyle } from "$styles/color.js";
 
     let { 
