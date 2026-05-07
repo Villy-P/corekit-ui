@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SideNavbarProps } from "../types/Navbar.ts";
+    import type { SideNavbarProps } from "./navigation/Navbar/types.ts";
     import { twMerge } from "tailwind-merge";
     import Button from "./inputs/Button/index.svelte";
     import Text from "./typography/Text/index.svelte";

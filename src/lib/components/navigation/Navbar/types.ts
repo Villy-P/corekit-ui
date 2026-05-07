@@ -1,5 +1,5 @@
 import type { Component, Snippet } from "svelte";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export interface NavbarProps extends BaseComponentProps {
     classTop?: string;

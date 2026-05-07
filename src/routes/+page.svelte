@@ -3,7 +3,7 @@
     import Button from "$lib/components/inputs/Button/index.svelte";
     import { onMount } from "svelte";
     import SEO from "$lib/components/SEO.svelte";
-    import Navbar from "$lib/components/Navbar.svelte";
+    import Navbar from "$components/navigation/Navbar/index.svelte";
     import NavbarSeperator from "$lib/components/NavbarSeparator.svelte";
     import Typewriter from "$components/typography/Typewriter/index.svelte";
     import type { TypewriterAction } from "$components/typography/Typewriter/types.js";

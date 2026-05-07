@@ -1,6 +1,5 @@
 <script lang="ts">
-    import type { NavbarProps } from "../types/Navbar.ts";
-    import { onMount } from "svelte";
+    import type { NavbarProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
 
     let { 

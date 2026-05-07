@@ -1,6 +1,6 @@
 export { default as Analytics } from "./components/Analytics.svelte";
 export { default as SEO } from "./components/SEO.svelte";
-export { default as Navbar } from "./components/Navbar.svelte";
+export { default as Navbar } from "./components/navigation/Navbar/index.svelte";
 export { default as NavbarSeparator } from "./components/NavbarSeparator.svelte";
 export { default as NavbarElement } from "./components/NavbarElement.svelte";
 export { default as NavbarDropdown } from "./components/NavbarDropdown.svelte";
