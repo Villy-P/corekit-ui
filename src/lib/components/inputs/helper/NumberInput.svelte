@@ -10,7 +10,6 @@
         min = undefined,
         step = undefined,
         value = $bindable(),
-        isHovered = false,
         size = "md" as SizeStyle,
         ...restProps
     } = $props();
@@ -52,14 +51,15 @@
 
     const numberIconClass = $derived(twMerge(
         getSizeStyleClass(size, "form"), 
-        "text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col transition-all duration-150"
+        "vpcui-number-input-icon-class text-sub-text/70 w-fit aspect-auto p-0 flex-center flex-col transition-all duration-150 opacity-0 scale-75"
     ));
     const numberButtonClass = "py-0! h-1/2 gap-0 px-0.5 hover:bg-form-border aspect-square rounded-none";
 </script>
 
-<div class={twMerge(numberIconClass, isHovered ? "opacity-100 scale-100" : "opacity-0 scale-75")}>
+<div class={numberIconClass}>
     <Button 
-        size="none" radius="none" 
+        size="none" radius="none" color="none"
+        aria-label="Increment"
         class={numberButtonClass} 
         onmousedown={startIncrement}
         onmouseup={stopIncrement}
@@ -68,7 +68,8 @@
         <ChevronUp class="w-full h-full"/>
     </Button>
     <Button 
-        size="none" radius="none" 
+        size="none" radius="none" color="none"
+        aria-label="Decrement"
         class={numberButtonClass} 
         onmousedown={startDecrement}
         onmouseup={stopDecrement}

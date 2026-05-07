@@ -43,8 +43,6 @@
         ...restProps
     }: InputProps = $props();
 
-    let isHovered = $state(false);
-
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
 
@@ -130,7 +128,6 @@
     {isFocused}
     {id}
     icon={Icon}
-    bind:isHovered
     {...restProps}>
     {#snippet outerDivElementAfter()}
         {#if touched && requirements}
@@ -169,11 +166,11 @@
             type={canSeePassword ? "text" : restProps.type}
         />
         {#if restProps.type === "password"}
-            <Button class={iconContainerClass} onclick={() => { canSeePassword = !canSeePassword; }}>
+            <Button color="none" class={iconContainerClass} onclick={() => { canSeePassword = !canSeePassword; }}>
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
         {:else if restProps.type === "number"}
-            <NumberInput {max} {min} {step} bind:value {isHovered} {size}/>
+            <NumberInput {max} {min} {step} bind:value {size}/>
         {/if}
     {/snippet}
 </BaseInput>

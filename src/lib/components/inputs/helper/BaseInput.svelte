@@ -1,6 +1,6 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
-    import type { BaseInputProps } from "$types/Input.js";
+    import type { BaseInputProps } from "$types/BaseComponent";
     import Text from "../../typography/Text/index.svelte";
     import { getSizeStyleClass } from "$lib/styles/size.js";
 
@@ -20,8 +20,6 @@
         isFocused = false,
         icon = undefined,
         id = crypto.randomUUID(),
-
-        isHovered = $bindable(false),
 
         innerDivElement = undefined,
         outerDivElementAfter = undefined,
@@ -63,7 +61,7 @@
     ));
 
     const combinedDivClass = $derived(twMerge(
-        "relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden",
+        "vpcui-base-input-div-class relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden",
         getSizeStyleClass(radius, "radius"),
         size === "full" ? "w-full" : "",
         divClass,
@@ -81,7 +79,7 @@
 {/snippet}
 
 {#snippet innerDivElementWrapper()}
-    <div role="button" tabindex="0" class={combinedDivClass} onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
+    <div class={combinedDivClass}>
         {#if variant === "floating"}
             {@render labelElement()}
         {/if}
@@ -103,3 +101,10 @@
 
     {@render outerDivElementAfter?.()}
 </div>
+
+<style>
+    :global(.vpcui-base-input-div-class:hover .vpcui-number-input-icon-class) {
+        opacity: 1 !important;
+        scale: 1 !important;
+    }
+</style>

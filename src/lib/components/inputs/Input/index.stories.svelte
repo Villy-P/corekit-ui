@@ -16,6 +16,10 @@
 				control: "select",
 				options: sizeStyles,
 			},
+            type: {
+                control: "select",
+                options: ["text", "password", "email", "number", "search", "tel", "url"],
+            },
 		},
 	});
 </script>
