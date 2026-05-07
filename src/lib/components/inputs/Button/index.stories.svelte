@@ -5,7 +5,7 @@
     import { sizeStyles } from "$lib/styles/size.js";
 
 	const { Story } = defineMeta({
-		title: "Components/Button",
+		title: "Components/Inputs/Button",
 		component: Button,
 		argTypes: {
 			color: {

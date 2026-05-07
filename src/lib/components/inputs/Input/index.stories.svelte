@@ -5,7 +5,7 @@
     import { sizeStyles } from "$lib/styles/size.js";
 
 	const { Story } = defineMeta({
-		title: "Components/Input",
+		title: "Components/Inputs/Input",
 		component: Input,
 		argTypes: {
 			size: {

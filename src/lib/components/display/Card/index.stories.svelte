@@ -7,7 +7,7 @@
     import { sizeStyles } from "$lib/styles/size.js";
 
 	const { Story } = defineMeta({
-		title: "Components/Card",
+		title: "Components/Display/Card",
 		component: Card,
 		argTypes: {
 			variant: {
