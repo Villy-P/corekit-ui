@@ -14,8 +14,8 @@
     import X from "@lucide/svelte/icons/x";
     import Check from "@lucide/svelte/icons/check";
     import { slide } from "svelte/transition";
-    import BaseInput from "../../helper/BaseInput.svelte";
-    import NumberInput from "../../helper/NumberInput.svelte";
+    import BaseInput from "../helper/BaseInput.svelte";
+    import NumberInput from "../helper/NumberInput.svelte";
 
     let { 
         children = undefined, 

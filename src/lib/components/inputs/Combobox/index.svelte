@@ -3,7 +3,7 @@
     import { twMerge } from "tailwind-merge";
     import { getSizeStyleClass } from "$styles/size";
 
-    import BaseInput from "../../helper/BaseInput.svelte";
+    import BaseInput from "../helper/BaseInput.svelte";
     import Text from "../../Text.svelte";
     import { fly } from "svelte/transition";
     import { debounce } from "$lib/utils/debounce.js";

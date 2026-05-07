@@ -3,7 +3,7 @@
     import { getSizeStyleClass } from "$styles/size";
 
     import type { SelectProps } from "$lib/types/Input.js";
-    import BaseInput from "../../helper/BaseInput.svelte";
+    import BaseInput from "../helper/BaseInput.svelte";
 
     let { 
         children = undefined, 
