@@ -1,5 +1,5 @@
 export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none";
-export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text" | "card" | "form" | "formLabel" | "formLabelSelected" | "progress" | "loader" | "buttonLoader";
+export type SizeStyleType = "radius" | "text" | "card" | "form" | "formLabel" | "formLabelSelected" | "progress" | "loader" | "buttonLoader";
 export type SizeStyle = SizeStyleTheme | number;
 
 export const sizeStyles = [
@@ -8,8 +8,6 @@ export const sizeStyles = [
 
 export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string>> = {
     xs: {
-        button: "text-xs h-4 px-1 py-0.5",
-        buttonIcon: "text-xs h-4 w-4 p-0.5",
         radius: "rounded-xs",
         text: "text-xs",
         card: "max-w-xs",
@@ -21,8 +19,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-2 w-2"
     },
     sm: {
-        button: "text-sm h-6 px-2 py-1",
-        buttonIcon: "text-sm h-6 w-6 p-1",
         radius: "rounded-sm",
         text: "text-sm",
         card: "max-w-sm",
@@ -34,8 +30,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-3 w-3"
     },
     md: {
-        button: "text-base h-8 px-3 py-1.5",
-        buttonIcon: "text-base h-8 w-8 p-1.5",
         radius: "rounded-md",
         text: "text-base",
         card: "max-w-md",
@@ -47,8 +41,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-4 w-4"
     },
     lg: {
-        button: "text-lg h-10 px-4 py-2",
-        buttonIcon: "text-lg h-10 w-10 p-2",
         radius: "rounded-lg",
         text: "text-lg",
         card: "max-w-lg",
@@ -60,8 +52,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-5 w-5"
     },
     xl: {
-        button: "text-xl h-12 px-5 py-2.5",
-        buttonIcon: "text-xl h-12 w-12 p-2.5",
         radius: "rounded-xl",
         text: "text-xl",
         card: "max-w-xl",
@@ -73,8 +63,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-6 w-6"
     },
     "2xl": {
-        button: "text-2xl h-14 px-6 py-3",
-        buttonIcon: "text-2xl h-14 w-14 p-3",
         radius: "rounded-2xl",
         text: "text-2xl",
         card: "max-w-2xl",
@@ -86,8 +74,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-7 w-7"
     },
     "3xl": {
-        button: "text-3xl h-16 px-7 py-3.5",
-        buttonIcon: "text-3xl h-16 w-16 p-3.5",
         radius: "rounded-3xl",
         text: "text-3xl",
         card: "max-w-3xl",
@@ -99,8 +85,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-8 w-8"
     },
     "4xl": {
-        button: "text-4xl h-18 px-8 py-4",
-        buttonIcon: "text-4xl h-18 w-18 p-4",
         radius: "rounded-4xl",
         text: "text-4xl",
         card: "max-w-4xl",
@@ -112,8 +96,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-9 w-9"
     },
     "5xl": {
-        button: "text-5xl h-20 px-9 py-4.5",
-        buttonIcon: "text-5xl h-20 w-20 p-4.5",
         radius: "rounded-[2.5rem]",
         text: "text-5xl",
         card: "max-w-5xl",
@@ -125,8 +107,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-10 w-10"
     },
     "6xl": {
-        button: "text-6xl h-24 px-10 py-5",
-        buttonIcon: "text-6xl h-24 w-24 p-5",
         radius: "rounded-[3rem]",
         text: "text-6xl",
         card: "max-w-6xl",
@@ -138,8 +118,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-11 w-11"
     },
     full: {
-        button: "w-full text-base h-8 px-3 py-1",
-        buttonIcon: "w-full aspect-square text-base p-1",
         radius: "rounded-full",
         text: "w-full text-base",
         card: "max-w-full",
@@ -151,8 +129,6 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
         buttonLoader: "h-4 w-4"
     },
     none: {
-        button: "p-0 h-auto text-base",
-        buttonIcon: "p-0 h-auto w-auto text-base",
         radius: "rounded-none",
         text: "",
         card: "",
@@ -171,13 +147,15 @@ export function getSizeStyleClass(size: SizeStyle, type: SizeStyleType): string 
     return "";
 }
 
+export function getSizeStyleClassRecord(size: SizeStyle, record: Record<SizeStyle, string>): string {
+    if (typeof size === "string")
+        return record[size];
+    return "";
+}
+
 export function getSizeStyle(size: SizeStyle, type: SizeStyleType): string {
     if (typeof size === "number") {
         switch (type) {
-            case "button":
-                return `height: ${size}px; padding: ${size / 4}px ${size / 8}px`;
-            case "buttonIcon":
-                return `height: ${size}px; width: ${size}px; padding: ${size / 4}px`;
             case "card":
                 return `width: ${size}px`;
             case "radius":

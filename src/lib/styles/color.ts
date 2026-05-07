@@ -3,7 +3,8 @@ export type ColorStyle =
     "white" | "black" |
     "primary" | "secondary" | "accent" |
     "error" | "warning" | "success" | "info";
-export type ColorStyleType = "base" | "text" | "full" | "light" | "outline" | "ghost" | "loader";
+export type ButtonColorStyleType = "full" | "light" | "outline" | "ghost";
+export type ColorStyleType = "base" | "text" | "loader" | ButtonColorStyleType;
 
 export const colorStyles = [
     "rose", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "gray", "sub", "none",
