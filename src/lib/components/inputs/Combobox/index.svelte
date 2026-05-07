@@ -31,6 +31,7 @@
         ...restProps
     }: ComboboxProps = $props();
 
+    let isFocused = $state(false);
     let activeIndex = $state(0);
 
     let debouncedSearch = $state("");
@@ -59,8 +60,6 @@
 
         return styles.join("; ");
     });
-
-    let isFocused = $state(false);
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
@@ -161,6 +160,7 @@
     {size}
     {radius}
     {id}
+    {isFocused}
     {icon}>
 
     {#snippet innerDivElement()}
