@@ -1,6 +1,8 @@
 import type { SizeStyle } from "$styles/size";
 import type { BaseComponentProps } from "$types/BaseComponent";
 
+export type ColorInputVariant = "full" | "compact" | "input";
+
 export interface ColorInputProps extends BaseComponentProps {
     label?: string;
     labelClass?: string;
@@ -9,7 +11,7 @@ export interface ColorInputProps extends BaseComponentProps {
     value?: string;
     required?: boolean;
     disabled?: boolean;
-    // variant?: InputVariant;
+    variant?: ColorInputVariant;
     size?: SizeStyle;
     radius?: SizeStyle;
     id?: `${string}-${string}-${string}-${string}-${string}`;
