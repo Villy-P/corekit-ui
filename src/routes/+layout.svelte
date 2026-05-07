@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SideNavbar from '$lib/components/SideNavbar.svelte';
+  import SideNavbar from '$components/navigation/SideNavbar/index.svelte';
     import { Navbar, Button, NavbarElement, NavbarSeparator } from '$lib/index.js';
 	import './../lib/styles/layout.css';
 

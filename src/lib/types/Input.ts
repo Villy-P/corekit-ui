@@ -20,7 +20,3 @@ export interface BaseInputProps extends BaseComponentProps {
     id?: `${string}-${string}-${string}-${string}-${string}`;
 }
 
-export interface SelectProps extends BaseInputProps {
-    options: { value: any; label: string }[];
-};  
-

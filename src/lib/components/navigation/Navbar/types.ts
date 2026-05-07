@@ -1,4 +1,4 @@
-import type { Component, Snippet } from "svelte";
+import type { Snippet } from "svelte";
 import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export interface NavbarProps extends BaseComponentProps {
@@ -13,10 +13,6 @@ export interface NavbarElementProps extends BaseComponentProps {
     threshold?: number;
 }
 
-export interface SideNavbarProps extends BaseComponentProps {
-    items?: SideNavbarItem[];
-};
-
 export type NavbarSeparatorVariant = "vertical" | "horizontal" | "dynamic";
 export const NavbarSeparatorClasses: Record<NavbarSeparatorVariant, string> = {
     "vertical": "w-0.5 h-full py-3 bg-sub-background-hover bg-clip-content",
@@ -26,12 +22,6 @@ export const NavbarSeparatorClasses: Record<NavbarSeparatorVariant, string> = {
 
 export interface NavbarSeparatorProps extends BaseComponentProps {
     variant?: NavbarSeparatorVariant;
-}
-
-export interface SideNavbarItem {
-    href: string;
-    label: string;
-    icon: Component;
 }
 
 export interface NavbarDropdownProps extends BaseComponentProps {
