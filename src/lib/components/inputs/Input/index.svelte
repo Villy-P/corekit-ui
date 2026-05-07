@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { InputProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import Text from "../../display/Text/index.svelte";
+    import Text from "../../typography/Text/index.svelte";
     import { getSizeStyleClass } from "../../../styles/size.ts";
     import { type Component } from "svelte";
     import Button from "../Button/index.svelte";

@@ -5,13 +5,13 @@
     import SEO from "$lib/components/SEO.svelte";
     import Navbar from "$lib/components/Navbar.svelte";
     import NavbarSeperator from "$lib/components/NavbarSeparator.svelte";
-    import Typewriter from "$lib/components/Typewriter.svelte";
-    import type { TypewriterAction } from "$lib/types/Typewriter.js";
+    import Typewriter from "$components/typography/Typewriter/index.svelte";
+    import type { TypewriterAction } from "$components/typography/Typewriter/types.js";
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import Input from "$components/inputs/Input/index.svelte";
     import Card from "$components/display/Card/index.svelte";
     import FloatingDropdown from "$components/inputs/Select/index.svelte";
-    import Text from "$components/display/Text/index.svelte";
+    import Text from "$components/typography/Text/index.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
 
     let arrayOfValues = ["Hello", "World", "Svelte", "Kit", "Typewriter", "Effect"];

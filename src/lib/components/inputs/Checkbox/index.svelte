@@ -1,6 +1,6 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
-    import Text from "../../display/Text/index.svelte";
+    import Text from "../../typography/Text/index.svelte";
     import type { CheckboxProps } from "./types";
 
     let { 

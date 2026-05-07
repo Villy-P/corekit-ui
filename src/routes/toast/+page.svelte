@@ -2,7 +2,7 @@
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
     import Progress from "$components/feedback/Progress/index.svelte";
-    import Text from "$components/display/Text/index.svelte";
+    import Text from "$components/typography/Text/index.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
     import Table from "$components/display/Table/index.svelte";

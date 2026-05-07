@@ -4,7 +4,7 @@
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
     import Select from "$components/inputs/Select/index.svelte";
-    import Text from "$components/display/Text/index.svelte";
+    import Text from "$components/typography/Text/index.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyle } from "$lib/styles/size.js";
     import type { CardVariant } from "$components/display/Card/types.js";

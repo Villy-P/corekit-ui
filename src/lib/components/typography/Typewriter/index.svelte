@@ -2,8 +2,8 @@
     import { twMerge } from "tailwind-merge";
     import { onMount } from "svelte";
 
-    import type { DisplaySegment, TypewriterProps } from "../types/Typewriter.ts";
-    import Text from "./display/Text/index.svelte";
+    import type { DisplaySegment, TypewriterProps } from "./types.ts";
+    import Text from "../Text/index.svelte";
 
     let { 
         actions, 

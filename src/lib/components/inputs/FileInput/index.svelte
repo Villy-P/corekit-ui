@@ -2,7 +2,7 @@
     import { getSizeStyle, getSizeStyleClass } from "$lib/styles/size.js";
     import type { FileInputProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import Text from "../../display/Text/index.svelte";
+    import Text from "../../typography/Text/index.svelte";
     import bytes from "bytes";
 
     import Upload from "@lucide/svelte/icons/upload";

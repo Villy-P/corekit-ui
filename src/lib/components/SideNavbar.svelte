@@ -2,7 +2,7 @@
     import type { SideNavbarProps } from "../types/Navbar.ts";
     import { twMerge } from "tailwind-merge";
     import Button from "./inputs/Button/index.svelte";
-    import Text from "./display/Text/index.svelte";
+    import Text from "./typography/Text/index.svelte";
     import { page } from '$app/state';
 
     let { 

@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export type TypewriterAction =
     | { type: "write", value: string | (() => string), color?: string | (() => string), minspeed?: number, maxspeed?: number, label?: string }

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { BaseInputProps } from "$types/Input.js";
-    import Text from "../../display/Text/index.svelte";
+    import Text from "../../typography/Text/index.svelte";
     import { getSizeStyleClass } from "$lib/styles/size.js";
 
     let { 
