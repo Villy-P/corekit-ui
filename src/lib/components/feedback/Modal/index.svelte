@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ModalProps } from "$components/feedback/Modal/types.js";
+    import type { ModalProps } from "./types";
     import { fade, fly } from "svelte/transition";
     import Card from "../../display/Card/index.svelte";
     import { positionParts } from "$lib/styles/posititon.js";
