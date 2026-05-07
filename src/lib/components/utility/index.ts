@@ -1,2 +1,5 @@
 export { default as Analytics } from "./Analytics/index.svelte";
 export { default as SEO } from "./SEO/index.svelte";
+
+export type { AnalyticsProps } from "./Analytics/types.ts";
+export type { SEOProps } from "./SEO/types.ts";

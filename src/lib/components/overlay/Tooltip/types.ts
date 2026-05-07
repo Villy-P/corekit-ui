@@ -1,7 +1,7 @@
 import type { TooltipPosition } from "$lib/styles/posititon.js";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
-export interface TooltipComponent extends BaseComponentProps {
+export interface TooltipProps extends BaseComponentProps {
     text?: string;
     position?: TooltipPosition;
     delay?: number;

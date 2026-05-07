@@ -1,0 +1,3 @@
+export { default as Tooltip } from "./Tooltip/index.svelte";
+
+export type { TooltipProps } from "./Tooltip/types.ts";

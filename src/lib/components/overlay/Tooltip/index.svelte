@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { TooltipComponent } from "$lib/types/Tooltip.js";
+    import type { TooltipProps } from "./types.js";
     import { type Snippet } from "svelte";
     import { fly } from "svelte/transition";
 
@@ -8,7 +8,7 @@
         position = "top",
         delay = 150,
         children
-    }: TooltipComponent = $props();
+    }: TooltipProps = $props();
 
     const DEFAULT_OFFSET = 0;
 
