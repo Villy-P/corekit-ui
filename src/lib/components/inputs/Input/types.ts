@@ -1,4 +1,4 @@
-import type { BaseInputProps } from "$types/Input";
+import type { BaseInputProps } from "$types/BaseComponent";
 
 export interface InputRequirements {
     label: string;
