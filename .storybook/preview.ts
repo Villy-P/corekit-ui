@@ -1,12 +1,13 @@
 import type { Preview } from '@storybook/sveltekit'
+import { themes } from 'storybook/theming';
 import '../src/lib/styles/layout.css'
 
 const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 
@@ -15,6 +16,16 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: 'todo'
+    },
+
+    darkMode: {
+      dark: { ...themes.dark, appBg: 'black' },
+      light: { ...themes.normal, appBg: 'white' },
+
+      darkClass: 'dark',
+      lightClass: 'storybook-light',
+      classTarget: 'html',
+      stylePreview: true
     }
   },
 };

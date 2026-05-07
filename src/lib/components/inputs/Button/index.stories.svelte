@@ -1,7 +1,8 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Button from "./index.svelte";
-	import { colorStyles } from "$lib/styles/color.js";
+	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
+    import { sizeStyles } from "$lib/styles/size.js";
 
 	const { Story } = defineMeta({
 		title: "Components/Button",
@@ -13,15 +14,15 @@
 			},
 			variant: {
 				control: "select",
-				options: ["full", "outline", "ghost"],
+				options: colorStyleTypes,
 			},
 			size: {
 				control: "select",
-				options: ["sm", "md", "lg"],
+				options: sizeStyles,
 			},
 			radius: {
 				control: "select",
-				options: ["sm", "md", "lg", "full"],
+				options: sizeStyles,
 			},
 			disabled: { control: "boolean" },
 			loading: { control: "boolean" },

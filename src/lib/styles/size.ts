@@ -2,6 +2,10 @@ export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | 
 export type SizeStyleType = "button" | "buttonIcon" | "radius" | "text" | "card" | "form" | "formLabel" | "formLabelSelected" | "progress" | "loader" | "buttonLoader";
 export type SizeStyle = SizeStyleTheme | number;
 
+export const sizeStyles = [
+    "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "full", "none"
+] as const satisfies SizeStyleTheme[];
+
 export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string>> = {
     xs: {
         button: "text-xs h-4 px-1 py-0.5",

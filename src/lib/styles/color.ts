@@ -11,6 +11,9 @@ export const colorStyles = [
     "primary", "secondary", "accent",
     "error", "warning", "success", "info"
 ] as const satisfies ColorStyle[];
+export const colorStyleTypes = [
+    "base", "text", "full", "light", "outline", "ghost", "loader"
+] as const satisfies ColorStyleType[];
 
 export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>> = {
     rose: {
