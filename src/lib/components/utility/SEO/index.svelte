@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from '$app/state';
-    import type { SEOProps } from '../types/SEO.ts';
+    import type { SEOProps } from './types.ts';
 
     const DEFAULT_TITLE = "My SvelteKit App";
     const DEFAULT_DESCRIPTION = "Description of your website.";

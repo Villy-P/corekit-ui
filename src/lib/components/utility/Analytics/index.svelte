@@ -4,7 +4,7 @@
 
 <script lang="ts">
     import { page } from '$app/state'
-    import type { AnalyticsProps } from '../types/Analytics.ts';
+    import type { AnalyticsProps } from './types.ts';
 
     let { measurementId }: AnalyticsProps = $props();
 
