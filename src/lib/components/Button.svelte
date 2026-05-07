@@ -4,7 +4,7 @@
     import type { ButtonProps } from "../types/Button.ts";
     import { twMerge } from "tailwind-merge";
     import { getLinkProps } from "../utils/link.ts";
-  import Loader from "./Loader.svelte";
+    import Loader from "./Loader.svelte";
 
     let { 
         children = undefined, 
@@ -13,7 +13,7 @@
         icon = false,
         square = false,
         href = undefined,
-        color = "none",
+        color = "primary",
         variant = "full",
         disabled = false,
         external = false,
