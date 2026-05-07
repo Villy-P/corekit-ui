@@ -69,6 +69,7 @@
 		"svelte"
 	],
 	"dependencies": {
+		"@floating-ui/dom": "^1.7.6",
 		"@lucide/svelte": "^1.3.0",
 		"@storybook/theming": "^8.6.14",
 		"@valerius_petrini/corekit-scripts": "^1.0.0",

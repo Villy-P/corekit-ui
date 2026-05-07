@@ -1,7 +1,17 @@
 <script lang="ts">
+    import type { TooltipPosition } from "$styles/posititon.js";
     import type { TooltipProps } from "./types.js";
-    import { type Snippet } from "svelte";
+    import { tick, type Snippet } from "svelte";
     import { fly } from "svelte/transition";
+
+    import {
+        computePosition,
+        flip,
+        shift,
+        offset,
+        arrow as arrowMiddleware,
+        type Placement
+    } from "@floating-ui/dom";
 
     let {
         text,
@@ -10,59 +20,47 @@
         children
     }: TooltipProps = $props();
 
-    const DEFAULT_OFFSET = 0;
-
     let visible = $state(false);
-    let resolvedPosition: string | null = $state(null);
-    let offsetX = $state(DEFAULT_OFFSET);
-    let trigger: HTMLDivElement;
-    let tooltip: HTMLDivElement | null = $state(null);
+    let x = $state(0);
+    let y = $state(0);
+    // svelte-ignore state_referenced_locally
+    let resolvedPosition: Placement = $state(position);
+    let arrowX: number | undefined = $state(undefined);
+    let arrowY: number | undefined = $state(undefined);
+
+    let trigger: HTMLDivElement | null = $state(null);
+    let tooltipEl: HTMLDivElement | null = $state(null);
+    let arrowEl: HTMLDivElement | null = $state(null);
     let timeout: ReturnType<typeof setTimeout>;
-    let overflowing = $state(false);
 
-    function calculatePosition() {
-        resolvedPosition = position;
-        if (!trigger) return;
+    async function updatePosition() {
+        if (!trigger || !tooltipEl) return;
 
-        const rect = trigger.getBoundingClientRect();
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
+        const { x: fx, y: fy, placement, middlewareData } = await computePosition(trigger, tooltipEl, {
+            placement: position,
+            middleware: [
+                offset(8),
+                flip(),
+                shift({ padding: 8 }),
+                arrowMiddleware({ element: arrowEl! })
+            ]
+        });
 
-        if (position === "top" && rect.top < 40) resolvedPosition = "bottom";
-        else if (position === "bottom" && rect.bottom > vh - 40) resolvedPosition = "top";
-        else if (position === "left" && rect.left < 120) resolvedPosition = "right";
-        else if (position === "right" && rect.right > vw - 120) resolvedPosition = "left";
-        else resolvedPosition = position;
-    }
+        x = fx;
+        y = fy;
+        resolvedPosition = placement;
 
-    function calculateOverflow() {
-        if (!tooltip || !trigger) return;
-
-        const triggerRect = trigger.getBoundingClientRect();
-        const tooltipRect = tooltip.getBoundingClientRect();
-        const vw = window.innerWidth;
-
-        const triggerCenter = triggerRect.left + triggerRect.width / 2;
-        const tooltipLeft = triggerCenter - tooltipRect.width / 2;
-        const tooltipRight = triggerCenter + tooltipRect.width / 2;
-        const padding = 8;
-
-        if (tooltipRight > vw - padding || tooltipLeft < padding) {
-            overflowing = true;
-            offsetX = tooltipRight > vw - padding
-                ? -(tooltipRight - (vw - padding))
-                : padding - tooltipLeft;
-        } else {
-            overflowing = false;
-            offsetX = DEFAULT_OFFSET;
+        if (middlewareData.arrow) {
+            arrowX = middlewareData.arrow.x;
+            arrowY = middlewareData.arrow.y;
         }
     }
 
     function show() {
-        calculatePosition();
-        timeout = setTimeout(() => {
+        timeout = setTimeout(async () => {
             visible = true;
-            requestAnimationFrame(calculateOverflow);
+            await tick();
+            await updatePosition();
         }, delay);
     }
 
@@ -71,72 +69,73 @@
         visible = false;
     }
 
-    const positionClasses: Record<string, string> = {
-        top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
-        bottom: "top-full left-1/2 -translate-x-1/2 mt-2",
-        left: "right-full top-1/2 -translate-y-1/2 mr-2",
-        right: "left-full top-1/2 -translate-y-1/2 ml-2"
-    };
-
-    const arrowClasses: Record<string, string> = {
-        top: "top-full left-1/2 -translate-x-1/2 border-t-form-background",
-        bottom: "bottom-full left-1/2 -translate-x-1/2 border-b-form-background",
-        left: "left-full top-1/2 -translate-y-1/2 border-l-form-background",
-        right: "right-full top-1/2 -translate-y-1/2 border-r-form-background"
-    };
-
     const flyParams = $derived.by(() => {
-        const pos = resolvedPosition || position;
-
         const duration = 100;
         const distance = 8;
-        if (pos == "top")
-            return { y: distance, duration };
-        else if (pos == "bottom")
-            return { y: -distance, duration };
-        const x = pos == "right" ? -distance : distance;
-        return { x, duration };
+        if (resolvedPosition === "top") return { y: distance, duration };
+        if (resolvedPosition === "bottom") return { y: -distance, duration };
+        return { x: resolvedPosition === "right" ? -distance : distance, duration };
     });
-</script>
 
-{#snippet arrow(pos: string)}
-    {@const points = {
+    const arrowSide = $derived(({
+        top: "bottom",
+        bottom: "top",
+        left: "right",
+        right: "left"
+    } as Record<string, string>)[resolvedPosition.split("-")[0]] ?? "bottom");
+
+    const arrowPoints = $derived(({
         top: "0,0 8,0 4,4",
         bottom: "0,4 4,0 8,4",
         right: "4,0 4,8 0,4",
         left: "0,0 0,8 4,4"
-    }[pos]}
-    <svg
-        width={pos === "left" || pos === "right" ? 4 : 8}
-        height={pos === "left" || pos === "right" ? 8 : 4}
-        viewBox={pos === "left" || pos === "right" ? "0 0 4 8" : "0 0 8 4"}>
-        <polygon {points} fill="currentColor" class="text-form-background" />
-    </svg>
-{/snippet}
+    } as Record<string, string>)[resolvedPosition.split("-")[0]]);
+
+    const isVertical = $derived(
+        resolvedPosition.startsWith("top") || resolvedPosition.startsWith("bottom")
+    );
+</script>
 
 <div
+    role="presentation"
     bind:this={trigger}
-    class="relative inline-flex w-fit h-fit"
+    class="inline-flex w-fit h-fit"
     onmouseenter={show}
     onmouseleave={hide}
-    role="tooltip">
+>
     {@render children()}
-
-    {#if visible}
-        <div
-            bind:this={tooltip}
-            style={position === "top" || position === "bottom" ? `transform: translateX(calc(-50% + ${offsetX}px));` : ""}
-            class="absolute z-999999 {positionClasses[resolvedPosition || position]} translate-x-0! pointer-events-none">
-
-            <div class="absolute {arrowClasses[resolvedPosition || position]}">
-                {@render arrow(resolvedPosition || position)}
-            </div>
-
-            <div 
-                transition:fly={flyParams}
-                class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap border border-white/10">
-                {text}
-            </div>
-        </div>
-    {/if}
 </div>
+
+{#if visible}
+    <div
+        bind:this={tooltipEl}
+        role="tooltip"
+        style="position: fixed; top: {y}px; left: {x}px;"
+        class="z-999999 pointer-events-none"
+    >
+        <div
+            bind:this={arrowEl}
+            style="
+                position: absolute;
+                {arrowSide}: -4px;
+                {arrowX != null ? `left: ${arrowX}px` : ''};
+                {arrowY != null ? `top: ${arrowY}px` : ''};
+            "
+        >
+            <svg
+                width={isVertical ? 8 : 4}
+                height={isVertical ? 4 : 8}
+                viewBox={isVertical ? "0 0 8 4" : "0 0 4 8"}
+            >
+                <polygon points={arrowPoints} fill="currentColor" class="text-form-background" />
+            </svg>
+        </div>
+
+        <div
+            transition:fly={flyParams}
+            class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap border border-white/10"
+        >
+            {text}
+        </div>
+    </div>
+{/if}
