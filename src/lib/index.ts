@@ -11,7 +11,7 @@ export { default as FileInput } from "./components/FileInput.svelte";
 export { default as Select } from "./components/Select.svelte";
 export { default as Text } from "./components/Text.svelte";
 export { default as Card } from "./components/Card.svelte";
-export { default as Checkbox } from "./components/Checkbox.svelte";
+export { default as Checkbox } from "./components/inputs/Checkbox/index.svelte";
 export { default as Progress } from "./components/Progress.svelte";
 export { default as Modal } from "./components/Modal.svelte";
 export { default as Table } from "./components/Table.svelte";
