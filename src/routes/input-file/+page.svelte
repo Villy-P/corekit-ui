@@ -1,15 +1,15 @@
 <script lang="ts">
     import Checkbox from "$lib/components/Checkbox.svelte";
-    import Input from "$lib/components/Input.svelte";
+    import Input from "$components/inputs/Input/index.svelte";
     import Progress from "$lib/components/Progress.svelte";
     import Text from "$lib/components/Text.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
-    import Select from "$lib/components/Select.svelte";
+    import Select from "$components/inputs/Select/Select.svelte";
     import Table from "$lib/components/Table.svelte";
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { SizeStyleTheme } from "$lib/styles/size.js";
-    import FileInput from "$lib/components/FileInput.svelte";
+    import FileInput from "$components/inputs/FileInput/index.svelte";
 
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },

@@ -1,13 +1,13 @@
 <script lang="ts">
     import { getSizeStyle, getSizeStyleClass } from "$lib/styles/size.js";
-    import type { FileInputProps } from "$lib/types/Input.js";
+    import type { FileInputProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import Text from "./Text.svelte";
+    import Text from "../../Text.svelte";
     import bytes from "bytes";
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";
-    import Button from "./inputs/Button/index.svelte";
+    import Button from "../Button/index.svelte";
 
     let { 
         children = undefined, 

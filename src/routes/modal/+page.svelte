@@ -2,9 +2,9 @@
     import Button from "$lib/components/inputs/Button/index.svelte";
     import Card from "$lib/components/Card.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
-    import Input from "$lib/components/Input.svelte";
+    import Input from "$components/inputs/Input/index.svelte";
     import Modal from "$lib/components/Modal.svelte";
-    import Select from "$lib/components/Select.svelte";
+    import Select from "$components/inputs/Select/Select.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { PositionStyle } from "$lib/styles/posititon.js";

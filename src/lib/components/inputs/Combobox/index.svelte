@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { ComboboxProps, InputProps } from "../types/Input.ts";
+    import type { ComboboxProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import { getSizeStyleClass } from "../styles/size.ts";
+    import { getSizeStyleClass } from "$styles/size";
 
-    import BaseInput from "./helper/BaseInput.svelte";
-    import Text from "./Text.svelte";
+    import BaseInput from "../../helper/BaseInput.svelte";
+    import Text from "../../Text.svelte";
     import { fly } from "svelte/transition";
     import { debounce } from "$lib/utils/debounce.js";
 

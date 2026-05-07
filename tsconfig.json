@@ -11,6 +11,11 @@
 		"sourceMap": true,
 		"strict": true,
 		"outDir": "./dist",
+		"rootDir": ".",
+		"moduleResolution": "bundler",
+		"module": "esnext",
+		"target": "esnext",
+		"lib": ["esnext", "DOM", "DOM.Iterable"],
 
 		"paths": {
 			"$types/*": ["./src/lib/types/*"],
@@ -18,5 +23,10 @@
 			"$styles/*": ["./src/lib/styles/*"],
 			"$lib/*": ["./src/lib/*"]
 		}
-	}
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.js",
+		"src/**/*.svelte"
+	]
 }

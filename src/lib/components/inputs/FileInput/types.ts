@@ -1,0 +1,16 @@
+import type { SizeStyle } from "$styles/size";
+import type { BaseComponentProps } from "$types/BaseComponent";
+
+export interface FileInputProps extends BaseComponentProps {
+    label?: string;
+    labelClass?: string;
+    divClass?: string;
+    outerDivClass?: string;
+    files?: FileList;
+    required?: boolean;
+    disabled?: boolean;
+    // variant?: InputVariant;
+    size?: SizeStyle;
+    radius?: SizeStyle;
+    id?: `${string}-${string}-${string}-${string}-${string}`;
+};  

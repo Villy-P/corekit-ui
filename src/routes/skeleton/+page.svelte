@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Input from "$lib/components/Input.svelte";
-    import Select from "$lib/components/Select.svelte";
+    import Input from "$components/inputs/Input/index.svelte";
+    import Select from "$components/inputs/Select/Select.svelte";
     import Skeleton from "$lib/components/Skeleton.svelte";
     import type { SkeletonVariant } from "$lib/types/Skeleton.js";
 

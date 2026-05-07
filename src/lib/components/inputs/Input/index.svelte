@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { InputProps } from "../types/Input.ts";
+    import type { InputProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import Text from "./Text.svelte";
-    import { getSizeStyleClass } from "../styles/size.ts";
+    import Text from "../../Text.svelte";
+    import { getSizeStyleClass } from "../../../styles/size.ts";
     import { type Component } from "svelte";
-    import Button from "./inputs/Button/index.svelte";
+    import Button from "../Button/index.svelte";
 
     import Mail from "@lucide/svelte/icons/mail";
     import Lock from "@lucide/svelte/icons/lock";
@@ -14,8 +14,8 @@
     import X from "@lucide/svelte/icons/x";
     import Check from "@lucide/svelte/icons/check";
     import { slide } from "svelte/transition";
-    import BaseInput from "./helper/BaseInput.svelte";
-    import NumberInput from "./helper/NumberInput.svelte";
+    import BaseInput from "../../helper/BaseInput.svelte";
+    import NumberInput from "../../helper/NumberInput.svelte";
 
     let { 
         children = undefined, 
