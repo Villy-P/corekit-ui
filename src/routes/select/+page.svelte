@@ -1,7 +1,7 @@
 <script lang="ts">
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
-    import Select from "$components/inputs/Select/Select.svelte";
+    import Select from "$components/inputs/Select/index.svelte";
     import type { SizeStyle } from "$lib/styles/size.js";
     import type { InputVariant } from "$lib/types/Input.js";
 

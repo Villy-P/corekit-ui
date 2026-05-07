@@ -1,8 +1,8 @@
 <script lang="ts">
     import Input from "$components/inputs/Input/index.svelte";
-    import Select from "$components/inputs/Select/Select.svelte";
-    import Skeleton from "$lib/components/Skeleton.svelte";
-    import type { SkeletonVariant } from "$lib/types/Skeleton.js";
+    import Select from "$components/inputs/Select/index.svelte";
+    import Skeleton from "$components/display/Skeleton/index.svelte";
+    import type { SkeletonVariant } from "$components/display/Skeleton/types.js";
 
     const sizeOptions = [
         { value: "xs", label: "Extra Small" },

@@ -9,8 +9,8 @@
     import type { TypewriterAction } from "$lib/types/Typewriter.js";
     import NavbarElement from "$lib/components/NavbarElement.svelte";
     import Input from "$components/inputs/Input/index.svelte";
-    import Card from "$lib/components/Card.svelte";
-    import FloatingDropdown from "$components/inputs/Select/Select.svelte";
+    import Card from "$components/display/Card/index.svelte";
+    import FloatingDropdown from "$components/inputs/Select/index.svelte";
     import Text from "$lib/components/Text.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
 

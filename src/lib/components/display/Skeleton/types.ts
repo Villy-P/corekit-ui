@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { BaseComponentProps } from "$types/BaseComponent";
 
 export type SkeletonVariant = "default" | "text" | "image" | "video" | "card";
 

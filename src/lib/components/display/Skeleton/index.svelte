@@ -1,6 +1,6 @@
 <script lang="ts">
     import { getSizeStyleClass } from "$lib/styles/size.js";
-    import type { SkeletonProps } from "$lib/types/Skeleton.js";
+    import type { SkeletonProps } from "./types";
     import Image from "@lucide/svelte/icons/image";
     import Play from "@lucide/svelte/icons/play";
     import { twMerge } from "tailwind-merge";

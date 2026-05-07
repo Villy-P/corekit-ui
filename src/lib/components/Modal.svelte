@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { ModalProps } from "$lib/types/Modal.js";
     import { fade, fly } from "svelte/transition";
-    import Card from "./Card.svelte";
+    import Card from "./display/Card/index.svelte";
     import { positionParts } from "$lib/styles/posititon.js";
     import { twMerge } from "tailwind-merge";
 

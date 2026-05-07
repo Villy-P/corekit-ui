@@ -1,6 +1,5 @@
-import type { HTMLAttributes } from "svelte/elements";
-import type { SizeStyle } from "../styles/size.ts";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { SizeStyle } from "$styles/size";
+import type { BaseComponentProps } from "$types/BaseComponent";
 
 export type CardVariant = "bordered" | "elevated";
 

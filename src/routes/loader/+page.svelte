@@ -1,6 +1,6 @@
 <script lang="ts">
     import Loader from "$lib/components/Loader.svelte";
-    import Select from "$components/inputs/Select/Select.svelte";
+    import Select from "$components/inputs/Select/index.svelte";
     import Text from "$lib/components/Text.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";

@@ -4,7 +4,7 @@
     import Progress from "$lib/components/Progress.svelte";
     import Text from "$lib/components/Text.svelte";
     import Button from "$lib/components/inputs/Button/index.svelte";
-    import Select from "$components/inputs/Select/Select.svelte";
+    import Select from "$components/inputs/Select/index.svelte";
     import Table from "$lib/components/Table.svelte";
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";

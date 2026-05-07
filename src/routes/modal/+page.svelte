@@ -1,15 +1,15 @@
 <script lang="ts">
     import Button from "$lib/components/inputs/Button/index.svelte";
-    import Card from "$lib/components/Card.svelte";
+    import Card from "$components/display/Card/index.svelte";
     import Checkbox from "$lib/components/Checkbox.svelte";
     import Input from "$components/inputs/Input/index.svelte";
     import Modal from "$lib/components/Modal.svelte";
-    import Select from "$components/inputs/Select/Select.svelte";
+    import Select from "$components/inputs/Select/index.svelte";
     import Text from "$lib/components/Text.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import type { PositionStyle } from "$lib/styles/posititon.js";
     import type { SizeStyle } from "$lib/styles/size.js";
-    import type { CardVariant } from "$lib/types/Card.js";
+    import type { CardVariant } from "$components/display/Card/types.js";
 
     const variantOptions = [
         { value: "bordered", label: "Bordered" },
