@@ -9,7 +9,7 @@
     }: BreadcrumbProps = $props();
 
     const combinedClass = $derived(twMerge(
-        "",
+        "vpcui-breadcrumb",
         className
     ));
 </script>
