@@ -7,7 +7,7 @@
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";
-    import Button from "./Button.svelte";
+    import Button from "./inputs/Button/index.svelte";
 
     let { 
         children = undefined, 

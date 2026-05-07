@@ -1,7 +1,7 @@
 import type { HTMLButtonAttributes } from "svelte/elements";
-import type { ColorStyle, ColorStyleType } from "../styles/color.ts";
-import type { SizeStyle } from "../styles/size.ts";
-import type { BaseComponentProps } from "./BaseComponent.ts";
+import type { ColorStyle, ColorStyleType } from "$styles/color.js";
+import type { SizeStyle } from "$styles/size.js";
+import type { BaseComponentProps } from "$types/BaseComponent";
 
 export interface ButtonProps extends BaseComponentProps {
     pill?: boolean;

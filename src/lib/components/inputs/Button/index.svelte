@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { generateColorStyle } from "../styles/color.ts";
-    import { getSizeStyle, getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "../styles/size.ts";
-    import type { ButtonProps } from "../types/Button.ts";
+    import { generateColorStyle } from "$styles/color";
+    import { getSizeStyle, getSizeStyleClass, sizeStyleParts, type SizeStyleTheme } from "$styles/size";
+    import type { ButtonProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
-    import { getLinkProps } from "../utils/link.ts";
-    import Loader from "./Loader.svelte";
+    import { getLinkProps } from "../../../utils/link.ts";
+    import Loader from "../../Loader.svelte";
 
     let { 
         children = undefined, 

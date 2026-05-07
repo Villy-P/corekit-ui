@@ -4,7 +4,7 @@
     import Text from "./Text.svelte";
     import { getSizeStyleClass } from "../styles/size.ts";
     import { type Component } from "svelte";
-    import Button from "./Button.svelte";
+    import Button from "./inputs/Button/index.svelte";
 
     import Mail from "@lucide/svelte/icons/mail";
     import Lock from "@lucide/svelte/icons/lock";

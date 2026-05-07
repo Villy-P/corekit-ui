@@ -11,7 +11,7 @@
     import Info from "@lucide/svelte/icons/info";
     import TriangleAlert from "@lucide/svelte/icons/triangle-alert";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
-    import Button from "./Button.svelte";
+    import Button from "./inputs/Button/index.svelte";
     import { getSizeStyleClass } from "$lib/styles/size.js";
     import { fly } from "svelte/transition";
     import { backOut } from "svelte/easing";

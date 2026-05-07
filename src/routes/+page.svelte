@@ -1,6 +1,6 @@
 <script lang="ts">
     import { fbmBackground } from "$lib/actions/fbm.js";
-    import Button from "$lib/components/Button.svelte";
+    import Button from "$lib/components/inputs/Button/index.svelte";
     import { onMount } from "svelte";
     import SEO from "$lib/components/SEO.svelte";
     import Navbar from "$lib/components/Navbar.svelte";

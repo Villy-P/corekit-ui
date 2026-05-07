@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Button from "../Button.svelte";
+    import Button from "../inputs/Button/index.svelte";
     import ChevronUp from "@lucide/svelte/icons/chevron-up";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
     import { twMerge } from "tailwind-merge";

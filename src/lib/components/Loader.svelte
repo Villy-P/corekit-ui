@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { getSizeStyleClass } from "$lib/styles/size.js";
+    import { getSizeStyleClass } from "$styles/size.js";
     import { twMerge } from "tailwind-merge";
     import type { LoaderProps } from "../types/Loader.ts";
-    import { generateColorStyle } from "$lib/styles/color.js";
+    import { generateColorStyle } from "$styles/color.js";
 
     let { 
         class: className = "",

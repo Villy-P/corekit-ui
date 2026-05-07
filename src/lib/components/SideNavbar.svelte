@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { SideNavbarProps } from "../types/Navbar.ts";
     import { twMerge } from "tailwind-merge";
-    import Button from "./Button.svelte";
+    import Button from "./inputs/Button/index.svelte";
     import Text from "./Text.svelte";
     import { page } from '$app/state';
 

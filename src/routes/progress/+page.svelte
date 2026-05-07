@@ -3,7 +3,7 @@
     import Input from "$lib/components/Input.svelte";
     import Progress from "$lib/components/Progress.svelte";
     import Text from "$lib/components/Text.svelte";
-    import Button from "$lib/components/Button.svelte";
+    import Button from "$lib/components/inputs/Button/index.svelte";
     import Select from "$lib/components/Select.svelte";
 
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";

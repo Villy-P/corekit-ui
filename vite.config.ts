@@ -1,8 +1,8 @@
 /// <reference types="vitest/config" />
 import tailwindcss from '@tailwindcss/vite';
-import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import path from 'node:path';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
@@ -10,7 +10,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [tailwindcss(), sveltekit()],
+  plugins: [tailwindcss(), svelte()],
   test: {
     projects: [{
       extends: true,
@@ -32,5 +32,13 @@ export default defineConfig({
         }
       }
     }]
+  },
+  resolve: {
+    alias: {
+      $lib: path.resolve('./src/lib'),
+      $types: path.resolve('./src/lib/types'),
+      $components: path.resolve('./src/lib/components'),
+      $styles: path.resolve('./src/lib/styles'),
+    }
   }
 });

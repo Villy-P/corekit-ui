@@ -2,7 +2,7 @@
     import Loader from "$lib/components/Loader.svelte";
     import Select from "$lib/components/Select.svelte";
     import Text from "$lib/components/Text.svelte";
-    import Button from "$lib/components/Button.svelte";
+    import Button from "$lib/components/inputs/Button/index.svelte";
     import { colorStyleParts, type ColorStyle } from "$lib/styles/color.js";
     import Checkbox from "$lib/components/Checkbox.svelte";
 
