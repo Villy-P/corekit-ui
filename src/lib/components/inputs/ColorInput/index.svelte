@@ -26,6 +26,7 @@
         size = "md",
         radius = "md",
         variant = "full",
+        alpha = false,
         id = crypto.randomUUID(),
         ...restProps
     }: ColorInputProps = $props();
