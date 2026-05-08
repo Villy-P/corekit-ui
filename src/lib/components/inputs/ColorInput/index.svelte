@@ -36,11 +36,13 @@
     let referenceEl = $state<HTMLElement>();
     let floatingEl = $state<HTMLDivElement>();
     let canvasEl = $state<HTMLDivElement>();
+    let hueEl = $state<HTMLDivElement>();
     let isOpen = $state(false);
-    let backgroundColor = $state("hsl(0, 100%, 50%)");
 
     let thumbX = $state(0);
     let thumbY = $state(0);
+
+    let hue = $state(0);
 
     const defaultClass = "text-main-text w-full flex items-center gap-1 rounded-full outline-none px-1.5 w-full bg-inherit border-0 py-0";
     const defaultLabelClass = "block text-sub-text font-medium mb-1 pointer-events-none truncate w-fit";
@@ -99,20 +101,45 @@
     }
 
     async function handleMouseDown(e: MouseEvent) {
-        if (canvasEl && !canvasEl.contains(e.target as Node))
-            return;
-        console.log("Mouse down", e);
-        handleMouseMove(e);
-        const onMove = (e: MouseEvent) => handleMouseMove(e);
-        const onUp = () => {
-            window.removeEventListener("mousemove", onMove);
-            window.removeEventListener("mouseup", onUp);
-        };
-        window.addEventListener("mousemove", onMove);
-        window.addEventListener("mouseup", onUp);
+        if (canvasEl && canvasEl.contains(e.target as Node)) {
+            handleMouseMoveCanvas(e);
+            const onMove = (e: MouseEvent) => handleMouseMoveCanvas(e);
+            const onUp = () => {
+                window.removeEventListener("mousemove", onMove);
+                window.removeEventListener("mouseup", onUp);
+            };
+            window.addEventListener("mousemove", onMove);
+            window.addEventListener("mouseup", onUp);
+        }
+        if (hueEl && hueEl.contains(e.target as Node)) {
+            handleMouseMoveHue(e);
+            const onMove = (e: MouseEvent) => handleMouseMoveHue(e);
+            const onUp = () => {
+                window.removeEventListener("mousemove", onMove);
+                window.removeEventListener("mouseup", onUp);
+            };
+            window.addEventListener("mousemove", onMove);
+            window.addEventListener("mouseup", onUp);
+        }
     }
 
-    async function handleMouseMove(e: MouseEvent) {
+    async function handleMouseMoveHue(e: MouseEvent) {
+        if (!hueEl) return;
+
+        const rect = hueEl.getBoundingClientRect();
+        const y = Math.min(Math.max(e.clientY - rect.top, 0), rect.height);
+        hue = (y / rect.height) * 360;
+
+        const s = thumbX / canvasEl!.offsetWidth;
+        const v = 1 - thumbY / canvasEl!.offsetHeight;
+
+        const l = v * (1 - s / 2);
+        const sl = l === 0 || l === 1 ? 0 : (v - l) / Math.min(l, 1 - l);
+
+        value = hslToHex(hue, sl * 100, l * 100);
+    }
+
+    async function handleMouseMoveCanvas(e: MouseEvent) {
         if (!canvasEl) return;
 
         const rect = canvasEl.getBoundingClientRect();
@@ -125,7 +152,7 @@
         const l = v * (1 - s / 2);
         const sl = l === 0 || l === 1 ? 0 : (v - l) / Math.min(l, 1 - l);
 
-        value = hslToHex(0, sl * 100, l * 100);
+        value = hslToHex(hue, sl * 100, l * 100);
     }
 </script>
 
@@ -162,14 +189,18 @@
         <div
             bind:this={floatingEl}
             transition:fly={{ y: -10, duration: 200 }}
-            class="fixed z-999999 bg-sub-background rounded-md m-4"
+            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2"
             style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
         >
-            <div class="color-canvas relative rounded h-32 cursor-crosshair" bind:this={canvasEl}>
+            <div class="color-canvas relative rounded h-32 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
                 <div 
-                    class="absolute w-4 h-4 rounded-full border border-white shadow thumb pointer-events-none"
+                    class="absolute w-3 h-3 rounded-full border border-white shadow thumb pointer-events-none"
                     style="background-color: {value || 'transparent'}; left: {thumbX}px; top: {thumbY}px;"
                 ></div>
+            </div>
+
+            <div class="h-32 w-4 hue-slider relative" bind:this={hueEl}>
+                <div class="hue-thumb absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
         </div>
     {/if}
@@ -186,7 +217,15 @@
         cursor: crosshair;
     }
 
+    .hue-slider {
+        background: linear-gradient(to bottom, red, yellow, lime, cyan, blue, magenta, red);
+    }
+
     .thumb {
         transform: translate(-50%, -50%);
+    }
+
+    .hue-thumb {
+        transform: translate(-10%, -50%);
     }
 </style>
