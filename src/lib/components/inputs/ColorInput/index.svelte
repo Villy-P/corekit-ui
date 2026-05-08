@@ -20,7 +20,7 @@
         labelClass = "",
         divClass = "",
         outerDivClass = "",
-        value = $bindable(undefined),
+        value = $bindable("#ffffffff"),
         required = false,
         disabled = false,
         size = "md",

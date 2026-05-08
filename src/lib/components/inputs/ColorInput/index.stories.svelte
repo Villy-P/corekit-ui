@@ -20,4 +20,4 @@
 	});
 </script>
 
-<Story name="Default" args={{ label: "Input Label", placeholder: "Enter text here..." }}></Story>
+<Story name="Default" args={{ label: "Input Label", alpha: true }}></Story>
