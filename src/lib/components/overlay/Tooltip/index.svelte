@@ -98,10 +98,15 @@
         resolvedPosition.startsWith("top") || resolvedPosition.startsWith("bottom")
     );
 
-    onMount(() => {
-        const cleanup = autoUpdate(trigger!, tooltipEl!, updatePosition);
-        
-        return () => cleanup();
+    $effect(() => {
+        if (visible && trigger && tooltipEl) {
+            const cleanup = autoUpdate(
+                trigger,
+                tooltipEl,
+                updatePosition
+            );
+            return () => cleanup();
+        }
     });
 </script>
 
