@@ -107,6 +107,15 @@
     }
 
     async function handleMouseDown(e: MouseEvent) {
+        if (
+            isOpen &&
+            referenceEl && !referenceEl.contains(e.target as Node) &&
+            floatingEl && !floatingEl.contains(e.target as Node)
+        ) {
+            isOpen = false;
+            return;
+        }
+
         if (canvasEl && canvasEl.contains(e.target as Node)) {
             handleMouseMoveCanvas(e);
             const onMove = (e: MouseEvent) => handleMouseMoveCanvas(e);

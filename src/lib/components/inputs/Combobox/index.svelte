@@ -182,7 +182,19 @@
             return () => cleanup();
         }
     });
+
+    function handleMouseDown(e: MouseEvent) {
+        if (
+            isFocused &&
+            referenceEl && !referenceEl.contains(e.target as Node) &&
+            floatingEl && !floatingEl.contains(e.target as Node)
+        ) {
+            isFocused = false;
+            return;
+        }
 </script>
+
+<svelte:window onmousedown={handleMouseDown}/>
 
 <BaseInput
     {children}
