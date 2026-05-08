@@ -192,6 +192,7 @@
             isFocused = false;
             return;
         }
+    }
 </script>
 
 <svelte:window onmousedown={handleMouseDown}/>
