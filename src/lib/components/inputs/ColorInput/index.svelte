@@ -41,6 +41,7 @@
     let canvasEl = $state<HTMLDivElement>();
     let hueEl = $state<HTMLDivElement>();
     let isOpen = $state(false);
+    let referenceWidth = $state(0);
 
     let thumbX = $state(0);
     let thumbY = $state(0);
@@ -79,6 +80,8 @@
 
     async function updateDropdownPosition() {
         if (!referenceEl || !floatingEl) return;
+
+        referenceWidth = referenceEl.offsetWidth;
 
         const { x, y } = await computePosition(referenceEl, floatingEl, {
             placement: "bottom-start",
@@ -158,10 +161,15 @@
         value = hslToHex(hue, sl * 100, l * 100);
     }
 
-    onMount(() => {
-        const cleanup = autoUpdate(referenceEl!, floatingEl!, updateDropdownPosition);
-        
-        return () => cleanup();
+    $effect(() => {
+        if (isOpen && referenceEl && floatingEl) {
+            const cleanup = autoUpdate(
+                referenceEl,
+                floatingEl,
+                updateDropdownPosition
+            );
+            return () => cleanup();
+        }
     });
 </script>
 
@@ -202,7 +210,7 @@
             bind:this={floatingEl}
             transition:fly={{ y: -10, duration: 200 }}
             class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5"
-            style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
+            style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
         >
             <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
                 <div 
