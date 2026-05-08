@@ -190,7 +190,7 @@
         <div
             bind:this={floatingEl}
             transition:fly={{ y: -10, duration: 200 }}
-            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2"
+            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5"
             style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
         >
             <div class="color-canvas relative rounded h-32 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
