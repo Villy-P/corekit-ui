@@ -2,7 +2,7 @@
     import type { ComboboxProps } from "./types";
     import { twMerge } from "tailwind-merge";
     import { getSizeStyleClass } from "$styles/size";
-    import { computePosition, flip, shift, offset } from "@floating-ui/dom";
+    import { computePosition, flip, shift, offset, autoUpdate } from "@floating-ui/dom";
 
     import BaseInput from "../helper/BaseInput.svelte";
     import Text from "../../typography/Text/index.svelte";
@@ -83,6 +83,8 @@
     async function updateDropdownPosition() {
         if (!referenceEl || !floatingEl) return;
 
+        referenceWidth = referenceEl.offsetWidth;
+
         const { x, y } = await computePosition(referenceEl, floatingEl, {
             placement: "bottom-start",
             middleware: [
@@ -101,6 +103,8 @@
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, className));
     let combinedDivClass = $derived(twMerge(divClass));
+
+    let referenceWidth = $state(0);
 
     function onClickItem(event: MouseEvent, option: string) {
         event.preventDefault();
@@ -169,8 +173,14 @@
     let optionsContainerElement = $state<HTMLDivElement>();
 
     $effect(() => {
-        if (isFocused)
-            tick().then(updateDropdownPosition);
+        if (isFocused && referenceEl && floatingEl) {
+            const cleanup = autoUpdate(
+                referenceEl,
+                floatingEl,
+                updateDropdownPosition
+            );
+            return () => cleanup();
+        }
     });
 </script>
 
@@ -215,7 +225,7 @@
             <div
                 bind:this={floatingEl}
                 transition:fly={{ y: -10, duration: 200 }}
-                style="position: fixed; top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
+                style="position: fixed; top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
                 class="z-999999 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, 'radius')}"
             >
                 {#if totalMatches > 0 && options.length > limit}
