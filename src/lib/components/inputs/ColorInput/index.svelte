@@ -204,7 +204,7 @@
         updateHueAndThumb(hsv);
     }
 
-    function onBlueRGB(e: FocusEvent) {
+    function onBlueRGB(e?: FocusEvent) {
         if (!e) return;
         const input = (e.target as HTMLInputElement).value.trim();
         const match = input.match(/^(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})$/);
@@ -217,6 +217,39 @@
             updateHueAndThumb(hsv);
         } else {
             (e.target as HTMLInputElement).value = `${hexToRgb(value)?.r}, ${hexToRgb(value)?.g}, ${hexToRgb(value)?.b}`;
+        }
+    }
+
+    function onBlurHSV(e?: FocusEvent) {
+        if (!e) return;
+        const input = (e.target as HTMLInputElement).value.trim();
+        const match = input.match(/^(\d+\.?\d*)°?,\s*(\d+\.?\d*)%?,\s*(\d+\.?\d*)%?$/);
+        if (match) {
+            const h = Math.min(360, parseFloat(match[1]));
+            const s = Math.min(100, parseFloat(match[2]));
+            const v = Math.min(100, parseFloat(match[3]));
+            updateHueAndThumb({h, s, v});
+            (e.target as HTMLInputElement).value = `${h.toFixed(2)}°, ${s.toFixed(2)}%, ${v.toFixed(2)}%`;
+        } else {
+            const hsv = hexToHsv(value);
+            (e.target as HTMLInputElement).value = `${hsv.h.toFixed(2)}°, ${hsv.s.toFixed(2)}%, ${hsv.v.toFixed(2)}%`;
+        }
+    }
+
+    function onBlurHSL(e?: FocusEvent) {
+        if (!e) return;
+        const input = (e.target as HTMLInputElement).value.trim();
+        const match = input.match(/^(\d{1,3})°?,\s*(\d{1,3})%?,\s*(\d{1,3})%?$/);
+        if (match) {
+            const h = Math.min(360, parseInt(match[1]));
+            const s = Math.min(100, parseInt(match[2]));
+            const l = Math.min(100, parseInt(match[3]));
+            value = hslToHex(h, s, l);
+            const hsv = hexToHsv(value);
+            updateHueAndThumb(hsv);
+        } else {
+            const hsl = hexToHsl(value);
+            (e.target as HTMLInputElement).value = `${hsl.h.toFixed(2)}°, ${hsl.s.toFixed(2)}%, ${hsl.l.toFixed(2)}%`;
         }
     }
 
@@ -306,7 +339,8 @@
                     label="HSV"
                     size="sm"
                     value="{hue.toFixed(2)}°, {hsv.s.toFixed(2)}%, {hsv.v.toFixed(2)}%"
-                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    onblur={onBlurHSV}
+                    onkeydown={handleEnter}
                     placeholder="0, 0, 0"
                 />
 
@@ -316,7 +350,8 @@
                     label="HSL"
                     size="sm"
                     value="{hue.toFixed(2)}°, {hsl.s.toFixed(2)}%, {hsl.l.toFixed(2)}%"
-                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    onblur={onBlurHSL}
+                    onkeydown={handleEnter}
                     placeholder="0, 0, 0"
                 />
             </div>
