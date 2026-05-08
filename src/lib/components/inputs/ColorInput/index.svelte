@@ -23,7 +23,7 @@
         labelClass = "",
         divClass = "",
         outerDivClass = "",
-        value = $bindable("#ffffffff"),
+        value = $bindable("#ffffff"),
         required = false,
         disabled = false,
         size = "md",
@@ -103,6 +103,7 @@
             isOpen = true;
             await tick();
             updateDropdownPosition();
+            updateHueAndThumb(hexToHsv(value));
         }
     }
 
@@ -180,6 +181,34 @@
             return () => cleanup();
         }
     });
+
+    function handleEnter(e: KeyboardEvent) {
+        if (e.key === "Enter")
+            (e.target as HTMLInputElement).blur();
+    }
+
+    function onBlurHexCode(e?: FocusEvent) {
+        if (!e) return;
+        let input = (e.target as HTMLInputElement).value.trim();
+        input = input.replace(/^#/, "");
+        
+        if (/^[0-9a-fA-F]{3}$/.test(input))
+            input = input.split("").map(c => c + c).join("");
+        
+        if (/^[0-9a-fA-F]{6}$/.test(input))
+            value = `#${input}`;
+        else
+            (e.target as HTMLInputElement).value = value;
+
+        const hsv = hexToHsv(value);
+        updateHueAndThumb(hsv);
+    }
+
+    function updateHueAndThumb(hsv: { h: number; s: number; v: number }) {
+        hue = hsv.h;
+        thumbX = (hsv.s / 100) * canvasEl!.offsetWidth;
+        thumbY = (1 - hsv.v / 100) * canvasEl!.offsetHeight;
+    }
 </script>
 
 <svelte:window onmousedown={handleMouseDown}/>
@@ -239,8 +268,9 @@
                     label="Hex"
                     size="sm"
                     value={value}
-                    on:input={(e) => value = (e.target as HTMLInputElement).value}
-                    placeholder="#ffffffff"
+                    onblur={onBlurHexCode}
+                    onkeydown={handleEnter}
+                    placeholder="#ffffff"
                 />
 
                 <Input
