@@ -12,6 +12,7 @@
     import { fly } from "svelte/transition";
     import { tick } from "svelte";
     import { hslToHex } from "$lib/utils/color";
+    import { Input } from "..";
 
     let { 
         children = undefined, 
@@ -193,19 +194,61 @@
             class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5"
             style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceEl?.offsetWidth}px;"
         >
-            <div class="color-canvas relative rounded h-32 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
+            <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
                 <div 
                     class="absolute w-3 h-3 rounded-full border border-white shadow thumb pointer-events-none"
                     style="background-color: {value || 'transparent'}; left: {thumbX}px; top: {thumbY}px;"
                 ></div>
             </div>
 
-            <div class="h-32 w-4 relative" bind:this={hueEl} style="background: linear-gradient(to bottom, {value}, rgba(0, 0, 0, 0));">
+            <div class="h-36 w-4 relative" bind:this={hueEl} style="background: linear-gradient(to bottom, {value}, rgba(0, 0, 0, 0));">
                 <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
 
-            <div class="h-32 w-4 hue-slider relative" bind:this={hueEl}>
+            <div class="h-36 w-4 hue-slider relative" bind:this={hueEl}>
                 <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
+            </div>
+
+            <div class="grow flex flex-col gap-2">
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="Hex"
+                    size="sm"
+                    value={value}
+                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    placeholder="#ffffffff"
+                />
+
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="RGB"
+                    size="sm"
+                    value="0, 0, 0"
+                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    placeholder="0, 0, 0"
+                />
+
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="HSV"
+                    size="sm"
+                    value="0, 0, 0"
+                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    placeholder="0, 0, 0"
+                />
+
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="HSL"
+                    size="sm"
+                    value="0, 0, 0"
+                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    placeholder="0, 0, 0"
+                />
             </div>
         </div>
     {/if}
