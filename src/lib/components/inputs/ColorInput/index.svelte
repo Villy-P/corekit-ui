@@ -4,13 +4,13 @@
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
     import bytes from "bytes";
-    import { computePosition, flip, shift, offset } from "@floating-ui/dom";
+    import { computePosition, flip, shift, offset, autoUpdate } from "@floating-ui/dom";
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";
     import Button from "../Button/index.svelte";
     import { fly } from "svelte/transition";
-    import { tick } from "svelte";
+    import { onMount, tick } from "svelte";
     import { hexToHsl, hexToHsv, hexToRgb, hslToHex } from "$lib/utils/color";
     import { Input } from "..";
 
@@ -158,19 +158,11 @@
         value = hslToHex(hue, sl * 100, l * 100);
     }
 
-    function handlePipetteClick() {
-        if (!(window as any).EyeDropper) {
-            alert("Your browser does not support the EyeDropper API.");
-            return;
-        }
-
-        const eyeDropper = new (window as any).EyeDropper();
-        eyeDropper.open().then((result: { sRGBHex: string }) => {
-            value = result.sRGBHex;
-        }).catch((e: Error) => {
-            console.error(e);
-        });
-    }
+    onMount(() => {
+        const cleanup = autoUpdate(referenceEl!, floatingEl!, updateDropdownPosition);
+        
+        return () => cleanup();
+    });
 </script>
 
 <svelte:window onmousedown={handleMouseDown}/>
@@ -219,14 +211,8 @@
                 ></div>
             </div>
 
-            <div class="flex flex-col gap-2">
-                <div class="h-full w-4 hue-slider relative" bind:this={hueEl}>
-                    <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
-                </div>
-
-                <Button class="hover:bg-form-background w-4 h-4 p-0" square variant="ghost" onclick={handlePipetteClick}>
-                    <Pipette size={10}/>
-                </Button>
+            <div class="h-36 w-4 hue-slider relative" bind:this={hueEl}>
+                <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
 
             <div class="grow flex flex-col gap-2">

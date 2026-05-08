@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { TooltipPosition } from "$styles/posititon.js";
     import type { TooltipProps } from "./types.js";
-    import { tick, type Snippet } from "svelte";
+    import { onMount, tick, type Snippet } from "svelte";
     import { fly } from "svelte/transition";
 
     import {
@@ -10,7 +10,10 @@
         shift,
         offset,
         arrow as arrowMiddleware,
-        type Placement
+        type Placement,
+
+        autoUpdate
+
     } from "@floating-ui/dom";
 
     let {
@@ -94,6 +97,12 @@
     const isVertical = $derived(
         resolvedPosition.startsWith("top") || resolvedPosition.startsWith("bottom")
     );
+
+    onMount(() => {
+        const cleanup = autoUpdate(trigger!, tooltipEl!, updatePosition);
+        
+        return () => cleanup();
+    });
 </script>
 
 <div
