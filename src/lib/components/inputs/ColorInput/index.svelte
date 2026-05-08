@@ -255,7 +255,7 @@
                     variant="floating"
                     label="HSV"
                     size="sm"
-                    value="{hsv.h.toFixed(2)}°, {hsv.s.toFixed(2)}%, {hsv.v.toFixed(2)}%"
+                    value="{hue.toFixed(2)}°, {hsv.s.toFixed(2)}%, {hsv.v.toFixed(2)}%"
                     on:input={(e) => value = (e.target as HTMLInputElement).value}
                     placeholder="0, 0, 0"
                 />
@@ -265,7 +265,7 @@
                     variant="floating"
                     label="HSL"
                     size="sm"
-                    value="{hsl.h.toFixed(2)}°, {hsl.s.toFixed(2)}%, {hsl.l.toFixed(2)}%"
+                    value="{hue.toFixed(2)}°, {hsl.s.toFixed(2)}%, {hsl.l.toFixed(2)}%"
                     on:input={(e) => value = (e.target as HTMLInputElement).value}
                     placeholder="0, 0, 0"
                 />
