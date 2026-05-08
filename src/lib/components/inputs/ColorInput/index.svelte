@@ -200,8 +200,12 @@
                 ></div>
             </div>
 
+            <div class="h-32 w-4 relative" bind:this={hueEl} style="background: linear-gradient(to bottom, {value}, rgba(0, 0, 0, 0));">
+                <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
+            </div>
+
             <div class="h-32 w-4 hue-slider relative" bind:this={hueEl}>
-                <div class="hue-thumb absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
+                <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
         </div>
     {/if}
@@ -222,11 +226,15 @@
         background: linear-gradient(to bottom, red, yellow, lime, cyan, blue, magenta, red);
     }
 
+    .alpha-slider {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 0, 0, 1));
+    }
+
     .thumb {
         transform: translate(-50%, -50%);
     }
 
-    .hue-thumb {
+    .slider {
         transform: translate(-10%, -50%);
     }
 </style>
