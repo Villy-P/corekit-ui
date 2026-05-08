@@ -296,8 +296,8 @@
         <div
             bind:this={floatingEl}
             transition:fly={{ y: -10, duration: 200 }}
-            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5"
-            style="top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
+            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5 flex-wrap"
+            style="top: {dropdownY}px; left: {dropdownX}px; min-width: {referenceWidth}px; max-width: calc(100vw - 16px);"
         >
             <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
                 <div 
@@ -310,7 +310,7 @@
                 <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
 
-            <div class="grow flex flex-col gap-2">
+            <div class="grow flex flex-col gap-2 min-w-[160px]">
                 <Input
                     type="text"
                     variant="floating"
