@@ -204,6 +204,22 @@
         updateHueAndThumb(hsv);
     }
 
+    function onBlueRGB(e: FocusEvent) {
+        if (!e) return;
+        const input = (e.target as HTMLInputElement).value.trim();
+        const match = input.match(/^(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})$/);
+        if (match) {
+            const r = Math.min(255, parseInt(match[1]));
+            const g = Math.min(255, parseInt(match[2]));
+            const b = Math.min(255, parseInt(match[3]));
+            value = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+            const hsv = hexToHsv(value);
+            updateHueAndThumb(hsv);
+        } else {
+            (e.target as HTMLInputElement).value = `${hexToRgb(value)?.r}, ${hexToRgb(value)?.g}, ${hexToRgb(value)?.b}`;
+        }
+    }
+
     function updateHueAndThumb(hsv: { h: number; s: number; v: number }) {
         hue = hsv.h;
         thumbX = (hsv.s / 100) * canvasEl!.offsetWidth;
@@ -279,7 +295,8 @@
                     label="RGB"
                     size="sm"
                     value="{rgb.r}, {rgb.g}, {rgb.b}"
-                    on:input={(e) => value = (e.target as HTMLInputElement).value}
+                    onblur={onBlueRGB}
+                    onkeydown={handleEnter}
                     placeholder="0, 0, 0"
                 />
 
