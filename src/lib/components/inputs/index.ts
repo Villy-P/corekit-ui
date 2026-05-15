@@ -4,6 +4,7 @@ export { default as Input } from "./Input/index.svelte";
 export { default as Select } from "./Select/index.svelte";
 export { default as FileInput } from "./FileInput/index.svelte";
 export { default as Combobox } from "./Combobox/index.svelte";
+export { default as ColorInput } from "./ColorInput/index.svelte";
 
 export type { ButtonProps } from "./Button/types.ts";
 export type { CheckboxProps } from "./Checkbox/types.ts";
@@ -11,3 +12,4 @@ export type { InputProps } from "./Input/types.ts";
 export type { SelectProps } from "./Select/types.ts";
 export type { FileInputProps } from "./FileInput/types.ts";
 export type { ComboboxProps } from "./Combobox/types.ts";
+export type { ColorInputProps } from "./ColorInput/types.ts";
