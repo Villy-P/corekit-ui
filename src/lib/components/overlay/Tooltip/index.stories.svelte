@@ -9,6 +9,6 @@
 	});
 </script>
 
-<Story name="Default" args={{ color: "primary", size: "md" }}>
+<Story name="Default" args={{ color: "primary", size: "md", text: "This is a tooltip", position: "top" }}>
     <Button>Hover me</Button>
 </Story>

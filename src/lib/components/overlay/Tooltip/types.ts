@@ -5,4 +5,5 @@ export interface TooltipProps extends BaseComponentProps {
     text?: string;
     position?: TooltipPosition;
     delay?: number;
+    interactive?: boolean;
 }

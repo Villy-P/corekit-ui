@@ -20,6 +20,7 @@
         text,
         position = "top",
         delay = 150,
+        interactive = false,
         children
     }: TooltipProps = $props();
 
@@ -59,7 +60,10 @@
         }
     }
 
+    let hideTimeout: ReturnType<typeof setTimeout>;
+
     function show() {
+        clearTimeout(hideTimeout);
         timeout = setTimeout(async () => {
             visible = true;
             await tick();
@@ -69,7 +73,10 @@
 
     function hide() {
         clearTimeout(timeout);
-        visible = false;
+        if (interactive)
+            hideTimeout = setTimeout(() => { visible = false; }, 150);
+        else
+            visible = false;
     }
 
     const flyParams = $derived.by(() => {
@@ -108,6 +115,14 @@
             return () => cleanup();
         }
     });
+
+    function onTooltipEnter() {
+        clearTimeout(hideTimeout);
+    }
+
+    function onTooltipLeave() {
+        visible = false;
+    }
 </script>
 
 <div
@@ -125,7 +140,9 @@
         bind:this={tooltipEl}
         role="tooltip"
         style="position: fixed; top: {y}px; left: {x}px;"
-        class="z-999999 pointer-events-none"
+        class="z-999999 {interactive ? 'pointer-events-auto' : 'pointer-events-none'}"
+        onmouseenter={onTooltipEnter}
+        onmouseleave={onTooltipLeave}
     >
         <div
             bind:this={arrowEl}
