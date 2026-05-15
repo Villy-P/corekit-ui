@@ -21,7 +21,8 @@
         position = "top",
         delay = 150,
         interactive = false,
-        children
+        children,
+        attachedTo
     }: TooltipProps = $props();
 
     let visible = $state(false);
@@ -123,17 +124,33 @@
     function onTooltipLeave() {
         visible = false;
     }
+
+    onMount(() => {
+        if (attachedTo) {
+            trigger = attachedTo;
+
+            attachedTo.addEventListener("mouseenter", show);
+            attachedTo.addEventListener("mouseleave", hide);
+
+            return () => {
+                attachedTo.removeEventListener("mouseenter", show);
+                attachedTo.removeEventListener("mouseleave", hide);
+            };
+        }
+    });
 </script>
 
-<div
-    role="presentation"
-    bind:this={trigger}
-    class="inline-flex w-fit h-fit"
-    onmouseenter={show}
-    onmouseleave={hide}
->
-    {@render children()}
-</div>
+{#if !attachedTo}
+    <div
+        role="presentation"
+        bind:this={trigger}
+        class="inline-flex w-fit h-fit"
+        onmouseenter={show}
+        onmouseleave={hide}
+    >
+        {@render children()}
+    </div>
+{/if}
 
 {#if visible}
     <div
@@ -166,7 +183,11 @@
             transition:fly={flyParams}
             class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap border border-white/10"
         >
-            {text}
+            {#if attachedTo}
+                {@render children?.()}
+            {:else}
+                {text}
+            {/if}
         </div>
     </div>
 {/if}

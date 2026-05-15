@@ -25,15 +25,15 @@
         "small": { class: "", size: "text-sm" },
         "blockquote": { class: "border-l-4 border-gray-500 pl-2 opacity-70", size: "text-base" },
         "pre": { class: "font-mono bg-sub-background px-3 py-2 radius overflow-x-auto whitespace-pre", size: "text-base" },
-        "code": { class: "font-mono bg-sub-background px-3 py-2 radius inline-block", size: "text-base" },
+        "code": { class: "font-mono bg-sub-background px-1 radius inline-block", size: "text-base" },
         "a": { class: "text-blue-400 hover:text-blue-500 hover:underline transition-colors cursor-pointer", size: "text-base" },
         "li": { class: "text-base list-disc list-inside", size: "text-base" },
-        "h1": { class: "font-extrabold", size: "text-4xl" },
+        "h1": { class: "font-bold", size: "text-4xl" },
         "h2": { class: "font-bold", size: "text-3xl" },
         "h3": { class: "font-semibold", size: "text-2xl" },
-        "h4": { class: "font-medium", size: "text-xl" },
+        "h4": { class: "font-semibold", size: "text-xl" },
         "h5": { class: "font-medium", size: "text-lg" },
-        "h6": { class: "font-medium", size: "text-base" }
+        "h6": { class: "font-normal", size: "text-base" }
     };
 
     function getTextSizeInRem(): string {

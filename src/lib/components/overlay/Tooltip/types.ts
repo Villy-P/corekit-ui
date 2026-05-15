@@ -6,4 +6,5 @@ export interface TooltipProps extends BaseComponentProps {
     position?: TooltipPosition;
     delay?: number;
     interactive?: boolean;
+    attatchedTo?: HTMLElement;
 }
