@@ -1,5 +1,5 @@
-import type { SizeStyle } from "$styles/size";
-import type { BaseComponentProps } from "$types/BaseComponent";
+import type { SizeStyle } from "../../../styles/size";
+import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export type ColorInputVariant = "full" | "compact" | "input";
 

@@ -2,7 +2,7 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Tooltip from "./index.svelte";
     import Button from "../../inputs/Button/index.svelte";
-    import { Text } from "$components/typography";
+    import { Text } from "../../typography";
 
 	const { Story } = defineMeta({
 		title: "Components/Overlay/Tooltip",

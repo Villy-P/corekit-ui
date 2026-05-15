@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { NavbarSeparatorClasses, type NavbarSeparatorProps } from "$components/navigation/Navbar/types.js";
+    import { NavbarSeparatorClasses, type NavbarSeparatorProps } from "./types.js";
 
     let {
         variant = "dynamic",

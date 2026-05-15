@@ -1,4 +1,4 @@
-import type { SizeStyle } from "$styles/size";
+import type { SizeStyle } from "../../../styles/size";
 
 export const buttonSizeStyles: Record<SizeStyle, string> = {
     xs: "text-xs h-4 px-1 py-0.5",

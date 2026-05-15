@@ -2,7 +2,7 @@
     import { fly } from "svelte/transition";
     import NavbarElement from "./NavbarElement.svelte";
     import { tick } from "svelte";
-    import type { NavbarDropdownProps } from "$components/navigation/Navbar/types.js";
+    import type { NavbarDropdownProps } from "./types.js";
 
     let {
         children = undefined, 

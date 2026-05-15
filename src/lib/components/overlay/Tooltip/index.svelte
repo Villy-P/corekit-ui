@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { TooltipPosition } from "$styles/posititon.js";
+    import type { TooltipPosition } from "../../../styles/posititon.js";
     import type { TooltipProps } from "./types.js";
     import { onMount, tick, type Snippet } from "svelte";
     import { fly } from "svelte/transition";

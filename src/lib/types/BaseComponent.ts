@@ -1,4 +1,4 @@
-import type { SizeStyle } from "$styles/size";
+import type { SizeStyle } from "../styles/size";
 import type { Component } from "svelte";
 
 export interface BaseComponentProps {

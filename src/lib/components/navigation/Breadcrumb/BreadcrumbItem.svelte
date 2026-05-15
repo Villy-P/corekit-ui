@@ -1,7 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { BreadcrumbItemProps } from "./types";
-    import { Text } from "$components/typography";
+    import { Text } from "../../typography";
 
     let {
         children = undefined, 

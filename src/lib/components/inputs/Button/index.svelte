@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { generateColorStyle } from "$styles/color";
+    import { generateColorStyle } from "../../../styles/color";
     import {
         getSizeStyle,
         getSizeStyleClass,
         getSizeStyleClassRecord,
-    } from "$styles/size";
+    } from "../../../styles/size";
     import type { ButtonProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
     import { getLinkProps } from "../../../utils/link.ts";

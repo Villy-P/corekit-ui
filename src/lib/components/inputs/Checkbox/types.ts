@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from "$types/BaseComponent";
+import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export interface CheckboxProps extends BaseComponentProps {
     label?: string;

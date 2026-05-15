@@ -1,6 +1,6 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
-    import { getSizeStyleClass } from "$styles/size";
+    import { getSizeStyleClass } from "../../../styles/size";
 
     import type { SelectProps } from "$lib/types/Input.js";
     import BaseInput from "../helper/BaseInput.svelte";

@@ -1,6 +1,6 @@
-import type { ColorStyle, ButtonColorStyleType } from "$styles/color.js";
-import type { SizeStyle } from "$styles/size.js";
-import type { BaseComponentProps } from "$types/BaseComponent";
+import type { ColorStyle, ButtonColorStyleType } from "../../../styles/color.js";
+import type { SizeStyle } from "../../../styles/size.js";
+import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export interface ButtonProps extends BaseComponentProps {
     pill?: boolean;

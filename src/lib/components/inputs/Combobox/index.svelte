@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { ComboboxProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import { getSizeStyleClass } from "$styles/size";
+    import { getSizeStyleClass } from "../../../styles/size";
     import { computePosition, flip, shift, offset, autoUpdate } from "@floating-ui/dom";
 
     import BaseInput from "../helper/BaseInput.svelte";
