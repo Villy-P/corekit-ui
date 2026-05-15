@@ -5,6 +5,7 @@
     let {
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         ...restProps
     }: BreadcrumbProps = $props();
 
@@ -14,7 +15,7 @@
     ));
 </script>
 
-<nav aria-label="Breadcrumb" class={combinedClass} {...restProps}>
+<nav aria-label="Breadcrumb" class={combinedClass} {...restProps} bind:this={element}>
     <ol class="flex flex-wrap items-center">
         {@render children?.()}
     </ol>

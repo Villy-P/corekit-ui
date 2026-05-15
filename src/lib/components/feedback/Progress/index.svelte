@@ -8,6 +8,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         divClass = "",
         progress = 100,
         animate = undefined,
@@ -64,6 +65,6 @@
     });
 </script>
 
-<div class={combinedDivClass} {...restProps} style="--duration: {animate?.duration}ms; {customStyle}">
+<div class={combinedDivClass} {...restProps} style="--duration: {animate?.duration}ms; {customStyle}" bind:this={element}>
     <div class={combinedInnerClass} style="width: {animate ? (mounted ? animate?.to : animate?.from) : progress}%; transition: width var(--duration) linear;"></div>
 </div>

@@ -4,6 +4,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         subtext = undefined,
         ...restProps
     }: any = $props();
@@ -13,7 +14,7 @@
     const combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<span class={combinedClass} {...restProps}>
+<span class={combinedClass} {...restProps} bind:this={element}>
     {@render children?.()}
     {#if subtext}        
         <span class="text-sub-text text-[10px] mt-0.5">

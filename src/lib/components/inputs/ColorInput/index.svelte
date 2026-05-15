@@ -19,6 +19,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         label = undefined,
         labelClass = "",
         divClass = "",
@@ -36,7 +37,6 @@
     let inputElement: HTMLInputElement;
     let dropdownX = $state(0);
     let dropdownY = $state(0);
-    let referenceEl = $state<HTMLElement>();
     let floatingEl = $state<HTMLDivElement>();
     let canvasEl = $state<HTMLDivElement>();
     let hueEl = $state<HTMLDivElement>();
@@ -79,11 +79,11 @@
     ));
 
     async function updateDropdownPosition() {
-        if (!referenceEl || !floatingEl) return;
+        if (!element || !floatingEl) return;
 
-        referenceWidth = referenceEl.offsetWidth;
+        referenceWidth = element.offsetWidth;
 
-        const { x, y } = await computePosition(referenceEl, floatingEl, {
+        const { x, y } = await computePosition(element, floatingEl, {
             placement: "bottom-start",
             middleware: [
                 offset(8),
@@ -110,7 +110,7 @@
     async function handleMouseDown(e: MouseEvent) {
         if (
             isOpen &&
-            referenceEl && !referenceEl.contains(e.target as Node) &&
+            element && !element.contains(e.target as Node) &&
             floatingEl && !floatingEl.contains(e.target as Node)
         ) {
             isOpen = false;
@@ -172,9 +172,9 @@
     }
 
     $effect(() => {
-        if (isOpen && referenceEl && floatingEl) {
+        if (isOpen && element && floatingEl) {
             const cleanup = autoUpdate(
-                referenceEl,
+                element,
                 floatingEl,
                 updateDropdownPosition
             );
@@ -262,7 +262,7 @@
 
 <svelte:window onmousedown={handleMouseDown}/>
 
-<div class={combinedOuterDivClass} bind:this={referenceEl}>
+<div class={combinedOuterDivClass} bind:this={element}>
     <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
         {label}
         {#if required}
@@ -310,7 +310,7 @@
                 <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
             </div>
 
-            <div class="grow flex flex-col gap-2 min-w-[160px]">
+            <div class="grow flex flex-col gap-2 min-w-40">
                 <Input
                     type="text"
                     variant="floating"

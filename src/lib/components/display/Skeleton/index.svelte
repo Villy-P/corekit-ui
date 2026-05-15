@@ -8,6 +8,7 @@
     let { 
         variant = "text", 
         class: className = "",
+        element = $bindable(),
         count = 19, 
         size = "md" 
     }: SkeletonProps = $props();
@@ -38,7 +39,7 @@
     </div>
 {/snippet}
 
-<div class={combinedContainerClass}>
+<div class={combinedContainerClass} bind:this={element}>
     {#if variant === "default"}
         <div class="h-4 bg-sub-background rounded w-3/4"></div>
         <div class="h-4 bg-sub-background rounded w-full"></div>

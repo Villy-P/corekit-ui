@@ -7,6 +7,7 @@
         class: className = "", 
         classTop = "",
         threshold = 10,
+        element = $bindable(),
         ...restProps
     }: NavbarProps = $props();
 
@@ -24,6 +25,6 @@
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<nav class={combinedClass} {...restProps}>
+<nav class={combinedClass} {...restProps} bind:this={element}>
     {@render children?.()}
 </nav>

@@ -6,6 +6,7 @@
     let {
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         href = undefined,
         ...restProps
     }: BreadcrumbItemProps = $props();
@@ -16,7 +17,7 @@
     ));
 </script>
 
-<li class={combinedClass} {...restProps} aria-current={href ? undefined : 'page'}>
+<li class={combinedClass} {...restProps} aria-current={href ? undefined : 'page'} bind:this={element}>
     {#if href}
         <a class="hover:underline hover:text-sub-text transition-colors" href={href}>
             {@render children?.()}

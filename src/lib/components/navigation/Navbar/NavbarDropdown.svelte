@@ -7,9 +7,10 @@
     let {
         children = undefined, 
         class: className = "", 
+        element = $bindable(),
         wrapperClass = "",
         label = "",
-        element = undefined,
+        navelement = undefined,
         ...restProps
     }: NavbarDropdownProps = $props();
 
@@ -58,11 +59,11 @@
 
 <svelte:window onclick={handleClickOutside}/>
 
-<div class="relative" bind:this={wrapperRef}>
+<div class="relative" bind:this={wrapperRef} bind:this={element}>
     <NavbarElement onclick={toggle} class={className} {...restProps} aria-haspopup="true" aria-expanded={open}>
         {label}
-        {#if element}
-            {@render element()}
+        {#if navelement}
+            {@render navelement()}
         {/if}
     </NavbarElement>
 

@@ -20,6 +20,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         label = "",
         labelClass = "",
         divClass = "", 
@@ -128,6 +129,7 @@
     {isFocused}
     {id}
     icon={Icon}
+    bind:wrapper={element}
     {...restProps}>
     {#snippet outerDivElementAfter()}
         {#if touched && requirements}

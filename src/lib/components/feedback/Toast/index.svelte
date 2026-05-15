@@ -26,6 +26,7 @@
         size = "md",
         radius = "md",
         onclose = undefined,
+        element = $bindable(),
         ...restProps
     }: ToastProps = $props();
 
@@ -58,7 +59,7 @@
     });
 </script>
 
-<div transition:fly={flyParams} class={combinedToastClass} {...restProps}>
+<div transition:fly={flyParams} class={combinedToastClass} {...restProps} bind:this={element}>
     <div class="w-8 h-8 flex-center">
         <Icon class={defualtIconClass}/>
     </div>

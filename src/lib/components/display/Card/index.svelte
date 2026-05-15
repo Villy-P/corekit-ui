@@ -8,6 +8,7 @@
     let { 
         children = undefined, 
         class: className = "", 
+        element = $bindable(),
         href = undefined,
         external = false,
         variant = "bordered",
@@ -42,6 +43,7 @@
     style={mergedStyle}
     {...anchorProps}
     {...restProps}
+    bind:this={element}
 >
     {@render children?.()}
 </svelte:element>

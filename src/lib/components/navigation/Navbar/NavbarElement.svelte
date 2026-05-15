@@ -7,6 +7,7 @@
     let {
         children = undefined, 
         class: className = "", 
+        element = $bindable(),
         classTop = "",
         activeClass = "",
         href = undefined,
@@ -30,6 +31,6 @@
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<Button radius="none" {href} color="none" class={combinedClass} {...restProps} aria-current={isActive ? 'page' : undefined}>
+<Button bind:element radius="none" {href} color="none" class={combinedClass} {...restProps} aria-current={isActive ? 'page' : undefined}>
     {@render children?.()}
 </Button>

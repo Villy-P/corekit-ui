@@ -6,6 +6,7 @@
 
     let { 
         class: className = "",
+        element = $bindable(),
         size = "md",
         color = "blue",
         ...restProps
@@ -21,7 +22,7 @@
     ));
 </script>
 
-<div class={sizeClass} {...restProps}></div>
+<div class={sizeClass} {...restProps} bind:this={element}></div>
 
 <style>
     .loader {

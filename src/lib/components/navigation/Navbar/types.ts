@@ -26,7 +26,7 @@ export interface NavbarSeparatorProps extends BaseComponentProps {
 
 export interface NavbarDropdownProps extends BaseComponentProps {
     label?: string;
-    element?: Snippet;
+    navelement?: Snippet;
     classTop?: string;
     wrapperClass?: string;
     activeClass?: string;

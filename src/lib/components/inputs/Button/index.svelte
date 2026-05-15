@@ -14,6 +14,7 @@
     let {
         children = undefined,
         class: className = "",
+        element = $bindable(),
         pill = false,
         icon = false,
         square = false,
@@ -84,6 +85,7 @@
     style={mergedStyle}
     {...anchorProps}
     {...restProps}
+    bind:this={element}
 >
     {#if loading}
         <Loader

@@ -12,6 +12,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         label = undefined,
         labelClass = "",
         divClass = "",
@@ -75,7 +76,7 @@
     }
 </script>
 
-<div class={combinedOuterDivClass}>
+<div class={combinedOuterDivClass} bind:this={element}>
     <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
         {label}
         {#if required}

@@ -2,12 +2,13 @@
     import { twMerge } from "tailwind-merge";
     import { getSizeStyleClass } from "../../../styles/size";
 
-    import type { SelectProps } from "$lib/types/Input.js";
+    import type { SelectProps } from "./types";
     import BaseInput from "../helper/BaseInput.svelte";
 
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         label = "",
         labelClass = "",
         divClass = "", 
@@ -62,6 +63,7 @@
     {radius}
     {isFocused}
     {id}
+    bind:wrapper={element}
     {...restProps}>
     {#snippet innerDivElement()}
         <select 

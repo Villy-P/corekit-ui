@@ -5,7 +5,8 @@
 
     let { 
         children = undefined, 
-        class: className = "", 
+        class: className = "",
+        element = $bindable(), 
         tag = "p",
         shrink = undefined,
         size = "none",
@@ -60,6 +61,6 @@
     ));
 </script>
 
-<svelte:element this={tag} style={shrinkStyle} class={combinedClass} {...restProps}>
+<svelte:element bind:this={element} this={tag} style={shrinkStyle} class={combinedClass} {...restProps}>
     {@render children?.()}
 </svelte:element>

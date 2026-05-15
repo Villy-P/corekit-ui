@@ -4,6 +4,7 @@ import type { Component } from "svelte";
 export interface BaseComponentProps {
     children?: any;
     class?: string;
+    element?: HTMLElement;
     [key: string]: any;
 };
 

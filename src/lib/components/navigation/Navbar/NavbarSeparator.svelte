@@ -4,8 +4,9 @@
     let {
         variant = "dynamic",
         class: className = "",
+        element = $bindable(),
         ...restProps
     }: NavbarSeparatorProps = $props();
 </script>
 
-<div class={NavbarSeparatorClasses[variant]} {...restProps}></div>
+<div bind:this={element} class={NavbarSeparatorClasses[variant]} {...restProps}></div>

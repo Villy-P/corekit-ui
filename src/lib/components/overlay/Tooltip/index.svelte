@@ -19,6 +19,7 @@
     let {
         text,
         position = "top",
+        element = $bindable(),
         delay = 150,
         interactive = false,
         children,
@@ -160,6 +161,7 @@
         class="z-999999 {interactive ? 'pointer-events-auto' : 'pointer-events-none'}"
         onmouseenter={onTooltipEnter}
         onmouseleave={onTooltipLeave}
+        bind:this={element}
     >
         <div
             bind:this={arrowEl}

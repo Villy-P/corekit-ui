@@ -13,6 +13,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         label = "",
         labelClass = "",
         divClass = "", 
@@ -38,7 +39,6 @@
 
     let dropdownX = $state(0);
     let dropdownY = $state(0);
-    let referenceEl = $state<HTMLElement>();
     let floatingEl = $state<HTMLDivElement>();
 
     let debouncedSearch = $state("");
@@ -81,11 +81,11 @@
     }
 
     async function updateDropdownPosition() {
-        if (!referenceEl || !floatingEl) return;
+        if (!element || !floatingEl) return;
 
-        referenceWidth = referenceEl.offsetWidth;
+        referenceWidth = element.offsetWidth;
 
-        const { x, y } = await computePosition(referenceEl, floatingEl, {
+        const { x, y } = await computePosition(element, floatingEl, {
             placement: "bottom-start",
             middleware: [
                 offset(8),
@@ -173,9 +173,9 @@
     let optionsContainerElement = $state<HTMLDivElement>();
 
     $effect(() => {
-        if (isFocused && referenceEl && floatingEl) {
+        if (isFocused && element && floatingEl) {
             const cleanup = autoUpdate(
-                referenceEl,
+                element,
                 floatingEl,
                 updateDropdownPosition
             );
@@ -186,7 +186,7 @@
     function handleMouseDown(e: MouseEvent) {
         if (
             isFocused &&
-            referenceEl && !referenceEl.contains(e.target as Node) &&
+            element && !element.contains(e.target as Node) &&
             floatingEl && !floatingEl.contains(e.target as Node)
         ) {
             isFocused = false;
@@ -213,7 +213,7 @@
     {id}
     {isFocused}
     {icon}
-    bind:wrapper={referenceEl}>
+    bind:wrapper={element}>
 
     {#snippet innerDivElement()}
         <input

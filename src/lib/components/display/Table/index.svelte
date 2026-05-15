@@ -5,6 +5,7 @@
     let { 
         children = undefined, 
         class: className = "",
+        element = $bindable(),
         tableHeaders = [],
         tableData = [],
         size = "md",
@@ -25,7 +26,7 @@
     const combinedTableHeaderClass = $derived(twMerge(defaultTableHeaderClass, defaultTableCellClass));
 </script>
 
-<div class="overflow-auto w-full">
+<div class="overflow-auto w-full" bind:this={element}>
     <table {...restProps} class={combinedTableClass}>
         <thead>
             <tr>

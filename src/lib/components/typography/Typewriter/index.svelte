@@ -8,6 +8,7 @@
     let { 
         actions, 
         class: className = "",
+        element = $bindable(),
         textClass = "",
         ...restProps
     }: TypewriterProps = $props();
@@ -65,7 +66,7 @@
     let combinedClass = $derived(twMerge("typewriter w-fit text-main-text", className));
 </script>
 
-<div class={combinedClass} {...restProps}>
+<div class={combinedClass} {...restProps} bind:this={element}>
     {#each displaySegments as segment}
         {#key segment}
             <Text tag="span" class={textClass} style="color: {segment.color}">{segment.text}</Text>
