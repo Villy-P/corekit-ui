@@ -71,12 +71,14 @@
 </script>
 
 {#snippet labelElement()}
-    <Text tag="label" for={id} class={combinedLabelClass} style={customLabelStyle}>
-        {label}
-        {#if required}
-            <span class="text-[#E05555]">*</span>
-        {/if}
-    </Text>
+    {#if label}
+        <Text tag="label" for={id} class={combinedLabelClass} style={customLabelStyle}>
+            {label}
+            {#if required}
+                <span class="text-[#E05555]">*</span>
+            {/if}
+        </Text>
+    {/if}
 {/snippet}
 
 {#snippet innerDivElementWrapper()}

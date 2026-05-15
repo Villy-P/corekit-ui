@@ -263,12 +263,14 @@
 <svelte:window onmousedown={handleMouseDown}/>
 
 <div class={combinedOuterDivClass} bind:this={element}>
-    <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
-        {label}
-        {#if required}
-            <span class="text-[#E05555]">*</span>
-        {/if}
-    </Text>
+    {#if label}
+        <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
+            {label}
+            {#if required}
+                <span class="text-[#E05555]">*</span>
+            {/if}
+        </Text>
+    {/if}
     <Button color="none" class={combinedDivClass} onclick={handleClick} {disabled}>
         <input
             {id}
@@ -288,77 +290,76 @@
             {value ? value : "Select color"}
         </Text>
     </Button>
-
-    {#if isOpen}
-        {@const rgb = hexToRgb(value || "#000000")}
-        {@const hsl = hexToHsl(value || "#000000")}
-        {@const hsv = hexToHsv(value || "#000000")}
-        <div
-            bind:this={floatingEl}
-            transition:fly={{ y: -10, duration: 200 }}
-            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5 flex-wrap"
-            style="top: {dropdownY}px; left: {dropdownX}px; min-width: {referenceWidth}px; max-width: calc(100vw - 16px);"
-        >
-            <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
-                <div 
-                    class="absolute w-3 h-3 rounded-full border border-white shadow thumb pointer-events-none"
-                    style="background-color: {value || 'transparent'}; left: {thumbX}px; top: {thumbY}px;"
-                ></div>
-            </div>
-
-            <div class="h-36 w-4 hue-slider relative" bind:this={hueEl}>
-                <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
-            </div>
-
-            <div class="grow flex flex-col gap-2 min-w-40">
-                <Input
-                    type="text"
-                    variant="floating"
-                    label="Hex"
-                    size="sm"
-                    value={value}
-                    onblur={onBlurHexCode}
-                    onkeydown={handleEnter}
-                    placeholder="#ffffff"
-                />
-
-                <Input
-                    type="text"
-                    variant="floating"
-                    label="RGB"
-                    size="sm"
-                    value="{rgb.r}, {rgb.g}, {rgb.b}"
-                    onblur={onBlueRGB}
-                    onkeydown={handleEnter}
-                    placeholder="0, 0, 0"
-                />
-
-                <Input
-                    type="text"
-                    variant="floating"
-                    label="HSV"
-                    size="sm"
-                    value="{hue.toFixed(2)}°, {hsv.s.toFixed(2)}%, {hsv.v.toFixed(2)}%"
-                    onblur={onBlurHSV}
-                    onkeydown={handleEnter}
-                    placeholder="0, 0, 0"
-                />
-
-                <Input
-                    type="text"
-                    variant="floating"
-                    label="HSL"
-                    size="sm"
-                    value="{hue.toFixed(2)}°, {hsl.s.toFixed(2)}%, {hsl.l.toFixed(2)}%"
-                    onblur={onBlurHSL}
-                    onkeydown={handleEnter}
-                    placeholder="0, 0, 0"
-                />
-            </div>
-        </div>
-    {/if}
 </div>
 
+{#if isOpen}
+    {@const rgb = hexToRgb(value || "#000000")}
+    {@const hsl = hexToHsl(value || "#000000")}
+    {@const hsv = hexToHsv(value || "#000000")}
+    <div
+        bind:this={floatingEl}
+        transition:fly={{ y: -10, duration: 200 }}
+        class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5 flex-wrap"
+        style="top: {dropdownY}px; left: {dropdownX}px; min-width: {referenceWidth}px; max-width: calc(100vw - 16px);"
+    >
+        <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>
+            <div 
+                class="absolute w-3 h-3 rounded-full border border-white shadow thumb pointer-events-none"
+                style="background-color: {value || 'transparent'}; left: {thumbX}px; top: {thumbY}px;"
+            ></div>
+        </div>
+
+        <div class="h-36 w-4 hue-slider relative" bind:this={hueEl}>
+            <div class="slider absolute w-5 h-1 border border-white shadow" style="top: {(hue / 360) * 100}%"></div>
+        </div>
+
+        <div class="grow flex flex-col gap-2 min-w-40">
+            <Input
+                type="text"
+                variant="floating"
+                label="Hex"
+                size="sm"
+                value={value}
+                onblur={onBlurHexCode}
+                onkeydown={handleEnter}
+                placeholder="#ffffff"
+            />
+
+            <Input
+                type="text"
+                variant="floating"
+                label="RGB"
+                size="sm"
+                value="{rgb.r}, {rgb.g}, {rgb.b}"
+                onblur={onBlueRGB}
+                onkeydown={handleEnter}
+                placeholder="0, 0, 0"
+            />
+
+            <Input
+                type="text"
+                variant="floating"
+                label="HSV"
+                size="sm"
+                value="{hue.toFixed(2)}°, {hsv.s.toFixed(2)}%, {hsv.v.toFixed(2)}%"
+                onblur={onBlurHSV}
+                onkeydown={handleEnter}
+                placeholder="0, 0, 0"
+            />
+
+            <Input
+                type="text"
+                variant="floating"
+                label="HSL"
+                size="sm"
+                value="{hue.toFixed(2)}°, {hsl.s.toFixed(2)}%, {hsl.l.toFixed(2)}%"
+                onblur={onBlurHSL}
+                onkeydown={handleEnter}
+                placeholder="0, 0, 0"
+            />
+        </div>
+    </div>
+{/if}
 <style>
     .color-canvas {
         aspect-ratio: 1 / 0.75;

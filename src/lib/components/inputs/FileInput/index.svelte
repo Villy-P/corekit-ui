@@ -77,12 +77,14 @@
 </script>
 
 <div class={combinedOuterDivClass} bind:this={element}>
-    <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
-        {label}
-        {#if required}
-            <span class="text-[#E05555]">*</span>
-        {/if}
-    </Text>
+    {#if label}
+        <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
+            {label}
+            {#if required}
+                <span class="text-[#E05555]">*</span>
+            {/if}
+        </Text>
+    {/if}
     <Button color="none" class={combinedDivClass} onclick={handleClick} {disabled}>
         <div class={iconContainerClass}>
             <Icon class={iconClass}></Icon>
