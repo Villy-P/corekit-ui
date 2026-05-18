@@ -2,7 +2,6 @@
     import { twMerge } from "tailwind-merge";
     import Button from "../../inputs/Button/index.svelte";
     import type { NavbarElementProps } from "./types";
-    import { page } from "$app/state";
 
     let {
         children = undefined, 
@@ -10,6 +9,7 @@
         element = $bindable(),
         classTop = "",
         activeClass = "",
+        active = false,
         href = undefined,
         threshold = 10,
         ...restProps
@@ -19,18 +19,17 @@
 
     let scrollY = $state(0);
     let isAtTop = $derived(scrollY <= threshold);
-    let isActive = $derived(page.url.pathname === href);
 
     const combinedClass = $derived(twMerge(
         defaultClass,
         className,
-        isActive ? activeClass : "",
+        active ? activeClass : "",
         isAtTop ? classTop : "",
     ));
 </script>
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<Button bind:element radius="none" {href} color="none" class={combinedClass} {...restProps} aria-current={isActive ? 'page' : undefined}>
+<Button bind:element radius="none" {href} color="sub" class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
 </Button>
