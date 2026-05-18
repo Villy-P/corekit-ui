@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import { getSizeStyle, getSizeStyleClass } from "$lib/styles/size.js";
     import type { ColorInputProps } from "./types";
@@ -30,7 +34,7 @@
         size = "md",
         radius = "md",
         variant = "full",
-        id = crypto.randomUUID(),
+        id = `color-input-${count++}`,
         ...restProps
     }: ColorInputProps = $props();
 

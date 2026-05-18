@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import { getSizeStyleClass } from "../../../styles/size";
@@ -20,7 +24,7 @@
         disabled = false,
         size = "md",
         radius = "md",
-        id = crypto.randomUUID(),
+        id = `select-${count++}`,
         ...restProps
     }: SelectProps = $props();
 

@@ -14,5 +14,5 @@ export interface ColorInputProps extends BaseComponentProps {
     variant?: ColorInputVariant;
     size?: SizeStyle;
     radius?: SizeStyle;
-    id?: `${string}-${string}-${string}-${string}-${string}`;
+    id?: string;
 };  

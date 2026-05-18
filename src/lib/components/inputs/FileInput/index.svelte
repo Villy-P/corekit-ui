@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import { getSizeStyle, getSizeStyleClass } from "$lib/styles/size.js";
     import type { FileInputProps } from "./types";
@@ -22,7 +26,7 @@
         disabled = false,
         size = "md",
         radius = "md",
-        id = crypto.randomUUID(),
+        id = `file-input-${count++}`,
         ...restProps
     }: FileInputProps = $props();
 

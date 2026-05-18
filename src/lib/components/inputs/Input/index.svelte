@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import type { InputProps } from "./types";
     import { twMerge } from "tailwind-merge";
@@ -37,7 +41,7 @@
         valid = $bindable(true),
         size = "md",
         radius = "md",
-        id = crypto.randomUUID(),
+        id = `input-${count++}`,
         min = undefined,
         max = undefined,
         step = undefined,

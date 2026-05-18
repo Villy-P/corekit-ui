@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
@@ -11,7 +15,7 @@
         labelClass = "",
         divClass = "", 
         checked = $bindable(),
-        id = crypto.randomUUID(),
+        id = `checkbox-${count++}`,
         ...restProps
     }: CheckboxProps = $props();
 

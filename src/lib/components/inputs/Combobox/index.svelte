@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import type { ComboboxProps } from "./types";
     import { twMerge } from "tailwind-merge";
@@ -28,7 +32,7 @@
         radius = "md",
         options = [],
         limit = 10,
-        id = crypto.randomUUID(),
+        id = `combobox-${count++}`,
         ...restProps
     }: ComboboxProps = $props();
 

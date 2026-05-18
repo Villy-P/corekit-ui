@@ -1,3 +1,7 @@
+<script module>
+    let count = 0;
+</script>
+
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { BaseInputProps } from "../../../types/BaseComponent";
@@ -20,7 +24,7 @@
         isFocused = false,
         icon = undefined,
         wrapper = $bindable(),
-        id = crypto.randomUUID(),
+        id = `base-input-${count++}`,
 
         innerDivElement = undefined,
         outerDivElementAfter = undefined,
