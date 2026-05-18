@@ -50,7 +50,6 @@
             ready = true;
         }
 
-        // Run immediately — node is in the DOM at this point
         updatePosition().then(() => {
             cleanup = autoUpdate(element!, node, updatePosition);
         });
@@ -74,9 +73,8 @@
 
     function handleClickOutside(event: MouseEvent) {
         const target = event.target as Node;
-        if (element && !element.contains(target)) {
+        if (element && !element.contains(target))
             open = false;
-        }
     }
 </script>
 

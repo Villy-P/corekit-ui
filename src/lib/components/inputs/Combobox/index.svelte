@@ -7,8 +7,6 @@
     import BaseInput from "../helper/BaseInput.svelte";
     import Text from "../../typography/Text/index.svelte";
     import { fly } from "svelte/transition";
-    import { debounce } from "$lib/utils/debounce.js";
-    import { tick } from "svelte";
 
     let { 
         children = undefined, 
@@ -37,36 +35,21 @@
     let isFocused = $state(false);
     let activeIndex = $state(0);
 
+    let floatingEl = $state<HTMLDivElement>();
     let dropdownX = $state(0);
     let dropdownY = $state(0);
-    let floatingEl = $state<HTMLDivElement>();
-
-    let debouncedSearch = $state("");
-
-    const updateSearch = debounce((v: string) => {
-        debouncedSearch = v;
-    }, 150);
-
-    $effect(() => {
-        updateSearch(value ?? "");
-    });
+    let referenceWidth = $state(0);
+    let ready = $state(false);
 
     const sizeClasses = $derived(getSizeStyleClass(size, "form"));
     const labelSizeClass = $derived(getSizeStyleClass(size, "formLabel"));
 
     let inputElement = $state<HTMLInputElement>();
 
-    const customStyle = $derived.by(() => {
-        const styles: string[] = [];
-
-        if (typeof size === "number")
-            styles.push(`width: ${size}px`);
-
-        if (typeof radius === "number")
-            styles.push(`border-radius: ${radius}px`);
-
-        return styles.join("; ");
-    });
+    const customStyle = $derived([
+        typeof size === "number" ? `width: ${size}px` : "",
+        typeof radius === "number" ? `border-radius: ${radius}px` : "",
+    ].filter(Boolean).join("; "));
 
     function handleFocus(e: FocusEvent) {
         isFocused = true;
@@ -80,37 +63,47 @@
         onblur?.(e);
     }
 
-    async function updateDropdownPosition() {
-        if (!element || !floatingEl) return;
-
-        referenceWidth = element.offsetWidth;
-
-        const { x, y } = await computePosition(element, floatingEl, {
-            placement: "bottom-start",
-            middleware: [
-                offset(8),
-                flip(),
-                shift({ padding: 8 })
-            ]
-        });
-
-        dropdownX = x;
-        dropdownY = y;
-    }
-
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0 rounded-none";
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, className));
     let combinedDivClass = $derived(twMerge(divClass));
 
-    let referenceWidth = $state(0);
-
     function onClickItem(event: MouseEvent, option: string) {
         event.preventDefault();
         value = option;
         isFocused = false;
         inputElement?.blur();
+    }
+
+    function initFloating(node: HTMLDivElement) {
+        if (!element) return {};
+
+        let cleanup: (() => void) | null = null;
+
+        async function updatePosition() {
+            referenceWidth = element!.offsetWidth;
+
+            const { x, y } = await computePosition(element!, node, {
+                placement: "bottom-start",
+                middleware: [offset(8), flip(), shift({ padding: 8 })]
+            });
+
+            dropdownX = x;
+            dropdownY = y;
+            ready = true;
+        }
+
+        updatePosition().then(() => {
+            cleanup = autoUpdate(element!, node, updatePosition);
+        });
+
+        return {
+            destroy() {
+                cleanup?.();
+                ready = false;
+            }
+        };
     }
 
     function highlight(label: string, search: string) {
@@ -130,7 +123,7 @@
 
     let filteredOptions = $derived(
         options.filter(option =>
-            option.toLowerCase().includes(debouncedSearch.toLowerCase()))
+            option.toLowerCase().includes(value?.toLowerCase() ?? ""))
     );
 
     let validOptions = $derived(filteredOptions.slice(0, limit));
@@ -171,17 +164,6 @@
     }
 
     let optionsContainerElement = $state<HTMLDivElement>();
-
-    $effect(() => {
-        if (isFocused && element && floatingEl) {
-            const cleanup = autoUpdate(
-                element,
-                floatingEl,
-                updateDropdownPosition
-            );
-            return () => cleanup();
-        }
-    });
 
     function handleMouseDown(e: MouseEvent) {
         if (
@@ -236,24 +218,25 @@
     {#snippet outerDivElementAfter()}        
         {#if isFocused}
             <div
-                bind:this={floatingEl}
-                transition:fly={{ y: -10, duration: 200 }}
+                use:initFloating
                 style="position: fixed; top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
-                class="z-999999 border-2 overflow-hidden border-blue-500 bg-sub-background {getSizeStyleClass(radius, 'radius')}"
+                style:visibility={ready ? "visible" : "hidden"}
+                transition:fly={{ y: -10, duration: 200 }}
+                class="z-999999 overflow-hidden border border-white/10 bg-sub-background shadow-xl shadow-black/40 {getSizeStyleClass(radius, 'radius')}"
             >
                 {#if totalMatches > 0 && options.length > limit}
-                    <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
+                    <Text class="text-xs py-1.5 px-2.5 text-sub-text italic sticky top-0 bg-sub-background w-full">
                         Showing {limit} of {totalMatches} results for "{value}"
                     </Text>
                 {/if}
                 {#if totalMatches === 0}
-                    <Text class="text-xs py-0.5 px-1 text-sub-text italic sticky top-0 bg-sub-background w-full">
+                    <Text class="text-xs py-1.5 px-2.5 text-sub-text italic sticky top-0 bg-sub-background w-full">
                         No results found for "{value}"
                     </Text>
                 {/if}
                 <div bind:this={optionsContainerElement} class="overflow-auto max-h-40">
                     {#each validOptions as option, index}
-                        <Text class="text-sm py-0.5 px-1 cursor-pointer hover:bg-sub-background-hover transition-colors {activeIndex === index ? 'bg-sub-background-hover' : ''}" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
+                        <Text class="text-sm py-1.5 px-2.5 cursor-pointer hover:bg-white/5 transition-colors {activeIndex === index ? 'bg-white/5' : ''}" onmousedown={(e: MouseEvent) => onClickItem(e, option)}>
                             {@html highlight(option, value ?? "")}
                         </Text>
                     {/each}
