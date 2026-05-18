@@ -28,7 +28,7 @@
 <nav class={combinedClass} {...restProps} onmouseenter={() => expanded = true} onmouseleave={() => expanded = false} bind:this={element}>
     {#each items as item}
         {@const isActive = page.url.pathname === item.href}
-        <Button size="xs" class="{isActive ? 'bg-form-background text-main-text' : 'text-sub-text'} hover:text-main-text py-1 text-nowrap flex justify-start gap-2 overflow-hidden mx-1 w-[calc(100%-16px)] hover:bg-form-background px-1.5" href={item.href}>
+        <Button size="xs" color="none" class="{isActive ? 'bg-form-background text-main-text' : 'text-sub-text'} hover:text-main-text py-1 text-nowrap flex justify-start gap-2 overflow-hidden mx-1 w-[calc(100%-16px)] hover:bg-form-background px-1.5" href={item.href}>
             <item.icon class="w-5 h-5 shrink-0"/>
             <Text tag="span" class="transition-opacity duration-200 text-sm text-inherit {expanded ? 'w-auto opacity-100 pr-3' : 'w-0 opacity-0'}">
                 {item.label}
