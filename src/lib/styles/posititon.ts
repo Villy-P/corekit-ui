@@ -12,3 +12,15 @@ export const positionParts: Record<PositionStyle, string> = {
     "bottom-right": "bottom-4 right-4",
     "center": "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 };
+
+export const modalPositionParts: Record<PositionStyle, string> = {
+    "center":        "items-center justify-center",
+    "top":           "items-center justify-start pt-4",
+    "bottom":        "items-center justify-end pb-4",
+    "left":          "items-start justify-center pl-4",
+    "right":         "items-end justify-center pr-4",
+    "top-left":      "items-start justify-start p-4",
+    "top-right":     "items-end justify-start p-4",
+    "bottom-left":   "items-start justify-end p-4",
+    "bottom-right":  "items-end justify-end p-4",
+};
