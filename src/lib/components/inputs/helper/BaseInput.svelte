@@ -30,14 +30,9 @@
 
     const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
 
-    const customLabelStyle = $derived.by(() => {
-        const styles: string[] = [];
-
-        if (typeof size === "number")
-            styles.push(`font-size: ${size / 4}px`);
-
-        return styles.join("; ");
-    });
+    const customLabelStyle = $derived(
+        typeof size === "number" ? `font-size: ${size / 4}px` : ""
+    );
 
     let labelClassIcon = $derived(icon != null && variant === "floating" ? "pl-[32px] pr-2" : "");
 
@@ -62,11 +57,9 @@
     ));
 
     const combinedDivClass = $derived(twMerge(
-        "vpcui-base-input-div-class relative *:transition-all transition-colors flex-center bg-form-background border-[1px] border-form-border focus-within:ring-1 focus-within:ring-blue-500 overflow-hidden",
+        "vpcui-base-input-div-class relative *:transition-all transition-colors flex-center bg-form-background border border-form-border focus-within:border-blue-400/40 overflow-hidden",
         getSizeStyleClass(radius, "radius"),
-        size === "full" ? "w-full" : "",
-        divClass,
-        disabled ? "opacity-50 pointer-events-none" : ""
+        divClass
     ));
 </script>
 

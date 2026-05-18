@@ -85,11 +85,15 @@
         onblur?.(e);
     }
 
+    const isValid = $derived(
+        (requirements ?? []).every(req => testRequirement(req.requirements))
+    );
+
     let inputClassIcon = $derived(Icon !== null ? "pl-0 pr-1" : "");
 
     let defaultInputClassCheck = $derived(variant !== "floating" ? "py-0" : "");
     let combinedClass = $derived(twMerge(defaultClass, sizeClasses, defaultInputClassCheck, labelSizeClass, inputClassIcon, className));
-    let combinedDivClass = $derived(twMerge(divClass, (!isValidInput() && touched) && invalidClass));
+    let combinedDivClass = $derived(twMerge(divClass, (!isValid && touched) && invalidClass));
 
     let EyeComponent = $derived(canSeePassword ? Eye : EyeOff);
 
@@ -101,15 +105,8 @@
         return true;
     }
 
-    function isValidInput() {
-        for (const requirement of requirements || [])
-            if (!testRequirement(requirement.requirements))
-                return false;
-        return true;
-    }
-
     $effect(() => {
-        valid = isValidInput();
+        valid = isValid;
     });
 </script>
 
