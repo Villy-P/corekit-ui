@@ -17,7 +17,7 @@
         ...restProps
     }: CardProps = $props();
 
-    let defaultClass = "text-main-text rounded-lg transition-colors ease-in-out bg-sub-background p-4";
+    let defaultClass = "text-main-text rounded-lg transition-colors ease-in-out bg-sub-background p-4 w-full";
     let linkClass = "block hover:bg-sub-background-hover cursor-pointer";
     let combinedClass = $derived(twMerge(
         defaultClass, 
