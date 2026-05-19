@@ -32,7 +32,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-        class="w-full h-screen bg-black/50 z-300 fixed"
+        class="w-full h-screen bg-black/50 z-300 fixed top-0 left-0"
         transition:fade={{ duration: 200 }}
         onclick={() => open = false}
         bind:this={element}>
