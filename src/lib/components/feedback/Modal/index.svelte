@@ -17,12 +17,12 @@
     }: ModalProps = $props();
 
     const outerClass = $derived(twMerge(
-        "fixed inset-0 z-300 flex flex-col bg-black/50 p-4",
+        "inset-0 flex flex-col w-[calc(100%-1rem)] h-[calc(100%-1rem)] p-4",
         modalPositionParts[position]
     ));
 
     const cardClass = $derived(twMerge(
-        "w-full max-h-[95vh] overflow-y-auto",
+        "max-h-[95vh] overflow-y-auto",
         getSizeStyleClass(size, "card"),
         className
     ));
@@ -32,14 +32,14 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-        class={outerClass}
+        class="w-full h-screen bg-black/50 z-300 fixed"
         transition:fade={{ duration: 200 }}
         onclick={() => open = false}
         bind:this={element}>
         <div
-            transition:fly={{ y: -20, duration: 200 }}
-            onclick={(e) => e.stopPropagation()}>
-            <Card class={cardClass} {...restProps}>
+            class={outerClass}
+            transition:fly={{ y: -20, duration: 200 }}>
+            <Card class={cardClass} {...restProps} onclick={(e: MouseEvent) => e.stopPropagation()}>
                 {@render children()}
             </Card>
         </div>
