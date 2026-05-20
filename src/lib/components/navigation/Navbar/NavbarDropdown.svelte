@@ -106,7 +106,7 @@
             transition:fly={flyParams}
             class="bg-sub-background p-2 min-w-max flex flex-col *:px-0 rounded border-sub-background-hover border"
         >
-            <button onclick={() => (open = false)} class="contents">
+            <button onclick={() => (open = false)} class="contents *:w-full [&_a]:justify-start [&_a]:py-0.5 [&_a]:px-2.5 [&_a]:rounded">
                 {@render children?.()}
             </button>
         </div>
