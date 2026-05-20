@@ -29,72 +29,45 @@
         ...restProps
     }: ButtonProps = $props();
 
-    const defaultClass =
-        "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap";
-    const disabledClass = $derived(
-        disabled || loading
-            ? "opacity-50 pointer-events-none"
-            : "cursor-pointer",
-    );
-    const iconClass = $derived(icon ? "p-0 flex-none" : "h-fit");
-    const pillClass = $derived((pill || icon) && "rounded-full");
-    const squareClass = $derived(square && "aspect-square rounded-none");
+    const isDisabled = $derived(disabled || loading);
 
-    const mergedClass = $derived(
-        twMerge(
-            defaultClass,
-            generateColorStyle(color, variant),
-            disabledClass,
-            getSizeStyleClassRecord(
-                size,
-                icon ? buttonIconSizeStyles : buttonSizeStyles,
-            ),
-            getSizeStyleClass(radius, "radius"),
-            iconClass,
-            pillClass,
-            squareClass,
-            className,
-        ),
-    );
+    const mergedClass = $derived(twMerge(
+        "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap",
+        generateColorStyle(color, variant),
+        isDisabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
+        getSizeStyleClassRecord(size, icon ? buttonIconSizeStyles : buttonSizeStyles),
+        getSizeStyleClass(radius, "radius"),
+        icon ? "p-0 flex-none" : "h-fit",
+        (pill || icon) && "rounded-full",
+        square && "aspect-square rounded-none",
+        className,
+    ));
 
-    const mergedStyle = $derived(
-        [
-            typeof size === "number"
-                ? icon
-                    ? `height: ${size}px; width: ${size}px; padding: ${size / 4}px`
-                    : `height: ${size}px; padding: ${size / 4}px ${size / 8}px`
-                : "",
-            getSizeStyle(radius, "radius"),
-            restProps.style,
-        ]
-            .filter(Boolean)
-            .join("; "),
-    );
-
-    const anchorProps = $derived(
-        getLinkProps(href, external, disabled || loading),
-    );
+    const mergedStyle = $derived([
+        typeof size === "number"
+            ? icon
+                ? `height: ${size}px; width: ${size}px; padding: ${size / 4}px`
+                : `height: ${size}px; padding: ${size / 4}px ${size / 8}px`
+            : "",
+        getSizeStyle(radius, "radius"),
+        restProps.style,
+    ].filter(Boolean).join("; "));
 </script>
 
 <svelte:element
     this={href ? "a" : "button"}
     class={mergedClass}
-    disabled={disabled || loading}
-    aria-disabled={disabled || loading}
+    disabled={isDisabled}
+    aria-disabled={isDisabled}
+    aria-busy={loading}
     type={href ? undefined : restProps.type || "button"}
     style={mergedStyle}
-    {...anchorProps}
+    {...getLinkProps(href, external, isDisabled)}
     {...restProps}
     bind:this={element}
 >
     {#if loading}
-        <Loader
-            color="white"
-            class="border-2 border-loader-btn-color {getSizeStyleClass(
-                size,
-                'buttonLoader',
-            )}"
-        />
+        <Loader color="white" class="border-2 border-loader-btn-color {getSizeStyleClass(size, 'buttonLoader')}" />
     {/if}
     {@render children?.()}
 </svelte:element>
