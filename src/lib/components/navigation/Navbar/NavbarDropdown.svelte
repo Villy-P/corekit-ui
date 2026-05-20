@@ -62,13 +62,8 @@
         };
     }
 
-    async function toggle() {
-        if (open) {
-            open = false;
-        } else {
-            ready = false;
-            open = true;
-        }
+    function toggle() {
+        open = !open;
     }
 
     function handleClickOutside(event: MouseEvent) {
@@ -98,13 +93,14 @@
 {#if open}
     <div
         use:initDropdown
+        role="menu"
         style="position: fixed; top: {y}px; left: {x}px;"
         class="z-100 shadow-lg"
         style:visibility={ready ? "visible" : "hidden"}
     >
         <div
             transition:fly={flyParams}
-            class="bg-sub-background p-2 min-w-max flex flex-col *:px-0 rounded border-sub-background-hover border"
+            class="bg-sub-background p-2 min-w-max flex flex-col rounded border border-white/10 shadow-xl shadow-black/40"
         >
             <button onclick={() => (open = false)} class="contents *:w-full [&_a]:justify-start [&_a]:py-0.5 [&_a]:px-2.5 [&_a]:rounded">
                 {@render children?.()}
