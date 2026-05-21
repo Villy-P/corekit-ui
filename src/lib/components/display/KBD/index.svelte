@@ -14,11 +14,11 @@
     const combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<span class={combinedClass} {...restProps} bind:this={element}>
+<kbd class={combinedClass} {...restProps} bind:this={element}>
     {@render children?.()}
     {#if subtext}        
         <span class="text-sub-text text-[10px] mt-0.5">
             {@render subtext?.()}
         </span>
     {/if}
-</span>
+</kbd>

@@ -59,7 +59,7 @@
     });
 </script>
 
-<div transition:fly={flyParams} class={combinedToastClass} {...restProps} bind:this={element}>
+<div transition:fly={flyParams} class={combinedToastClass} {...restProps} bind:this={element} role="status" aria-live={type === "error" ? "assertive" : "polite"}>
     <div class="w-8 h-8 flex-center">
         <Icon class={defualtIconClass}/>
     </div>

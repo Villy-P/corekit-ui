@@ -22,6 +22,7 @@
     ));
 </script>
 
+<span class="sr-only">Loading...</span>
 <div class={sizeClass} {...restProps} bind:this={element}></div>
 
 <style>
