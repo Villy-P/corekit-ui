@@ -104,13 +104,13 @@
         class="z-100 shadow-lg"
         style:visibility={ready ? "visible" : "hidden"}
     >
-        <div
+        <menu
             transition:fly={flyParams}
             class="bg-sub-background p-2 min-w-max flex flex-col rounded border border-white/10 shadow-xl shadow-black/40"
         >
             <button onclick={() => (open = false)} class="contents *:w-full [&_button]:justify-start [&_a]:justify-start *:mx-0 [&_a]:pr-5">
                 {@render children?.()}
             </button>
-        </div>
+        </menu>
     </div>
 {/if}
