@@ -25,5 +25,6 @@
         <NavbarElement href="/about">About</NavbarElement>
         <NavbarSeparator variant="horizontal"/>
         <NavbarElement href="/contact">Contact</NavbarElement>
+        <NavbarElement>No Link</NavbarElement>
     </NavbarDropdown>
 </Story>

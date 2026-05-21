@@ -12,6 +12,9 @@
     } from "@floating-ui/dom";
     import { tick } from "svelte";
 
+    import ChevronUp from "@lucide/svelte/icons/chevron-up";
+    import ChevronDown from "@lucide/svelte/icons/chevron-down";
+
     let {
         children = undefined,
         class: className = "",
@@ -75,20 +78,26 @@
 
 <svelte:window onclick={handleClickOutside} />
 
-<div class="relative h-full {wrapperClass}" bind:this={element}>
-    <NavbarElement
-        onclick={toggle}
-        class={className}
-        {...restProps}
-        aria-haspopup="true"
-        aria-expanded={open}
-    >
-        {label}
-        {#if navelement}
-            {@render navelement()}
-        {/if}
-    </NavbarElement>
-</div>
+<NavbarElement
+    onclick={toggle}
+    class="{className} relative {wrapperClass}"
+    bind:element
+    {...restProps}
+    aria-haspopup="true"
+    aria-expanded={open}
+>
+    {label}
+    {#if navelement}
+        {@render navelement()}
+    {/if}
+    {#if open}
+        <span class="sr-only">Close dropdown</span>
+        <ChevronUp class="mt-0.5" size="16" />
+    {:else}
+        <span class="sr-only">Open dropdown</span>
+        <ChevronDown class="mt-0.5" size="16" />
+    {/if}
+</NavbarElement>
 
 {#if open}
     <div
@@ -102,7 +111,7 @@
             transition:fly={flyParams}
             class="bg-sub-background p-2 min-w-max flex flex-col rounded border border-white/10 shadow-xl shadow-black/40"
         >
-            <button onclick={() => (open = false)} class="contents *:w-full [&_a]:justify-start [&_a]:py-0.5 [&_a]:px-2.5 [&_a]:rounded">
+            <button onclick={() => (open = false)} class="contents *:w-full [&_button]:justify-start [&_a]:justify-start *:mx-0 [&_a]:pr-5">
                 {@render children?.()}
             </button>
         </div>

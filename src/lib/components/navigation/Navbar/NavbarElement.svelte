@@ -15,7 +15,7 @@
         ...restProps
     }: NavbarElementProps = $props();
 
-    let defaultClass = "navbar-element w-fit h-full px-5 py-0 text-main-text";
+    let defaultClass = "navbar-element w-fit h-fit mx-2 px-2 py-1 rounded text-main-text";
 
     let scrollY = $state(0);
     let isAtTop = $derived(scrollY <= threshold);
