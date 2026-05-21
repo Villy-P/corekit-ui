@@ -85,9 +85,7 @@
         {/if}
         {#if icon}
             {@const Icon = icon}
-            <div class="h-5 aspect-square px-1 py-0!">
-                <Icon class="h-full aspect-square text-sub-text"></Icon>
-            </div>
+            <Icon class="h-5 aspect-square mx-1 py-0! text-sub-text shrink-0"></Icon>
         {/if}
         {@render innerDivElement?.()}
     </div>

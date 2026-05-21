@@ -134,19 +134,19 @@
     {...restProps}>
     {#snippet outerDivElementAfter()}
         {#if touched && requirements}
-            <div class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
+            <ul role="list" class="mt-1 text-xs" transition:slide={{ duration: 300 }}>
                 {#each requirements as req}
                     {@const isReqMet = testRequirement(req.requirements)}
                     {@const reqClass = isReqMet ? "text-green-500" : "text-red-500"}
-                    <div class="flex w-full items-center gap-1 transition-colors {reqClass}">
+                    <li class="flex w-full items-center gap-1 transition-colors {reqClass}">
                         <div class="relative w-4 h-4">
                             <Check class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"/>
                             <X     class="w-4 h-4 absolute transition-all duration-150 {isReqMet ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}"/>
                         </div>
                         <Text tag="span" class="text-xs text-inherit">{req.label}</Text>
-                    </div>
+                    </li>
                 {/each}
-            </div>
+            </ul>
         {/if}
     {/snippet}
 
