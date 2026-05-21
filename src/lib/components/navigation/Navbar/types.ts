@@ -1,5 +1,6 @@
 import type { Snippet } from "svelte";
 import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { ColorStyle } from "../../../styles/color.ts";
 
 export interface NavbarProps extends BaseComponentProps {
     classTop?: string;
@@ -12,6 +13,7 @@ export interface NavbarElementProps extends BaseComponentProps {
     active?: boolean;
     href?: string;
     threshold?: number;
+    color?: ColorStyle;
 }
 
 export type NavbarSeparatorVariant = "vertical" | "horizontal" | "dynamic";

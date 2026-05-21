@@ -90,13 +90,10 @@
     {#if navelement}
         {@render navelement()}
     {/if}
-    {#if open}
-        <span class="sr-only">Close dropdown</span>
-        <ChevronUp class="mt-0.5" size="16" />
-    {:else}
-        <span class="sr-only">Open dropdown</span>
-        <ChevronDown class="mt-0.5" size="16" />
-    {/if}
+    <span class="sr-only">{open ? 'Close' : 'Open'} dropdown</span>
+    <ChevronDown
+        class="mt-0.5 transition-transform ease-out duration-150 {open ? 'rotate-180' : 'rotate-0'}"
+        size="16"/>
 </NavbarElement>
 
 {#if open}

@@ -12,10 +12,11 @@
         active = false,
         href = undefined,
         threshold = 10,
+        color = "sub",
         ...restProps
     }: NavbarElementProps = $props();
 
-    let defaultClass = "navbar-element w-fit h-fit mx-2 px-2 py-1 rounded text-main-text";
+    let defaultClass = "navbar-element w-fit h-fit mx-2 px-2.5 py-1.5 rounded text-main-text";
 
     let scrollY = $state(0);
     let isAtTop = $derived(scrollY <= threshold);
@@ -30,6 +31,6 @@
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<Button bind:element radius="none" {href} color="sub" class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
+<Button bind:element radius="none" {href} {color} class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
 </Button>

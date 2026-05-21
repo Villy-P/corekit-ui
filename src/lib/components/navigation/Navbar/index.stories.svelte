@@ -27,4 +27,6 @@
         <NavbarElement href="/contact">Contact</NavbarElement>
         <NavbarElement>No Link</NavbarElement>
     </NavbarDropdown>
+
+    <NavbarElement color="primary">Action</NavbarElement>
 </Story>
