@@ -5,21 +5,22 @@
     let { 
         children = undefined, 
         class: className = "", 
-        classTop = "",
-        threshold = 10,
+        scrollThreshold = 10,
         element = $bindable(),
+        variant = "default",
         ...restProps
     }: NavbarProps = $props();
 
-    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-sub-background/99 border-b border-box border-b-sub-background-hover px-4 md:px-6 lg:px-8";
+    let defaultClass = "transition-colors duration-300 fixed top-0 left-0 w-full h-14 z-[100] flex items-center bg-sub-background border-b border-box border-b-sub-background-hover px-4 md:px-6 lg:px-8 backdrop-blur-sm";
+    let topClass = "bg-transparent border-b-transparent [&>_.navbar-element]:bg-transparent!";
 
-    let scrollY = $state(0);
-    let isAtTop = $derived(scrollY <= threshold);
+    let scrollY = $state(typeof window !== "undefined" ? window.scrollY : 0);
+    let isAtTop = $derived(scrollY <= scrollThreshold);
 
     const combinedClass = $derived(twMerge(
         defaultClass,
         className,
-        isAtTop ? classTop : ""
+        (isAtTop && variant === "hero") && topClass
     ));
 </script>
 

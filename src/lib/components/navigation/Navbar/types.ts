@@ -4,7 +4,8 @@ import type { ColorStyle } from "../../../styles/color.ts";
 
 export interface NavbarProps extends BaseComponentProps {
     classTop?: string;
-    threshold?: number;
+    scrollThreshold?: number;
+    variant?: "default" | "hero";
 };
 
 export interface NavbarElementProps extends BaseComponentProps {
@@ -12,7 +13,6 @@ export interface NavbarElementProps extends BaseComponentProps {
     activeClass?: string;
     active?: boolean;
     href?: string;
-    threshold?: number;
     color?: ColorStyle;
 }
 

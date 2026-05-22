@@ -18,18 +18,12 @@
 
     let defaultClass = "navbar-element w-fit h-fit mx-2 px-2.5 py-1.5 rounded text-main-text";
 
-    let scrollY = $state(0);
-    let isAtTop = $derived(scrollY <= threshold);
-
     const combinedClass = $derived(twMerge(
         defaultClass,
         className,
         active ? activeClass : "",
-        isAtTop ? classTop : "",
     ));
 </script>
-
-<svelte:window bind:scrollY={scrollY}/>
 
 <Button bind:element radius="none" {href} {color} class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
