@@ -22,6 +22,7 @@
         wrapperClass = "",
         label = "",
         navelement = undefined,
+        showArrow = true,
         ...restProps
     }: NavbarDropdownProps = $props();
 
@@ -90,10 +91,12 @@
     {#if navelement}
         {@render navelement()}
     {/if}
-    <span class="sr-only">{open ? 'Close' : 'Open'} dropdown</span>
-    <ChevronDown
-        class="mt-0.5 transition-transform ease-out duration-150 {open ? 'rotate-180' : 'rotate-0'}"
-        size="16"/>
+    {#if showArrow}
+        <span class="sr-only">{open ? 'Close' : 'Open'} dropdown</span>
+        <ChevronDown
+            class="mt-0.5 transition-transform ease-out duration-150 {open ? 'rotate-180' : 'rotate-0'}"
+            size="16"/>
+    {/if}
 </NavbarElement>
 
 {#if open}

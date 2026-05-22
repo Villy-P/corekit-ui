@@ -34,4 +34,5 @@ export interface NavbarDropdownProps extends BaseComponentProps {
     wrapperClass?: string;
     activeClass?: string;
     threshold?: number;
+    showArrow?: boolean;
 }
