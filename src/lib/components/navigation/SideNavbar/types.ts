@@ -3,6 +3,8 @@ import type { Component } from "svelte";
 
 export interface SideNavbarProps extends BaseComponentProps {
     items?: SideNavbarItem[];
+    currentPath?: string;
+    offset?: string;
 };
 
 export interface SideNavbarItem {
