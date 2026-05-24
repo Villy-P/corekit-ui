@@ -11,6 +11,7 @@
     --color-sub-background: var(--vpcui-sub-background);
     --color-sub-background-hover: var(--vpcui-sub-background-hover);
     --color-sub-background-border: var(--vpcui-sub-background-border);
+    --color-sub-background-accent: var(--vpcui-sub-background-accent);
     --color-main-text: var(--vpcui-main-text);
     --color-sub-text: var(--vpcui-sub-text);
     --color-contrast-text: var(--vpcui-contrast-text);
@@ -79,6 +80,7 @@
     --vpcui-sub-background: var(--vpcui-light-100);
     --vpcui-sub-background-hover: var(--vpcui-light-150);
     --vpcui-sub-background-border: var(--vpcui-light-150);
+    --vpcui-sub-background-accent: var(--vpcui-light-150);
     --vpcui-main-text: var(--vpcui-light-950);
     --vpcui-sub-text: var(--vpcui-light-300);
     --vpcui-contrast-text: var(--vpcui-light-950);
@@ -92,6 +94,7 @@
 html.dark {
     --vpcui-dark-50: #121212;
     --vpcui-dark-100: #1E1E1E;
+    --vpcui-dark-125: #212121;
     --vpcui-dark-150: #2A2A2A;
     --vpcui-dark-200: #3A3A3A;
     --vpcui-dark-250: #4A4A4A;
@@ -103,6 +106,7 @@ html.dark {
     --vpcui-sub-background: var(--vpcui-dark-100);
     --vpcui-sub-background-hover: var(--vpcui-dark-150);
     --vpcui-sub-background-border: var(--vpcui-dark-150);
+    --vpcui-sub-background-accent: var(--vpcui-dark-125);
     --vpcui-main-text: var(--vpcui-dark-950);
     --vpcui-sub-text: var(--vpcui-dark-300);
     --vpcui-contrast-text: var(--vpcui-dark-50);
