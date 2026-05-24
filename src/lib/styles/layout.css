@@ -61,9 +61,9 @@
     --color-accent-900: #0c2f3d;
     --color-accent-950: #061e28;
 
-    --font-display: ui-serif, Georgia, serif;
-    --font-body: ui-sans-serif, system-ui sans-serif;
-    --font-mono: ui-monospace, monospace;
+    --font-display: var(--vpcui-font-display);
+    --font-body: var(--vpcui-font-body);
+    --font-mono: var(--vpcui-font-mono);
 }
 
 :root {
@@ -89,6 +89,10 @@
     --vpcui-form-border: var(--vpcui-light-250);
 
     --vpcui-loader-btn-color: rgba(255, 255, 255, 0.25);
+
+    --vpcui-font-display: ui-serif, Georgia, serif;
+    --vpcui-font-body: ui-sans-serif, system-ui sans-serif;
+    --vpcui-font-mono: ui-monospace, monospace;
 }
 
 html.dark {
