@@ -17,11 +17,9 @@
         ...restProps
     }: CardProps = $props();
 
-    let defaultClass = "text-main-text rounded-lg transition-colors ease-in-out bg-sub-background p-4 w-full";
-    let linkClass = "block hover:bg-sub-background-hover cursor-pointer";
     let combinedClass = $derived(twMerge(
-        defaultClass, 
-        href && linkClass,
+        "text-main-text rounded-lg transition-all ease-in-out bg-sub-background p-4 w-full", 
+        href && "block hover:bg-sub-background-hover cursor-pointer",
         cardVariantStyles[variant],
         getSizeStyleClass(size, "card"),
         getSizeStyleClass(radius, "radius"),
