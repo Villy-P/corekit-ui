@@ -12,10 +12,8 @@
         ...restProps
     }: LoaderProps = $props();
 
-    const defaultClass = "loader rounded-full border-main-text border-4";
-
     let sizeClass = $derived(twMerge(
-        defaultClass, 
+        "loader rounded-full border-main-text border-4", 
         getSizeStyleClass(size, "loader"), 
         className,
         generateColorStyle(color, "loader"),
