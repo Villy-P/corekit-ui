@@ -20,6 +20,7 @@
 
     const combinedClass = $derived(twMerge(
         defaultClass,
+        (color === "sub") && "bg-transparent",
         className,
         active ? activeClass : "",
     ));
