@@ -79,8 +79,8 @@
     --vpcui-main-background: var(--vpcui-light-50);
     --vpcui-sub-background: var(--vpcui-light-100);
     --vpcui-sub-background-hover: var(--vpcui-light-150);
-    --vpcui-sub-background-border: var(--vpcui-light-150);
-    --vpcui-sub-background-accent: var(--vpcui-light-150);
+    --vpcui-sub-background-border: var(--vpcui-light-200);
+    --vpcui-sub-background-accent: var(--vpcui-light-50);
     --vpcui-main-text: var(--vpcui-light-950);
     --vpcui-sub-text: var(--vpcui-light-300);
     --vpcui-contrast-text: var(--vpcui-light-950);
@@ -109,8 +109,8 @@ html.dark {
     --vpcui-main-background: var(--vpcui-dark-50);
     --vpcui-sub-background: var(--vpcui-dark-100);
     --vpcui-sub-background-hover: var(--vpcui-dark-150);
-    --vpcui-sub-background-border: var(--vpcui-dark-150);
-    --vpcui-sub-background-accent: var(--vpcui-dark-125);
+    --vpcui-sub-background-border: var(--vpcui-dark-200);
+    --vpcui-sub-background-accent: var(--vpcui-dark-150);
     --vpcui-main-text: var(--vpcui-dark-950);
     --vpcui-sub-text: var(--vpcui-dark-300);
     --vpcui-contrast-text: var(--vpcui-dark-50);

@@ -2,5 +2,7 @@ import type { CardVariant } from "./types";
 
 export const cardVariantStyles: Record<CardVariant, string> = {
     bordered: "border-[1px] border-sub-background-border",
-    elevated: "shadow-md",
+    elevated: "shadow-[0_4px_12px_rgba(0,0,0,0.35)]",
+    ghost:    "bg-transparent border-transparent",
+    flat:     "border border-transparent shadow-none",
 };

@@ -1,7 +1,7 @@
 import type { SizeStyle } from "../../../styles/size";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
-export type CardVariant = "bordered" | "elevated";
+export type CardVariant = "bordered" | "elevated" | "ghost" | "flat";
 
 /**
  * <Corekit UI> A Card component

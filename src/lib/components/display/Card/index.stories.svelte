@@ -12,7 +12,7 @@
 		argTypes: {
 			variant: {
 				control: "select",
-				options: ["bordered", "elevated"],
+				options: ["bordered", "elevated", "ghost", "flat"],
 			},
 			size: {
 				control: "select",
