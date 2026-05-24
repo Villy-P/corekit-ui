@@ -1,3 +1,4 @@
+import type { Snippet } from "svelte";
 import type { SizeStyle } from "../../../styles/size";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
@@ -15,4 +16,6 @@ export interface CardProps extends BaseComponentProps {
     variant?: CardVariant;
     size?: SizeStyle;
     radius?: SizeStyle;
+    footer?: Snippet;
+    header?: Snippet;
 }

@@ -28,8 +28,16 @@
 	});
 </script>
 
-<Story name="Default" args={{ variant: "bordered", size: "md" }}>
+{#snippet header()}
+	<img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg" alt="Card">
+{/snippet}
+
+{#snippet footer()}
+	<Button href="https://example.com" external class="ml-auto mr-4" color="sub">Learn More</Button>
+	<Button href="https://example.com" external>Get Started</Button>
+{/snippet}
+
+<Story name="Default" args={{ variant: "bordered", size: "md", footer, header }}>
     <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Card</Text>
     <Text class="mb-4">This is a customizable card component. You can add any content here and style it as needed.</Text>
-    <Button href="https://example.com" target="_blank">Learn More</Button>
 </Story>

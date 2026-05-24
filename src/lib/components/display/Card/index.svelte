@@ -14,11 +14,13 @@
         variant = "bordered",
         size = "md",
         radius = "md",
+        footer = undefined,
+        header = undefined,
         ...restProps
     }: CardProps = $props();
 
     let combinedClass = $derived(twMerge(
-        "text-main-text rounded-lg transition-colors transition-all ease-in-out bg-gradient-to-br from-sub-background to-sub-background-accent p-4 w-full", 
+        "text-main-text rounded-lg transition-colors transition-all ease-in-out bg-gradient-to-br from-sub-background to-sub-background-accent p-4 w-full flex flex-col", 
         href && "block hover:from-sub-background-hover hover:to-sub-background-hover cursor-pointer hover:border-sub-background-border-hover hover:-translate-y-0.5",
         cardVariantStyles[variant],
         getSizeStyleClass(size, "card"),
@@ -43,5 +45,17 @@
     {...restProps}
     bind:this={element}
 >
+    {#if header}
+        <div class="-mx-4 -mt-4 mb-4 overflow-hidden">
+            {@render header()}
+        </div>
+    {/if}
+    
     {@render children?.()}
+
+    {#if footer}
+        <div class="flex items-center justify-between border-t border-sub-background-border mt-4 -mx-4 -mb-4 px-4 py-3 text-sm text-sub-text">
+            {@render footer()}
+        </div>
+    {/if}
 </svelte:element>
