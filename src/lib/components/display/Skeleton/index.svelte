@@ -16,9 +16,8 @@
     const defaultWidths = [21, 19, 24, 15, 10, 30, 22, 17, 26, 20, 28, 10, 22, 45, 16, 23, 37, 25, 25];
     const widths = $derived(Array.from({ length: count }, (_, i) => defaultWidths[i % defaultWidths.length]));
 
-    const defaultContainerClass = "animate-pulse duration-100 w-lg flex flex-col gap-2";
     const combinedContainerClass = $derived(twMerge(
-        defaultContainerClass,
+        "animate-pulse duration-100 w-lg flex flex-col gap-2",
         getSizeStyleClass(size, "card"),
         className
     ));
