@@ -29,12 +29,12 @@
         "code": { class: "font-mono bg-sub-background px-1 rounded inline-block", size: "text-base" },
         "a": { class: "text-blue-400 decoration-blue-400/0 underline underline-offset-2 transition-all cursor-pointer duration-150 hover:decoration-blue-400 ", size: "text-base" },
         "li": { class: "text-base list-disc list-inside", size: "text-base" },
-        "h1": { class: "font-bold", size: "text-4xl" },
-        "h2": { class: "font-bold", size: "text-3xl" },
-        "h3": { class: "font-semibold", size: "text-2xl" },
-        "h4": { class: "font-semibold", size: "text-xl" },
-        "h5": { class: "font-medium", size: "text-lg" },
-        "h6": { class: "font-normal", size: "text-base" }
+        "h1": { class: "font-bold font-display", size: "text-4xl" },
+        "h2": { class: "font-bold font-display", size: "text-3xl" },
+        "h3": { class: "font-semibold font-display", size: "text-2xl" },
+        "h4": { class: "font-semibold font-display", size: "text-xl" },
+        "h5": { class: "font-medium font-display", size: "text-lg" },
+        "h6": { class: "font-normal font-display", size: "text-base" }
     };
 
     function getTextSizeInRem(): string {
@@ -51,7 +51,7 @@
         : ""
     );
 
-    let defaultClass = "text-main-text";    
+    let defaultClass = "text-main-text font-body";    
     let combinedClass = $derived(twMerge(
         defaultClass, 
         tagStyles[tag]?.class || "", 

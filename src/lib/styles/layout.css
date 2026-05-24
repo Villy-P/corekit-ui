@@ -59,6 +59,10 @@
     --color-accent-800: #164e63;
     --color-accent-900: #0c2f3d;
     --color-accent-950: #061e28;
+
+    --font-display: ui-serif, Georgia, serif;
+    --font-body: ui-sans-serif, system-ui sans-serif;
+    --font-mono: ui-monospace, monospace;
 }
 
 :root {
