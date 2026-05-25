@@ -4,6 +4,7 @@ export interface AccordionItemProps extends BaseComponentProps {
     title: string;
     open?: boolean;
     disabled?: boolean;
+    static?: boolean;
     ontoggle?: (open: boolean) => void;
 }
 

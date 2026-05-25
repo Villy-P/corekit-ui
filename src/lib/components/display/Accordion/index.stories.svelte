@@ -20,7 +20,7 @@
     <AccordionItem title="Accordion Item 1">
         <Text>This is the content of the first accordion item.</Text>
     </AccordionItem>
-    <AccordionItem title="Accordion Item 2">
+    <AccordionItem title="Accordion Item 2" static>
         <Text>This is the content of the second accordion item.</Text>
     </AccordionItem>
     <AccordionItem title="Accordion Item 3">

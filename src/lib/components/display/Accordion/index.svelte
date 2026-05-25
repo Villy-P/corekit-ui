@@ -26,7 +26,7 @@
     }
 
     setContext<AccordionContext>('accordion', {
-        exclusive,
+        get exclusive() { return exclusive; },
         get activeIds() { return activeIds; },
         setActive
     });
