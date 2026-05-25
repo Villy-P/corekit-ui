@@ -1,47 +1,58 @@
-<script lang="ts">
-    import type { AccordionItemProps } from "./types.ts";
-	import { Button } from "$components/inputs";
-	import { slide } from "svelte/transition";
+<script module>
+    let counter = 0;
+</script>
 
+<script lang="ts">
+    import { getContext } from "svelte";
+    import type { AccordionItemProps, AccordionContext } from "./types.ts";
+    import { Button } from "$components/inputs";
+    import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
 
-	let { 
+    let { 
         children = undefined, 
         class: className = "",
         title = "",
-        open = false,
+        open = $bindable(false),
         disabled = false,
         ontoggle = undefined,
+        id = "accordion-item-" + counter++,
         ...restProps
     }: AccordionItemProps = $props();
 
+    const ctx = getContext<AccordionContext | undefined>('accordion');
+
+    const isOpen = $derived(ctx ? ctx.activeIds.has(id) : open);
+
     function toggle() {
         if (disabled) return;
-        open = !open;
-        ontoggle?.(open);
+        if (ctx)
+            ctx.setActive(id);
+        else
+            open = !open;
+        ontoggle?.(isOpen);
     }
 
     const combinedClass = $derived([
-        "w-full bg-sub-background rounded",
+        "w-full bg-sub-background rounded-none",
         className
     ].filter(Boolean).join(" "));
 
     const buttonClass = $derived([
-        "justify-start p-2 w-full gap-1",
+        "justify-start p-2 w-full gap-1 rounded-none",
         disabled ? "cursor-not-allowed opacity-50" : "",
-        open ? "rounded-b-none" : "rounded"
     ].filter(Boolean).join(" "));
 </script>
 
 <div class={combinedClass} {...restProps}>
-	<Button class={buttonClass} size="full" color="sub" onclick={toggle} aria-expanded={open}>
-        <ChevronRight size={18} class="transition-transform duration-200 {open ? "rotate-90" : ""}"/>
-		{title}
-	</Button>
+    <Button class={buttonClass} size="full" color="sub" onclick={toggle} aria-expanded={isOpen}>
+        <ChevronRight size={18} class="transition-transform duration-200 {isOpen ? 'rotate-90' : ''}"/>
+        {title}
+    </Button>
 
-	{#if open}
-		<div class="content p-2 border-t border-t-sub-background-border" transition:slide={{ duration: 200 }}>
-			{@render children()}
-		</div>
-	{/if}
+    {#if isOpen}
+        <div class="content p-2 border-t border-t-sub-background-border" transition:slide={{ duration: 200 }}>
+            {@render children?.()}
+        </div>
+    {/if}
 </div>
