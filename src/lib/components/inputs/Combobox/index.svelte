@@ -11,6 +11,7 @@
     import BaseInput from "../helper/BaseInput.svelte";
     import Text from "../../typography/Text/index.svelte";
     import { fly } from "svelte/transition";
+	import { portal } from "$lib/actions/portal";
 
     let { 
         children = undefined, 
@@ -90,6 +91,7 @@
 
             const { x, y } = await computePosition(element!, node, {
                 placement: "bottom-start",
+                strategy: "absolute",
                 middleware: [offset(8), flip(), shift({ padding: 8 })]
             });
 
@@ -223,7 +225,8 @@
         {#if isFocused}
             <div
                 use:initFloating
-                style="position: fixed; top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
+                use:portal
+                style="position: absolute; top: {dropdownY}px; left: {dropdownX}px; width: {referenceWidth}px;"
                 style:visibility={ready ? "visible" : "hidden"}
                 transition:fly={{ y: -10, duration: 200 }}
                 class="z-999999 overflow-hidden border border-white/10 bg-sub-background shadow-xl shadow-black/40 {getSizeStyleClass(radius, 'radius')}"

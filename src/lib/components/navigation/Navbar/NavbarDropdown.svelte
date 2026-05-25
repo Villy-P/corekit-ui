@@ -14,6 +14,7 @@
 
     import ChevronUp from "@lucide/svelte/icons/chevron-up";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import { portal } from "$lib/actions/portal.js";
 
     let {
         children = undefined,
@@ -46,6 +47,7 @@
         async function updatePosition() {
             const { x: fx, y: fy, placement } = await computePosition(element!, node, {
                 placement: "bottom-start",
+                strategy: "absolute",
                 middleware: [offset(4), flip(), shift({ padding: 12 })],
             });
             x = fx;
@@ -102,8 +104,9 @@
 {#if open}
     <div
         use:initDropdown
+        use:portal
         role="menu"
-        style="position: fixed; top: {y}px; left: {x}px;"
+        style="position: absolute; top: {y}px; left: {x}px;"
         class="z-100 shadow-lg"
         style:visibility={ready ? "visible" : "hidden"}
     >

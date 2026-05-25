@@ -19,6 +19,7 @@
     import { Input } from "..";
 
     import Pipette from "@lucide/svelte/icons/pipette";
+	import { portal } from "$lib/actions/portal";
 
     let { 
         children = undefined, 
@@ -89,6 +90,7 @@
 
         const { x, y } = await computePosition(element, floatingEl, {
             placement: "bottom-start",
+            strategy: "absolute",
             middleware: [
                 offset(8),
                 flip(),
@@ -300,8 +302,9 @@
         {@const hsv = hexToHsv(value || "#000000")}
         <div
             bind:this={floatingEl}
+            use:portal
             transition:fly={{ y: -10, duration: 200 }}
-            class="fixed z-999999 bg-sub-background rounded-md p-4 flex gap-2.5 flex-wrap"
+            class="absolute z-999999 bg-sub-background rounded-md p-4 flex gap-2.5 flex-wrap"
             style="top: {dropdownY}px; left: {dropdownX}px; min-width: {referenceWidth}px; max-width: calc(100vw - 16px);"
         >
             <div class="color-canvas relative rounded h-36 cursor-crosshair" style="background-color: hsl({hue}, 100%, 50%);" bind:this={canvasEl}>

@@ -15,6 +15,7 @@
         autoUpdate
 
     } from "@floating-ui/dom";
+	import { portal } from "$lib/actions/portal.js";
 
     let {
         text,
@@ -44,6 +45,7 @@
 
         const { x: fx, y: fy, placement, middlewareData } = await computePosition(trigger, tooltipEl, {
             placement: position,
+            strategy: "absolute",
             middleware: [
                 offset(8),
                 flip(),
@@ -156,8 +158,9 @@
 {#if visible}
     <div
         bind:this={tooltipEl}
+        use:portal
         role="tooltip"
-        style="position: fixed; top: {y}px; left: {x}px;"
+        style="position: absolute; top: {y}px; left: {x}px;"
         class="z-999999 {interactive ? 'pointer-events-auto' : 'pointer-events-none'}"
         onmouseenter={onTooltipEnter}
         onmouseleave={onTooltipLeave}
