@@ -42,7 +42,7 @@
 <li class={combinedClass} role="treeitem" aria-expanded={children ? open : undefined} {...restProps}>
     <Text
         class={rowClass}
-        style="padding-left: {depth * 1.25}rem"
+        style="padding-left: {depth * 1.25 / 2}rem"
         onclick={toggle}
         onkeydown={(e: KeyboardEvent) => e.key === 'Enter' && toggle()}
         tabindex={disabled ? -1 : 0}
@@ -54,18 +54,24 @@
     </Text>
 
     {#if open && children}
-        <ul class="vpcui-tree-list" role="group" transition:slide={{ duration: 200 }}>
+        <ul class="vpcui-tree-list relative" style="--vpcui-tree-depth: {depth * 1.25}rem" role="group" transition:slide={{ duration: 200 }}>
             {@render children()}
         </ul>
     {/if}
 </li>
 
 <style>
-    :global(.vpcui-tree-list:has(> li[role="treeitem"])) {
-        padding-left: 0;
+    .vpcui-tree-list::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--vpcui-tree-depth) / 2 + 0.375rem);
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: var(--color-sub-background-border);
     }
 
-    :global(.vpcui-tree-list:not(:has(> li[role="treeitem"]))) {
-        padding-left: 1.25rem;
+    :global(.vpcui-tree-list > :not(li[role="treeitem"])) {
+        padding-left: calc(var(--vpcui-tree-depth) / 2 + 1rem);
     }
 </style>

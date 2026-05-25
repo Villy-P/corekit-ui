@@ -22,6 +22,12 @@
     </TreeNode>
     <TreeNode label="Node 2">
         <Text>This is the content of the second tree node.</Text>
+        <TreeNode label="Child Node 2">
+            <Text>This is the content of the second child node.</Text>
+            <TreeNode label="Grandchild Node 1">
+                <Text>This is the content of the first grandchild node.</Text>
+            </TreeNode>
+        </TreeNode>
     </TreeNode>
     <TreeNode label="Node 3">
         <Text>This is the content of the third tree node.</Text>
