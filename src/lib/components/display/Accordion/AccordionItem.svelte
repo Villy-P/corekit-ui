@@ -8,6 +8,7 @@
     import { Button } from "$components/inputs";
     import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
+	import { twMerge } from "tailwind-merge";
 
     let { 
         children = undefined, 
@@ -34,17 +35,17 @@
         ontoggle?.(!isOpen);
     }
 
-    const combinedClass = $derived([
+    const combinedClass = $derived(twMerge(
         "w-full bg-sub-background rounded-none",
         className
-    ].filter(Boolean).join(" "));
+    ));
 
-    const buttonClass = $derived([
+    const buttonClass = $derived(twMerge(
         "justify-start p-2 w-full gap-1 rounded-none",
         disabled ? "cursor-not-allowed opacity-50" : "",
         isStatic ? "cursor-default" : "",
         isOpen ? "border-b border-b-sub-background-border" : "",
-    ].filter(Boolean).join(" "));
+    ));
 </script>
 
 <div class={combinedClass} {...restProps}>

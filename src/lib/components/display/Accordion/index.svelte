@@ -1,6 +1,7 @@
 <script lang="ts">
     import { setContext } from "svelte";
     import type { AccordionProps, AccordionContext } from "./types.ts";
+	import { twMerge } from "tailwind-merge";
 
     let {
         children,
@@ -31,10 +32,10 @@
         setActive
     });
 
-    const combinedClass = $derived([
+    const combinedClass = $derived(twMerge(
         "w-full rounded overflow-hidden divide-y divide-sub-background-border",
         className
-    ].filter(Boolean).join(" "));
+    ));
 </script>
 
 <div class={combinedClass} {...restProps}>
