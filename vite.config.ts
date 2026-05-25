@@ -36,9 +36,6 @@ export default defineConfig({
   resolve: {
     alias: {
       $lib: path.resolve('./src/lib'),
-      $types: path.resolve('./src/lib/types'),
-      $components: path.resolve('./src/lib/components'),
-      $styles: path.resolve('./src/lib/styles'),
     }
   }
 });

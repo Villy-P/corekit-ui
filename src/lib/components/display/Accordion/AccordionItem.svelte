@@ -5,7 +5,7 @@
 <script lang="ts">
     import { getContext } from "svelte";
     import type { AccordionItemProps, AccordionContext } from "./types.ts";
-    import { Button } from "$components/inputs";
+    import { Button } from "../../inputs/index.ts";
     import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import { twMerge } from "tailwind-merge";

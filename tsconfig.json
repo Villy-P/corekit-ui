@@ -15,14 +15,7 @@
 		"moduleResolution": "bundler",
 		"module": "esnext",
 		"target": "esnext",
-		"lib": ["esnext", "DOM", "DOM.Iterable"],
-
-		"paths": {
-			"$types/*": ["./src/lib/types/*"],
-			"$components/*": ["./src/lib/components/*"],
-			"$styles/*": ["./src/lib/styles/*"],
-			"$lib/*": ["./src/lib/*"]
-		}
+		"lib": ["esnext", "DOM", "DOM.Iterable"]
 	},
 	"include": [
 		"src/**/*.ts",
