@@ -49,14 +49,14 @@
 
 <div class={combinedClass} {...restProps}>
     {#if !isStatic}
-        <Button class={buttonClass} size="full" color="sub" onclick={toggle} aria-expanded={isOpen}>
+        <Button aria-controls="content-{id}" id="trigger-{id}" class={buttonClass} size="full" color="sub" onclick={toggle} aria-expanded={isOpen}>
             <ChevronRight size={18} class="transition-transform duration-200 {isOpen ? 'rotate-90' : ''}"/>
             {title}
         </Button>
     {/if}
 
     {#if isOpen || isStatic}
-        <div class="content p-2" transition:slide={{ duration: 200 }}>
+        <div id="content-{id}" role="region" class="content p-2" transition:slide={{ duration: 200 }}>
             {@render children?.()}
         </div>
     {/if}
