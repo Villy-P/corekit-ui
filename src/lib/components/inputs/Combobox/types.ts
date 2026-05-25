@@ -5,5 +5,6 @@ export interface ComboboxProps extends BaseInputProps {
     placeholder?: string;
     onfocus?: (e?: FocusEvent) => void;
     onblur?: (e?: FocusEvent) => void;
+    onselectitem?: (value: string) => void;
     limit?: number;
 }

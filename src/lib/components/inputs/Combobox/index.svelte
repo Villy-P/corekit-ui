@@ -27,6 +27,7 @@
         value = $bindable(),
         onfocus = undefined,
         onblur = undefined,
+        onselectitem = undefined,
         required = false,
         disabled = false,
         size = "md",
@@ -79,6 +80,7 @@
         value = option;
         isFocused = false;
         inputElement?.blur();
+        onselectitem?.(value);
     }
 
     function initFloating(node: HTMLDivElement) {
@@ -152,6 +154,7 @@
             if (option) {
                 value = option;
                 isFocused = false;
+                onselectitem?.(value);
                 inputElement?.blur();
             }
             activeIndex = 0;
