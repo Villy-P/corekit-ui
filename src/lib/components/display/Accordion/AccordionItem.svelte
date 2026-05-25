@@ -31,7 +31,7 @@
             ctx.setActive(id);
         else
             open = !open;
-        ontoggle?.(isOpen);
+        ontoggle?.(!isOpen);
     }
 
     const combinedClass = $derived([
@@ -43,6 +43,7 @@
         "justify-start p-2 w-full gap-1 rounded-none",
         disabled ? "cursor-not-allowed opacity-50" : "",
         isStatic ? "cursor-default" : "",
+        isOpen ? "border-b border-b-sub-background-border" : "",
     ].filter(Boolean).join(" "));
 </script>
 
@@ -55,7 +56,7 @@
     {/if}
 
     {#if isOpen || isStatic}
-        <div class="content p-2 border-t border-t-sub-background-border" transition:slide={{ duration: 200 }}>
+        <div class="content p-2" transition:slide={{ duration: 200 }}>
             {@render children?.()}
         </div>
     {/if}

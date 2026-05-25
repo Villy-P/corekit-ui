@@ -32,7 +32,7 @@
     });
 
     const combinedClass = $derived([
-        "w-full rounded overflow-hidden",
+        "w-full rounded overflow-hidden divide-y divide-sub-background-border",
         className
     ].filter(Boolean).join(" "));
 </script>

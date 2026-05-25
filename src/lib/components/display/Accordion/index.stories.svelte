@@ -1,10 +1,7 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
     import Accordion from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
-    import { sizeStyles } from "$lib/styles/size.js";
 	import AccordionItem from "./AccordionItem.svelte";
 
 	const { Story } = defineMeta({
