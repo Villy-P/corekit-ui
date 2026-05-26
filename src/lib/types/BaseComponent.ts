@@ -1,3 +1,4 @@
+import type { Action } from "svelte/action";
 import type { SizeStyle } from "../styles/size";
 import type { Component } from "svelte";
 
@@ -5,6 +6,7 @@ export interface BaseComponentProps {
     children?: any;
     class?: string;
     element?: HTMLElement;
+    use?: [Action, any?][];
     [key: string]: any;
 };
 

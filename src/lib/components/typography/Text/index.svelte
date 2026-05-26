@@ -1,5 +1,6 @@
 <script lang="ts">
     import { sizeStyleParts, textStyle, type SizeStyleTheme } from "../../../styles/size";
+	import { multiAction } from "../../../utils/multiAction.ts";
     import type { TextProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
 
@@ -10,6 +11,7 @@
         tag = "p",
         shrink = undefined,
         size = "none",
+        use = [],
         ...restProps
     }: TextProps = $props();
 
@@ -61,6 +63,6 @@
     ));
 </script>
 
-<svelte:element bind:this={element} this={tag} style={shrinkStyle} class={combinedClass} {...restProps}>
+<svelte:element bind:this={element} this={tag} style={shrinkStyle} class={combinedClass} {...restProps} use:multiAction={use}>
     {@render children?.()}
 </svelte:element>
