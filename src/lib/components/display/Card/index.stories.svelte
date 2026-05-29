@@ -38,6 +38,6 @@
 {/snippet}
 
 <Story name="Default" args={{ variant: "bordered", size: "md", footer, header }}>
-    <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Card</Text>
+    <Text tag="h2" class="mb-2">Customizable Card</Text>
     <Text class="mb-4">This is a customizable card component. You can add any content here and style it as needed.</Text>
 </Story>
