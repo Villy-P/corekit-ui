@@ -19,7 +19,7 @@
         ...restProps
     }: CheckboxProps = $props();
 
-    let defaultClass = "z-20 bg-form-input-background text-main-text rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all";
+    let defaultClass = "w-4 h-4 z-20 bg-form-background text-main-text rounded outline-none transition-all checked:bg-blue-500";
     let defaultLabelClass = "block text-sub-text font-medium";
     let defaultDivClass = "relative flex items-center gap-2";
 
@@ -28,7 +28,7 @@
     let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
 </script>
 
-<div class={combinedDivClass}>
+<Text tag="label" for={id} class={combinedDivClass}>
     <input
         type="checkbox"
         id={id}
@@ -36,7 +36,28 @@
         class={combinedClass}
         {...restProps}
         bind:this={element}/>
-    <Text tag="label" for={id} class={combinedLabelClass}>
-        {label}
-    </Text>
-</div>
+    {label}
+</Text>
+
+<style>
+    input[type="checkbox"] {
+        appearance: none;
+    }
+
+    input[type="checkbox"]:checked::before {
+        transform: scale(1);
+    }
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 80%;
+        height: 80%;
+        margin: 1.5px;
+        transform: scale(0);
+        transform-origin: bottom left;
+        transition: 150ms transform ease-in-out;
+        display: block;
+        background-color: white;
+        clip-path: polygon(14% 44%, 0% 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+</style>
