@@ -93,7 +93,7 @@
     --vpcui-loader-btn-color: rgba(255, 255, 255, 0.25);
 
     --vpcui-font-display: ui-serif, Georgia, serif;
-    --vpcui-font-body: ui-sans-serif, system-ui sans-serif;
+    --vpcui-font-body: ui-sans-serif, system-ui, sans-serif;
     --vpcui-font-mono: ui-monospace, monospace;
 }
 

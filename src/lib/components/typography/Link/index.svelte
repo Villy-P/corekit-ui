@@ -1,0 +1,28 @@
+<script lang="ts">
+    import { sizeStyleParts, type SizeStyleTheme } from "../../../styles/size";
+	import { getLinkProps } from "../../../utils/link.ts";
+	import { multiAction } from "../../../utils/multiAction.ts";
+    import type { TextProps } from "./types.ts";
+    import { twMerge } from "tailwind-merge";
+
+    let { 
+        children = undefined, 
+        class: className = "",
+        element = $bindable(), 
+        href = "",
+        external = false,
+        size = "none",
+        use = [],
+        ...restProps
+    }: TextProps = $props();
+
+    let combinedClass = $derived(twMerge(
+        "text-main-text font-body text-blue-400 decoration-blue-400/0 underline underline-offset-2 transition-all cursor-pointer duration-150 hover:decoration-blue-400  text-base", 
+        sizeStyleParts[size as SizeStyleTheme]?.text || "",
+        className
+    ));
+</script>
+
+<a bind:this={element} {href} class={combinedClass} {...restProps} use:multiAction={use} {...getLinkProps(href, external, false)}>
+    {@render children?.()}
+</a>

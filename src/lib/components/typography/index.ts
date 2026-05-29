@@ -1,4 +1,5 @@
 export { default as Text } from "./Text/index.svelte";
+export { default as Link } from "./Link/index.svelte";
 export { default as Typewriter } from "./Typewriter/index.svelte";
 
 export type { TextProps } from "./Text/types.ts";
