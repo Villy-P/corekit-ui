@@ -2,4 +2,5 @@ import type { BaseInputProps } from "../../../types/BaseComponent";
 
 export interface SelectProps extends BaseInputProps {
     options: { value: any; label: string }[];
+    placeholder: string;
 };

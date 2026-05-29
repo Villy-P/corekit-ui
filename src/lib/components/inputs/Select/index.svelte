@@ -13,6 +13,7 @@
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        placeholder = "",
         label = "",
         labelClass = "",
         divClass = "", 
@@ -77,6 +78,9 @@
             bind:value={value}
             style={customStyle}
             {...restProps}>
+            {#if placeholder}
+                <option value="" disabled selected>{placeholder}</option>
+            {/if}
             {#each options as option}
                 <option value={option.value}>{option.label}</option>
             {/each}
