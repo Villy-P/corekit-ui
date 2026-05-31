@@ -17,7 +17,7 @@
     }: TextProps = $props();
 
     let combinedClass = $derived(twMerge(
-        "text-main-text font-body text-blue-400 decoration-blue-400/0 underline underline-offset-2 transition-all cursor-pointer duration-150 hover:decoration-blue-400  text-base", 
+        "text-main-text font-body text-link decoration-link/0 underline underline-offset-2 transition-all cursor-pointer duration-150 hover:decoration-link  text-base", 
         sizeStyleParts[size as SizeStyleTheme]?.text || "",
         className
     ));

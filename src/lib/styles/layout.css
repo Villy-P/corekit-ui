@@ -19,6 +19,7 @@
     --color-form-hover: var(--vpcui-form-hover);
     --color-form-border: var(--vpcui-form-border);
     --color-sub-background-border-hover: var(--vpcui-sub-background-border-hover);
+    --color-link: var(--vpcui-link);
 
     --color-primary: var(--vpcui-primary);
     --color-secondary: var(--vpcui-secondary);
@@ -95,6 +96,8 @@
     --vpcui-font-display: ui-serif, Georgia, serif;
     --vpcui-font-body: ui-sans-serif, system-ui, sans-serif;
     --vpcui-font-mono: ui-monospace, monospace;
+
+    --vpcui-link: #2673f1;
 }
 
 html.dark {
@@ -122,6 +125,8 @@ html.dark {
     --vpcui-form-hover: var(--vpcui-dark-200);
 
     --vpcui-loader-btn-color: rgba(0, 0, 0, 0.25);
+
+    --vpcui-link: #4a90e2;
 }
 
 html {
