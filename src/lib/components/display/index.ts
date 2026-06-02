@@ -1,5 +1,5 @@
 export { default as Card } from "./Card/index.svelte";
-export { default as Table } from "./Table/index.svelte";
+export { default as DataGrid } from "./DataGrid/index.svelte";
 export { default as KBD } from "./KBD/index.svelte";
 export { default as Skeleton } from "./Skeleton/index.svelte";
 export { default as Accordion } from "./Accordion/index.svelte";
@@ -8,7 +8,7 @@ export { default as Tree } from "./Tree/index.svelte";
 export { default as TreeNode } from "./Tree/TreeNode.svelte";
 
 export type { CardProps } from "./Card/types.ts";
-export type { TableProps } from "./Table/types.ts";
+export type { DataGridProps } from "./DataGrid/types.ts";
 export type { SkeletonProps } from "./Skeleton/types.ts";
 export type { AccordionProps, AccordionItemProps, AccordionContext } from "./Accordion/types.ts";
 export type { TreeProps, TreeNodeProps, TreeContext } from "./Tree/types.ts";

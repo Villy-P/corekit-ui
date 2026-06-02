@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { TableProps } from "./types";
+    import type { DataGridProps } from "./types";
     import { twMerge } from "tailwind-merge";
 
     let { 
@@ -11,7 +11,7 @@
         size = "md",
         radius = "md",
         ...restProps
-    }: TableProps = $props();
+    }: DataGridProps = $props();
 
     const defaultTableClass = "w-full border-collapse text-main-text border border-form-border border-l-0";
     const defaultTableHeaderClass = "text-left border-b border-b-1 border-b-form-border bg-sub-background font-medium";
