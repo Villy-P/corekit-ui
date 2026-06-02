@@ -10,5 +10,5 @@
 </script>
 
 <thead class={className} bind:this={element} {...restProps}>
-    {@render children()}
+    {@render children?.()}
 </thead>

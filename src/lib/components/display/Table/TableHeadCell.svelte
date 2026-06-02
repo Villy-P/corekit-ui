@@ -20,5 +20,5 @@
 </script>
 
 <th class={combinedTableHeaderClass} bind:this={element} {...restProps}>
-    {@render children()}
+    {@render children?.()}
 </th>

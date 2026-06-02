@@ -10,5 +10,5 @@
 </script>
 
 <tr class={className} bind:this={element} {...restProps}>
-    {@render children()}
+    {@render children?.()}
 </tr>
