@@ -11,6 +11,7 @@ export { default as TableHeader } from "./Table/TableHeader.svelte";
 export { default as TableHeadCell } from "./Table/TableHeadCell.svelte";
 export { default as TableCell } from "./Table/TableCell.svelte";
 export { default as TableBody } from "./Table/TableBody.svelte";
+export { default as TableRow } from "./Table/TableRow.svelte";
 
 export type { CardProps } from "./Card/types.ts";
 export type { DataGridProps } from "./DataGrid/types.ts";
@@ -22,3 +23,4 @@ export type { TableHeaderProps } from "./Table/types.ts";
 export type { TableHeadCellProps } from "./Table/types.ts";
 export type { TableCellProps } from "./Table/types.ts";
 export type { TableBodyProps } from "./Table/types.ts";
+export type { TableRowProps } from "./Table/types.ts";

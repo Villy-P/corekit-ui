@@ -1,12 +1,12 @@
 <script lang="ts">
-    import type { TableProps } from "./types";
+    import type { TableRowProps } from "./types";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
         ...restProps
-    }: TableProps = $props();
+    }: TableRowProps = $props();
 </script>
 
 <tr class={className} bind:this={element} {...restProps}>
