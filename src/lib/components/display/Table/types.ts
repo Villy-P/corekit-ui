@@ -7,3 +7,4 @@ export interface TableProps extends BaseComponentProps {
 };
 
 export interface TableHeaderProps extends BaseComponentProps {}
+export interface TableHeadCellProps extends BaseComponentProps {}

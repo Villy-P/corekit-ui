@@ -1,14 +1,14 @@
 <script lang="ts">
-    import type { TableHeaderProps } from "./types";
+    import type { TableProps } from "./types";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
         ...restProps
-    }: TableHeaderProps = $props();
+    }: TableProps = $props();
 </script>
 
-<thead class={className} bind:this={element} {...restProps}>
+<tr class={className} bind:this={element} {...restProps}>
     {@render children()}
-</thead>
+</tr>
