@@ -6,3 +6,8 @@ export interface SkeletonProps extends BaseComponentProps {
     variant?: SkeletonVariant;
     count?: number;
 }
+
+export interface SkeletonGroupProps extends BaseComponentProps {
+    variant?: SkeletonVariant;
+    count?: number;
+}
