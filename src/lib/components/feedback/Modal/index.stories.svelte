@@ -3,7 +3,7 @@
 	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
     import Modal from "./index.svelte";
-    import { sizeStyles } from "$lib/styles/size.js";
+	import { sizeStyles } from "../../../styles/size";
 
 	const { Story } = defineMeta({
 		title: "Components/Feedback/Modal",
