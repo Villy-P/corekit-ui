@@ -13,6 +13,7 @@ export { default as TableCell } from "./Table/TableCell.svelte";
 export { default as TableBody } from "./Table/TableBody.svelte";
 export { default as TableRow } from "./Table/TableRow.svelte";
 export { default as Image } from "./Image/index.svelte";
+export { default as Copyright } from "./Copyright/index.svelte";
 
 export type { ImageProps } from "./Image/types.ts";
 export type { CardProps } from "./Card/types.ts";
@@ -26,3 +27,4 @@ export type { TableHeadCellProps } from "./Table/types.ts";
 export type { TableCellProps } from "./Table/types.ts";
 export type { TableBodyProps } from "./Table/types.ts";
 export type { TableRowProps } from "./Table/types.ts";
+export type { CopyrightProps } from "./Copyright/types.ts";

@@ -5,7 +5,9 @@ export { default as NavbarDropdown } from "./Navbar/NavbarDropdown.svelte";
 export { default as SideNavbar } from "./SideNavbar/index.svelte";
 export { default as Breadcrumb } from "./Breadcrumb/index.svelte";
 export { default as BreadcrumbItem } from "./Breadcrumb/BreadcrumbItem.svelte";
+export { default as Footer } from "./Footer/index.svelte";
 
 export type { NavbarProps, NavbarElementProps, NavbarSeparatorProps, NavbarDropdownProps } from "./Navbar/types.ts";
 export type { SideNavbarProps, SideNavbarItem } from "./SideNavbar/types.ts";
 export type { BreadcrumbProps, BreadcrumbItemProps } from "./Breadcrumb/types.ts";
+export type { FooterProps } from "./Footer/types.ts";
