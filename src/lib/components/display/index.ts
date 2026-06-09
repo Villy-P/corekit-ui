@@ -12,7 +12,9 @@ export { default as TableHeadCell } from "./Table/TableHeadCell.svelte";
 export { default as TableCell } from "./Table/TableCell.svelte";
 export { default as TableBody } from "./Table/TableBody.svelte";
 export { default as TableRow } from "./Table/TableRow.svelte";
+export { default as Image } from "./Image/index.svelte";
 
+export type { ImageProps } from "./Image/types.ts";
 export type { CardProps } from "./Card/types.ts";
 export type { DataGridProps } from "./DataGrid/types.ts";
 export type { SkeletonProps } from "./Skeleton/types.ts";
