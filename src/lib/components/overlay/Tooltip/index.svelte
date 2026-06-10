@@ -15,7 +15,7 @@
         autoUpdate
 
     } from "@floating-ui/dom";
-	import { portal } from "$lib/actions/portal.js";
+    import { portal } from "../../../actions/portal.js";
 
     let {
         text,

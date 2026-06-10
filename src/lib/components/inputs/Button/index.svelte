@@ -10,6 +10,7 @@
     import { getLinkProps } from "../../../utils/link.ts";
     import Loader from "../../feedback/Loader/index.svelte";
     import { buttonIconSizeStyles, buttonSizeStyles } from "./size.ts";
+    import { tooltip } from "../../../actions/tooltip.ts";
 
     let {
         children = undefined,
