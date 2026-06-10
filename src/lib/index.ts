@@ -7,6 +7,7 @@ export * from "./components/typography/index.ts";
 export * from "./components/navigation/index.ts";
 export * from "./components/utility/index.ts";
 export * from "./components/overlay/index.ts";
+export * from "./components/layout/index.ts";
 
 export { fbmBackground } from "./actions/fbm.ts";
 export { toast } from "./actions/toast.svelte.ts";
