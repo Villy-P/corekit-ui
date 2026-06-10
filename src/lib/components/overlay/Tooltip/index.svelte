@@ -24,6 +24,7 @@
         delay = 150,
         interactive = false,
         children,
+        content,
         attachedTo
     }: TooltipProps = $props();
 
@@ -132,11 +133,10 @@
         if (attachedTo) {
             trigger = attachedTo;
 
-            attachedTo.addEventListener("mouseenter", show);
+            show();
             attachedTo.addEventListener("mouseleave", hide);
 
             return () => {
-                attachedTo.removeEventListener("mouseenter", show);
                 attachedTo.removeEventListener("mouseleave", hide);
             };
         }
@@ -188,8 +188,8 @@
             transition:fly={flyParams}
             class="px-2 py-1 text-xs text-main-text bg-form-background rounded whitespace-nowrap border border-white/10"
         >
-            {#if attachedTo}
-                {@render children?.()}
+            {#if content}
+                {@render content()}
             {:else}
                 {text}
             {/if}

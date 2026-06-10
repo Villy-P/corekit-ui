@@ -1,4 +1,5 @@
 import type { TooltipPosition } from "$lib/styles/posititon.js";
+import type { Snippet } from "svelte";
 import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 export interface TooltipProps extends BaseComponentProps {
@@ -7,4 +8,5 @@ export interface TooltipProps extends BaseComponentProps {
     delay?: number;
     interactive?: boolean;
     attatchedTo?: HTMLElement;
+    content?: Snippet;
 }
