@@ -2,15 +2,17 @@ import { mount, unmount } from "svelte";
 import TooltipComponent from "../components/overlay/Tooltip/index.svelte";
 import type { TooltipProps } from "../components/overlay/Tooltip/types.ts";
 
-type TooltipActionOptions = string | (Omit<TooltipProps, 'children' | 'attachedTo'> & {
+type TooltipActionOptions = string | undefined | (Omit<TooltipProps, 'children' | 'attachedTo'> & {
     contentHtml?: string;
 });
 
-export function tooltip(node: HTMLElement, options: TooltipActionOptions) {
+export function tooltip(node: HTMLElement, options?: TooltipActionOptions) {
     let tooltipInstance: any = null;
     let container: HTMLDivElement | null = null;
 
     function buildProps(opts: TooltipActionOptions) {
+        if (!opts) return { attachedTo: node, text: "" };
+        
         if (typeof opts === "string") 
             return { text: opts, attachedTo: node };
 
