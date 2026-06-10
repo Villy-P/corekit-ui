@@ -1,7 +1,7 @@
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export interface BoxProps extends BaseComponentProps {
-    tag?: string;
+    tag?: keyof HTMLElementTagNameMap;
     center?: boolean;
     fullscreen?: boolean;
 };
