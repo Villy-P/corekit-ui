@@ -11,3 +11,4 @@ export * from "./components/layout/index.ts";
 
 export { fbmBackground } from "./actions/fbm.ts";
 export { toast } from "./actions/toast.svelte.ts";
+export { tooltip } from "./actions/tooltip.ts";
