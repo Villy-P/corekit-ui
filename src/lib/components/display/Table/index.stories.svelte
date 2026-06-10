@@ -1,13 +1,8 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-    import Table from "./index.svelte";
-    import TableHeader from "./TableHeader.svelte";
-    import TableRow from "./TableRow.svelte";
-    import TableHeadCell from "./TableHeadCell.svelte";
-    import { TableBody } from "..";
-    import TableCell from "./TableCell.svelte";
-  import { Button } from "../../inputs";
-  import { Tooltip } from "../../overlay";
+    import Table from "./index.ts";
+    import { Button } from "../../inputs";
+    import { Tooltip } from "../../overlay";
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Table",
@@ -21,27 +16,27 @@
 </script>
 
 <Story name="Default">
-    <TableHeader>
-        <TableRow>
-            <TableHeadCell>Name</TableHeadCell>
-            <TableHeadCell>Age</TableHeadCell>
-            <TableHeadCell>Email</TableHeadCell>
-            <TableHeadCell></TableHeadCell>
-        </TableRow>
-    </TableHeader>
+    <Table.Header>
+        <Table.Row>
+            <Table.HeadCell>Name</Table.HeadCell>
+            <Table.HeadCell>Age</Table.HeadCell>
+            <Table.HeadCell>Email</Table.HeadCell>
+            <Table.HeadCell></Table.HeadCell>
+        </Table.Row>
+    </Table.Header>
 
-    <TableBody>
+    <Table.Body>
         {#each userData as user}
-            <TableRow>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.age}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
+            <Table.Row>
+                <Table.Cell>{user.name}</Table.Cell>
+                <Table.Cell>{user.age}</Table.Cell>
+                <Table.Cell>{user.email}</Table.Cell>
+                <Table.Cell>
                     <Tooltip text="Edit User">
                         <Button size="sm">Edit</Button>
                     </Tooltip>
-                </TableCell>
-            </TableRow>
+                </Table.Cell>
+            </Table.Row>
         {/each}
-    </TableBody>
+    </Table.Body>
 </Story>

@@ -5,12 +5,7 @@ export { default as Skeleton } from "./Skeleton/index.ts";
 export { default as Accordion } from "./Accordion/index.ts";
 export { default as Tree } from "./Tree/index.svelte";
 export { default as TreeNode } from "./Tree/TreeNode.svelte";
-export { default as Table } from "./Table/index.svelte";
-export { default as TableHeader } from "./Table/TableHeader.svelte";
-export { default as TableHeadCell } from "./Table/TableHeadCell.svelte";
-export { default as TableCell } from "./Table/TableCell.svelte";
-export { default as TableBody } from "./Table/TableBody.svelte";
-export { default as TableRow } from "./Table/TableRow.svelte";
+export { default as Table } from "./Table/index.ts";
 export { default as Image } from "./Image/index.svelte";
 export { default as Copyright } from "./Copyright/index.svelte";
 
