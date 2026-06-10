@@ -11,6 +11,7 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"storybook": "storybook dev -p 6006",
+		"updatenpm": "npm version patch && git push origin HEAD --follow-tags",
 		"build-storybook": "storybook build"
 	},
 	"files": [
