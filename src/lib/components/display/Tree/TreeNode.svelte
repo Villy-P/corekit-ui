@@ -5,10 +5,13 @@
     import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let {
         children = undefined,
         class: className = "",
+        element = $bindable(),
+        use = [],
         label = "",
         open = $bindable(false),
         disabled = false,
@@ -39,7 +42,7 @@
     ));
 </script>
 
-<li class={combinedClass} role="treeitem" aria-expanded={children ? open : undefined} {...restProps}>
+<li class={combinedClass} role="treeitem" aria-expanded={children ? open : undefined} {...restProps} use:multiAction={use} bind:this={element}>
     <Text
         class={rowClass}
         style="padding-left: {depth * 1.25 / 2}rem"

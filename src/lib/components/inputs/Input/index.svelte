@@ -6,6 +6,7 @@
     import type { InputProps } from "./types";
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
+    import { multiAction } from "../../../utils/multiAction";
     import { getSizeStyleClass } from "../../../styles/size.ts";
     import { type Component } from "svelte";
     import Button from "../Button/index.svelte";
@@ -25,6 +26,7 @@
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = "",
         labelClass = "",
         divClass = "", 
@@ -154,6 +156,7 @@
         <input
             {id}
             bind:value={value}
+            use:multiAction={use}
             onfocus={handleFocus}
             onblur={handleBlur}
             class={combinedClass}

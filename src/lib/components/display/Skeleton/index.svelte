@@ -1,14 +1,16 @@
 <script lang="ts">
-    import { getSizeStyleClass } from "$lib/styles/size.js";
     import type { SkeletonProps } from "./types";
     import Image from "@lucide/svelte/icons/image";
     import Play from "@lucide/svelte/icons/play";
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
+    import { getSizeStyleClass } from "../../../styles/size";
 
     let { 
         variant = "text", 
         class: className = "",
         element = $bindable(),
+        use = [],
         count = 19, 
         size = "md" 
     }: SkeletonProps = $props();
@@ -38,7 +40,7 @@
     </div>
 {/snippet}
 
-<div class={combinedContainerClass} bind:this={element} aria-hidden="true">
+<div class={combinedContainerClass} bind:this={element} aria-hidden="true" use:multiAction={use}>
     {#if variant === "default"}
         <div class="h-4 bg-sub-background rounded w-3/4"></div>
         <div class="h-4 bg-sub-background rounded w-full"></div>

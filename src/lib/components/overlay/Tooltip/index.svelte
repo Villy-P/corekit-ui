@@ -3,6 +3,7 @@
     import type { TooltipProps } from "./types.js";
     import { onMount, tick, type Snippet } from "svelte";
     import { fly } from "svelte/transition";
+    import { multiAction } from "../../../utils/multiAction";
 
     import {
         computePosition,
@@ -21,6 +22,7 @@
         text,
         position = "top",
         element = $bindable(),
+        use = [],
         delay = 150,
         interactive = false,
         children,
@@ -165,6 +167,7 @@
         onmouseenter={onTooltipEnter}
         onmouseleave={onTooltipLeave}
         bind:this={element}
+        use:multiAction={use}
     >
         <div
             bind:this={arrowEl}

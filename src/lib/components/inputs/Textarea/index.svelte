@@ -5,6 +5,7 @@
 <script lang="ts">
     import type { TextareaProps } from "./types";
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
     import { getSizeStyleClass } from "../../../styles/size.ts";
 
     import BaseInput from "../helper/BaseInput.svelte";
@@ -13,6 +14,7 @@
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = "",
         labelClass = "",
         divClass = "", 
@@ -70,6 +72,7 @@
         <textarea
             {id}
             bind:value={value}
+            use:multiAction={use}
             class={combinedClass}
             {required}
             {disabled}

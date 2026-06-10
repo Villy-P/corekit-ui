@@ -2,11 +2,13 @@
     import type { SkeletonGroupProps } from "./types";
     import { Skeleton } from "..";
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         variant = "text", 
         count = 3, 
         element = $bindable(),
+        use = [],
         class: className
     }: SkeletonGroupProps = $props();
 
@@ -16,7 +18,7 @@
     ));
 </script>
 
-<div class={combinedClass} bind:this={element} aria-hidden="true">
+<div class={combinedClass} bind:this={element} aria-hidden="true" use:multiAction={use}>
     {#each Array(count) as _, i (i)}
         <Skeleton variant={variant}/>
     {/each}

@@ -3,6 +3,7 @@
     import { twMerge } from "tailwind-merge";
     import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
@@ -11,6 +12,7 @@
         items = [],
         currentPath = "",
         offset = "3.5rem",
+        use = [],
         ...restProps
     }: SideNavbarProps = $props();
 
@@ -26,7 +28,7 @@
     ));
 </script>
 
-<nav style="margin-top: {offset}" class={combinedClass} {...restProps} onmouseenter={() => expanded = true} onmouseleave={() => expanded = false} bind:this={element}>
+<nav style="margin-top: {offset}" class={combinedClass} {...restProps} onmouseenter={() => expanded = true} onmouseleave={() => expanded = false} bind:this={element} use:multiAction={use}>
     {#each items as item}
         {@const isActive = currentPath === item.href}
         <Button size="xs" color="none" class="{isActive ? 'bg-form-background text-main-text' : 'text-sub-text'} hover:text-main-text py-1 text-nowrap flex justify-start gap-2 overflow-hidden mx-1 w-[calc(100%-16px)] hover:bg-form-background px-1.5" href={item.href}>

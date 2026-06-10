@@ -2,11 +2,13 @@
     import { twMerge } from "tailwind-merge";
     import { defaultTableCellClass, defaultTableHeaderClass } from "../table";
     import type { TableHeadCellProps } from "./types";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         size = "md",
         radius = "md",
         ...restProps
@@ -19,6 +21,6 @@
     ));
 </script>
 
-<th class={combinedTableHeaderClass} bind:this={element} {...restProps}>
+<th class={combinedTableHeaderClass} bind:this={element} {...restProps} use:multiAction={use}>
     {@render children?.()}
 </th>

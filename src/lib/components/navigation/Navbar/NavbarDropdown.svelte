@@ -10,9 +10,7 @@
         autoUpdate,
         type Placement,
     } from "@floating-ui/dom";
-    import { tick } from "svelte";
-
-    import ChevronUp from "@lucide/svelte/icons/chevron-up";
+    import { multiAction } from "../../../utils/multiAction";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
 	import { portal } from "$lib/actions/portal.js";
 
@@ -20,6 +18,7 @@
         children = undefined,
         class: className = "",
         element = $bindable(),
+        use = [],
         wrapperClass = "",
         label = "",
         navelement = undefined,
@@ -85,6 +84,7 @@
     onclick={toggle}
     class="{className} relative {wrapperClass}"
     bind:element
+    {use}
     {...restProps}
     aria-haspopup="true"
     aria-expanded={open}

@@ -1,14 +1,16 @@
 <script lang="ts">
-    import { getLinkProps } from "$lib/utils/link.js";
     import { getSizeStyle, getSizeStyleClass } from "../../../styles/size.ts";
     import { type CardProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
     import { cardVariantStyles } from "./variant.ts";
+    import { getLinkProps } from "../../../utils/link.ts";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let { 
         children = undefined, 
         class: className = "", 
         element = $bindable(),
+        use = [],
         href = undefined,
         external = false,
         variant = "bordered",
@@ -44,6 +46,7 @@
     {...anchorProps}
     {...restProps}
     bind:this={element}
+    use:multiAction={use}
 >
     {#if header}
         <div class="-mx-4 -mt-4 mb-4 overflow-hidden">

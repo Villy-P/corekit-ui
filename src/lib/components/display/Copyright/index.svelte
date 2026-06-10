@@ -2,10 +2,14 @@
     import { twMerge } from "tailwind-merge";
     import type { CopyrightProps } from "./types";
     import { Text } from "../../typography";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let { 
         holder = "",
-        class: className = ""
+        class: className = "",
+        element = $bindable(),
+        use = [],
+        ...restProps
     }: CopyrightProps = $props();
 
     const year = $derived(new Date().getFullYear());
@@ -15,6 +19,6 @@
     ));
 </script>
 
-<Text class={combined}>
+<Text class={combined} {...restProps} bind:element {use}>
     &copy; {year} {holder}
 </Text>

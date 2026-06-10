@@ -2,11 +2,14 @@
     import { setContext } from "svelte";
     import type { AccordionProps, AccordionContext } from "./types.ts";
 	import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let {
         children,
         class: className = "",
         exclusive = false,
+        element = $bindable(),
+        use = [],
         ...restProps
     }: AccordionProps = $props();
 
@@ -38,6 +41,6 @@
     ));
 </script>
 
-<div class={combinedClass} {...restProps}>
+<div class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {@render children?.()}
 </div>

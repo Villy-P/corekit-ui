@@ -8,6 +8,7 @@
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
     import bytes from "bytes";
+    import { multiAction } from "../../../utils/multiAction";
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";
@@ -17,6 +18,7 @@
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = undefined,
         labelClass = "",
         divClass = "",
@@ -80,7 +82,7 @@
     }
 </script>
 
-<div class={combinedOuterDivClass} bind:this={element}>
+<div class={combinedOuterDivClass} bind:this={element} use:multiAction={use}>
     {#if label}
         <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
             {label}

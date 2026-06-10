@@ -10,12 +10,13 @@
     import { getLinkProps } from "../../../utils/link.ts";
     import Loader from "../../feedback/Loader/index.svelte";
     import { buttonIconSizeStyles, buttonSizeStyles } from "./size.ts";
-    import { tooltip } from "../../../actions/tooltip.ts";
+    import { multiAction } from "../../../utils/multiAction";
 
     let {
         children = undefined,
         class: className = "",
         element = $bindable(),
+        use = [],
         pill = false,
         icon = false,
         square = false,
@@ -66,6 +67,7 @@
     {...getLinkProps(href, external, isDisabled)}
     {...restProps}
     bind:this={element}
+    use:multiAction={use}
 >
     {#if loading}
         <Loader color="white" class="border-2 border-loader-btn-color {getSizeStyleClass(size, 'buttonLoader')}" />

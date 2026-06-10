@@ -7,6 +7,7 @@
         children = undefined, 
         class: className = "", 
         element = $bindable(),
+        use = [],
         classTop = "",
         activeClass = "",
         active = false,
@@ -26,6 +27,6 @@
     ));
 </script>
 
-<Button bind:element radius="none" {href} {color} class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
+<Button {use} bind:element radius="none" {href} {color} class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
 </Button>

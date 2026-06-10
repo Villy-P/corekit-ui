@@ -9,6 +9,7 @@
     import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let { 
         children = undefined, 
@@ -19,6 +20,8 @@
         disabled = false,
         ontoggle = undefined,
         id = "accordion-item-" + counter++,
+        use = [],
+        element = $bindable(),
         ...restProps
     }: AccordionItemProps = $props();
 
@@ -48,7 +51,7 @@
     ));
 </script>
 
-<div class={combinedClass} {...restProps}>
+<div class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {#if !isStatic}
         <Button aria-controls="content-{id}" id="trigger-{id}" class={buttonClass} size="full" color="sub" onclick={toggle} aria-expanded={isOpen}>
             <ChevronRight size={18} class="transition-transform duration-200 {isOpen ? 'rotate-90' : ''}"/>

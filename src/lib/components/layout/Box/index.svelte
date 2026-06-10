@@ -1,13 +1,15 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { BoxProps } from "./types";
+    import { multiAction } from "../../../utils/multiAction";
     
     let {
         center = false,
         fullscreen = false,
         class: className = "",
         children = undefined,
-        element = undefined,
+        element = $bindable(),
+        use = [],
         tag = "div",
         ...restProps
     }: BoxProps = $props();
@@ -19,6 +21,6 @@
     ));
 </script>
 
-<svelte:element this={tag} class={combinedClass} {...restProps} bind:this={element}>
+<svelte:element this={tag} class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {@render children()}
 </svelte:element>

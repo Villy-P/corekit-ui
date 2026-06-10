@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { twMerge } from "tailwind-merge";
-
-
+    import { twMerge } from "tailwind-merge";
     import type { TableBodyProps } from "./types";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         ...restProps
     }: TableBodyProps = $props();
 
@@ -17,6 +17,6 @@
     ));
 </script>
 
-<tbody class={combinedTableBodyClass} bind:this={element} {...restProps}>
+<tbody class={combinedTableBodyClass} bind:this={element} {...restProps} use:multiAction={use}>
     {@render children?.()}
 </tbody>

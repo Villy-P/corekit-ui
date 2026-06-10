@@ -4,11 +4,13 @@
 
     import type { DisplaySegment, TypewriterProps } from "./types.ts";
     import Text from "../Text/index.svelte";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let { 
         actions, 
         class: className = "",
         element = $bindable(),
+        use = [],
         textClass = "",
         ...restProps
     }: TypewriterProps = $props();
@@ -66,7 +68,7 @@
     let combinedClass = $derived(twMerge("typewriter w-fit text-main-text", className));
 </script>
 
-<div class={combinedClass} {...restProps} bind:this={element}>
+<div class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {#each displaySegments as segment}
         {#key segment}
             <Text tag="span" class={textClass} style="color: {segment.color}">{segment.text}</Text>

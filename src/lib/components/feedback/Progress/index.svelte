@@ -4,11 +4,13 @@
     import { twMerge } from "tailwind-merge";
     import { colorStyleParts } from "../../../styles/color.ts";
     import { sizeStyleParts, type SizeStyleTheme } from "../../../styles/size.ts";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         divClass = "",
         progress = 100,
         animate = undefined,
@@ -65,6 +67,6 @@
     });
 </script>
 
-<div class={combinedDivClass} {...restProps} style="--duration: {animate?.duration}ms; {customStyle}" bind:this={element}>
+<div class={combinedDivClass} {...restProps} style="--duration: {animate?.duration}ms; {customStyle}" bind:this={element} use:multiAction={use}>
     <div class={combinedInnerClass} style="width: {animate ? (mounted ? animate?.to : animate?.from) : progress}%; transition: width var(--duration) linear;"></div>
 </div>

@@ -5,11 +5,13 @@
     import { modalPositionParts } from "$lib/styles/posititon.js";
     import { getSizeStyleClass } from "$lib/styles/size.js";
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         open = $bindable(), 
         position = "center",
         size = "md",
@@ -35,7 +37,7 @@
         class="w-full h-screen bg-black/50 z-300 fixed top-0 left-0"
         transition:fade={{ duration: 200 }}
         onclick={() => open = false}
-        bind:this={element}>
+        bind:this={element} use:multiAction={use}>
         <div
             class={outerClass}
             transition:fly={{ y: -20, duration: 200 }}>

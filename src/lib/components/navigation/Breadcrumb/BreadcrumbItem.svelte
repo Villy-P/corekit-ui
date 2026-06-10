@@ -2,11 +2,13 @@
     import { twMerge } from "tailwind-merge";
     import type { BreadcrumbItemProps } from "./types";
     import { Text } from "../../typography";
+    import { multiAction } from "../../../utils/multiAction";
 
     let {
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         href = undefined,
         ...restProps
     }: BreadcrumbItemProps = $props();
@@ -17,7 +19,7 @@
     ));
 </script>
 
-<li class={combinedClass} {...restProps} aria-current={href ? undefined : 'page'} bind:this={element}>
+<li class={combinedClass} {...restProps} aria-current={href ? undefined : 'page'} bind:this={element} use:multiAction={use}>
     {#if href}
         <a class="hover:underline hover:text-sub-text transition-colors" href={href}>
             {@render children?.()}

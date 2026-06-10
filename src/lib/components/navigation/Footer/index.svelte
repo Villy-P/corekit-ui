@@ -1,10 +1,14 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import type { FooterProps } from "./types";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         class: className = "", 
-        children 
+        children,
+        element = $bindable(),
+        use = [],
+        ...restProps
     }: FooterProps = $props();
 
     const combined = $derived(twMerge(
@@ -13,6 +17,6 @@
     ));
 </script>
 
-<footer class={combined}>
+<footer class={combined} {...restProps} bind:this={element} use:multiAction={use}>
     {@render children()}
 </footer>

@@ -8,11 +8,13 @@
 
     import type { SelectProps } from "./types";
     import BaseInput from "../helper/BaseInput.svelte";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         placeholder = "",
         label = "",
         labelClass = "",
@@ -76,6 +78,7 @@
             class={combinedClass} 
             disabled={disabled} 
             bind:value={value}
+            use:multiAction={use}
             style={customStyle}
             {...restProps}>
             {#if placeholder}

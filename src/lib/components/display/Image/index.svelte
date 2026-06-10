@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { multiAction } from '../../../utils/multiAction';
     import type { ImageProps } from './types';
 
     let { 
@@ -7,6 +8,8 @@
         hideIfBroken = false, 
         fallbackSrc = "", 
         class: className = "",
+        element = $bindable(),
+        use = [],
         ...restProps
     }: ImageProps = $props();
 
@@ -27,5 +30,8 @@
         {alt}
         class={className}
         onerror={handleError}
-        {...restProps}/>
+        {...restProps}
+        bind:this={element}
+        use:multiAction={use}
+    />
 {/if}

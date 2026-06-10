@@ -1,12 +1,14 @@
 <script lang="ts">
     import type { NavbarProps } from "./types.ts";
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "", 
         scrollThreshold = 10,
         element = $bindable(),
+        use = [],
         variant = "default",
         ...restProps
     }: NavbarProps = $props();
@@ -26,6 +28,6 @@
 
 <svelte:window bind:scrollY={scrollY}/>
 
-<nav class={combinedClass} {...restProps} bind:this={element}>
+<nav class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {@render children?.()}
 </nav>

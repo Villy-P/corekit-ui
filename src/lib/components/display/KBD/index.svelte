@@ -1,10 +1,12 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         subtext = undefined,
         ...restProps
     }: any = $props();
@@ -15,7 +17,7 @@
     const combinedClass = $derived(twMerge(defaultClass, className));
 </script>
 
-<kbd class={combinedClass} {...restProps} bind:this={element}>
+<kbd class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
     {@render children?.()}
     {#if subtext}        
         <span class={subtextClass}>

@@ -2,10 +2,13 @@
     import { setContext } from "svelte";
     import type { TreeProps, TreeContext } from "./types.ts";
 	import { twMerge } from "tailwind-merge";
+    import { multiAction } from "../../../utils/multiAction";
 
     let {
         children,
         class: className = "",
+        element = $bindable(),
+        use = [],
         ...restProps
     }: TreeProps = $props();
 
@@ -19,6 +22,6 @@
     ));
 </script>
 
-<ul class={combinedClass} role="tree" {...restProps}>
+<ul class={combinedClass} role="tree" {...restProps} use:multiAction={use} bind:this={element}>
     {@render children?.()}
 </ul>

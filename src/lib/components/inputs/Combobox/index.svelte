@@ -12,11 +12,13 @@
     import Text from "../../typography/Text/index.svelte";
     import { fly } from "svelte/transition";
 	import { portal } from "$lib/actions/portal";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = "",
         labelClass = "",
         divClass = "", 
@@ -211,6 +213,7 @@
             {id}
             bind:value={value}
             bind:this={inputElement}
+            use:multiAction={use}
             class={combinedClass}
             {required}
             {disabled}

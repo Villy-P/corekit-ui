@@ -6,11 +6,13 @@
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
     import type { CheckboxProps } from "./types";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = "",
         labelClass = "",
         divClass = "", 
@@ -35,7 +37,9 @@
         bind:checked={checked}
         class={combinedClass}
         {...restProps}
-        bind:this={element}/>
+        bind:this={element}
+        use:multiAction={use}
+        />
     {label}
 </Text>
 

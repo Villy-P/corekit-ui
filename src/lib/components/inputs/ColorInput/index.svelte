@@ -9,6 +9,7 @@
     import Text from "../../typography/Text/index.svelte";
     import bytes from "bytes";
     import { computePosition, flip, shift, offset, autoUpdate } from "@floating-ui/dom";
+    import { multiAction } from "../../../utils/multiAction";
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";
@@ -25,6 +26,7 @@
         children = undefined, 
         class: className = "",
         element = $bindable(),
+        use = [],
         label = undefined,
         labelClass = "",
         divClass = "",
@@ -268,7 +270,7 @@
 
 <svelte:window onmousedown={handleMouseDown}/>
 
-<div class={combinedOuterDivClass} bind:this={element}>
+<div class={combinedOuterDivClass} bind:this={element} use:multiAction={use}>
     {#if label}
         <Text tag="label" for={id} class={combinedLabelClass} style={getSizeStyle(size, "formLabel")}>
             {label}

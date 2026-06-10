@@ -3,10 +3,12 @@
     import { twMerge } from "tailwind-merge";
     import type { LoaderProps } from "./types.ts";
     import { generateColorStyle } from "../../../styles/color.js";
+    import { multiAction } from "../../../utils/multiAction";
 
     let { 
         class: className = "",
         element = $bindable(),
+        use = [],
         size = "md",
         color = "blue",
         ...restProps
@@ -21,7 +23,7 @@
 </script>
 
 <span class="sr-only">Loading...</span>
-<div class={sizeClass} {...restProps} bind:this={element}></div>
+<div class={sizeClass} {...restProps} bind:this={element} use:multiAction={use}></div>
 
 <style>
     .loader {
