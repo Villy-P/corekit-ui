@@ -1,7 +1,7 @@
 export { default as Card } from "./Card/index.svelte";
 export { default as DataGrid } from "./DataGrid/index.svelte";
 export { default as KBD } from "./KBD/index.svelte";
-export { default as Skeleton } from "./Skeleton/index.svelte";
+export { default as Skeleton } from "./Skeleton/index.ts";
 export { default as Accordion } from "./Accordion/index.ts";
 export { default as Tree } from "./Tree/index.svelte";
 export { default as TreeNode } from "./Tree/TreeNode.svelte";
