@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { generateColorStyle } from "../../../styles/color";
+    import { getButtonColors } from "./colors.ts";
     import {
         getSizeStyle,
         getSizeStyleClass,
@@ -35,7 +35,7 @@
 
     const mergedClass = $derived(twMerge(
         "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap",
-        generateColorStyle(color, variant),
+        getButtonColors(color, variant),
         isDisabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
         getSizeStyleClassRecord(size, icon ? buttonIconSizeStyles : buttonSizeStyles),
         getSizeStyleClass(radius, "radius"),
