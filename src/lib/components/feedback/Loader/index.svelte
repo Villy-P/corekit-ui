@@ -2,7 +2,7 @@
     import { getSizeStyleClass } from "../../../styles/size.js";
     import { twMerge } from "tailwind-merge";
     import type { LoaderProps } from "./types.ts";
-    import { generateColorStyle } from "../../../styles/color.js";
+    import { colorStyleParts, generateColorStyle } from "../../../styles/color.js";
     import { multiAction } from "../../../utils/multiAction";
 
     let { 
@@ -15,10 +15,10 @@
     }: LoaderProps = $props();
 
     let sizeClass = $derived(twMerge(
-        "loader rounded-full border-main-text border-4", 
+        colorStyleParts[color].border,
+        "loader rounded-full border-x-main-text border-b-main-text border-4", 
         getSizeStyleClass(size, "loader"), 
         className,
-        generateColorStyle(color, "loader"),
     ));
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getButtonColors } from "./colors.ts";
+    import { getButtonColors } from "./colors";
     import {
         getSizeStyle,
         getSizeStyleClass,
