@@ -1,7 +1,4 @@
-export { default as Navbar } from "./Navbar/index.svelte";
-export { default as NavbarSeparator } from "./Navbar/NavbarSeparator.svelte";
-export { default as NavbarElement } from "./Navbar/NavbarElement.svelte";
-export { default as NavbarDropdown } from "./Navbar/NavbarDropdown.svelte";
+export { default as Navbar } from "./Navbar/index.ts";
 export { default as SideNavbar } from "./SideNavbar/index.svelte";
 export { default as Breadcrumb } from "./Breadcrumb/index.ts";
 export { default as Footer } from "./Footer/index.svelte";

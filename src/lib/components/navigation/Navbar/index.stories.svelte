@@ -1,9 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Navbar from "./index.svelte";
-    import NavbarElement from "./NavbarElement.svelte";
-    import NavbarSeparator from "./NavbarSeparator.svelte";
-    import NavbarDropdown from "./NavbarDropdown.svelte";
+	import Navbar from "./index.ts";
     import NavbarStoryWrapper from "./NavbarStoryWrapper.svelte";
     import type { Component } from "svelte";
     import type { NavbarProps } from "./types";
@@ -24,18 +21,18 @@
 </script>
 
 <Story name="Default" args={{ color: "primary", size: "md" }}>
-    <NavbarElement href="/">Home</NavbarElement>
-    <NavbarElement href="/library">Library</NavbarElement>
-    <NavbarElement>Data</NavbarElement>
+    <Navbar.Element href="/">Home</Navbar.Element>
+    <Navbar.Element href="/library">Library</Navbar.Element>
+    <Navbar.Element>Data</Navbar.Element>
 
-    <NavbarSeparator/>
+    <Navbar.Separator/>
 
-    <NavbarDropdown label="More">
-        <NavbarElement href="/about">About</NavbarElement>
-        <NavbarSeparator variant="horizontal"/>
-        <NavbarElement href="/contact">Contact</NavbarElement>
-        <NavbarElement>No Link</NavbarElement>
-    </NavbarDropdown>
+    <Navbar.Dropdown label="More">
+        <Navbar.Element href="/about">About</Navbar.Element>
+        <Navbar.Separator variant="horizontal"/>
+        <Navbar.Element href="/contact">Contact</Navbar.Element>
+        <Navbar.Element>No Link</Navbar.Element>
+    </Navbar.Dropdown>
 
-    <NavbarElement color="primary">Action</NavbarElement>
+    <Navbar.Element color="primary">Action</Navbar.Element>
 </Story>
