@@ -1,8 +1,7 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Text from "../../typography/Text/index.svelte";
-    import Tree from "./index.svelte";
-	import TreeNode from "./TreeNode.svelte";
+    import Tree from "./index.ts";
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Tree",
@@ -14,22 +13,22 @@
 </script>
 
 <Story name="Default" args={{  }}>
-    <TreeNode label="Node 1">
+    <Tree.Node label="Node 1">
         <Text>This is the content of the first tree node.</Text>
-        <TreeNode label="Child Node 1">
+        <Tree.Node label="Child Node 1">
             <Text>This is the content of the first child node.</Text>
-        </TreeNode>
-    </TreeNode>
-    <TreeNode label="Node 2">
+        </Tree.Node>
+    </Tree.Node>
+    <Tree.Node label="Node 2">
         <Text>This is the content of the second tree node.</Text>
-        <TreeNode label="Child Node 2">
+        <Tree.Node label="Child Node 2">
             <Text>This is the content of the second child node.</Text>
-            <TreeNode label="Grandchild Node 1">
+            <Tree.Node label="Grandchild Node 1">
                 <Text>This is the content of the first grandchild node.</Text>
-            </TreeNode>
-        </TreeNode>
-    </TreeNode>
-    <TreeNode label="Node 3">
+            </Tree.Node>
+        </Tree.Node>
+    </Tree.Node>
+    <Tree.Node label="Node 3">
         <Text>This is the content of the third tree node.</Text>
-    </TreeNode>
+    </Tree.Node>
 </Story>
