@@ -2,18 +2,34 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Text from "../../typography/Text/index.svelte";
     import Accordion from "./index.ts";
-	import AccordionItem from "./AccordionItem.svelte";
+    import { baseArgTypes } from "../../../styles/storybook.ts";
+
+    const argTypes = {
+		...baseArgTypes,
+        exclusive: {
+            control: "boolean",
+            description: "Whether only one accordion item can be open at a time. When set to `true`, opening one item will automatically close any other open item.",
+            table: {
+                type: { summary: "boolean" },
+                category: "Behavior",
+            },
+        }
+    } as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Accordion",
 		component: Accordion,
-		argTypes: {
+		argTypes,
 
-		},
+        parameters: {
+            controls: {
+                include: Object.keys(argTypes),
+            },
+        },
 	});
 </script>
 
-<Story name="Default" args={{  }}>
+<Story name="Default">
     <Accordion.Item title="Accordion Item 1">
         <Text>This is the content of the first accordion item.</Text>
     </Accordion.Item>
