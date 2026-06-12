@@ -9,7 +9,7 @@ export interface AccordionItemProps extends BaseProps, Omit<HTMLAttributes<HTMLD
     ontoggle?: (open: boolean) => void;
 }
 
-export interface AccordionProps extends BaseComponentProps {
+export interface AccordionProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     exclusive?: boolean;
 }
 

@@ -1,6 +1,7 @@
 import type { Snippet } from "svelte";
 import type { Size } from "../../../styles/size";
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
+import type { HTMLAnchorAttributes, HTMLAttributes } from "svelte/elements";
 
 export type CardVariant = "bordered" | "elevated" | "ghost" | "flat";
 
@@ -10,12 +11,22 @@ export type CardVariant = "bordered" | "elevated" | "ghost" | "flat";
  * @prop `href` Defines the website the card will link to
  * @prop `external` Opens the website in a new tab. Only works if `href` is defined.
  */
-export interface CardProps extends BaseComponentProps {
-    href?: string;
-    external?: boolean;
+export interface SharedCardProps extends BaseProps {
     variant?: CardVariant;
     size?: Size;
     radius?: Size;
     footer?: Snippet;
     header?: Snippet;
 }
+
+interface AsCard extends Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
+    href?: never;
+    external?: never;
+}
+
+interface AsAnchor extends Omit<HTMLAnchorAttributes, keyof BaseProps> {
+    href: string;
+    external?: boolean;
+}
+
+export type CardProps = SharedCardProps & (AsCard | AsAnchor);

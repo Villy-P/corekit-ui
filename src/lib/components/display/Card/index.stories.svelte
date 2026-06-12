@@ -3,27 +3,82 @@
 	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
     import Card from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
-    import { sizeStyles } from "$lib/styles/size.js";
+	import { sizeStyles } from "../../../styles/size";
+	import { baseArgTypes } from "../../../styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes,
+		variant: {
+			control: "select",
+			options: ["bordered", "elevated", "ghost", "flat"],
+			description: "The variant of the card which determines its style.",
+			table: {
+				type: { summary: "CardVariant" },
+				category: "Appearance",
+			},
+		},
+		size: {
+			control: "select",
+			options: sizeStyles,
+			description: "The size of the card, which affects its padding and font size.",
+			table: {
+				type: { summary: "Size" },
+				category: "Appearance",
+			},
+		},
+		radius: {
+			control: "select",
+			options: sizeStyles,
+			description: "The radius of the card's corners.",
+			table: {
+				type: { summary: "Size" },
+				category: "Appearance",
+			},
+		},
+		href: { 
+			control: "text",
+			description: "The URL to link to when the card is clicked. If provided, the card will be rendered as an anchor element.",
+			table: {
+				type: { summary: "string" },
+				category: "Behavior",
+			},
+		},
+		external: { 
+			control: "boolean",
+			description: "Whether the link should open in a new tab.",
+			table: {
+				type: { summary: "boolean" },
+				category: "Behavior",
+			},
+			if: { arg: "href" }
+		},
+		footer: {
+			control: false,
+			description: "A Svelte snippet to render in the card's footer slot.",
+			table: {
+				type: { summary: "Snippet" },
+				category: "Slots",
+			},
+		},
+		header: {
+			control: false,
+			description: "A Svelte snippet to render in the card's header slot.",
+			table: {
+				type: { summary: "Snippet" },
+				category: "Slots",
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Card",
 		component: Card,
-		argTypes: {
-			variant: {
-				control: "select",
-				options: ["bordered", "elevated", "ghost", "flat"],
+		argTypes,
+
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
 			},
-			size: {
-				control: "select",
-				options: sizeStyles,
-			},
-			radius: {
-				control: "select",
-				options: sizeStyles,
-			},
-			href: { control: "text" },
-			external: { control: "boolean" },
 		},
 	});
 </script>

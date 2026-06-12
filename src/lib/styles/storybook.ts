@@ -1,6 +1,6 @@
 import type { ArgTypes } from "@storybook/svelte";
 
-export const baseArgTypes: ArgTypes = {
+export const baseArgTypes: Partial<ArgTypes> = {
     children: {
         control: false,
         description: "The content within the component.",

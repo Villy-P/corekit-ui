@@ -18,6 +18,7 @@
         radius = "md",
         footer = undefined,
         header = undefined,
+        style = "",
         ...restProps
     }: CardProps = $props();
 
@@ -33,17 +34,15 @@
     const mergedStyle = $derived([
         getSizeStyle(size, "card"), 
         getSizeStyle(radius, "radius"), 
-        restProps.style
+        style
     ].filter(Boolean).join("; "));
-
-    const anchorProps = $derived(getLinkProps(href, external, false));
 </script>
 
 <svelte:element
     this={href ? "a" : "div"}
     class={combinedClass}
     style={mergedStyle}
-    {...anchorProps}
+    {...getLinkProps(href, external, false)}
     {...restProps}
     bind:this={element}
     use:multiAction={use}
