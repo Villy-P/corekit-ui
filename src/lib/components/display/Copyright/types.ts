@@ -1,5 +1,5 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { TextProps } from "../../typography";
 
-export interface CopyrightProps extends BaseComponentProps {
+export interface CopyrightProps extends TextProps {
     holder: string;
 }
