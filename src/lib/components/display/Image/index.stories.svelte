@@ -1,10 +1,59 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Image from "./index.svelte";
+	import { baseArgTypes } from "../../../styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes,
+		src: {
+			control: "text",
+			description: "The source URL of the image to display.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+		alt: {
+			control: "text",
+			description: "The alt text for the image, which is displayed if the image cannot be loaded.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+		hideIfBroken: {
+			control: "boolean",
+			description: "Whether to hide the image if it fails to load.",
+			table: {
+				type: { summary: "boolean" },
+				category: "Behavior",
+			},
+		},
+		fallbackSrc: {
+			control: "text",
+			description: "The source URL of a fallback image to display if the main image fails to load.",
+			table: {
+				type: { summary: "string" },
+				category: "Behavior",
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Image",
 		component: Image,
+		argTypes,
+
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "The Image component is used to display images in your application. It accepts a `src` prop for the image URL, an `alt` prop for alternative text, and additional props like `hideIfBroken` and `fallbackSrc` to handle cases where the image fails to load."
+				}
+			}
+		}
 	});
 </script>
 

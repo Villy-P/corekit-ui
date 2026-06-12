@@ -1,7 +1,7 @@
 import type { HTMLImgAttributes } from "svelte/elements";
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { BaseProps } from "../../../types/BaseComponent";
 
-export interface ImageProps extends Omit<BaseComponentProps & HTMLImgAttributes, 'children'> {
+export interface ImageProps extends BaseProps, Omit<HTMLImgAttributes, keyof BaseProps> {
     hideIfBroken?: boolean;
     fallbackSrc?: string;
 }
