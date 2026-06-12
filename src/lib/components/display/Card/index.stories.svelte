@@ -79,6 +79,11 @@
 			controls: {
 				include: Object.keys(argTypes),
 			},
+			docs: {
+				description: {
+					component: "The Card component is a versatile container that can be used to display content in a structured and visually appealing way. It supports various styles and sizes, as well as header and footer slots for additional customization."
+				}
+			}
 		},
 	});
 </script>

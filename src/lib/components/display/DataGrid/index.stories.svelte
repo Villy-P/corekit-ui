@@ -31,6 +31,11 @@
 			controls: {
 				include: Object.keys(argTypes),
 			},
+            docs: {
+                description: {
+                    component: "The DataGrid component is a `Table` component designed for displaying tabular data. It accepts `tableHeaders` and `tableData` props to define the structure and content of the grid. The `tableHeaders` prop is an array of objects that specify the keys and labels for the columns, while the `tableData` prop is an array of objects that contain the actual data to be displayed in the grid."
+                }
+            }
 		},
 	});
 </script>

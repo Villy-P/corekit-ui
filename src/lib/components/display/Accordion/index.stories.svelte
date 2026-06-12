@@ -25,6 +25,11 @@
             controls: {
                 include: Object.keys(argTypes),
             },
+            docs: {
+                description: {
+                    component: "The Accordion component allows you to display collapsible content panels for presenting information in a limited amount of space. It is useful for organizing content into sections that can be expanded or collapsed by the user."
+                }
+            }
         },
 	});
 </script>

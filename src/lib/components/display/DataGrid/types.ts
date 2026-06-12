@@ -1,12 +1,12 @@
-import type { Size } from "../../../styles/size.js";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseProps } from "../../../types/BaseComponent.ts";
 
 export interface DataGridHeaders {
     key: string;
     label: string;
 };
 
-export interface DataGridProps extends BaseComponentProps {
+export interface DataGridProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     tableHeaders?: DataGridHeaders[];
     tableData?: any[];
 };
