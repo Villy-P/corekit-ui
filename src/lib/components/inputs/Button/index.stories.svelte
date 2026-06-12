@@ -11,26 +11,95 @@
 			color: {
 				control: "select",
 				options: colorStyles,
+				description: "A string representing a color to use or a gradient object with `from`, `to`, `deg`, and optional `via` properties.",
+				table: {
+                    type: { summary: "Color OR Gradient" },
+                    category: "Appearance",
+                },
 			},
 			variant: {
 				control: "select",
-				options: colorStyleTypes,
+				options: ["full", "outline", "ghost", "light"],
+				description: "The variant of the button which determines its style.",
+				table: {
+					type: { summary: "ButtonVariant" },
+					category: "Appearance",
+				},
 			},
 			size: {
 				control: "select",
 				options: sizeStyles,
+				description: "The size of the button, which affects its padding and font size.",
+				table: {
+					type: { summary: "Size" },
+					category: "Appearance",
+				},
 			},
 			radius: {
 				control: "select",
 				options: sizeStyles,
+				description: "The border radius of the button, which affects how rounded the corners are.",
+				table: {
+					type: { summary: "Size" },
+					category: "Appearance",
+				},
 			},
-			disabled: { control: "boolean" },
-			loading: { control: "boolean" },
-			pill: { control: "boolean" },
-			icon: { control: "boolean" },
-			square: { control: "boolean" },
-			href: { control: "text" },
-			external: { control: "boolean" },
+			disabled: { 
+				control: "boolean",
+				description: "Whether the button is disabled, which makes it non-interactive and applies disabled styles.",
+				table: {
+					type: { summary: "boolean" },
+					category: "State",
+				},
+			},
+			loading: { 
+				control: "boolean",
+				description: "Whether the button is in a loading state, which displays a loading indicator and disables interaction.",
+				table: {
+					type: { summary: "boolean" },
+					category: "State",
+				},
+			},
+			pill: { 
+				control: "boolean",
+				description: "Whether the button has a pill shape.",
+				table: {
+					type: { summary: "boolean" },
+					category: "Appearance",
+				},
+			},
+			icon: { 
+				control: "boolean",
+				description: "Whether the button displays an icon.",
+				table: {
+					type: { summary: "boolean" },
+					category: "Appearance",
+				},
+			},
+			square: { 
+				control: "boolean",
+				description: "Whether the button has square corners.",
+				table: {
+					type: { summary: "boolean" },
+					category: "Appearance",
+				},
+			},
+			href: { 
+				control: "text",
+				description: "The URL the button links to.",
+				table: {
+					type: { summary: "string" },
+					category: "Behavior",
+				},
+			},
+			external: { 
+				control: "boolean",
+				description: "Whether the link opens in a new tab.",
+				table: {
+					type: { summary: "boolean" },
+					category: "Behavior",
+				},
+			},
 		},
 	});
 </script>

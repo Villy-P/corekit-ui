@@ -1,4 +1,4 @@
-export type ColorStyle = 
+export type Color = 
     "rose" | "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "gray" | "sub" | "none" |
     "white" | "black" |
     "primary" | "secondary" | "accent" |
@@ -11,21 +11,21 @@ export const colorStyles = [
     "white", "black",
     "primary", "secondary", "accent",
     "error", "warning", "success", "info"
-] as const satisfies ColorStyle[];
+] as const satisfies Color[];
 export const colorStyleTypes = [
     "base", "baseHover", "text", "hover", "muted", "subtle", "mutedHover", "border", "borderHover", "textHover", "subtleHover", "from", "to", "via", "fromHover", "toHover", "viaHover"
 ] as const satisfies ColorStyleType[];
 
-interface Gradient {
-    from: ColorStyle;
-    to: ColorStyle;
-    via?: ColorStyle;
+export interface Gradient {
+    from: Color;
+    to: Color;
+    via?: Color;
     deg?: number;
 }
 
-export type ColorType = ColorStyle | Gradient;
+export type ColorType = Color | Gradient;
 
-export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>> = {
+export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     rose: {
         base: "bg-rose-600",
         baseHover: "hover:bg-rose-600",
@@ -567,13 +567,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
     }
 }
 
-export function generateColorStyle(color: ColorStyle, variant: ColorStyleType) {
+export function generateColorStyle(color: Color, variant: ColorStyleType) {
     const styles = colorStyleParts[color];
     if (!styles) return "";
     return styles[variant] || "";
 }
 
-export function getColorClasses(color: ColorType, variant: string, valueCallback: (color: ColorStyle, variant: any) => string) {
+export function getColorClasses(color: ColorType, variant: string, valueCallback: (color: Color, variant: any) => string) {
     if (typeof color === "string")
         return valueCallback(color, variant);
     else {

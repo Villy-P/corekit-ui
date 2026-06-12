@@ -1,8 +1,8 @@
-import type { ColorStyle, ColorType } from "../../../styles/color.js";
-import type { SizeStyle } from "../../../styles/size.js";
+import type { Color, ColorType } from "../../../styles/color.js";
+import type { Size } from "../../../styles/size.js";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
-export type ButtonColorStyleType = "full" | "light" | "outline" | "ghost";
+export type ButtonVariant = "full" | "light" | "outline" | "ghost";
 
 export interface ButtonProps extends BaseComponentProps {
     pill?: boolean;
@@ -10,10 +10,10 @@ export interface ButtonProps extends BaseComponentProps {
     square?: boolean;
     href?: string;
     color?: ColorType;
-    variant?: ButtonColorStyleType;
+    variant?: ButtonVariant;
     disabled?: boolean;
     external?: boolean;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    size?: Size;
+    radius?: Size;
     loading?: boolean;
 }

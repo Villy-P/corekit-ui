@@ -1,4 +1,4 @@
-import type { SizeStyle } from "../../../styles/size";
+import type { Size } from "../../../styles/size";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export interface FileInputProps extends BaseComponentProps {
@@ -10,7 +10,7 @@ export interface FileInputProps extends BaseComponentProps {
     required?: boolean;
     disabled?: boolean;
     // variant?: InputVariant;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    size?: Size;
+    radius?: Size;
     id?: string;
 };  

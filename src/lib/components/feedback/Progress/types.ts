@@ -1,5 +1,5 @@
-import type { ColorStyle } from "../../../styles/color.ts";
-import type { SizeStyle } from "../../../styles/size.ts";
+import type { Color } from "../../../styles/color.ts";
+import type { Size } from "../../../styles/size.ts";
 import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
 
 interface AnimateProps {
@@ -13,7 +13,7 @@ export interface ProgressProps extends BaseComponentProps {
     divClass?: string;
     progress?: number;
     animate?: AnimateProps
-    color?: ColorStyle;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    color?: Color;
+    size?: Size;
+    radius?: Size;
 };

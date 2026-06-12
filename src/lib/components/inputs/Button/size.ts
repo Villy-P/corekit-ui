@@ -1,6 +1,6 @@
-import type { SizeStyle } from "../../../styles/size";
+import type { Size } from "../../../styles/size";
 
-export const buttonSizeStyles: Record<SizeStyle, string> = {
+export const buttonSizeStyles: Record<Size, string> = {
     xs: "text-xs h-4 px-1 py-0.5",
     sm: "text-sm h-6 px-2 py-1",
     md: "text-base h-8 px-3 py-1.5",
@@ -15,7 +15,7 @@ export const buttonSizeStyles: Record<SizeStyle, string> = {
     none: "p-0 h-auto text-base"
 };
 
-export const buttonIconSizeStyles: Record<SizeStyle, string> = {
+export const buttonIconSizeStyles: Record<Size, string> = {
     xs: "text-xs h-4 w-4 p-0.5",
     sm: "text-sm h-6 w-6 p-1",
     md: "text-base h-8 w-8 p-1.5",

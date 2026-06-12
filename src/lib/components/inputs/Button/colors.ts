@@ -1,7 +1,7 @@
-import { colorStyleParts, type ColorStyle } from "../../../styles/color";
-import type { ButtonColorStyleType } from "./types";
+import { colorStyleParts, type Color, type Gradient } from "../../../styles/color";
+import type { ButtonVariant } from "./types";
 
-export function getButtonColors(color: ColorStyle, variant: ButtonColorStyleType) {
+export function getButtonColors(color: Color, variant: ButtonVariant) {
     const colorParts = colorStyleParts[color];
     switch (variant) {
         case "full":

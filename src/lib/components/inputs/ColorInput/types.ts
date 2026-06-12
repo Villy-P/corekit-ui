@@ -1,4 +1,4 @@
-import type { SizeStyle } from "../../../styles/size";
+import type { Size } from "../../../styles/size";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
 export type ColorInputVariant = "full" | "compact" | "input";
@@ -12,7 +12,7 @@ export interface ColorInputProps extends BaseComponentProps {
     required?: boolean;
     disabled?: boolean;
     variant?: ColorInputVariant;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    size?: Size;
+    radius?: Size;
     id?: string;
 };  

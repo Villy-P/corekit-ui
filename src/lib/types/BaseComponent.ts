@@ -1,5 +1,5 @@
 import type { Action } from "svelte/action";
-import type { SizeStyle } from "../styles/size";
+import type { Size } from "../styles/size";
 import type { Component } from "svelte";
 
 export interface BaseComponentProps {
@@ -21,8 +21,8 @@ export interface BaseInputProps extends BaseComponentProps {
     required?: boolean;
     disabled?: boolean;
     variant?: InputVariant;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    size?: Size;
+    radius?: Size;
     icon?: Component;
     wrapper?: HTMLElement;
     id?: string;

@@ -1,6 +1,6 @@
 export type SizeStyleTheme = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "full" | "none";
 export type SizeStyleType = "radius" | "text" | "card" | "form" | "formLabel" | "formLabelSelected" | "progress" | "loader" | "buttonLoader";
-export type SizeStyle = SizeStyleTheme | number;
+export type Size = SizeStyleTheme | number;
 
 export const sizeStyles = [
     "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "full", "none"
@@ -141,19 +141,19 @@ export const sizeStyleParts: Record<SizeStyleTheme, Record<SizeStyleType, string
     }
 };
 
-export function getSizeStyleClass(size: SizeStyle, type: SizeStyleType): string {
+export function getSizeStyleClass(size: Size, type: SizeStyleType): string {
     if (typeof size === "string")
         return sizeStyleParts[size][type];
     return "";
 }
 
-export function getSizeStyleClassRecord(size: SizeStyle, record: Record<SizeStyle, string>): string {
+export function getSizeStyleClassRecord(size: Size, record: Record<Size, string>): string {
     if (typeof size === "string")
         return record[size];
     return "";
 }
 
-export function getSizeStyle(size: SizeStyle, type: SizeStyleType): string {
+export function getSizeStyle(size: Size, type: SizeStyleType): string {
     if (typeof size === "number") {
         switch (type) {
             case "card":
