@@ -1,10 +1,12 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Button from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "../../../styles/color.ts";
+	import { colorStyles } from "../../../styles/color.ts";
 	import { sizeStyles } from "../../../styles/size.ts";
+	import { baseArgTypes } from "../../../styles/storybook.ts";
 
 	const argTypes = {
+		...baseArgTypes,
 		color: {
 			control: "select",
 			options: colorStyles,
@@ -112,7 +114,7 @@
 	});
 </script>
 
-<Story name="Default" args={{ color: "primary", size: "md" }}>Click me</Story>
+<Story name="Default">Click me</Story>
 
 <Story name="Disabled" args={{ color: "primary", disabled: true }}>
 	Disabled

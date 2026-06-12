@@ -75,7 +75,7 @@
     use:multiAction={use}
 >
     {#if loading}
-        <Loader color="white" class="border-2 border-loader-btn-color {getSizeStyleClass(size, 'buttonLoader')}" />
+        <Loader color="white" class="border-2 border-x-loader-btn-color border-b-loader-btn-color {getSizeStyleClass(size, 'buttonLoader')}" />
     {/if}
     {@render children?.()}
 </svelte:element>
