@@ -2,6 +2,15 @@ import type { Action } from "svelte/action";
 import type { Size } from "../styles/size";
 import type { Component } from "svelte";
 
+// Start moving components over to BaseProps and deprecating BaseComponentProps in order to add stricter typing.
+export interface BaseProps {
+    children?: any;
+    class?: string;
+    element?: HTMLElement;
+    use?: [Action, any?][];
+    style?: string;
+};
+
 export interface BaseComponentProps {
     children?: any;
     class?: string;

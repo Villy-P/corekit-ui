@@ -18,6 +18,7 @@
         class: className = "",
         element = $bindable(),
         use = [],
+        style = "",
         pill = false,
         icon = false,
         square = false,
@@ -56,7 +57,7 @@
         typeof color === "object"
             ? `background-image: linear-gradient(${color.deg || 90}deg, var(--tw-gradient-from), ${color.via ? `var(--tw-gradient-via), ` : ``}var(--tw-gradient-to))`
             : "",
-        restProps.style,
+        style,
     ].filter(Boolean).join("; "));
 </script>
 
@@ -66,7 +67,7 @@
     disabled={isDisabled}
     aria-disabled={isDisabled}
     aria-busy={loading}
-    type={href ? undefined : restProps.type || "button"}
+    type={href ? undefined : "button"}
     style={mergedStyle}
     {...getLinkProps(href, external, isDisabled)}
     {...restProps}
