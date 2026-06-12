@@ -1,8 +1,8 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Button from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
-    import { sizeStyles } from "$lib/styles/size.js";
+	import { colorStyles, colorStyleTypes } from "../../../styles/color.ts";
+	import { sizeStyles } from "../../../styles/size.ts";
 
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Button",
@@ -50,4 +50,8 @@
   args={{ color: "primary", href: "https://example.com", external: true }}
 >
 	Go somewhere
+</Story>
+
+<Story name="Gradient" args={{ color: { from: "cyan", to: "blue" } }}>
+	Gradient Button
 </Story>

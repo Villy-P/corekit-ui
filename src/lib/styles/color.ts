@@ -4,7 +4,7 @@ export type ColorStyle =
     "primary" | "secondary" | "accent" |
     "error" | "warning" | "success" | "info";
 export type ButtonColorStyleType = "full" | "light" | "outline" | "ghost";
-export type ColorStyleType = "base" | "baseHover" | "text" | "hover" | "muted" | "subtle" | "mutedHover" | "border" | "borderHover" | "textHover" | "subtleHover";
+export type ColorStyleType = "base" | "baseHover" | "text" | "hover" | "muted" | "subtle" | "mutedHover" | "border" | "borderHover" | "textHover" | "subtleHover" | "from" | "to" | "via" | "fromHover" | "toHover" | "viaHover";
 
 export const colorStyles = [
     "rose", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "gray", "sub", "none",
@@ -13,8 +13,17 @@ export const colorStyles = [
     "error", "warning", "success", "info"
 ] as const satisfies ColorStyle[];
 export const colorStyleTypes = [
-    "base", "baseHover", "text", "hover", "muted", "subtle", "mutedHover", "border", "borderHover", "textHover", "subtleHover"
+    "base", "baseHover", "text", "hover", "muted", "subtle", "mutedHover", "border", "borderHover", "textHover", "subtleHover", "from", "to", "via", "fromHover", "toHover", "viaHover"
 ] as const satisfies ColorStyleType[];
+
+interface Gradient {
+    from: ColorStyle;
+    to: ColorStyle;
+    via?: ColorStyle;
+    deg?: number;
+}
+
+export type ColorType = ColorStyle | Gradient;
 
 export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>> = {
     rose: {
@@ -28,7 +37,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-rose-600/10",
         subtleHover: "hover:bg-rose-600/10",
         border: "border-rose-600",
-        borderHover: "hover:border-rose-700"
+        borderHover: "hover:border-rose-700",
+        from: "from-rose-600",
+        to: "to-rose-600",
+        via: "via-rose-600",
+        fromHover: "hover:from-rose-700",
+        toHover: "hover:to-rose-700",
+        viaHover: "hover:via-rose-700"
     },
     red: {
         base: "bg-red-600",
@@ -41,7 +56,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-red-600/10",
         subtleHover: "hover:bg-red-600/10",
         border: "border-red-600",
-        borderHover: "hover:border-red-700"
+        borderHover: "hover:border-red-700",
+        from: "from-red-600",
+        to: "to-red-600",
+        via: "via-red-600",
+        fromHover: "hover:from-red-700",
+        toHover: "hover:to-red-700",
+        viaHover: "hover:via-red-700"
     },
     orange: {
         base: "bg-orange-600",
@@ -54,7 +75,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-orange-600/10",
         subtleHover: "hover:bg-orange-600/10",
         border: "border-orange-600",
-        borderHover: "hover:border-orange-700"
+        borderHover: "hover:border-orange-700",
+        from: "from-orange-600",
+        to: "to-orange-600",
+        via: "via-orange-600",
+        fromHover: "hover:from-orange-700",
+        toHover: "hover:to-orange-700",
+        viaHover: "hover:via-orange-700"
     },
     amber: {
         base: "bg-amber-600",
@@ -67,8 +94,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-amber-600/10",
         subtleHover: "hover:bg-amber-600/10",
         border: "border-amber-600",
-        borderHover: "hover:border-amber-700"
-
+        borderHover: "hover:border-amber-700",
+        from: "from-amber-600",
+        to: "to-amber-600",
+        via: "via-amber-600",
+        fromHover: "hover:from-amber-700",
+        toHover: "hover:to-amber-700",
+        viaHover: "hover:via-amber-700"
     },
     yellow: {
         base: "bg-yellow-600",
@@ -81,7 +113,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-yellow-600/10",
         subtleHover: "hover:bg-yellow-600/10",
         border: "border-yellow-600",
-        borderHover: "hover:border-yellow-700"
+        borderHover: "hover:border-yellow-700",
+        from: "from-yellow-600",
+        to: "to-yellow-600",
+        via: "via-yellow-600",
+        fromHover: "hover:from-yellow-700",
+        toHover: "hover:to-yellow-700",
+        viaHover: "hover:via-yellow-700"
     },
     lime: {
         base: "bg-lime-600",
@@ -94,7 +132,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-lime-600/10",
         subtleHover: "hover:bg-lime-600/10",
         border: "border-lime-600",
-        borderHover: "hover:border-lime-700"
+        borderHover: "hover:border-lime-700",
+        from: "from-lime-600",
+        to: "to-lime-600",
+        via: "via-lime-600",
+        fromHover: "hover:from-lime-700",
+        toHover: "hover:to-lime-700",
+        viaHover: "hover:via-lime-700"
     },
     green: {
         base: "bg-green-600",
@@ -107,7 +151,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-green-600/10",
         subtleHover: "hover:bg-green-600/10",
         border: "border-green-600",
-        borderHover: "hover:border-green-700"
+        borderHover: "hover:border-green-700",
+        from: "from-green-600",
+        to: "to-green-600",
+        via: "via-green-600",
+        fromHover: "hover:from-green-700",
+        toHover: "hover:to-green-700",
+        viaHover: "hover:via-green-700"
     },
     emerald: {
         base: "bg-emerald-600",
@@ -120,7 +170,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-emerald-600/10",
         subtleHover: "hover:bg-emerald-600/10",
         border: "border-emerald-600",
-        borderHover: "hover:border-emerald-700"
+        borderHover: "hover:border-emerald-700",
+        from: "from-emerald-600",
+        to: "to-emerald-600",
+        via: "via-emerald-600",
+        fromHover: "hover:from-emerald-700",
+        toHover: "hover:to-emerald-700",
+        viaHover: "hover:via-emerald-700"
     },
     teal: {
         base: "bg-teal-600",
@@ -133,7 +189,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-teal-600/10",
         subtleHover: "hover:bg-teal-600/10",
         border: "border-teal-600",
-        borderHover: "hover:border-teal-700"
+        borderHover: "hover:border-teal-700",
+        from: "from-teal-600",
+        to: "to-teal-600",
+        via: "via-teal-600",
+        fromHover: "hover:from-teal-700",
+        toHover: "hover:to-teal-700",
+        viaHover: "hover:via-teal-700"
     },
     cyan: {
         base: "bg-cyan-600",
@@ -146,7 +208,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-cyan-600/10",
         subtleHover: "hover:bg-cyan-600/10",
         border: "border-cyan-600",
-        borderHover: "hover:border-cyan-700"
+        borderHover: "hover:border-cyan-700",
+        from: "from-cyan-600",
+        to: "to-cyan-600",
+        via: "via-cyan-600",
+        fromHover: "hover:from-cyan-700",
+        toHover: "hover:to-cyan-700",
+        viaHover: "hover:via-cyan-700"
     },
     blue: {
         base: "bg-blue-600",
@@ -159,7 +227,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-blue-600/10",
         subtleHover: "hover:bg-blue-600/10",
         border: "border-blue-600",
-        borderHover: "hover:border-blue-700"
+        borderHover: "hover:border-blue-700",
+        from: "from-blue-600",
+        to: "to-blue-600",
+        via: "via-blue-600",
+        fromHover: "hover:from-blue-700",
+        toHover: "hover:to-blue-700",
+        viaHover: "hover:via-blue-700"
     },
     indigo: {
         base: "bg-indigo-600",
@@ -172,7 +246,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-indigo-600/10",
         subtleHover: "hover:bg-indigo-600/10",
         border: "border-indigo-600",
-        borderHover: "hover:border-indigo-700"
+        borderHover: "hover:border-indigo-700",
+        from: "from-indigo-600",
+        to: "to-indigo-600",
+        via: "via-indigo-600",
+        fromHover: "hover:from-indigo-700",
+        toHover: "hover:to-indigo-700",
+        viaHover: "hover:via-indigo-700"
     },
     violet: {
         base: "bg-violet-600",
@@ -185,7 +265,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-violet-600/10",
         subtleHover: "hover:bg-violet-600/10",
         border: "border-violet-600",
-        borderHover: "hover:border-violet-700"
+        borderHover: "hover:border-violet-700",
+        from: "from-violet-600",
+        to: "to-violet-600",
+        via: "via-violet-600",
+        fromHover: "hover:from-violet-700",
+        toHover: "hover:to-violet-700",
+        viaHover: "hover:via-violet-700"
     },
     purple: {
         base: "bg-purple-600",
@@ -198,7 +284,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-purple-600/10",
         subtleHover: "hover:bg-purple-600/10",
         border: "border-purple-600",
-        borderHover: "hover:border-purple-700"
+        borderHover: "hover:border-purple-700",
+        from: "from-purple-600",
+        to: "to-purple-600",
+        via: "via-purple-600",
+        fromHover: "hover:from-purple-700",
+        toHover: "hover:to-purple-700",
+        viaHover: "hover:via-purple-700"
     },
     pink: {
         base: "bg-pink-600",
@@ -211,7 +303,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-pink-600/10",
         subtleHover: "hover:bg-pink-600/10",
         border: "border-pink-600",
-        borderHover: "hover:border-pink-700"
+        borderHover: "hover:border-pink-700",
+        from: "from-pink-600",
+        to: "to-pink-600",
+        via: "via-pink-600",
+        fromHover: "hover:from-pink-700",
+        toHover: "hover:to-pink-700",
+        viaHover: "hover:via-pink-700"
     },
     fuchsia: {
         base: "bg-fuchsia-600",
@@ -224,7 +322,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-fuchsia-600/10",
         subtleHover: "hover:bg-fuchsia-600/10",
         border: "border-fuchsia-600",
-        borderHover: "hover:border-fuchsia-700"
+        borderHover: "hover:border-fuchsia-700",
+        from: "from-fuchsia-600",
+        to: "to-fuchsia-600",
+        via: "via-fuchsia-600",
+        fromHover: "hover:from-fuchsia-700",
+        toHover: "hover:to-fuchsia-700",
+        viaHover: "hover:via-fuchsia-700"
     },
     gray: {
         base: "bg-gray-600",
@@ -237,7 +341,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-gray-600/10",
         subtleHover: "hover:bg-gray-600/10",
         border: "border-gray-600",
-        borderHover: "hover:border-gray-700"
+        borderHover: "hover:border-gray-700",
+        from: "from-gray-600",
+        to: "to-gray-600",
+        via: "via-gray-600",
+        fromHover: "hover:from-gray-700",
+        toHover: "hover:to-gray-700",
+        viaHover: "hover:via-gray-700"
     },
     sub: {
         base: "bg-sub-background",
@@ -250,7 +360,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-sub-background/10",
         subtleHover: "hover:bg-sub-background-hover/10",
         border: "border-sub-background",
-        borderHover: "hover:border-sub-background-hover"
+        borderHover: "hover:border-sub-background-hover",
+        from: "from-sub-background",
+        to: "to-sub-background",
+        via: "via-sub-background",
+        fromHover: "hover:from-sub-background-hover",
+        toHover: "hover:to-sub-background-hover",
+        viaHover: "hover:via-sub-background-hover"
     },
     none: {
         base: "",
@@ -263,7 +379,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "",
         subtleHover: "",
         border: "",
-        borderHover: ""
+        borderHover: "",
+        from: "",
+        to: "",
+        via: "",
+        fromHover: "",
+        toHover: "",
+        viaHover: ""
     },
 
 
@@ -279,7 +401,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtleHover: "hover:bg-gray-100/10",
         border: "border-gray-100",
         borderHover: "hover:border-gray-300",
-        text: "text-white"
+        text: "text-white",
+        from: "from-white",
+        to: "to-white",
+        via: "via-white",
+        fromHover: "hover:from-white",
+        toHover: "hover:to-white",
+        viaHover: "hover:via-white"
     },
     black: {
         base: "bg-black",
@@ -292,7 +420,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtleHover: "hover:bg-black/10",
         border: "border-black",
         borderHover: "hover:border-gray-700",
-        text: "text-black"
+        text: "text-black",
+        from: "from-black",
+        to: "to-black",
+        via: "via-black",
+        fromHover: "hover:from-black",
+        toHover: "hover:to-black",
+        viaHover: "hover:via-black"
     },
 
 
@@ -307,7 +441,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-primary-600/10",
         subtleHover: "hover:bg-primary-700/10",
         border: "border-primary-600",
-        borderHover: "hover:border-primary-700"
+        borderHover: "hover:border-primary-700",
+        from: "from-primary-600",
+        to: "to-primary-600",
+        via: "via-primary-600",
+        fromHover: "hover:from-primary-700",
+        toHover: "hover:to-primary-700",
+        viaHover: "hover:via-primary-700"
     },
     secondary: {
         base: "bg-secondary-600",
@@ -320,7 +460,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-secondary-600/10",
         subtleHover: "hover:bg-secondary-700/10",
         border: "border-secondary-600",
-        borderHover: "hover:border-secondary-700"
+        borderHover: "hover:border-secondary-700",
+        from: "from-secondary-600",
+        to: "to-secondary-600",
+        via: "via-secondary-600",
+        fromHover: "hover:from-secondary-700",
+        toHover: "hover:to-secondary-700",
+        viaHover: "hover:via-secondary-700"
     },
     accent: {
         base: "bg-accent-600",
@@ -333,7 +479,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-accent-600/10",
         subtleHover: "hover:bg-accent-700/10",
         border: "border-accent-600",
-        borderHover: "hover:border-accent-700"
+        borderHover: "hover:border-accent-700",
+        from: "from-accent-600",
+        to: "to-accent-600",
+        via: "via-accent-600",
+        fromHover: "hover:from-accent-700",
+        toHover: "hover:to-accent-700",
+        viaHover: "hover:via-accent-700"
     },
 
 
@@ -348,7 +500,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-red-600/10",
         subtleHover: "hover:bg-red-600/10",
         border: "border-red-600",
-        borderHover: "hover:border-red-700"
+        borderHover: "hover:border-red-700",
+        from: "from-red-600",
+        to: "to-red-600",
+        via: "via-red-600",
+        fromHover: "hover:from-red-700",
+        toHover: "hover:to-red-700",
+        viaHover: "hover:via-red-700"
     },
     warning: {
         base: "bg-amber-600",
@@ -361,7 +519,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-amber-600/10",
         subtleHover: "hover:bg-amber-600/10",
         border: "border-amber-600",
-        borderHover: "hover:border-amber-700"
+        borderHover: "hover:border-amber-700",
+        from: "from-amber-600",
+        to: "to-amber-600",
+        via: "via-amber-600",
+        fromHover: "hover:from-amber-700",
+        toHover: "hover:to-amber-700",
+        viaHover: "hover:via-amber-700"
     },
     success: {
         base: "bg-emerald-600",
@@ -374,7 +538,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtleHover: "hover:bg-emerald-600/10",
         border: "border-emerald-600",
         borderHover: "hover:border-emerald-700",
-        text: "text-emerald-600"
+        text: "text-emerald-600",
+        from: "from-emerald-600",
+        to: "to-emerald-600",
+        via: "via-emerald-600",
+        fromHover: "hover:from-emerald-700",
+        toHover: "hover:to-emerald-700",
+        viaHover: "hover:via-emerald-700"
     },
     info: {
         base: "bg-sky-600",
@@ -387,7 +557,13 @@ export const colorStyleParts: Record<ColorStyle, Record<ColorStyleType, string>>
         subtle: "bg-sky-600/10",
         subtleHover: "hover:bg-sky-600/10",
         border: "border-sky-600",
-        borderHover: "hover:border-sky-700"
+        borderHover: "hover:border-sky-700",
+        from: "from-sky-600",
+        to: "to-sky-600",
+        via: "via-sky-600",
+        fromHover: "hover:from-sky-700",
+        toHover: "hover:to-sky-700",
+        viaHover: "hover:via-sky-700"
     }
 }
 
@@ -395,4 +571,18 @@ export function generateColorStyle(color: ColorStyle, variant: ColorStyleType) {
     const styles = colorStyleParts[color];
     if (!styles) return "";
     return styles[variant] || "";
+}
+
+export function getColorClasses(color: ColorType, variant: string, valueCallback: (color: ColorStyle, variant: any) => string) {
+    if (typeof color === "string")
+        return valueCallback(color, variant);
+    else {
+        const from = colorStyleParts[color.from].from;
+        const to = colorStyleParts[color.to].to;
+        const via = color.via ? colorStyleParts[color.via].via : "";
+        const fromHover = colorStyleParts[color.from].fromHover;
+        const toHover = colorStyleParts[color.to].toHover;
+        const viaHover = color.via ? colorStyleParts[color.via].viaHover : "";
+        return `${from} ${to} ${via} ${fromHover} ${toHover} ${viaHover}`;
+    }
 }

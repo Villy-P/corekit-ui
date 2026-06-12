@@ -11,6 +11,7 @@
     import Loader from "../../feedback/Loader/index.svelte";
     import { buttonIconSizeStyles, buttonSizeStyles } from "./size.ts";
     import { multiAction } from "../../../utils/multiAction";
+    import { getColorClasses } from "../../../styles/color.ts";
 
     let {
         children = undefined,
@@ -35,7 +36,7 @@
 
     const mergedClass = $derived(twMerge(
         "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap",
-        getButtonColors(color, variant),
+        getColorClasses(color, variant, getButtonColors),
         isDisabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
         getSizeStyleClassRecord(size, icon ? buttonIconSizeStyles : buttonSizeStyles),
         getSizeStyleClass(radius, "radius"),
@@ -52,6 +53,9 @@
                 : `height: ${size}px; padding: ${size / 4}px ${size / 8}px`
             : "",
         getSizeStyle(radius, "radius"),
+        typeof color === "object"
+            ? `background-image: linear-gradient(${color.deg || 90}deg, var(--tw-gradient-from), ${color.via ? `var(--tw-gradient-via), ` : ``}var(--tw-gradient-to))`
+            : "",
         restProps.style,
     ].filter(Boolean).join("; "));
 </script>

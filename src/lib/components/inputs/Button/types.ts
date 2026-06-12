@@ -1,4 +1,4 @@
-import type { ColorStyle } from "../../../styles/color.js";
+import type { ColorStyle, ColorType } from "../../../styles/color.js";
 import type { SizeStyle } from "../../../styles/size.js";
 import type { BaseComponentProps } from "../../../types/BaseComponent";
 
@@ -9,7 +9,7 @@ export interface ButtonProps extends BaseComponentProps {
     icon?: boolean;
     square?: boolean;
     href?: string;
-    color?: ColorStyle;
+    color?: ColorType;
     variant?: ButtonColorStyleType;
     disabled?: boolean;
     external?: boolean;
