@@ -1,6 +1,7 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
 
-export interface AccordionItemProps extends BaseComponentProps {
+export interface AccordionItemProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps | "ontoggle"> {
     title: string;
     open?: boolean;
     disabled?: boolean;

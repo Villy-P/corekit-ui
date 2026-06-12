@@ -27,12 +27,12 @@
 
     const ctx = getContext<AccordionContext | undefined>('accordion');
 
-    const isOpen = $derived(ctx ? ctx.activeIds.has(id) : open);
+    const isOpen = $derived(ctx ? ctx.activeIds.has(id || "") : open);
 
     function toggle() {
         if (disabled || isStatic) return;
         if (ctx)
-            ctx.setActive(id);
+            ctx.setActive(id || "");
         else
             open = !open;
         ontoggle?.(!isOpen);
