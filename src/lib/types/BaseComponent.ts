@@ -4,6 +4,9 @@ import type { Component } from "svelte";
 
 // Start moving components over to BaseProps and deprecating BaseComponentProps in order to add stricter typing.
 export interface BaseProps {
+    /** * Swaps the button text structure for a spinning loading wheel asset.
+     * @default false
+     */
     children?: any;
     class?: string;
     element?: HTMLElement;
