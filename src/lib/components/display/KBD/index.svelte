@@ -1,6 +1,7 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
     import { multiAction } from "../../../utils/multiAction";
+    import type { KBDProps } from "./types";
 
     let { 
         children = undefined, 
@@ -9,7 +10,7 @@
         use = [],
         subtext = undefined,
         ...restProps
-    }: any = $props();
+    }: KBDProps = $props();
 
     const defaultClass = "inline-flex flex-col items-center justify-center rounded bg-sub-background px-1.5 py-0.5 text-xs font-mono text-main-text border-sub-background-hover border-1";
     const subtextClass = "text-sub-text text-[10px] mt-0.5";

@@ -1,0 +1,7 @@
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseProps } from "../../../types/BaseComponent";
+import type { Snippet } from "svelte";
+
+export interface KBDProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {
+    subtext?: Snippet;
+}
