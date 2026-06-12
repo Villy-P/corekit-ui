@@ -11,8 +11,6 @@
         use = [],
         tableHeaders = [],
         tableData = [],
-        size = "md",
-        radius = "md",
         ...restProps
     }: DataGridProps = $props();
 

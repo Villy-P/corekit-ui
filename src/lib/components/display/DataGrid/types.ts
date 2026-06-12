@@ -9,6 +9,4 @@ export interface DataGridHeaders {
 export interface DataGridProps extends BaseComponentProps {
     tableHeaders?: DataGridHeaders[];
     tableData?: any[];
-    size?: Size;
-    radius?: Size;
 };
