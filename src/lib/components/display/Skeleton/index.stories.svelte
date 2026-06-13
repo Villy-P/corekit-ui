@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-    import Skeleton from "./index.svelte";
+    import Skeleton from "./index.ts";
 	import { sizeStyles } from "../../../styles/size";
 	import { baseArgTypes } from "../../../styles/storybook";
 
@@ -36,7 +36,8 @@
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Skeleton",
-		component: Skeleton,
+		component: Skeleton as any,
+		subcomponents: { Group: Skeleton.Group },
 		argTypes,
 		parameters: {
 			controls: {

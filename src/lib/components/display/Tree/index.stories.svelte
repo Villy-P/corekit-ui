@@ -10,7 +10,8 @@
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Tree",
-		component: Tree,
+		component: Tree as any,
+        subcomponents: { "Tree.Node": Tree.Node },
 		argTypes,
         parameters: {
             controls: {

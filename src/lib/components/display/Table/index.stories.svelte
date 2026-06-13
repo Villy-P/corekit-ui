@@ -11,7 +11,14 @@
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Table",
-		component: Table,
+		component: Table as any,
+        subcomponents: {
+            "Table.Header": Table.Header,
+            "Table.Body": Table.Body,
+            "Table.Row": Table.Row,
+            "Table.Cell": Table.Cell,
+            "Table.HeadCell": Table.HeadCell,
+        },
         argTypes,
 
         parameters: {

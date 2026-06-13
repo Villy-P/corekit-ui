@@ -1,5 +1,5 @@
 import SkeletonComponent from './index.svelte';
-import SkeletonGroup from './SkeletonGroup.svelte';
+import SkeletonGroup from './Group.svelte';
 
 const Skeleton = SkeletonComponent as typeof SkeletonComponent & {
     Group: typeof SkeletonGroup;

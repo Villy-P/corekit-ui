@@ -5,7 +5,7 @@
     import { slide } from "svelte/transition";
     import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import { twMerge } from "tailwind-merge";
-    import { multiAction } from "../../../utils/multiAction";
+    import { multiAction } from "../../../utils/multiAction.ts";
 
     let {
         children = undefined,

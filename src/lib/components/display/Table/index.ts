@@ -1,9 +1,9 @@
 import TableComponent from './index.svelte';
-import TableBody from './TableBody.svelte';
-import TableCell from './TableCell.svelte';
-import TableHeadCell from './TableHeadCell.svelte';
-import TableHeader from './TableHeader.svelte';
-import TableRow from './TableRow.svelte';
+import TableBody from './Body.svelte';
+import TableCell from './Cell.svelte';
+import TableHeadCell from './HeadCell.svelte';
+import TableHeader from './Header.svelte';
+import TableRow from './Row.svelte';
 
 const Table = TableComponent as typeof TableComponent & {
     Body: typeof TableBody;
