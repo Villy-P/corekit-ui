@@ -1,5 +1,5 @@
 import NavbarComponent from './index.svelte';
-import NavbarDropdown from './AccordionItem.svelte';
+import NavbarDropdown from './Dropdown.svelte';
 import NavbarElement from './Element.svelte';
 import NavbarSeparator from './Separator.svelte';
 
