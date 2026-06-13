@@ -1,6 +1,6 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
-    import NavbarElement from "./NavbarElement.svelte";
+    import NavbarElement from "./Element.svelte";
     import type { NavbarDropdownProps } from "./types.js";
     import {
         computePosition,
@@ -10,7 +10,7 @@
         autoUpdate,
         type Placement,
     } from "@floating-ui/dom";
-    import { multiAction } from "../../../utils/multiAction";
+    import { multiAction } from "../../../utils/multiAction.js";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
 	import { portal } from "$lib/actions/portal.js";
 

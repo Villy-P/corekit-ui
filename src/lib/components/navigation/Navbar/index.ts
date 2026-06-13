@@ -1,7 +1,7 @@
 import NavbarComponent from './index.svelte';
 import NavbarDropdown from './AccordionItem.svelte';
-import NavbarElement from './NavbarElement.svelte';
-import NavbarSeparator from './NavbarSeparator.svelte';
+import NavbarElement from './Element.svelte';
+import NavbarSeparator from './Separator.svelte';
 
 const Navbar = NavbarComponent as typeof NavbarComponent & {
     Dropdown: typeof NavbarDropdown;

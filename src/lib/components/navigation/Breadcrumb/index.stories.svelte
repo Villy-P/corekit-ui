@@ -4,7 +4,8 @@
 
 	const { Story } = defineMeta({
 		title: "Components/Navigation/Breadcrumb",
-		component: Breadcrumb,
+		component: Breadcrumb as any,
+		subcomponents: { "Breadcrumb.Item": Breadcrumb.Item },
 		argTypes: {
 
 		},

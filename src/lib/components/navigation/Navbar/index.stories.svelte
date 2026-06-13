@@ -7,7 +7,8 @@
 
 	const { Story } = defineMeta({
 		title: "Components/Navigation/Navbar",
-		component: Navbar,
+		component: Navbar as any,
+        subcomponents: { "Navbar.Element": Navbar.Element, "Navbar.Dropdown": Navbar.Dropdown, "Navbar.Separator": Navbar.Separator },
 		argTypes: {
 
 		},

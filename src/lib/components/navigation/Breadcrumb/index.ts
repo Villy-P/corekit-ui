@@ -1,5 +1,5 @@
 import BreadcrumbComponent from './index.svelte';
-import BreadcrumbItem from './BreadcrumbItem.svelte';
+import BreadcrumbItem from './Item.svelte';
 
 const Breadcrumb = BreadcrumbComponent as typeof BreadcrumbComponent & {
     Item: typeof BreadcrumbItem;

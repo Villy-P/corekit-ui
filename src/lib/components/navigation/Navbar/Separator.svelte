@@ -1,6 +1,6 @@
 <script lang="ts">
     import { NavbarSeparatorClasses, type NavbarSeparatorProps } from "./types.js";
-    import { multiAction } from "../../../utils/multiAction";
+    import { multiAction } from "../../../utils/multiAction.js";
 
     let {
         variant = "dynamic",
