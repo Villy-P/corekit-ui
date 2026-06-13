@@ -1,20 +1,65 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Checkbox from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
-    import { sizeStyles } from "$lib/styles/size.js";
+  import { baseArgTypes } from "../../../styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes,
+		label: {
+			control: "text",
+			description: "The label to display next to the checkbox.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+		labelClass: {
+			control: "text",
+			description: "Additional CSS classes to apply to the label element.",
+			table: {
+				type: { summary: "string" },
+				category: "Appearance",
+			},
+		},
+		divClass: {
+			control: "text",
+			description: "Additional CSS classes to apply to the wrapper div element.",
+			table: {
+				type: { summary: "string" },
+				category: "Appearance",
+			},
+		},
+		checked: {
+			control: "boolean",
+			description: "Whether the checkbox is checked or not. This can be binded to.",
+			table: {
+				type: { summary: "boolean" },
+				category: "State",
+			},
+		},
+		id: {
+			control: "text",
+			description: "The id of the checkbox input element. This is used to associate the label with the input for accessibility. This is automatically set to a unique value if not provided.",
+			table: {
+				type: { summary: "string" },
+				category: "Accessibility",
+			},
+		}
+
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Checkbox",
 		component: Checkbox,
-		argTypes: {
-			size: {
-				control: "select",
-				options: sizeStyles,
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
 			},
-			radius: {
-				control: "select",
-				options: sizeStyles,
+			docs: {
+				description: {
+					component: "The Checkbox component is used to allow users to select one or more options from a set. It accepts a `label` prop to specify the text to display next to the checkbox, as well as `labelClass` and `divClass` props for additional styling. The `checked` prop can be used to control the checked state of the checkbox, and the `id` prop can be used to associate the label with the input for accessibility."
+				}
 			}
 		},
 	});
