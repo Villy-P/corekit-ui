@@ -9,8 +9,6 @@
         class: className = "",
         element = $bindable(),
         use = [],
-        size = "md",
-        radius = "md",
         ...restProps
     }: TableProps = $props();
 

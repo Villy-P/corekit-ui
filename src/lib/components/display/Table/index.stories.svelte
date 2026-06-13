@@ -3,10 +3,27 @@
     import Table from "./index.ts";
     import { Button } from "../../inputs";
     import { Tooltip } from "../../overlay";
+  import { baseArgTypes } from "../../../styles/storybook.ts";
+
+    const argTypes = {
+        ...baseArgTypes,
+    } as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Table",
 		component: Table,
+        argTypes,
+
+        parameters: {
+            controls: {
+                include: Object.keys(argTypes),
+            },
+            docs: {
+                description: {
+                    component: "The Table component is a versatile component for displaying tabular data. It provides a structured layout with headers and rows, allowing for easy organization and presentation of information. The Table component can be customized with various props to adjust its appearance and behavior, making it suitable for a wide range of use cases."
+                }
+            }
+        }
 	});
 
     const userData = [

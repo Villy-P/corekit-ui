@@ -1,13 +1,10 @@
+import type { HTMLAttributes, HTMLTableAttributes, HTMLTdAttributes, HTMLThAttributes } from "svelte/elements";
 import type { Size } from "../../../styles/size.js";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent.ts";
 
-export interface TableProps extends BaseComponentProps {
-    size?: Size;
-    radius?: Size;
-};
-
-export interface TableHeaderProps extends BaseComponentProps {}
-export interface TableHeadCellProps extends BaseComponentProps {}
-export interface TableCellProps extends BaseComponentProps {}
-export interface TableBodyProps extends BaseComponentProps {}
-export interface TableRowProps extends BaseComponentProps {}
+export interface TableProps extends BaseProps, Omit<HTMLTableAttributes, keyof BaseProps> {};
+export interface TableHeaderProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {}
+export interface TableHeadCellProps extends BaseProps, Omit<HTMLThAttributes, keyof BaseProps> {}
+export interface TableCellProps extends BaseProps, Omit<HTMLTdAttributes, keyof BaseProps> {}
+export interface TableBodyProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {}
+export interface TableRowProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {}
