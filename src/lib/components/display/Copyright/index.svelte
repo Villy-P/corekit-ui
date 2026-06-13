@@ -2,7 +2,6 @@
     import { twMerge } from "tailwind-merge";
     import type { CopyrightProps } from "./types";
     import { Text } from "../../typography";
-    import { multiAction } from "../../../utils/multiAction.ts";
 
     let { 
         holder = "",

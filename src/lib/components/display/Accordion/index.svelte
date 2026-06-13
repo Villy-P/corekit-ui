@@ -2,7 +2,7 @@
     import { setContext } from "svelte";
     import type { AccordionProps, AccordionContext } from "./types.ts";
 	import { twMerge } from "tailwind-merge";
-    import { multiAction } from "../../../utils/multiAction.ts";
+    import { multiAction } from "$lib/utils/multiAction";
 
     let {
         children,

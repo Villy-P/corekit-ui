@@ -1,5 +1,5 @@
-import { sizeStyles } from "../../../styles/size";
-import { baseArgTypes } from "../../../styles/storybook";
+import { sizeStyles } from "$lib/styles/size";
+import { baseArgTypes } from "$lib/styles/storybook";
 
 export const cardArgTypes = {
 		...baseArgTypes,

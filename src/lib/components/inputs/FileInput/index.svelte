@@ -8,7 +8,7 @@
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
     import bytes from "bytes";
-    import { multiAction } from "../../../utils/multiAction";
+    import { multiAction } from "$lib/utils/multiAction";
 
     import Upload from "@lucide/svelte/icons/upload";
     import File from "@lucide/svelte/icons/file";

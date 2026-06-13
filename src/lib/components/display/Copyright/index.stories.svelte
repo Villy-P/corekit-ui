@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Copyright from "./index.svelte";
-	import { baseArgTypes } from "../../../styles/storybook";
+	import { baseArgTypes } from "$lib/styles/storybook";
 
 	const argTypes = {
 		...baseArgTypes,

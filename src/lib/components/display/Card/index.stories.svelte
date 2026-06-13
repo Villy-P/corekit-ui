@@ -3,8 +3,8 @@
 	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
     import Card from "./index.svelte";
-	import { sizeStyles } from "../../../styles/size";
-	import { baseArgTypes } from "../../../styles/storybook";
+	import { sizeStyles } from "$lib/styles/size";
+	import { baseArgTypes } from "$lib/styles/storybook";
   import { cardArgTypes } from "./storybook";
 
 	const { Story } = defineMeta({

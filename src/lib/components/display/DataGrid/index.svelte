@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { multiAction } from "../../../utils/multiAction";
-    import { defaultTableClass, defaultTableHeaderClass, defaultTableCellClass, defaultTableBodyClass } from "../table";
+    import { multiAction } from "$lib/utils/multiAction";
+    import { defaultTableClass, defaultTableHeaderClass, defaultTableCellClass, defaultTableBodyClass } from "$lib/components/display/table";
     import type { DataGridProps } from "./types";
     import { twMerge } from "tailwind-merge";
 

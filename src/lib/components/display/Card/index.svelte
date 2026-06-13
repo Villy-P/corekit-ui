@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { getSizeStyle, getSizeStyleClass } from "../../../styles/size.ts";
-    import { type CardProps } from "./types.ts";
+    import { getSizeStyle, getSizeStyleClass } from "$lib/styles/size";
+    import { type CardProps } from "./types";
     import { twMerge } from "tailwind-merge";
-    import { cardVariantStyles } from "./variant.ts";
-    import { getLinkProps } from "../../../utils/link.ts";
-    import { multiAction } from "../../../utils/multiAction.ts";
+    import { cardVariantStyles } from "./variant";
+    import { getLinkProps } from "$lib/utils/link";
+    import { multiAction } from "$lib/utils/multiAction";
 
     let { 
         children = undefined, 

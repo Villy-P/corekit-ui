@@ -3,7 +3,7 @@
     import Text from "../../typography/Text/index.svelte";
     import Accordion from "./index.ts";
     import AccordionItem from "./Item.svelte";
-    import { baseArgTypes } from "../../../styles/storybook.ts";
+    import { baseArgTypes } from "$lib/styles/storybook";
 
     const argTypes = {
 		...baseArgTypes,

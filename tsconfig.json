@@ -15,11 +15,14 @@
 		"moduleResolution": "bundler",
 		"module": "esnext",
 		"target": "esnext",
-		"lib": ["esnext", "DOM", "DOM.Iterable"]
+		"lib": ["esnext", "DOM", "DOM.Iterable"],
+		"paths": {
+			"$lib/*": ["./src/lib/*"]
+		}
 	},
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.js",
 		"src/**/*.svelte"
-	]
+	],
 }

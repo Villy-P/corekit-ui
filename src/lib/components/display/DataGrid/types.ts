@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "svelte/elements";
-import type { BaseProps } from "../../../types/BaseComponent.ts";
+import type { BaseProps } from "$lib/types/BaseComponent";
 
 export interface DataGridHeaders {
     key: string;

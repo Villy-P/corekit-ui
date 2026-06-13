@@ -1,6 +1,6 @@
 import type { Snippet } from "svelte";
-import type { Size } from "../../../styles/size";
-import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
+import type { Size } from "$lib/styles/size";
+import type { BaseProps } from "$lib/types/BaseComponent";
 import type { HTMLAnchorAttributes, HTMLAttributes } from "svelte/elements";
 
 export type CardVariant = "bordered" | "elevated" | "ghost" | "flat";
