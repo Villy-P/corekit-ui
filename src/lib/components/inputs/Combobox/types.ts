@@ -1,6 +1,7 @@
+import type { HTMLInputAttributes } from "svelte/elements";
 import type { BaseInputProps } from "../../../types/BaseComponent";
 
-export interface ComboboxProps extends BaseInputProps {
+export interface ComboboxProps extends BaseInputProps, Omit<HTMLInputAttributes, keyof BaseInputProps> {
     options?: string[];
     placeholder?: string;
     onfocus?: (e?: FocusEvent) => void;

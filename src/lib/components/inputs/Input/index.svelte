@@ -47,6 +47,7 @@
         min = undefined,
         max = undefined,
         step = undefined,
+        type = "text",
         ...restProps
     }: InputProps = $props();
 
@@ -72,7 +73,7 @@
 
     const Icon = $derived(icon ?? ({
         email: Mail, password: Lock, tel: Phone
-    }[restProps.type as string] as Component ?? null));
+    }[type as string] as Component ?? null));
 
     let defaultClass = "text-main-text w-full outline-none px-1.5 w-full bg-inherit border-0 focus:ring-0 focus-visible:ring-0 rounded-none";
     let iconContainerClass = "h-5 aspect-square px-1 py-0!";
@@ -118,7 +119,7 @@
 
 <BaseInput
     {children}
-    {className}
+    class={className}
     {label}
     {labelClass}
     divClass={combinedDivClass}
@@ -169,13 +170,13 @@
             aria-disabled={disabled}
             style={customStyle}
             {...restProps}
-            type={canSeePassword ? "text" : restProps.type}
+            type={canSeePassword ? "text" : type}
         />
-        {#if restProps.type === "password"}
+        {#if type === "password"}
             <Button color="none" class={iconContainerClass} onclick={() => { canSeePassword = !canSeePassword; }}>
                 <EyeComponent class={iconClass}></EyeComponent>
             </Button>
-        {:else if restProps.type === "number"}
+        {:else if type === "number"}
             <NumberInput {max} {min} {step} bind:value {size}/>
         {/if}
     {/snippet}

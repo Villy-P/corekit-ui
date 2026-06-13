@@ -21,7 +21,7 @@ export interface BaseComponentProps {
 
 export type InputVariant = "default" | "floating";
 
-export interface BaseInputProps extends BaseComponentProps {
+export interface BaseInputProps extends BaseProps {
     label?: string;
     labelClass?: string;
     divClass?: string;

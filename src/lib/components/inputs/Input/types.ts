@@ -1,3 +1,4 @@
+import type { HTMLInputAttributes } from "svelte/elements";
 import type { BaseInputProps } from "../../../types/BaseComponent";
 
 export interface InputRequirements {
@@ -5,7 +6,7 @@ export interface InputRequirements {
     requirements: RegExp | ((value: any) => boolean);
 };
 
-export interface InputProps extends BaseInputProps {
+export interface InputProps extends BaseInputProps, Omit<HTMLInputAttributes, keyof BaseInputProps> {
     placeholder?: string;
     min?: number;
     max?: number;

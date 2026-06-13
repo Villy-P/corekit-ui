@@ -6,7 +6,13 @@
     import { twMerge } from "tailwind-merge";
     import type { BaseInputProps } from "../../../types/BaseComponent";
     import Text from "../../typography/Text/index.svelte";
-    import { getSizeStyleClass } from "$lib/styles/size.js";
+    import { getSizeStyleClass } from "../../../styles/size";
+
+    interface ExtraBaseInputProps {
+        isFocused?: boolean;
+        innerDivElement?: () => any;
+        outerDivElementAfter?: () => any;
+    }
 
     let { 
         children = undefined, 
@@ -30,7 +36,7 @@
         outerDivElementAfter = undefined,
 
         ...restProps
-    }: BaseInputProps = $props();
+    }: BaseInputProps & ExtraBaseInputProps = $props();
 
     const hasContent = $derived(value !== undefined && value !== null && value.toString().length > 0);
 

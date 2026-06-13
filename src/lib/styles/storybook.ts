@@ -1,4 +1,5 @@
 import type { ArgTypes } from "@storybook/svelte";
+import { sizeStyles } from "./size";
 
 export const baseArgTypes: Partial<ArgTypes> = {
     children: {
@@ -40,3 +41,76 @@ export const baseArgTypes: Partial<ArgTypes> = {
         table: { type: { summary: "string" }, category: "Base Attributes" },
     },
 };
+
+export const baseInputArgTypes: Partial<ArgTypes> = {
+    ...baseArgTypes,
+    label: {
+        control: "text",
+        description: "The text label for the input field.",
+        table: { type: { summary: "string" }, category: "Base Input Attributes" },
+    },
+    labelClass: {
+        control: "text",
+        description: "Additional CSS classes to apply to the label element.",
+        table: { type: { summary: "string" }, category: "Base Input Attributes" },
+    },
+    divClass: {
+        control: "text",
+        description: "Additional CSS classes to apply to the div wrapping the input.",
+        table: { type: { summary: "string" }, category: "Base Input Attributes" },
+    },
+    outerDivClass: {
+        control: "text",
+        description: "Additional CSS classes to apply to the outer div wrapping the label and input.",
+        table: { type: { summary: "string" }, category: "Base Input Attributes" },
+    },
+    value: {
+        control: "text",
+        description: "The current value of the input field.",
+        table: { type: { summary: "any" }, category: "Base Input Attributes" },
+    },
+    required: {
+        control: "boolean",
+        description: "Whether the input field is required.",
+        table: { type: { summary: "boolean" }, category: "Base Input Attributes" },
+    },
+    disabled: {
+        control: "boolean",
+        description: "Whether the input field is disabled.",
+        table: { type: { summary: "boolean" }, category: "Base Input Attributes" },
+    },
+    variant: {
+        control: "select",
+        options: ["default", "floating"],
+        description: "The visual variant of the input field.",
+        table: { type: { summary: "InputVariant" }, category: "Base Input Attributes" },
+    },
+    size: {
+        control: "select",
+        options: sizeStyles,
+        description: "The size of the input field.",
+        table: { type: { summary: "Size" }, category: "Base Input Attributes" },
+    },
+    radius: {
+        control: "select",
+        options: sizeStyles,
+        description: "The border radius of the input field.",
+        table: { type: { summary: "Size" }, category: "Base Input Attributes" },
+    },
+    icon: {
+        control: false,
+        description: "An optional icon component to display within the input field.",
+        table: { type: { summary: "Component" }, category: "Base Input Attributes" },
+    },
+    wrapper: {
+        control: false,
+        description:
+            "A bindable prop that can be used to access the wrapper HTML element for the input, allowing for direct manipulation or to apply inline styles.",
+        table: { type: { summary: "HTMLElement" }, category: "Base Input Attributes" },
+    },
+    id: {
+        control: "text",
+        description: "The HTML id attribute for the input element.",
+        table: { type: { summary: "string" }, category: "Base Input Attributes" },
+    },
+}

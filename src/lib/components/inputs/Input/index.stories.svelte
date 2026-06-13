@@ -1,8 +1,7 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Input from "./index.svelte";
-	import { colorStyles, colorStyleTypes } from "$lib/styles/color.js";
-    import { sizeStyles } from "$lib/styles/size.js";
+	import { sizeStyles } from "../../../styles/size";
 
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Input",
@@ -15,11 +14,7 @@
 			radius: {
 				control: "select",
 				options: sizeStyles,
-			},
-            type: {
-                control: "select",
-                options: ["text", "password", "email", "number", "search", "tel", "url"],
-            },
+			}
 		},
 	});
 </script>
