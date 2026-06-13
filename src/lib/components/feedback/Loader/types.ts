@@ -1,8 +1,9 @@
+import type { HTMLAttributes } from "svelte/elements";
 import type { Color } from "../../../styles/color";
 import type { Size } from "../../../styles/size";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseProps } from "../../../types/BaseComponent.ts";
 
-export interface LoaderProps extends BaseComponentProps {
+export interface LoaderProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     size?: Size;
     color?: Color;
 }

@@ -10,9 +10,8 @@
         autoUpdate,
         type Placement,
     } from "@floating-ui/dom";
-    import { multiAction } from "../../../utils/multiAction.js";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
-	import { portal } from "$lib/actions/portal.js";
+    import { portal } from "../../../actions/portal.js";
 
     let {
         children = undefined,

@@ -3,26 +3,43 @@
 	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
     import Modal from "./index.svelte";
-	import { sizeStyles } from "../../../styles/size";
+	import { cardArgTypes } from "../../display/Card/storybook";
+
+	const argTypes = {
+		...cardArgTypes,
+		open: {
+			control: "boolean",
+			description: "Whether the modal is open or not.",
+			table: {
+				type: { summary: "boolean" },
+				category: "State",
+			},
+		},
+		position: {
+			control: "select",
+			options: ["top", "center", "bottom", "top-left", "top-right", "bottom-left", "bottom-right", "left", "right"],
+			description: "The position of the modal on the screen.",
+			table: {
+				type: { summary: "Position" },
+				category: "Appearance",
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Feedback/Modal",
 		component: Modal,
-		argTypes: {
-			variant: {
-				control: "select",
-				options: ["bordered", "elevated"],
+		argTypes,
+
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
 			},
-			size: {
-				control: "select",
-				options: sizeStyles,
-			},
-			radius: {
-				control: "select",
-				options: sizeStyles,
-			},
-			href: { control: "text" },
-			external: { control: "boolean" },
+			docs: {
+				description: {
+					component: "The Modal component is used to display content in a layer above the main application. It can be used for dialogs, forms, or any content that requires user attention. The modal can be positioned in various locations on the screen and can be styled using the same props as the Card component."
+				}
+			}
 		},
 	});
 </script>

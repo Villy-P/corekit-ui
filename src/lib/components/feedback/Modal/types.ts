@@ -1,7 +1,7 @@
-import type { PositionStyle } from "$lib/styles/posititon.js";
+import type { Position } from "../../../styles/posititon";
 import type { CardProps } from "../../display/Card/types";
 
-export interface ModalProps extends CardProps {
+export type ModalProps = CardProps & {
     open?: boolean;
-    position?: PositionStyle;
+    position?: Position;
 }

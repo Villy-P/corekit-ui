@@ -2,10 +2,10 @@
     import type { ModalProps } from "./types";
     import { fade, fly } from "svelte/transition";
     import Card from "../../display/Card/index.svelte";
-    import { modalPositionParts } from "$lib/styles/posititon.js";
-    import { getSizeStyleClass } from "$lib/styles/size.js";
     import { twMerge } from "tailwind-merge";
     import { multiAction } from "../../../utils/multiAction";
+    import { modalPositionParts } from "../../../styles/posititon";
+    import { getSizeStyleClass } from "../../../styles/size";
 
     let { 
         children = undefined, 
@@ -20,7 +20,7 @@
 
     const outerClass = $derived(twMerge(
         "inset-0 flex flex-col w-[calc(100%-1rem)] h-[calc(100%-1rem)] p-4",
-        modalPositionParts[position]
+        modalPositionParts[position as keyof typeof modalPositionParts],
     ));
 
     const cardClass = $derived(twMerge(
@@ -42,7 +42,7 @@
             class={outerClass}
             transition:fly={{ y: -20, duration: 200 }}>
             <Card class={cardClass} {...restProps} onclick={(e: MouseEvent) => e.stopPropagation()}>
-                {@render children()}
+                {@render children?.()}
             </Card>
         </div>
     </div>

@@ -1,7 +1,7 @@
-export type PositionStyle = "top" | "right" | "bottom" | "left" | "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
+export type Position = "top" | "right" | "bottom" | "left" | "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
 export type TooltipPosition = "top" | "right" | "bottom" | "left";
 
-export const positionParts: Record<PositionStyle, string> = {
+export const positionParts: Record<Position, string> = {
     "top": "top-4 left-1/2 -translate-x-1/2",
     "right": "top-1/2 right-4 transform -translate-y-1/2 flex-col",
     "bottom": "bottom-4 left-1/2 transform -translate-x-1/2 flex-col-reverse",
@@ -13,7 +13,7 @@ export const positionParts: Record<PositionStyle, string> = {
     "center": "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 };
 
-export const modalPositionParts: Record<PositionStyle, string> = {
+export const modalPositionParts: Record<Position, string> = {
     "center":        "items-center justify-center",
     "top":           "items-center justify-start pt-4",
     "bottom":        "items-center justify-end pb-4",
