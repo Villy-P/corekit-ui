@@ -1,15 +1,16 @@
-import type { PositionStyle } from "$lib/styles/posititon.js";
-import type { SizeStyle } from "$lib/styles/size.js";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent.ts";
+import type { Size } from "../../../styles/size.ts";
+import type { Position } from "../../../styles/posititon.ts";
 
 export type ToastType = "success" | "error" | "info" | "warning";
 
-export interface ToastProps extends BaseComponentProps {
+export interface ToastProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     message: string;
     duration?: number;
-    position?: PositionStyle;
+    position?: Position;
     type?: ToastType;
-    size?: SizeStyle;
-    radius?: SizeStyle;
+    size?: Size;
+    radius?: Size;
     onclose?: () => void;
 }

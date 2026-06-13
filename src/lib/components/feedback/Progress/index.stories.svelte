@@ -47,6 +47,15 @@
                 category: "Appearance",
             },
         },
+        radius: {
+            control: "select",
+            options: sizeStyles,
+            description: "The border radius of the progress bar, which affects how rounded the corners are.",
+            table: {
+                type: { summary: "Size" },
+                category: "Appearance",
+            },
+        },
 	} as const;
 
 	const { Story } = defineMeta({
