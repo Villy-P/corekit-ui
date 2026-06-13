@@ -7,19 +7,15 @@
     import type { ColorInputProps } from "./types";
     import { twMerge } from "tailwind-merge";
     import Text from "../../typography/Text/index.svelte";
-    import bytes from "bytes";
     import { computePosition, flip, shift, offset, autoUpdate } from "@floating-ui/dom";
     import { multiAction } from "../../../utils/multiAction";
 
-    import Upload from "@lucide/svelte/icons/upload";
-    import File from "@lucide/svelte/icons/file";
     import Button from "../Button/index.svelte";
     import { fly } from "svelte/transition";
-    import { onMount, tick } from "svelte";
+    import { tick } from "svelte";
     import { hexToHsl, hexToHsv, hexToRgb, hslToHex } from "$lib/utils/color";
     import { Input } from "..";
 
-    import Pipette from "@lucide/svelte/icons/pipette";
 	import { portal } from "$lib/actions/portal";
 
     let { 

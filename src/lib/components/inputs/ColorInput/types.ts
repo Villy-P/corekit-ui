@@ -1,9 +1,10 @@
+import type { HTMLInputAttributes } from "svelte/elements";
 import type { Size } from "../../../styles/size";
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
 
 export type ColorInputVariant = "full" | "compact" | "input";
 
-export interface ColorInputProps extends BaseComponentProps {
+export interface ColorInputProps extends BaseProps, Omit<HTMLInputAttributes, keyof BaseProps | "size"> {
     label?: string;
     labelClass?: string;
     divClass?: string;
