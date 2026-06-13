@@ -2,6 +2,7 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Text from "../../typography/Text/index.svelte";
     import Accordion from "./index.ts";
+    import AccordionItem from "./Item.svelte";
     import { baseArgTypes } from "../../../styles/storybook.ts";
 
     const argTypes = {
@@ -15,11 +16,12 @@
             },
         }
     } as const;
-
+    
 	const { Story } = defineMeta({
 		title: "Components/Display/Accordion",
-		component: Accordion,
+		component: Accordion as any,
 		argTypes,
+        subcomponents: { "Accordion.Item": Accordion.Item },
 
         parameters: {
             controls: {

@@ -20,6 +20,6 @@
 
 <div class="overflow-auto w-full" bind:this={element} use:multiAction={use}>
     <table {...restProps} class={combinedTableClass}>
-        {@render children()}
+        {@render children?.()}
     </table>
 </div>

@@ -2,13 +2,26 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Text from "../../typography/Text/index.svelte";
     import Tree from "./index.ts";
+  import { baseArgTypes } from "../../../styles/storybook.ts";
+
+    const argTypes = {
+        ...baseArgTypes
+    } as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Tree",
 		component: Tree,
-		argTypes: {
-
-		},
+		argTypes,
+        parameters: {
+            controls: {
+                include: Object.keys(argTypes),
+            },
+            docs: {
+                description: {
+                    component: "The Tree component is a hierarchical structure that allows you to display nested data in a collapsible format. Each node in the tree can have child nodes, and users can expand or collapse these nodes to view or hide their content. The Tree component is useful for representing data with parent-child relationships, such as file systems, organizational charts, or any other nested data structures."
+                }
+            }
+        }
 	});
 </script>
 

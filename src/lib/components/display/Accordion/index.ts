@@ -1,5 +1,5 @@
 import AccordionComponent from './index.svelte';
-import AccordionItem from './AccordionItem.svelte';
+import AccordionItem from './Item.svelte';
 
 const Accordion = AccordionComponent as typeof AccordionComponent & {
     Item: typeof AccordionItem;

@@ -1,13 +1,11 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { HTMLAttributes, HTMLLiAttributes } from "svelte/elements";
+import type { BaseProps } from "../../../types/BaseComponent";
 import type { Snippet } from "svelte";
 
-export interface TreeProps extends BaseComponentProps {
-    children?: Snippet;
-}
+export interface TreeProps extends BaseProps, Omit<HTMLAttributes<HTMLUListElement>, keyof BaseProps> {}
 
-export interface TreeNodeProps extends BaseComponentProps {
+export interface TreeNodeProps extends BaseProps, Omit<HTMLLiAttributes, keyof BaseProps> {
     label: string;
-    children?: Snippet;
     open?: boolean;
     disabled?: boolean;
     depth?: number;

@@ -2,6 +2,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
 
 export interface AccordionItemProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps | "ontoggle"> {
+    /** The title of the accordion item */
     title: string;
     open?: boolean;
     disabled?: boolean;

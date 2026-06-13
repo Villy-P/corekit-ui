@@ -1,13 +1,10 @@
 import type { Action } from "svelte/action";
 import type { Size } from "../styles/size";
-import type { Component } from "svelte";
+import type { Component, Snippet } from "svelte";
 
 // Start moving components over to BaseProps and deprecating BaseComponentProps in order to add stricter typing.
 export interface BaseProps {
-    /** * Swaps the button text structure for a spinning loading wheel asset.
-     * @default false
-     */
-    children?: any;
+    children?: Snippet;
     class?: string;
     element?: HTMLElement;
     use?: [Action, any?][];
