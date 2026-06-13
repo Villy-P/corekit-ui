@@ -1,6 +1,7 @@
+import type { HTMLAttributes } from "svelte/elements";
 import type { Color } from "../../../styles/color.ts";
 import type { Size } from "../../../styles/size.ts";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseProps } from "../../../types/BaseComponent.ts";
 
 interface AnimateProps {
     from: number;
@@ -9,7 +10,7 @@ interface AnimateProps {
     onend?: () => void;
 }
 
-export interface ProgressProps extends BaseComponentProps {
+export interface ProgressProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     divClass?: string;
     progress?: number;
     animate?: AnimateProps
