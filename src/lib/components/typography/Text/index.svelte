@@ -17,7 +17,7 @@
     const tagStyles: Record<string, string> = {
         "p": "text-base",
         "div": " text-base",
-        "span": " text-base",
+        "span": " text-inherit",
         "label": "text-sub-text font-semibold text-xs",
         "strong": "font-bold text-base",
         "b": "font-bold text-base",
