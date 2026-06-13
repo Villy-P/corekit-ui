@@ -1,13 +1,16 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent";
+import type { Size } from "../../../styles/size";
 
 export type SkeletonVariant = "default" | "text" | "image" | "video" | "card";
 
-export interface SkeletonProps extends BaseComponentProps {
+export interface SkeletonProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     variant?: SkeletonVariant;
     count?: number;
+    size?: Size;
 }
 
-export interface SkeletonGroupProps extends BaseComponentProps {
+export interface SkeletonGroupProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     variant?: SkeletonVariant;
     count?: number;
 }
