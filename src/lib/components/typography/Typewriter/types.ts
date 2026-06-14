@@ -1,4 +1,5 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent.ts";
 
 export type TypewriterAction =
     | { type: "write", value: string | (() => string), color?: string | (() => string), minspeed?: number, maxspeed?: number, label?: string }
@@ -12,7 +13,7 @@ export interface DisplaySegment {
     label?: string;
 };
 
-export interface TypewriterProps extends BaseComponentProps {
+export interface TypewriterProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     actions: TypewriterAction[];
     textClass?: string;
 }
