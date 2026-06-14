@@ -2,24 +2,32 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Select from "./index.svelte";
     import { sizeStyles } from "$lib/styles/size.js";
+	import { baseInputArgTypes } from "$lib/styles/storybook";
+
+	const argTypes = {
+		...baseInputArgTypes,
+		options: {
+			control: "object",
+			description: "An array of objects representing the options available in the select. Each object should have a label and value property.",
+			table: {
+				type: { summary: "{ label: string; value: string }[]" },
+				category: "Content",
+			},
+		},
+		placeholder: {
+			control: "text",
+			description: "A string that provides a hint to the user of what can be selected in the select.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Select",
 		component: Select,
-		argTypes: {
-			size: {
-				control: "select",
-				options: sizeStyles,
-			},
-			radius: {
-				control: "select",
-				options: sizeStyles,
-			},
-            type: {
-                control: "select",
-                options: ["text", "password", "email", "number", "search", "tel", "url"],
-            },
-		},
+		argTypes
 	});
 </script>
 
