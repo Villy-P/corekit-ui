@@ -1,12 +1,13 @@
 import type { Snippet } from "svelte";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseProps } from "../../../types/BaseComponent.ts";
 import type { TooltipPosition } from "../../../styles/posititon.ts";
+import type { HTMLAttributes } from "svelte/elements";
 
-export interface TooltipProps extends BaseComponentProps {
+export interface TooltipProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps> {
     text?: string;
     position?: TooltipPosition;
     delay?: number;
     interactive?: boolean;
-    attatchedTo?: HTMLElement;
+    attachedTo?: HTMLElement;
     content?: Snippet;
 }

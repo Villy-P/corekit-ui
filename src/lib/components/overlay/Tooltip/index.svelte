@@ -27,7 +27,8 @@
         interactive = false,
         children,
         content,
-        attachedTo
+        attachedTo,
+        ...restProps
     }: TooltipProps = $props();
 
     let visible = $state(false);
@@ -133,7 +134,7 @@
 
     onMount(() => {
         if (attachedTo) {
-            trigger = attachedTo;
+            trigger = attachedTo as HTMLDivElement;
 
             show();
             attachedTo.addEventListener("mouseleave", hide);
@@ -153,7 +154,7 @@
         onmouseenter={show}
         onmouseleave={hide}
     >
-        {@render children()}
+        {@render children?.()}
     </div>
 {/if}
 
@@ -168,6 +169,7 @@
         onmouseleave={onTooltipLeave}
         bind:this={element}
         use:multiAction={use}
+        {...restProps}
     >
         <div
             bind:this={arrowEl}
