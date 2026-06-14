@@ -3,14 +3,14 @@
     import ChevronUp from "@lucide/svelte/icons/chevron-up";
     import ChevronDown from "@lucide/svelte/icons/chevron-down";
     import { twMerge } from "tailwind-merge";
-    import { getSizeStyleClass, type SizeStyle } from "$lib/styles/size.js";
+    import { getSizeStyleClass, type Size } from "$lib/styles/size.js";
 
     let {
         max = undefined,
         min = undefined,
         step = undefined,
         value = $bindable(),
-        size = "md" as SizeStyle,
+        size = "md" as Size,
         ...restProps
     } = $props();
 

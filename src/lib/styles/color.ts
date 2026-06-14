@@ -573,7 +573,7 @@ export function generateColorStyle(color: Color, variant: ColorStyleType) {
     return styles[variant] || "";
 }
 
-export function getColorClasses(color: ColorType, variant: string, valueCallback: (color: Color, variant: any) => string) {
+export function getColorClasses(color: ColorType, variant: string, hoverValues: boolean, valueCallback: (color: Color, variant: any) => string) {
     if (typeof color === "string")
         return valueCallback(color, variant);
     else {
@@ -583,6 +583,12 @@ export function getColorClasses(color: ColorType, variant: string, valueCallback
         const fromHover = colorStyleParts[color.from].fromHover;
         const toHover = colorStyleParts[color.to].toHover;
         const viaHover = color.via ? colorStyleParts[color.via].viaHover : "";
-        return `${from} ${to} ${via} ${fromHover} ${toHover} ${viaHover}`;
+        return `${from} ${to} ${via} ${ hoverValues ? `${fromHover} ${toHover} ${viaHover}` : "" }`.trim();
     }
+}
+
+export function getGradientStyle(color: ColorType) {
+    return typeof color === "object"
+        ? `background-image: linear-gradient(${color.deg || 90}deg, var(--tw-gradient-from), ${color.via ? `var(--tw-gradient-via), ` : ``}var(--tw-gradient-to))`
+        : "";
 }

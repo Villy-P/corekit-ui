@@ -1,3 +1,5 @@
+import type { ColorType } from "$lib/styles/color";
+
 export function hslToHex(h: number, s: number, l: number) {
     s /= 100;
     l /= 100;

@@ -12,6 +12,7 @@
     import { buttonIconSizeStyles, buttonSizeStyles } from "./size.ts";
     import { multiAction } from "../../../utils/multiAction";
     import { getColorClasses } from "../../../styles/color.ts";
+    import { getGradientStyle } from "$lib/styles/color";
 
     let {
         children = undefined,
@@ -37,7 +38,7 @@
 
     const mergedClass = $derived(twMerge(
         "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out text-white whitespace-nowrap",
-        getColorClasses(color, variant, getButtonColors),
+        getColorClasses(color, variant, true, getButtonColors),
         isDisabled ? "opacity-50 pointer-events-none" : "cursor-pointer",
         getSizeStyleClassRecord(size, icon ? buttonIconSizeStyles : buttonSizeStyles),
         getSizeStyleClass(radius, "radius"),
@@ -54,9 +55,7 @@
                 : `height: ${size}px; padding: ${size / 4}px ${size / 8}px`
             : "",
         getSizeStyle(radius, "radius"),
-        typeof color === "object"
-            ? `background-image: linear-gradient(${color.deg || 90}deg, var(--tw-gradient-from), ${color.via ? `var(--tw-gradient-via), ` : ``}var(--tw-gradient-to))`
-            : "",
+        getGradientStyle(color),
         style,
     ].filter(Boolean).join("; "));
 </script>
