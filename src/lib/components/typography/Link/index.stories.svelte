@@ -1,13 +1,52 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Link from "./index.svelte";
+	import { sizeStyles } from "$lib/styles/size";
+	import { baseArgTypes } from "$lib/styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes,
+		href: {
+			control: "text",
+			description: "The URL that the link points to.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+		external: {
+			control: "boolean",
+			description: "Whether the link is external or not. If true, it will open in a new tab and have `rel='noopener noreferrer'`.",
+			table: {
+				type: { summary: "boolean" },
+				category: "Behavior",
+			},
+		},
+		size: {
+			control: "select",
+			options: sizeStyles,
+			description: "The size of the link text.",
+			table: {
+				type: { summary: "Size" },
+				category: "Appearance",
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Typography/Link",
 		component: Link,
-		argTypes: {
-			
-        }
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "A link component that can be used to navigate to other pages or external URLs.",
+				},
+			},
+		},
 	});
 </script>
 

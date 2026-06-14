@@ -1,4 +1,4 @@
-export function getLinkProps(href?: string, external?: boolean, disabled?: boolean) {
+export function getLinkProps(href?: string | null, external?: boolean, disabled?: boolean) {
     if (!href) return {};
     return {
         href: disabled ? undefined : href,

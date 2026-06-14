@@ -1,8 +1,8 @@
+import type { HTMLAnchorAttributes } from "svelte/elements";
 import type { Size } from "../../../styles/size.ts";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseProps } from "../../../types/BaseComponent.ts";
 
-export interface TextProps extends BaseComponentProps {
-    href?: string;
+export interface TextProps extends BaseProps, Omit<HTMLAnchorAttributes, keyof BaseProps> {
     external?: boolean;
     size?: Size;
 };  
