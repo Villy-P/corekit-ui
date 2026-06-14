@@ -58,7 +58,18 @@
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Combobox",
 		component: Combobox,
-		argTypes
+		argTypes,
+
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "The Combobox component is used to allow users to select an option from a dropdown list. It accepts an `options` prop which is an array of strings representing the available options, as well as a `placeholder` prop which provides a hint to the user of what can be entered in the combobox. The component also accepts `onfocus`, `onblur`, and `onselectitem` event handler props for handling user interactions, and a `limit` prop to limit the maximum number of options displayed in the dropdown."
+				}
+			}
+		},
 	});
 </script>
 

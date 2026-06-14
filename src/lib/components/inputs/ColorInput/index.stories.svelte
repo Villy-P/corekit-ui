@@ -102,7 +102,17 @@
 	const { Story } = defineMeta({
 		title: "Components/Inputs/ColorInput",
 		component: ColorInput,
-		argTypes
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "The ColorInput component is used to allow users to select a color. It accepts a `label` prop to specify the text to display above the input, as well as `labelClass`, `divClass`, and `outerDivClass` props for additional styling. The `value` prop can be used to control the current color value of the input, and the `required` and `disabled` props can be used to specify whether the input is required or disabled, respectively. The `variant`, `size`, and `radius` props can be used to customize the appearance of the input."
+				}
+			}
+		},
 	});
 </script>
 
