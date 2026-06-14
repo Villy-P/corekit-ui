@@ -22,5 +22,5 @@
 </script>
 
 <svelte:element this={tag} class={combinedClass} {...restProps} bind:this={element} use:multiAction={use}>
-    {@render children()}
+    {@render children?.()}
 </svelte:element>
