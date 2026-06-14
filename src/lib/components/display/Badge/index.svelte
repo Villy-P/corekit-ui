@@ -5,8 +5,8 @@
     import { getGradientStyle } from "$lib/styles/color";
     import { getColorClasses } from "$lib/styles/color";
     import { getBadgeColors } from "./color";
-    import { getSizeStyle, getSizeStyleClassRecord, getSizeStyleClass } from "$lib/styles/size";
-    import { buttonSizeStyles } from "$lib/components/inputs/Button/size";
+    import { getSizeStyle, getSizeStyleClassRecord, getSizeStyleClass, sizeStyleParts } from "$lib/styles/size";
+    import { buttonIconSizeStyles, buttonSizeStyles } from "$lib/components/inputs/Button/size";
     
     let {
         class: className = "",
@@ -24,9 +24,12 @@
         ...restProps
     }: BadgeProps = $props();
 
+    const combinedColorClasses = $derived(getColorClasses(color, variant, false, getBadgeColors));
+    const combinedColorStyles = $derived(getGradientStyle(color));
+
     const combinedClass = $derived(twMerge(
         "inline-flex items-center justify-center gap-2 ease-in-out text-white whitespace-nowrap select-none",
-        getColorClasses(color, variant, false, getBadgeColors),
+        variant !== "status" ? combinedColorClasses : "",
         getSizeStyleClassRecord(size, buttonSizeStyles),
         getSizeStyleClass(radius, "radius"),
         pill && "rounded-full",
@@ -38,11 +41,14 @@
             ? `height: ${size}px; padding: ${size / 4}px ${size / 8}px`
             : "",
         getSizeStyle(radius, "radius"),
-        getGradientStyle(color),
+        variant !== "status" ? combinedColorStyles : "",
         style,
     ].filter(Boolean).join("; "));
 </script>
 
 <div class={combinedClass} style={mergedStyle} bind:this={element} use:multiAction={use} {...restProps}>
+    {#if variant === "status" }
+        <span class="rounded-full w-2.5 h-2.5 {combinedColorClasses} p-0" style={combinedColorStyles}></span>
+    {/if}
     {@render children?.()}
 </div>
