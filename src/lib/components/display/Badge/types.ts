@@ -5,7 +5,7 @@ import type { HTMLAttributes } from "svelte/elements";
 
 export type BadgeVariant = "default" | "outline" | "light" | "status";
 
-export interface BadgeProps extends BaseProps, Omit<HTMLAttributes<HTMLDivElement>, keyof BaseProps | "color"> {
+export interface BadgeProps extends BaseProps, Omit<HTMLAttributes<HTMLSpanElement>, keyof BaseProps | "color"> {
     color?: ColorType;
     variant?: BadgeVariant;
     size?: Size;

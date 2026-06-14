@@ -46,9 +46,9 @@
     ].filter(Boolean).join("; "));
 </script>
 
-<div class={combinedClass} style={mergedStyle} bind:this={element} use:multiAction={use} {...restProps}>
+<span class={combinedClass} style={mergedStyle} bind:this={element} use:multiAction={use} {...restProps}>
     {#if variant === "status" }
         <span class="rounded-full w-2.5 h-2.5 {combinedColorClasses} p-0" style={combinedColorStyles}></span>
     {/if}
     {@render children?.()}
-</div>
+</span>

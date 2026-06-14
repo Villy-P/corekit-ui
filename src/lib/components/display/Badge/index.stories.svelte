@@ -17,7 +17,7 @@
 		variant: {
 			control: "select",
 			options: ["default", "outline", "light", "status"],
-			description: "The variant of the badge, which determines its style.",
+			description: "The variant of the badge, which determines its style. If the variant is set to `status`, the badge will display a small colored dot to indicate status.",
 			table: {
 				type: { summary: "BadgeVariant" },
 				category: "Appearance",
@@ -62,8 +62,7 @@
             },
 			docs: {
 				description: {
-                    // Change this description to explain what the component is and how to use it
-					component: ""
+					component: "The Badge component is used to display a small badge or label, often used for notifications or status indicators. It supports different variants, colors, sizes, and shapes to fit various design needs."
 				}
 			}
         },

@@ -7,6 +7,7 @@ export { default as Tree } from "./Tree/index.ts";
 export { default as Table } from "./Table/index.ts";
 export { default as Image } from "./Image/index.svelte";
 export { default as Copyright } from "./Copyright/index.svelte";
+export { default as Badge } from "./Badge/index.svelte";
 
 export type { ImageProps } from "./Image/types.ts";
 export type { CardProps } from "./Card/types.ts";
@@ -21,3 +22,4 @@ export type { TableCellProps } from "./Table/types.ts";
 export type { TableBodyProps } from "./Table/types.ts";
 export type { TableRowProps } from "./Table/types.ts";
 export type { CopyrightProps } from "./Copyright/types.ts";
+export type { BadgeProps } from "./Badge/types.ts";
