@@ -4,16 +4,44 @@
     import NavbarStoryWrapper from "./NavbarStoryWrapper.svelte";
     import type { Component } from "svelte";
     import type { NavbarProps } from "./types";
+    import { baseArgTypes } from "$lib/styles/storybook";
+
+    const argTypes = {
+        ...baseArgTypes,
+        scrollThreshold: {
+            control: "number",
+            description: "The scroll threshold in pixels at which the navbar will change its appearance. Only applies when 'variant' is set to 'hero'.",
+            table: {
+                type: { summary: "number" },
+                category: "Behavior",
+            },
+        },
+        variant: {
+            control: "select",
+            options: ["default", "hero"],
+            description: "The visual variant of the navbar. 'default' is a standard navbar that remains the same on scroll, while 'hero' is a larger navbar that changes appearance when the user scrolls past the specified threshold.",
+            table: {
+                type: { summary: "'default' | 'hero'" },
+                category: "Appearance",
+            },
+        },
+    } as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Navigation/Navbar",
 		component: Navbar as any,
         subcomponents: { "Navbar.Element": Navbar.Element, "Navbar.Dropdown": Navbar.Dropdown, "Navbar.Separator": Navbar.Separator },
-		argTypes: {
-
-		},
+		argTypes,
         parameters: {
             layout: "fullscreen",
+            controls: {
+                include: Object.keys(argTypes),
+            },
+            docs: {
+                description: {
+                    component: "A navbar component that provides a responsive navigation bar for your website. It can contain links, dropdowns, and separators.",
+                },
+            },
         },
         decorators: [
             () => ({ Component: NavbarStoryWrapper as unknown as Component<NavbarProps, {}, "element"> })

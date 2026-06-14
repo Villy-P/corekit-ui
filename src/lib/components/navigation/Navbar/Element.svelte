@@ -8,11 +8,9 @@
         class: className = "", 
         element = $bindable(),
         use = [],
-        classTop = "",
         activeClass = "",
         active = false,
         href = undefined,
-        threshold = 10,
         color = "sub",
         ...restProps
     }: NavbarElementProps = $props();
@@ -27,6 +25,6 @@
     ));
 </script>
 
-<Button {use} bind:element radius="none" {href} {color} class={combinedClass} {...restProps} aria-current={active ? 'page' : undefined}>
+<Button bind:element radius="none" class={combinedClass} {...restProps} {href} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
 </Button>

@@ -1,19 +1,17 @@
 import type { Snippet } from "svelte";
-import type { BaseComponentProps } from "../../../types/BaseComponent.ts";
+import type { BaseComponentProps, BaseProps } from "../../../types/BaseComponent.ts";
 import type { Color } from "../../../styles/color.ts";
+import type { HTMLAttributes } from "svelte/elements";
+import type { ButtonProps } from "$lib/components/inputs/index";
 
-export interface NavbarProps extends BaseComponentProps {
-    classTop?: string;
+export interface NavbarProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {
     scrollThreshold?: number;
     variant?: "default" | "hero";
 };
 
-export interface NavbarElementProps extends BaseComponentProps {
-    classTop?: string;
+export type NavbarElementProps = ButtonProps & {
     activeClass?: string;
     active?: boolean;
-    href?: string;
-    color?: Color;
 }
 
 export type NavbarSeparatorVariant = "vertical" | "horizontal" | "dynamic";
@@ -23,11 +21,11 @@ export const NavbarSeparatorClasses: Record<NavbarSeparatorVariant, string> = {
     "dynamic": "ml-auto"
 };
 
-export interface NavbarSeparatorProps extends BaseComponentProps {
+export interface NavbarSeparatorProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {
     variant?: NavbarSeparatorVariant;
 }
 
-export interface NavbarDropdownProps extends BaseComponentProps {
+export interface NavbarDropdownProps extends NavbarElementProps {
     label?: string;
     navelement?: Snippet;
     classTop?: string;

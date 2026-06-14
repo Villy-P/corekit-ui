@@ -1,7 +1,8 @@
-import type { BaseComponentProps } from "../../../types/BaseComponent";
+import type { HTMLAttributes } from "svelte/elements";
+import type { BaseProps } from "../../../types/BaseComponent";
 import type { Component } from "svelte";
 
-export interface SideNavbarProps extends BaseComponentProps {
+export interface SideNavbarProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, keyof BaseProps> {
     items?: SideNavbarItem[];
     currentPath?: string;
     offset?: string;

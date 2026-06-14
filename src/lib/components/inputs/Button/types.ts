@@ -1,11 +1,11 @@
-import type { HTMLAnchorAttributes, HTMLAttributes } from "svelte/elements";
+import type { HTMLAttributes } from "svelte/elements";
 import type { ColorType } from "../../../styles/color.js";
 import type { Size } from "../../../styles/size.js";
 import type { BaseProps } from "../../../types/BaseComponent";
 
 export type ButtonVariant = "full" | "light" | "outline" | "ghost";
 
-interface SharedButtonProps extends BaseProps {
+export interface ButtonProps extends BaseProps, Omit<HTMLAttributes<HTMLButtonElement>, keyof BaseProps | "color"> {
     pill?: boolean;
     icon?: boolean;
     square?: boolean;
@@ -15,16 +15,6 @@ interface SharedButtonProps extends BaseProps {
     size?: Size;
     radius?: Size;
     loading?: boolean;
-}
-
-interface AsButton extends Omit<HTMLAttributes<HTMLButtonElement>, keyof BaseProps | "color"> {
-    href?: never;
-    external?: never;
-}
-
-interface AsAnchor extends Omit<HTMLAnchorAttributes, keyof BaseProps | "color"> {
-    href: string;
+    href?: string;
     external?: boolean;
 }
-
-export type ButtonProps = SharedButtonProps & (AsButton | AsAnchor);
