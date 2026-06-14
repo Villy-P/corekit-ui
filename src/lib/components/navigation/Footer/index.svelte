@@ -18,5 +18,5 @@
 </script>
 
 <footer class={combined} {...restProps} bind:this={element} use:multiAction={use}>
-    {@render children()}
+    {@render children?.()}
 </footer>

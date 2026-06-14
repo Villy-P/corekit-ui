@@ -1,13 +1,26 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Breadcrumb from "./index.ts";
+	import { baseArgTypes } from "$lib/styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Navigation/Breadcrumb",
 		component: Breadcrumb as any,
 		subcomponents: { "Breadcrumb.Item": Breadcrumb.Item },
-		argTypes: {
-
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "A breadcrumb component that provides a navigation trail for users to follow back to the starting or entry point of a website.",
+				},
+			},
 		},
 	});
 </script>

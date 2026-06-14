@@ -2,13 +2,22 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Footer from "./index.svelte";
     import { Link } from "../../typography";
+  import { baseArgTypes } from "$lib/styles/storybook";
 
 	const { Story } = defineMeta({
 		title: "Components/Navigation/Footer",
 		component: Footer,
-		argTypes: {
-
-		},
+		argTypes: baseArgTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(baseArgTypes),
+			},
+			docs: {
+				description: {
+					component: "A footer component that typically contains information about the website, such as copyright information, links to terms of service, privacy policy, and contact information.",
+				},
+			},
+		}
 	});
 </script>
 
