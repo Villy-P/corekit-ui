@@ -1,13 +1,45 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
     import Text from "../../typography/Text/index.svelte";
+	import { sizeStyles } from "$lib/styles/size";
+	import { baseArgTypes } from "$lib/styles/storybook";
+
+	const argTypes = {
+		...baseArgTypes,
+		tag: {
+			control: "select",
+			options: ["p", "div", "span", "label", "strong", "em", "b", "i", "u", "small", "blockquote", "pre", "code", "a", "ul", "li", "h1", "h2", "h3", "h4", "h5", "h6"],
+			description: "The HTML tag to use for the text element.",
+			table: {
+				type: { summary: 'TextTagOptions' },
+				category: 'Appearance',
+			},
+		},
+		size: {
+			control: "select",
+			options: sizeStyles,
+			description: "The size of the text.",
+			table: {
+				type: { summary: 'Size' },
+				category: 'Appearance',
+			},
+		},
+	} as const;
 
 	const { Story } = defineMeta({
 		title: "Components/Typography/Text",
 		component: Text,
-		argTypes: {
-			
-        }
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "A text component that can be used to display text with different HTML tags and sizes.",
+				},
+			},
+		},
 	});
 </script>
 
