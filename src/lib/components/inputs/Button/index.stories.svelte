@@ -110,6 +110,11 @@
             controls: {
                 include: Object.keys(argTypes),
             },
+			docs: {
+				description: {
+					component: "The Button component is a versatile component that can be used for various purposes. It supports different variants, colors, sizes, and states such as loading and disabled. It can also be used as a link by providing an `href` prop."
+				}
+			}
         },
 	});
 </script>
