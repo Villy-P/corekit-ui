@@ -1,6 +1,6 @@
 <script lang="ts">
     import { twMerge } from "tailwind-merge";
-    import type { _Props } from "./types";
+    import type { BadgeProps } from "./types";
     import { multiAction } from "$lib/utils/multiAction";
     
     let {
@@ -10,7 +10,7 @@
         use = [],
         style = "",
         ...restProps
-    }: _Props = $props();
+    }: BadgeProps = $props();
 
     const combinedClass = $derived(twMerge(
         // Default classes go here

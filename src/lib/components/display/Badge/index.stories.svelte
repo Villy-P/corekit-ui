@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Button from "./index.svelte";
+	import Badge from "./index.svelte";
 	import { baseArgTypes } from "$lib/styles/storybook";
 
 	const argTypes = {
@@ -9,8 +9,8 @@
 	} as const;
 
 	const { Story } = defineMeta({
-		title: "Components/Default/Component", // Change this to the appropriate title for your component
-		component: Button,
+		title: "Components/Display/Badge",
+		component: Badge,
 		argTypes,
 
 		parameters: {

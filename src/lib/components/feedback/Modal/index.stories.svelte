@@ -47,5 +47,5 @@
 <Story name="Default" args={{ variant: "bordered", size: "md" }}>
     <Text tag="h2" class="text-2xl font-bold mb-4">Customizable Modal</Text>
     <Text class="mb-4">This is a customizable modal component. You can add any content here and style it as needed.</Text>
-    <Button href="https://example.com" target="_blank">Learn More</Button>
+    <Button href="https://example.com" external>Learn More</Button>
 </Story>
