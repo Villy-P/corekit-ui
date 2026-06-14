@@ -25,6 +25,6 @@
     ));
 </script>
 
-<Button bind:element radius="none" class={combinedClass} {...restProps} {href} aria-current={active ? 'page' : undefined}>
+<Button bind:element radius="none" class={combinedClass} {...restProps} {href} {color} aria-current={active ? 'page' : undefined}>
     {@render children?.()}
 </Button>
