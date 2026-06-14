@@ -53,7 +53,7 @@
 
 <BaseInput
     {children}
-    {className}
+    class={className}
     {label}
     {labelClass}
     divClass={combinedDivClass}

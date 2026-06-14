@@ -1,5 +1,6 @@
+import type { HTMLTextareaAttributes } from "svelte/elements";
 import type { BaseInputProps } from "../../../types/BaseComponent";
 
-export interface TextareaProps extends BaseInputProps  {
-
+export interface TextareaProps extends BaseInputProps, Omit<HTMLTextareaAttributes, keyof BaseInputProps> {
+    placeholder?: string;
 }

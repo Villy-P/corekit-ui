@@ -3,18 +3,30 @@
 	import Textarea from "./index.svelte";
     import { sizeStyles } from "$lib/styles/size.js";
 
+	const argTypes = {
+		placeholder: {
+			control: "text",
+			description: "A string that provides a hint to the user of what can be entered in the textarea.",
+			table: {
+				type: { summary: "string" },
+				category: "Content",
+			},
+		},
+	} as const;
+
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Textarea",
 		component: Textarea,
-		argTypes: {
-			size: {
-				control: "select",
-				options: sizeStyles,
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
 			},
-			radius: {
-				control: "select",
-				options: sizeStyles,
-			}
+			docs: {
+				description: {
+					component: "A textarea component that allows users to input multiple lines of text.",
+				},
+			},
 		},
 	});
 </script>

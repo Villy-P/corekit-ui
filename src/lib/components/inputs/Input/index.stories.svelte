@@ -75,7 +75,17 @@
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Input",
 		component: Input,
-		argTypes
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "The Input component is a versatile component that can be used for various types of inputs such as text, number, email, password, etc. It accepts a `placeholder` prop to provide a hint to the user of what can be entered in the input, as well as `min`, `max`, and `step` props for validation of certain types of inputs. The `requirements` prop can be used to specify an array of requirements for the input value, and the `valid` prop can be used to indicate whether the current input value meets those requirements. The component also emits `onfocus` and `onblur` events when the input receives or loses focus, respectively."
+				}
+			}
+		},
 	});
 </script>
 

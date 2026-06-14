@@ -27,7 +27,17 @@
 	const { Story } = defineMeta({
 		title: "Components/Inputs/Select",
 		component: Select,
-		argTypes
+		argTypes,
+		parameters: {
+			controls: {
+				include: Object.keys(argTypes),
+			},
+			docs: {
+				description: {
+					component: "A select component that allows users to select an option from a dropdown list.",
+				},
+			},
+		},
 	});
 </script>
 
