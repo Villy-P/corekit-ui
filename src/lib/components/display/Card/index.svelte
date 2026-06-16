@@ -23,7 +23,7 @@
     }: CardProps = $props();
 
     let combinedClass = $derived(twMerge(
-        "text-main-text rounded-lg transition-colors transition-all ease-in-out bg-gradient-to-br from-sub-background to-sub-background-accent p-4 w-full flex flex-col", 
+        "text-main-text rounded-lg transition-colors transition-all ease-in-out bg-sub-background p-4 w-full flex flex-col", 
         href && "block hover:from-sub-background-hover hover:to-sub-background-hover cursor-pointer hover:border-sub-background-border-hover hover:-translate-y-0.5",
         cardVariantStyles[variant],
         getSizeStyleClass(size, "card"),
