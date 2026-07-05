@@ -2,10 +2,11 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Button from "../../inputs/Button/index.svelte";
     import Text from "../../typography/Text/index.svelte";
+	import Image from "../Image/index.svelte"
     import Card from "./index.svelte";
 	import { sizeStyles } from "$lib/styles/size";
 	import { baseArgTypes } from "$lib/styles/storybook";
-  import { cardArgTypes } from "./storybook";
+	import { cardArgTypes } from "./storybook";
 
 	const { Story } = defineMeta({
 		title: "Components/Display/Card",
@@ -26,7 +27,7 @@
 </script>
 
 {#snippet header()}
-	<img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg" alt="Card">
+	<Image src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg" alt="Card" hideIfBroken/>
 {/snippet}
 
 {#snippet footer()}
