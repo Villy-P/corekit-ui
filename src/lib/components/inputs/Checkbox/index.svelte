@@ -31,15 +31,31 @@
 </script>
 
 <Text tag="label" for={id} class={combinedDivClass}>
-    <input
-        type="checkbox"
-        id={id}
-        bind:checked={checked}
-        class={combinedClass}
-        {...restProps}
-        bind:this={element}
-        use:multiAction={use}
-        />
+    <span class="relative inline-flex w-4 h-4 shrink-0">
+        <input
+            type="checkbox"
+            id={id}
+            bind:checked={checked}
+            class={combinedClass}
+            {...restProps}
+            bind:this={element}
+            use:multiAction={use}
+            />
+        <svg
+            class="checkbox-check-svg absolute inset-0 w-4 h-4 pointer-events-none z-20"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+        >
+            <path
+                d="M6 12.5L10 16.5L18 8"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    </span>
     {label}
 </Text>
 
@@ -48,20 +64,14 @@
         appearance: none;
     }
 
-    input[type="checkbox"]:checked::before {
-        transform: scale(1);
+    .checkbox-check-svg path {
+        stroke-dasharray: 20;
+        stroke-dashoffset: 20;
+        transition: stroke-dashoffset 250ms cubic-bezier(0.65, 0, 0.35, 1);
+        transition-delay: 150ms;
     }
 
-    input[type="checkbox"]::before {
-        content: "";
-        width: 80%;
-        height: 80%;
-        margin: 1.5px;
-        transform: scale(0);
-        transform-origin: bottom left;
-        transition: 150ms transform ease-in-out;
-        display: block;
-        background-color: white;
-        clip-path: polygon(14% 44%, 0% 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    input[type="checkbox"]:checked ~ .checkbox-check-svg path {
+        stroke-dashoffset: 0;
     }
 </style>
