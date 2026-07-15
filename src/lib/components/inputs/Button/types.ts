@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from "svelte/elements";
+import type { HTMLButtonAttributes } from "svelte/elements";
 import type { ColorType } from "../../../styles/color.js";
 import type { Size } from "../../../styles/size.js";
 import type { BaseProps } from "../../../types/BaseComponent";
 
 export type ButtonVariant = "full" | "light" | "outline" | "ghost";
 
-export interface ButtonProps extends BaseProps, Omit<HTMLAttributes<HTMLButtonElement>, keyof BaseProps | "color"> {
+export interface ButtonProps extends BaseProps, Omit<HTMLButtonAttributes, keyof BaseProps | "color"> {
     pill?: boolean;
     icon?: boolean;
     square?: boolean;
