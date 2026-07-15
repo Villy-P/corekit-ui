@@ -4,7 +4,7 @@ export type Color =
     "primary" | "secondary" | "accent" |
     "error" | "warning" | "success" | "info";
 export type ButtonColorStyleType = "full" | "light" | "outline" | "ghost";
-export type ColorStyleType = "base" | "baseHover" | "text" | "hover" | "muted" | "subtle" | "mutedHover" | "border" | "borderHover" | "textHover" | "subtleHover" | "from" | "to" | "via" | "fromHover" | "toHover" | "viaHover";
+export type ColorStyleType = "base" | "baseHover" | "baseChecked" | "text" | "hover" | "muted" | "subtle" | "mutedHover" | "border" | "borderHover" | "textHover" | "subtleHover" | "from" | "to" | "via" | "fromHover" | "toHover" | "viaHover";
 
 export const colorStyles = [
     "rose", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "gray", "sub", "none",
@@ -13,7 +13,7 @@ export const colorStyles = [
     "error", "warning", "success", "info"
 ] as const satisfies Color[];
 export const colorStyleTypes = [
-    "base", "baseHover", "text", "hover", "muted", "subtle", "mutedHover", "border", "borderHover", "textHover", "subtleHover", "from", "to", "via", "fromHover", "toHover", "viaHover"
+    "base", "baseHover", "baseChecked", "text", "hover", "muted", "subtle", "mutedHover", "border", "borderHover", "textHover", "subtleHover", "from", "to", "via", "fromHover", "toHover", "viaHover"
 ] as const satisfies ColorStyleType[];
 
 export interface Gradient {
@@ -29,6 +29,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     rose: {
         base: "bg-rose-600",
         baseHover: "hover:bg-rose-600",
+        baseChecked: "checked:bg-rose-600",
         text: "text-rose-600",
         textHover: "hover:text-rose-700",
         hover: "hover:bg-rose-700",
@@ -48,6 +49,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     red: {
         base: "bg-red-600",
         baseHover: "hover:bg-red-600",
+        baseChecked: "checked:bg-red-600",
         text: "text-red-600",
         textHover: "hover:text-red-700",
         hover: "hover:bg-red-700",
@@ -67,6 +69,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     orange: {
         base: "bg-orange-600",
         baseHover: "hover:bg-orange-600",
+        baseChecked: "checked:bg-orange-600",
         text: "text-orange-600",
         textHover: "hover:text-orange-700",
         hover: "hover:bg-orange-700",
@@ -86,6 +89,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     amber: {
         base: "bg-amber-600",
         baseHover: "hover:bg-amber-600",
+        baseChecked: "checked:bg-amber-600",
         text: "text-amber-600",
         textHover: "hover:text-amber-700",
         hover: "hover:bg-amber-700",
@@ -105,6 +109,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     yellow: {
         base: "bg-yellow-600",
         baseHover: "hover:bg-yellow-600",
+        baseChecked: "checked:bg-yellow-600",
         text: "text-yellow-600",
         textHover: "hover:text-yellow-700",
         hover: "hover:bg-yellow-700",
@@ -124,6 +129,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     lime: {
         base: "bg-lime-600",
         baseHover: "hover:bg-lime-600",
+        baseChecked: "checked:bg-lime-600",
         text: "text-lime-600",
         textHover: "hover:text-lime-700",
         hover: "hover:bg-lime-700",
@@ -143,6 +149,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     green: {
         base: "bg-green-600",
         baseHover: "hover:bg-green-600",
+        baseChecked: "checked:bg-green-600",
         text: "text-green-600",
         textHover: "hover:text-green-700",
         hover: "hover:bg-green-700",
@@ -162,6 +169,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     emerald: {
         base: "bg-emerald-600",
         baseHover: "hover:bg-emerald-600",
+        baseChecked: "checked:bg-emerald-600",
         text: "text-emerald-600",
         textHover: "hover:text-emerald-700",
         hover: "hover:bg-emerald-700",
@@ -181,6 +189,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     teal: {
         base: "bg-teal-600",
         baseHover: "hover:bg-teal-600",
+        baseChecked: "checked:bg-teal-600",
         text: "text-teal-600",
         textHover: "hover:text-teal-700",
         hover: "hover:bg-teal-700",
@@ -200,6 +209,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     cyan: {
         base: "bg-cyan-600",
         baseHover: "hover:bg-cyan-600",
+        baseChecked: "checked:bg-cyan-600",
         text: "text-cyan-600",
         textHover: "hover:text-cyan-700",
         hover: "hover:bg-cyan-700",
@@ -219,6 +229,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     blue: {
         base: "bg-blue-600",
         baseHover: "hover:bg-blue-600",
+        baseChecked: "checked:bg-blue-600",
         text: "text-blue-600",
         textHover: "hover:text-blue-700",
         hover: "hover:bg-blue-700",
@@ -238,6 +249,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     indigo: {
         base: "bg-indigo-600",
         baseHover: "hover:bg-indigo-600",
+        baseChecked: "checked:bg-indigo-600",
         text: "text-indigo-600",
         textHover: "hover:text-indigo-700",
         hover: "hover:bg-indigo-700",
@@ -257,6 +269,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     violet: {
         base: "bg-violet-600",
         baseHover: "hover:bg-violet-600",
+        baseChecked: "checked:bg-violet-600",
         text: "text-violet-600",
         textHover: "hover:text-violet-700",
         hover: "hover:bg-violet-700",
@@ -276,6 +289,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     purple: {
         base: "bg-purple-600",
         baseHover: "hover:bg-purple-600",
+        baseChecked: "checked:bg-purple-600",
         text: "text-purple-600",
         textHover: "hover:text-purple-700",
         hover: "hover:bg-purple-700",
@@ -295,6 +309,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     pink: {
         base: "bg-pink-600",
         baseHover: "hover:bg-pink-600",
+        baseChecked: "checked:bg-pink-600",
         text: "text-pink-600",
         textHover: "hover:text-pink-700",
         hover: "hover:bg-pink-700",
@@ -314,6 +329,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     fuchsia: {
         base: "bg-fuchsia-600",
         baseHover: "hover:bg-fuchsia-600",
+        baseChecked: "checked:bg-fuchsia-600",
         text: "text-fuchsia-600",
         textHover: "hover:text-fuchsia-700",
         hover: "hover:bg-fuchsia-700",
@@ -333,6 +349,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     gray: {
         base: "bg-gray-600",
         baseHover: "hover:bg-gray-600",
+        baseChecked: "checked:bg-gray-600",
         text: "text-gray-600",
         textHover: "hover:text-gray-700",
         hover: "hover:bg-gray-700",
@@ -352,6 +369,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     sub: {
         base: "bg-sub-background",
         baseHover: "hover:bg-sub-background-hover",
+        baseChecked: "checked:bg-sub-background-hover",
         text: "text-sub-background",
         textHover: "hover:text-sub-background-hover",
         hover: "hover:bg-sub-background-hover",
@@ -371,6 +389,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     none: {
         base: "",
         baseHover: "",
+        baseChecked: "",
         text: "",
         textHover: "",
         hover: "",
@@ -393,6 +412,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     white: {
         base: "bg-white text-contrast-text",
         baseHover: "hover:bg-white",
+        baseChecked: "checked:bg-white",
         textHover: "hover:text-contrast-text",
         hover: "hover:bg-gray-100",
         muted: "bg-gray-100/35",
@@ -412,6 +432,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     black: {
         base: "bg-black",
         baseHover: "hover:bg-black",
+        baseChecked: "checked:bg-black",
         textHover: "hover:text-gray-300",
         hover: "hover:bg-black",
         muted: "bg-black/35",
@@ -433,6 +454,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     primary: {
         base: "bg-primary-600",
         baseHover: "hover:bg-primary-600",
+        baseChecked: "checked:bg-primary-600",
         text: "text-primary-600",
         textHover: "hover:text-primary-700",
         hover: "hover:bg-primary-700",
@@ -452,6 +474,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     secondary: {
         base: "bg-secondary-600",
         baseHover: "hover:bg-secondary-600",
+        baseChecked: "checked:bg-secondary-600",
         text: "text-secondary-600",
         textHover: "hover:text-secondary-700",
         hover: "hover:bg-secondary-700",
@@ -471,6 +494,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     accent: {
         base: "bg-accent-600",
         baseHover: "hover:bg-accent-600",
+        baseChecked: "checked:bg-accent-600",
         text: "text-accent-600",
         textHover: "hover:text-accent-700",
         hover: "hover:bg-accent-700",
@@ -492,6 +516,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     error: {
         base: "bg-red-600",
         baseHover: "hover:bg-red-600",
+        baseChecked: "checked:bg-red-600",
         text: "text-red-600",
         textHover: "hover:text-red-700",
         hover: "hover:bg-red-700",
@@ -511,6 +536,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     warning: {
         base: "bg-amber-600",
         baseHover: "hover:bg-amber-600",
+        baseChecked: "checked:bg-amber-600",
         text: "text-amber-600",
         textHover: "hover:text-amber-700",
         hover: "hover:bg-amber-700",
@@ -530,6 +556,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     success: {
         base: "bg-emerald-600",
         baseHover: "hover:bg-emerald-600",
+        baseChecked: "checked:bg-emerald-600",
         textHover: "hover:text-emerald-700",
         hover: "hover:bg-emerald-700",
         muted: "bg-emerald-600/35",
@@ -549,6 +576,7 @@ export const colorStyleParts: Record<Color, Record<ColorStyleType, string>> = {
     info: {
         base: "bg-sky-600",
         baseHover: "hover:bg-sky-600",
+        baseChecked: "checked:bg-sky-600",
         text: "text-sky-600",
         textHover: "hover:text-sky-700",
         hover: "hover:bg-sky-700",

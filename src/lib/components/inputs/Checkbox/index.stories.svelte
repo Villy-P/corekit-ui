@@ -1,10 +1,20 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Checkbox from "./index.svelte";
-  import { baseArgTypes } from "../../../styles/storybook";
+	import { baseArgTypes } from "../../../styles/storybook";
+	import { colorStyles } from "$lib/styles/color";
 
 	const argTypes = {
 		...baseArgTypes,
+		color: {
+			control: "select",
+			options: colorStyles,
+			description: "A string representing a color to use or a gradient object with `from`, `to`, `deg`, and optional `via` properties.",
+			table: {
+				type: { summary: "Color OR Gradient" },
+				category: "Appearance",
+			},
+		},
 		label: {
 			control: "text",
 			description: "The label to display next to the checkbox.",
@@ -66,3 +76,7 @@
 </script>
 
 <Story name="Default" args={{ label: "Input Label" }}></Story>
+
+<Story name="Gradient" args={{ color: { from: "cyan", to: "blue" }, label: "Input Label" }}>
+	Gradient Checkbox
+</Story>

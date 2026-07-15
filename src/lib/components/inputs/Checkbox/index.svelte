@@ -7,12 +7,15 @@
     import Text from "../../typography/Text/index.svelte";
     import type { CheckboxProps } from "./types";
     import { multiAction } from "../../../utils/multiAction";
+	import { colorStyleParts, getColorClasses, getGradientStyle } from "$lib/styles/color";
 
     let { 
         children = undefined, 
         class: className = "",
         element = $bindable(),
         use = [],
+        style = "",
+        color = "primary",
         label = "",
         labelClass = "",
         divClass = "", 
@@ -21,13 +24,22 @@
         ...restProps
     }: CheckboxProps = $props();
 
-    let defaultClass = "w-4 h-4 z-20 bg-form-background text-main-text rounded outline-none transition-all checked:bg-blue-500";
+    let defaultClass = "w-4 h-4 z-20 bg-form-background text-main-text rounded outline-none transition-all";
     let defaultLabelClass = "block text-sub-text font-medium";
     let defaultDivClass = "relative flex items-center gap-2";
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelClass));
-    let combinedClass = $derived(twMerge(defaultClass, className));
+    let combinedClass = $derived(twMerge(
+        getColorClasses(color, "", true, (color, _variant) => colorStyleParts[color]?.baseChecked),
+        defaultClass, 
+        className
+    ));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
+
+    let combinedStyle = $derived([
+        checked && getGradientStyle(color),
+        style,
+    ].filter(Boolean).join("; "));
 </script>
 
 <Text tag="label" for={id} class={combinedDivClass}>
@@ -37,6 +49,7 @@
             id={id}
             bind:checked={checked}
             class={combinedClass}
+            style={combinedStyle}
             {...restProps}
             bind:this={element}
             use:multiAction={use}
