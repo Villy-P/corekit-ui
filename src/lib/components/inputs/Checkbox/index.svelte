@@ -16,6 +16,7 @@
         use = [],
         style = "",
         color = "primary",
+        indeterminate = false,
         label = "",
         labelClass = "",
         divClass = "", 
@@ -47,6 +48,7 @@
         <input
             type="checkbox"
             id={id}
+            {indeterminate}
             bind:checked={checked}
             class={combinedClass}
             style={combinedStyle}
@@ -60,13 +62,23 @@
             fill="none"
             aria-hidden="true"
         >
-            <path
-                d="M6 12.5L10 16.5L18 8"
-                stroke="white"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
+            {#if indeterminate}
+                <path
+                    d="M6 12H18"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            {:else}
+                <path
+                    d="M6 12.5L10 16.5L18 8"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            {/if}
         </svg>
     </span>
     {label}

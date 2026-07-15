@@ -15,6 +15,14 @@
 				category: "Appearance",
 			},
 		},
+		indeterminate: {
+			control: "boolean",
+			description: "Whether the checkbox is in an indeterminate state. This is a visual state that indicates that the checkbox is neither checked nor unchecked.",
+			table: {
+				type: { summary: "boolean" },
+				category: "State",
+			},
+		},
 		label: {
 			control: "text",
 			description: "The label to display next to the checkbox.",
