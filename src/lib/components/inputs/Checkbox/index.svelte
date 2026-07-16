@@ -41,6 +41,12 @@
         checked && getGradientStyle(color),
         style,
     ].filter(Boolean).join("; "));
+
+    $effect(() => {
+        if (element) {
+            (element as HTMLInputElement).indeterminate = indeterminate;
+        }
+    });
 </script>
 
 <Text tag="label" for={id} class={combinedDivClass}>
@@ -48,7 +54,6 @@
         <input
             type="checkbox"
             id={id}
-            {indeterminate}
             bind:checked={checked}
             class={combinedClass}
             style={combinedStyle}
