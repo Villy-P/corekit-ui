@@ -16,12 +16,13 @@
         use = [],
         style = "",
         color = "primary",
-        indeterminate = false,
+        indeterminate = $bindable(false),
         label = "",
         labelClass = "",
         divClass = "", 
-        checked = $bindable(),
+        checked = $bindable(false),
         id = `checkbox-${count++}`,
+        onchange = undefined,
         ...restProps
     }: CheckboxProps = $props();
 
@@ -31,22 +32,30 @@
 
     let combinedLabelClass = $derived(twMerge(defaultLabelClass, labelClass));
     let combinedClass = $derived(twMerge(
-        getColorClasses(color, "", true, (color, _variant) => colorStyleParts[color]?.baseChecked),
         defaultClass, 
+        (checked || indeterminate) && getColorClasses(color, "", true, (color, _) => colorStyleParts[color]?.base),
         className
     ));
     let combinedDivClass = $derived(twMerge(defaultDivClass, divClass));
 
     let combinedStyle = $derived([
-        checked && getGradientStyle(color),
+        (checked || indeterminate) && getGradientStyle(color),
         style,
     ].filter(Boolean).join("; "));
+
+    let showCheck = $derived(checked && !indeterminate);
+    let showDash = $derived(indeterminate);
 
     $effect(() => {
         if (element) {
             (element as HTMLInputElement).indeterminate = indeterminate;
         }
     });
+
+    function handleChange(event: Event & { currentTarget: EventTarget & HTMLInputElement; }) {
+        indeterminate = false;
+        onchange?.(event);
+    }
 </script>
 
 <Text tag="label" for={id} class={combinedDivClass}>
@@ -60,6 +69,7 @@
             {...restProps}
             bind:this={element}
             use:multiAction={use}
+            onchange={handleChange}
             />
         <svg
             class="checkbox-check-svg absolute inset-0 w-4 h-4 pointer-events-none z-20"
@@ -67,23 +77,24 @@
             fill="none"
             aria-hidden="true"
         >
-            {#if indeterminate}
-                <path
-                    d="M6 12H18"
-                    stroke="white"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                />
-            {:else}
-                <path
-                    d="M6 12.5L10 16.5L18 8"
-                    stroke="white"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                />
-            {/if}
+            <path
+                class="check-path"
+                class:visible={showCheck}
+                d="M6 12.5L10 16.5L18 8"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                class="dash-path"
+                class:visible={showDash}
+                d="M6 12H18"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
         </svg>
     </span>
     {label}
@@ -92,6 +103,12 @@
 <style>
     input[type="checkbox"] {
         appearance: none;
+        outline: none;
+    }
+
+    input[type="checkbox"]:focus {
+        outline: none;
+        box-shadow: none;
     }
 
     .checkbox-check-svg path {
@@ -101,7 +118,12 @@
         transition-delay: 150ms;
     }
 
-    input[type="checkbox"]:checked ~ .checkbox-check-svg path {
+    .checkbox-check-svg path.visible {
         stroke-dashoffset: 0;
+    }
+
+    .checkbox-check-svg .dash-path.visible ~ .check-path,
+    .checkbox-check-svg .check-path {
+        transition-delay: 150ms;
     }
 </style>
