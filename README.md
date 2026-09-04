@@ -1,6 +1,7 @@
 # Corekit UI
 
-Corekit UI is a highly customizable component library written in Svelte 5.
+Corekit UI is a Svelte 5 component library with ~30 components spanning inputs, navigation, feedback, data display, and more.
+It's built around a CSS theming system, letting you configure colors and typography once and have it apply consistently across every component.
 
 ## Installation
 
@@ -10,11 +11,38 @@ Install via `npm`:
 npm i @valerius_petrini/corekit-ui
 ```
 
+Add this to your `css` file:
+
+``` css
+@import '@valerius_petrini/corekit-ui/layout.css';
+@source '../node_modules/@valerius_petrini/corekit-ui/';
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
 After that, each component can be included in your project through an import:
 
-``` js
-import { Navbar, Image } from '@valerius_petrini/corekit-ui';
+``` svelte
+import { Navbar, Image, Button } from '@valerius_petrini/corekit-ui';
+
+<Button color="primary" href="example.com">Click Me!</Button>
 ```
+
+## Theming
+
+To add themes to your project, add this snippet to your `css` file:
+
+``` css
+:root {
+    --vpcui-font-display: "Lora", serif;
+    --vpcui-font-body: "DM Sans", sans-serif;
+
+    --vpcui-primary: #ffffff;
+    --vpcui-secondary: #ff00ff;
+    --vpcui-tertiary: #ffff00;
+}
+```
+
+A list of all themes can be found [here](./src/lib/styles/layout.css).
 
 ## Local Development
 
@@ -81,3 +109,7 @@ Storybook will open the UI in a tab.
 - Utility (Requires SvelteKit)
   - Analytics
   - SEO
+
+## License
+
+Corekit UI is licensed under the [MIT License](./LICENSE).
