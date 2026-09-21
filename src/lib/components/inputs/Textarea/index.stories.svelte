@@ -1,7 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import Textarea from "./index.svelte";
-    import { sizeStyles } from "$lib/styles/size.js";
 
 	const argTypes = {
 		placeholder: {
@@ -12,6 +11,30 @@
 				category: "Content",
 			},
 		},
+        rows: {
+            control: "number",
+            description: "The number of visible text lines for the control.",
+            table: {
+            type: { summary: "number" },
+            category: "Content",
+            },
+        },
+        label: {
+            control: "text",
+            description: "A string that represents the label for the textarea.",
+            table: {
+            type: { summary: "string" },
+            category: "Content",
+            },
+        },
+        variant: {
+            control: { type: "select", options: ["default", "floating"] },
+            description: "The visual style of the textarea.",
+            table: {
+            type: { summary: "string" },
+            category: "Appearance",
+            },
+        },
 	} as const;
 
 	const { Story } = defineMeta({
@@ -31,4 +54,4 @@
 	});
 </script>
 
-<Story name="Default" args={{ label: "Input Label", placeholder: "Enter text here..." }}></Story>
+<Story name="Default" args={{ label: "Input Label", placeholder: "Enter text here...", rows: 6, variant: "floating" }}></Story>
