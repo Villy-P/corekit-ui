@@ -27,6 +27,10 @@ import { Navbar, Image, Button } from '@valerius_petrini/corekit-ui';
 <Button color="primary" href="example.com">Click Me!</Button>
 ```
 
+## Documentation
+
+Documentation can be found on the [Corekit UI Website](https://corekit-ui.vercel.app)
+
 ## Theming
 
 To add themes to your project, add this snippet to your `css` file:
