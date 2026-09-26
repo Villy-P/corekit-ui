@@ -6,6 +6,7 @@
     let {
         center = false,
         fullscreen = false,
+        viewport = false,
         class: className = "",
         children = undefined,
         element = $bindable(),
@@ -17,6 +18,7 @@
     let combinedClass = $derived(twMerge(
         center ? "flex-center" : "",
         fullscreen ? "w-full h-full" : "",
+        viewport ? "w-screen h-screen" : "",
         className
     ));
 </script>

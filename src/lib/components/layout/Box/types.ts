@@ -5,4 +5,5 @@ export interface BoxProps extends BaseProps, Omit<HTMLAttributes<HTMLElement>, k
     tag?: keyof HTMLElementTagNameMap;
     center?: boolean;
     fullscreen?: boolean;
+    viewport?: boolean;
 };
